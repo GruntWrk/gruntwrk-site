@@ -59,7 +59,6 @@ export default function AboutModal({ open, onClose }: { open: boolean; onClose: 
 
   // ✅ Your exact social links
   const socials = [
-    { label: "Instagram", href: "https://www.instagram.com/gruntwrk_official", icon: <InstagramIcon /> },
     { label: "LinkedIn", href: "https://www.linkedin.com/company/gruntwrk", icon: <LinkedInIcon /> },
     { label: "X (Twitter)", href: "https://x.com/gruntwrk_x", icon: <XIcon /> },
     { label: "TikTok", href: "https://www.tiktok.com/@gruntwrk_official", icon: <TikTokIcon /> },
