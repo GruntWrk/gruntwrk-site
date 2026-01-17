@@ -16,7 +16,6 @@ export default function Home() {
       <div className="heroOverlay" />
 
       <div className="container">
-        {/* Top-right hamburger */}
         <div className="topRight">
           <button className="iconBtn" type="button" onClick={() => setAboutOpen(true)} aria-label="Menu">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
