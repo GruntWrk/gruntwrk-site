@@ -1,14 +1,24 @@
 /* app/globals.css */
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap");
 
+/*
+  Font:
+  - Aptos is not a web font by default.
+  - We use it first, then fall back gracefully.
+*/
 :root{
   --bg: #070B10;
   --text: #F9FAFB;
-  --muted: rgba(255,255,255,0.84);
+  --muted: rgba(255,255,255,0.82);
+  --muted2: rgba(255,255,255,0.65);
+
   --brand: #4ade80;
   --brandText: #07110C;
 
-  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+  --border: rgba(255,255,255,0.12);
+  --shadow: 0 18px 46px rgba(0,0,0,0.55);
+  --radius: 22px;
+
+  --font-sans: "Aptos", "Segoe UI", system-ui, -apple-system, Roboto, Helvetica, Arial;
 }
 
 *{ box-sizing: border-box; }
@@ -23,6 +33,9 @@ html, body{
   -moz-osx-font-smoothing: grayscale;
 }
 
+a{ color: inherit; }
+
+/* Fullscreen wallpaper */
 .hero{
   min-height: 100vh;
   position: relative;
@@ -35,25 +48,54 @@ html, body{
   background-image: url("/wallpaper.jpg");
   background-size: cover;
   background-position: center;
-  filter: brightness(0.9) contrast(1.05);
+  filter: brightness(0.92) contrast(1.05);
 }
 
-/* Subtle overlay so wallpaper stays visible */
+/* Keep overlay subtle so wallpaper stays visible */
 .heroOverlay{
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(900px 560px at 50% 45%, rgba(0,0,0,0.40), rgba(0,0,0,0.10) 55%, rgba(0,0,0,0.55)),
-    linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.55));
+    radial-gradient(900px 560px at 50% 45%, rgba(0,0,0,0.35), rgba(0,0,0,0.10) 55%, rgba(0,0,0,0.55)),
+    linear-gradient(180deg, rgba(0,0,0,0.30), rgba(0,0,0,0.55));
   pointer-events: none;
 }
 
 .container{
   max-width: 1200px;
   margin: 0 auto;
-  padding: 24px 18px 48px;
+  padding: 22px 18px 48px;
   position: relative;
   z-index: 2;
+}
+
+/* Top-right hamburger */
+.topRight{
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  z-index: 5;
+}
+
+.iconBtn{
+  width: 46px;
+  height: 46px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.05);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: transform 140ms ease, border-color 140ms ease, background 140ms ease;
+}
+
+.iconBtn:hover{
+  border-color: rgba(255,255,255,0.22);
+  background: rgba(255,255,255,0.07);
+  transform: translateY(-1px);
+}
+.iconBtn:active{
+  transform: translateY(0px);
 }
 
 .centerWrap{
@@ -62,31 +104,26 @@ html, body{
   place-items: center;
 }
 
-/* No card backsplash */
 .centerContent{
   text-align: center;
-  padding: 8px 10px;
+  padding: 10px 10px;
 }
 
-/* BIG logo */
+/* Spinning logo */
 .spinLogo{
-  width: 340px;
-  height: 340px;
+  width: 520px;            /* bigger */
+  height: 520px;
   display: block;
-  margin: 0 auto 6px; /* tighter: bring text up closer */
+  margin: 0 auto 14px;
 
-  /* Pause ~5s then rotate once */
   animation: spinPause 6s ease-in-out infinite;
-
   will-change: transform;
   transform-origin: 50% 50%;
-  filter: drop-shadow(0 18px 40px rgba(0,0,0,0.6));
+  filter: drop-shadow(0 18px 40px rgba(0,0,0,0.60));
 }
 
 /*
-  0%–60%   : hold (≈5s)
-  60%–80%  : one rotation
-  80%–100% : hold
+  Hold ~5s, rotate once, hold.
 */
 @keyframes spinPause {
   0%   { transform: rotate(0deg); }
@@ -95,33 +132,32 @@ html, body{
   100% { transform: rotate(360deg); }
 }
 
-/* Less bold headline + closer spacing */
-.h1{
+/* Brand name under logo */
+.brandName{
   margin: 0;
-  margin-top: 0;
-  font-size: 56px;
+  font-size: 64px;
   line-height: 1.05;
+  font-weight: 900;      /* big + bold */
   letter-spacing: -0.02em;
-  font-weight: 700; /* less bold than before */
-  text-shadow: 0 10px 26px rgba(0,0,0,0.65);
+  text-shadow: 0 10px 26px rgba(0,0,0,0.60);
 }
 
-/* Bring subtext up */
-.sub{
-  margin: 8px auto 0; /* closer to headline */
-  max-width: 720px;
-  font-size: 20px;
-  line-height: 1.55;
+/* Strapline: must stay on one line on mobile */
+.strapline{
+  margin: 10px auto 0;
   color: var(--muted);
-  font-weight: 600;
-  text-shadow: 0 10px 22px rgba(0,0,0,0.60);
+  font-size: 18px;
+  line-height: 1.25;
+  font-weight: 500;      /* not bold */
+  white-space: nowrap;   /* do not wrap */
+  text-shadow: 0 10px 22px rgba(0,0,0,0.55);
 }
 
-/* Bring button up */
+/* CTA */
 .ctaRow{
   display: flex;
   justify-content: center;
-  margin-top: 12px; /* closer to subtext */
+  margin-top: 18px;
 }
 
 .btnPrimary{
@@ -135,7 +171,7 @@ html, body{
   font-weight: 800;
   text-decoration: none;
   border: 1px solid rgba(0,0,0,0.10);
-  box-shadow: 0 14px 32px rgba(74, 222, 128, 0.28);
+  box-shadow: 0 14px 32px rgba(74, 222, 128, 0.26);
   min-width: 260px;
   font-size: 17px;
 }
@@ -144,27 +180,85 @@ html, body{
   transform: translateY(1px);
 }
 
+/* Modal */
+.modalOverlay{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.62);
+  backdrop-filter: blur(8px);
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  padding: 18px;
+}
+
+.modalCard{
+  width: min(820px, 100%);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: rgba(10,14,20,0.92);
+  box-shadow: var(--shadow);
+  padding: 18px 18px 16px;
+}
+
+.modalHeader{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.modalTitle{
+  font-size: 20px;
+  font-weight: 900;
+  margin: 0;
+}
+
+.modalClose{
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.05);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.modalBody{
+  margin-top: 12px;
+  color: rgba(255,255,255,0.86);
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.modalBody p{
+  margin: 0 0 10px;
+}
+
 /* Mobile tuning */
 @media (max-width: 560px){
+  .topRight{
+    top: 14px;
+    right: 14px;
+  }
+
   .spinLogo{
-    width: 230px;
-    height: 230px;
-    margin-bottom: 6px;
-    animation: spinPause 6.5s ease-in-out infinite;
+    width: 320px;
+    height: 320px;
+    margin-bottom: 10px;
   }
 
-  .h1{
-    font-size: 36px;
-    font-weight: 700;
+  .brandName{
+    font-size: 44px;
   }
 
-  .sub{
-    font-size: 16px;
-    margin-top: 6px;
+  .strapline{
+    font-size: 14px;  /* small enough to stay one line */
   }
 
   .ctaRow{
-    margin-top: 10px;
+    margin-top: 16px;
   }
 
   .btnPrimary{

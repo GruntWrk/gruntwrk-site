@@ -1,5 +1,12 @@
 // app/page.tsx
+"use client";
+
+import { useState } from "react";
+import AboutModal from "./AboutModal";
+
 export default function Home() {
+  const [aboutOpen, setAboutOpen] = useState(false);
+
   const appBase = "https://app.gruntwrk.com";
   const signInRegisterHref = `${appBase}/login?intent=signin&next=/notice-board`;
 
@@ -9,14 +16,25 @@ export default function Home() {
       <div className="heroOverlay" />
 
       <div className="container">
+        {/* Top-right hamburger */}
+        <div className="topRight">
+          <button className="iconBtn" type="button" onClick={() => setAboutOpen(true)} aria-label="Menu">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M4 7h16" stroke="rgba(255,255,255,0.90)" strokeWidth="2" strokeLinecap="round" />
+              <path d="M4 12h16" stroke="rgba(255,255,255,0.90)" strokeWidth="2" strokeLinecap="round" />
+              <path d="M4 17h16" stroke="rgba(255,255,255,0.90)" strokeWidth="2" strokeLinecap="round" />
+            </svg>
+          </button>
+        </div>
+
         <div className="centerWrap">
           <section className="centerContent">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img className="spinLogo" src="/brand/gruntwrk-g.svg" alt="GruntWrk" />
 
-            <h1 className="h1">Get work done. Find work fast.</h1>
+            <h1 className="brandName">GruntWrk</h1>
 
-            <p className="sub">Post jobs. Offer your skills. Connect with people.</p>
+            <div className="strapline">Get work done. Find work fast.</div>
 
             <div className="ctaRow">
               <a className="btnPrimary" href={signInRegisterHref}>
@@ -26,6 +44,8 @@ export default function Home() {
           </section>
         </div>
       </div>
+
+      <AboutModal open={aboutOpen} onClose={() => setAboutOpen(false)} />
     </main>
   );
 }
