@@ -57,12 +57,12 @@ export default function AboutModal({ open, onClose }: { open: boolean; onClose: 
   const p2 =
     "GruntWrk is a global platform that enables physical work. A neutral place where people post any work that needs to be done, and others choose to do it. Just visibility. Just real work. We didn’t choose the name GruntWrk to make it sound better. We chose it because we believe grunt work is where the future of value is being created.";
 
-  // Working links (platform home pages). Replace later with your real profile URLs.
+  // ✅ Your exact social links
   const socials = [
-    { label: "Instagram", href: "https://www.instagram.com/", icon: <InstagramIcon /> },
-    { label: "LinkedIn", href: "https://www.linkedin.com/", icon: <LinkedInIcon /> },
-    { label: "X (Twitter)", href: "https://x.com/", icon: <XIcon /> },
-    { label: "TikTok", href: "https://www.tiktok.com/", icon: <TikTokIcon /> },
+    { label: "Instagram", href: "https://www.instagram.com/gruntwrk_official", icon: <InstagramIcon /> },
+    { label: "LinkedIn", href: "https://www.linkedin.com/company/gruntwrk", icon: <LinkedInIcon /> },
+    { label: "X (Twitter)", href: "https://x.com/gruntwrk_x", icon: <XIcon /> },
+    { label: "TikTok", href: "https://www.tiktok.com/@gruntwrk_official", icon: <TikTokIcon /> },
   ];
 
   return (
@@ -92,7 +92,13 @@ export default function AboutModal({ open, onClose }: { open: boolean; onClose: 
           <div className="socialsTitle">Socials</div>
           <div className="socialsGrid">
             {socials.map((s) => (
-              <a key={s.label} className="socialBtn" href={s.href} target="_blank" rel="noreferrer">
+              <a
+                key={s.label}
+                className="socialBtn"
+                href={s.href}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <span className="socialIcon">{s.icon}</span>
                 <span>{s.label}</span>
               </a>
