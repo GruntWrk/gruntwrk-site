@@ -3,6 +3,7 @@
 
 import { useState } from "react";
 import AboutModal from "./AboutModal";
+import InstallPromptButton from "./InstallPrompt";
 
 export default function Home() {
   const [aboutOpen, setAboutOpen] = useState(false);
@@ -35,10 +36,13 @@ export default function Home() {
 
             <div className="strapline">Get work done. Find work fast.</div>
 
-            <div className="ctaRow">
+            <div className="ctaRow" style={{ flexDirection: "column", gap: 10, alignItems: "center" }}>
               <a className="btnPrimary" href={signInRegisterHref}>
                 Sign-in / Register
               </a>
+
+              {/* ✅ New: Install app button (Android prompt or iOS instructions) */}
+              <InstallPromptButton className="btnPrimary" />
             </div>
           </section>
         </div>
