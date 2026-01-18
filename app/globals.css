@@ -154,6 +154,7 @@ a{ color: inherit; }
   margin-top: 14px;        /* closer */
 }
 
+/* Primary CTA */
 .btnPrimary{
   display: inline-flex;
   align-items: center;
@@ -171,6 +172,33 @@ a{ color: inherit; }
 }
 
 .btnPrimary:active{
+  transform: translateY(1px);
+}
+
+/* ✅ Secondary CTA (outline) */
+.btnSecondary{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 28px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.04);
+  color: rgba(255,255,255,0.92);
+  font-weight: 850;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.18);
+  min-width: 280px;
+  font-size: 18px;
+  box-shadow: 0 10px 26px rgba(0,0,0,0.18);
+  transition: transform 140ms ease, border-color 140ms ease, background 140ms ease;
+}
+
+.btnSecondary:hover{
+  border-color: rgba(255,255,255,0.26);
+  background: rgba(255,255,255,0.06);
+  transform: translateY(-1px);
+}
+.btnSecondary:active{
   transform: translateY(1px);
 }
 
@@ -308,6 +336,9 @@ a{ color: inherit; }
   }
 
   .btnPrimary{
+    min-width: 240px;
+  }
+  .btnSecondary{
     min-width: 240px;
   }
 

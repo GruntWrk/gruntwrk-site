@@ -41,8 +41,8 @@ export default function Home() {
                 Sign-in / Register
               </a>
 
-              {/* ✅ New: Install app button (Android prompt or iOS instructions) */}
-              <InstallPromptButton className="btnPrimary" />
+              {/* ✅ Secondary outline install button */}
+              <InstallPromptButton className="btnSecondary" />
             </div>
           </section>
         </div>
