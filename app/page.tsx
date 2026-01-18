@@ -7,6 +7,7 @@ import InstallPromptButton from "./InstallPrompt";
 
 export default function Home() {
   const [aboutOpen, setAboutOpen] = useState(false);
+  const [installHint, setInstallHint] = useState<string | null>(null);
 
   const appBase = "https://app.gruntwrk.com";
   const signInRegisterHref = `${appBase}/login?intent=signin&next=/notice-board`;
@@ -41,8 +42,20 @@ export default function Home() {
                 Sign-in / Register
               </a>
 
-              {/* ✅ Secondary outline install button */}
-              <InstallPromptButton className="btnSecondary" />
+              <InstallPromptButton className="btnSecondary" onHintChange={setInstallHint} />
+
+              {installHint ? (
+                <div
+                  style={{
+                    marginTop: 2,
+                    color: "rgba(255,255,255,0.78)",
+                    fontSize: 14,
+                    fontWeight: 650,
+                  }}
+                >
+                  {installHint}
+                </div>
+              ) : null}
             </div>
           </section>
         </div>
