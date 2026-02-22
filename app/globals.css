@@ -175,13 +175,39 @@ a{ color: inherit; }
   transform: translateY(1px);
 }
 
+/* ✅ Secondary CTA (outline) */
+.btnSecondary{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 28px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.04);
+  color: rgba(255,255,255,0.92);
+  font-weight: 850;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.18);
+  min-width: 280px;
+  font-size: 18px;
+  box-shadow: 0 10px 26px rgba(0,0,0,0.18);
+  transition: transform 140ms ease, border-color 140ms ease, background 140ms ease;
+}
+
+.btnSecondary:hover{
+  border-color: rgba(255,255,255,0.26);
+  background: rgba(255,255,255,0.06);
+  transform: translateY(-1px);
+}
+.btnSecondary:active{
+  transform: translateY(1px);
+}
+
 /* =========================
    Reviews block (Home page)
    ========================= */
 
 .reviewsPanel{
   width: min(760px, 94vw);
-  margin: 0 auto; /* ensure true centering */
   border-radius: 22px;
   border: 1px solid rgba(255,255,255,0.14);
   background: rgba(10,14,20,0.58);
@@ -258,7 +284,7 @@ a{ color: inherit; }
   margin-bottom: 8px;
 }
 
-/* Stars aligned left */
+/* Stars aligned left (no reviewer names) */
 .reviewTopLeft{
   justify-content: flex-start;
   margin-bottom: 8px;
@@ -277,7 +303,7 @@ a{ color: inherit; }
 }
 
 .starFilled{
-  fill: #FBBF24;
+  fill: #FBBF24; /* warm gold */
 }
 
 .reviewText{
@@ -385,8 +411,9 @@ a{ color: inherit; }
   width: 100%;
 }
 
+/* Bigger icons inside a box */
 .socialIcon{
-  width: 44px;
+  width: 44px;             /* bigger box */
   height: 44px;
   border-radius: 14px;
   display: grid;
@@ -396,24 +423,13 @@ a{ color: inherit; }
 }
 
 .socialIcon svg{
-  width: 24px;
+  width: 24px;             /* bigger icon */
   height: 24px;
 }
 
 /* Mobile tuning */
 @media (max-width: 560px){
   .topRight{ top: 14px; right: 14px; }
-
-  /* Move the whole hero content up a bit (your yellow-circled area) */
-  .centerWrap{
-    place-items: start center;  /* no longer vertically centered */
-    padding-top: 72px;          /* tweak up/down as needed */
-    min-height: 100vh;
-  }
-
-  .centerContent{
-    padding: 6px 8px;
-  }
 
   .spinLogo{
     width: 250px;
@@ -426,19 +442,18 @@ a{ color: inherit; }
   }
 
   .strapline{
-    font-size: 19px;
+    font-size: 19px;  /* bigger, still single line */
   }
 
   .btnPrimary{
     min-width: 240px;
   }
+  .btnSecondary{
+    min-width: 240px;
+  }
 
-  /* Ensure the reviews panel is truly centered and not drifting right */
   .reviewsPanel{
-    width: calc(100vw - 28px);
-    max-width: 520px;
-    margin-left: auto;
-    margin-right: auto;
+    padding: 12px 12px 10px;
   }
 
   .reviewsHeader{
