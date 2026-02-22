@@ -87,9 +87,9 @@ export default function Home() {
               </a>
 
               {/* Reviews block */}
-              <div className="reviewsPanel" role="region" aria-label="App ratings">
+              <div className="reviewsPanel" role="region" aria-label="App reviews">
                 <div className="reviewsHeader">
-                  <div className="reviewsTitle">App ratings</div>
+                  <div className="reviewsTitle">App reviews</div>
                   <div className="reviewsSubtitle">
                     <span className="ratingPill">4.8</span>
                     <span className="dotSep">•</span>
