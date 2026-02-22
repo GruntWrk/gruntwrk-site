@@ -39,7 +39,7 @@ export default function Home() {
 
             <div className="ctaRow" style={{ flexDirection: "column", gap: 10, alignItems: "center" }}>
               <a className="btnPrimary" href={signInRegisterHref}>
-                Sign-in / Register
+                Request service
               </a>
 
               <InstallPromptButton className="btnSecondary" onHintChange={setInstallHint} />
