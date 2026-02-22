@@ -86,10 +86,10 @@ export default function Home() {
                 Browse services
               </a>
 
-              {/* Reviews block (replaces Install now) */}
-              <div className="reviewsPanel" role="region" aria-label="Ratings and reviews">
+              {/* Reviews block */}
+              <div className="reviewsPanel" role="region" aria-label="App ratings">
                 <div className="reviewsHeader">
-                  <div className="reviewsTitle">Ratings and reviews</div>
+                  <div className="reviewsTitle">App ratings</div>
                   <div className="reviewsSubtitle">
                     <span className="ratingPill">4.8</span>
                     <span className="dotSep">•</span>
