@@ -202,6 +202,119 @@ a{ color: inherit; }
   transform: translateY(1px);
 }
 
+/* =========================
+   Reviews block (Home page)
+   ========================= */
+
+.reviewsPanel{
+  width: min(760px, 94vw);
+  border-radius: 22px;
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(10,14,20,0.58);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.28);
+  padding: 14px 14px 12px;
+  backdrop-filter: blur(10px);
+}
+
+.reviewsHeader{
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 4px 6px 12px;
+}
+
+.reviewsTitle{
+  font-size: 16px;
+  font-weight: 900;
+  letter-spacing: -0.01em;
+  color: rgba(255,255,255,0.95);
+}
+
+.reviewsSubtitle{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255,255,255,0.75);
+  font-size: 13px;
+  font-weight: 750;
+  white-space: nowrap;
+}
+
+.ratingPill{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.16);
+  background: rgba(255,255,255,0.06);
+  color: rgba(255,255,255,0.92);
+  font-weight: 900;
+  font-size: 13px;
+}
+
+.dotSep{
+  opacity: 0.65;
+}
+
+.mutedLine{
+  opacity: 0.9;
+}
+
+.reviewGrid{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.reviewCard{
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.04);
+  padding: 12px 12px 11px;
+  text-align: left;
+}
+
+.reviewTop{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.reviewName{
+  font-size: 13px;
+  font-weight: 900;
+  color: rgba(255,255,255,0.92);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.stars{
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+.star{
+  fill: rgba(255,255,255,0.22);
+  filter: drop-shadow(0 6px 14px rgba(0,0,0,0.22));
+}
+
+.starFilled{
+  fill: #FBBF24; /* warm gold */
+}
+
+.reviewText{
+  font-size: 13px;
+  line-height: 1.35;
+  color: rgba(255,255,255,0.80);
+}
+
 /* About modal overlay */
 .modalOverlay{
   position: fixed;
@@ -340,6 +453,18 @@ a{ color: inherit; }
   }
   .btnSecondary{
     min-width: 240px;
+  }
+
+  .reviewsPanel{
+    padding: 12px 12px 10px;
+  }
+
+  .reviewsHeader{
+    padding: 4px 4px 10px;
+  }
+
+  .reviewGrid{
+    grid-template-columns: 1fr;
   }
 
   .modalCard{

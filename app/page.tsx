@@ -3,14 +3,62 @@
 
 import { useState } from "react";
 import AboutModal from "./AboutModal";
-import InstallPromptButton from "./InstallPrompt";
+
+type Review = {
+  name: string;
+  stars: 4 | 5;
+  text: string;
+};
+
+function StarIcon({ filled }: { filled: boolean }) {
+  return (
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+      className={filled ? "star starFilled" : "star"}
+    >
+      <path d="M12 17.27l-5.18 3.05 1.4-5.92L3 9.24l6.06-.52L12 3l2.94 5.72 6.06.52-5.22 5.16 1.4 5.92L12 17.27z" />
+    </svg>
+  );
+}
+
+function Stars({ count }: { count: 4 | 5 }) {
+  const stars = [1, 2, 3, 4, 5];
+  return (
+    <div className="stars" aria-label={`${count} out of 5 stars`}>
+      {stars.map((n) => (
+        <StarIcon key={n} filled={n <= count} />
+      ))}
+    </div>
+  );
+}
 
 export default function Home() {
   const [aboutOpen, setAboutOpen] = useState(false);
-  const [installHint, setInstallHint] = useState<string | null>(null);
 
   const appBase = "https://app.gruntwrk.com";
-  const signInRegisterHref = `${appBase}/login?intent=signin&next=/notice-board`;
+  const browseHref = `${appBase}/notice-board`;
+
+  // From your provided Play Store screenshots: only 4–5 star, clearly positive comments.
+  const reviews: Review[] = [
+    {
+      name: "Ronobbosefoud",
+      stars: 5,
+      text: "Very effective platform for connecting clients and service providers. Finding and booking a job is simple and fast.",
+    },
+    {
+      name: "Mr...ster7",
+      stars: 4,
+      text: "The notice board feature is well organised and makes it easy to find available services in your area.",
+    },
+    {
+      name: "WeCookMab1",
+      stars: 5,
+      text: "I like how profiles show ratings, skills, and reviews. It helps users quickly evaluate providers.",
+    },
+  ];
 
   return (
     <main className="hero">
@@ -37,25 +85,34 @@ export default function Home() {
 
             <div className="strapline">Get work done. Find work fast.</div>
 
-            <div className="ctaRow" style={{ flexDirection: "column", gap: 10, alignItems: "center" }}>
-              <a className="btnPrimary" href={signInRegisterHref}>
+            <div className="ctaRow" style={{ flexDirection: "column", gap: 12, alignItems: "center" }}>
+              <a className="btnPrimary" href={browseHref}>
                 Browse services
               </a>
 
-              <InstallPromptButton className="btnSecondary" onHintChange={setInstallHint} />
-
-              {installHint ? (
-                <div
-                  style={{
-                    marginTop: 2,
-                    color: "rgba(255,255,255,0.78)",
-                    fontSize: 14,
-                    fontWeight: 650,
-                  }}
-                >
-                  {installHint}
+              {/* Reviews block (replaces Install now) */}
+              <div className="reviewsPanel" role="region" aria-label="Google Play reviews">
+                <div className="reviewsHeader">
+                  <div className="reviewsTitle">Google Play reviews</div>
+                  <div className="reviewsSubtitle">
+                    <span className="ratingPill">4.8</span>
+                    <span className="dotSep">•</span>
+                    <span className="mutedLine">Early Access feedback</span>
+                  </div>
                 </div>
-              ) : null}
+
+                <div className="reviewGrid">
+                  {reviews.map((r, idx) => (
+                    <div key={idx} className="reviewCard">
+                      <div className="reviewTop">
+                        <div className="reviewName">{r.name}</div>
+                        <Stars count={r.stars} />
+                      </div>
+                      <div className="reviewText">{r.text}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </section>
         </div>
