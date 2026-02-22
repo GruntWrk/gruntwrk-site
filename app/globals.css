@@ -407,14 +407,20 @@ a{ color: inherit; }
   }
 
   .brandName{ font-size: 52px; }
-
   .strapline{ font-size: 19px; }
-
   .btnPrimary{ min-width: 240px; }
 
+  /* ✅ Critical: make the CTA column full-width so centering is exact */
+  .ctaRow{
+    width: 100%;
+  }
+
+  /* ✅ Critical: size off the column, not the viewport (removes drift) */
   .reviewsPanel{
-    width: min(520px, 94vw);
-    margin: 0 auto;
+    width: 100%;
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .reviewsHeader{
