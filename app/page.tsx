@@ -89,7 +89,7 @@ export default function Home() {
               {/* Reviews block (replaces Install now) */}
               <div className="reviewsPanel" role="region" aria-label="Ratings and reviews">
                 <div className="reviewsHeader">
-                  <div className="reviewsTitle">App reviews</div>
+                  <div className="reviewsTitle">Ratings and reviews</div>
                   <div className="reviewsSubtitle">
                     <span className="ratingPill">4.8</span>
                     <span className="dotSep">•</span>
