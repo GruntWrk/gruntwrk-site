@@ -40,7 +40,6 @@ export default function Home() {
   const appBase = "https://app.gruntwrk.com";
   const browseHref = `${appBase}/notice-board`;
 
-  // Only 4–5 star, clearly positive comments from your Play Store screenshots.
   const reviews: Review[] = [
     {
       stars: 5,
@@ -86,10 +85,9 @@ export default function Home() {
                 Browse services
               </a>
 
-              {/* Reviews block */}
-              <div className="reviewsPanel" role="region" aria-label="App reviews">
+              <div className="reviewsPanel" role="region" aria-label="App ratings">
                 <div className="reviewsHeader">
-                  <div className="reviewsTitle">App reviews</div>
+                  <div className="reviewsTitle">App ratings</div>
                   <div className="reviewsSubtitle">
                     <span className="ratingPill">4.8</span>
                     <span className="dotSep">•</span>
