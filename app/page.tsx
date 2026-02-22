@@ -5,7 +5,6 @@ import { useState } from "react";
 import AboutModal from "./AboutModal";
 
 type Review = {
-  name: string;
   stars: 4 | 5;
   text: string;
 };
@@ -41,20 +40,17 @@ export default function Home() {
   const appBase = "https://app.gruntwrk.com";
   const browseHref = `${appBase}/notice-board`;
 
-  // From your provided Play Store screenshots: only 4–5 star, clearly positive comments.
+  // Only 4–5 star, clearly positive comments from your Play Store screenshots.
   const reviews: Review[] = [
     {
-      name: "Ronobbosefoud",
       stars: 5,
       text: "Very effective platform for connecting clients and service providers. Finding and booking a job is simple and fast.",
     },
     {
-      name: "Mr...ster7",
       stars: 4,
       text: "The notice board feature is well organised and makes it easy to find available services in your area.",
     },
     {
-      name: "WeCookMab1",
       stars: 5,
       text: "I like how profiles show ratings, skills, and reviews. It helps users quickly evaluate providers.",
     },
@@ -91,9 +87,9 @@ export default function Home() {
               </a>
 
               {/* Reviews block (replaces Install now) */}
-              <div className="reviewsPanel" role="region" aria-label="Google Play reviews">
+              <div className="reviewsPanel" role="region" aria-label="App reviews">
                 <div className="reviewsHeader">
-                  <div className="reviewsTitle">Google Play reviews</div>
+                  <div className="reviewsTitle">App reviews</div>
                   <div className="reviewsSubtitle">
                     <span className="ratingPill">4.8</span>
                     <span className="dotSep">•</span>
@@ -104,8 +100,7 @@ export default function Home() {
                 <div className="reviewGrid">
                   {reviews.map((r, idx) => (
                     <div key={idx} className="reviewCard">
-                      <div className="reviewTop">
-                        <div className="reviewName">{r.name}</div>
+                      <div className="reviewTop reviewTopLeft">
                         <Stars count={r.stars} />
                       </div>
                       <div className="reviewText">{r.text}</div>

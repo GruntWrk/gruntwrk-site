@@ -284,13 +284,10 @@ a{ color: inherit; }
   margin-bottom: 8px;
 }
 
-.reviewName{
-  font-size: 13px;
-  font-weight: 900;
-  color: rgba(255,255,255,0.92);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+/* Stars aligned left (no reviewer names) */
+.reviewTopLeft{
+  justify-content: flex-start;
+  margin-bottom: 8px;
 }
 
 .stars{
