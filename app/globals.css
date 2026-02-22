@@ -96,7 +96,7 @@ a{ color: inherit; }
 .centerWrap{
   min-height: 100vh;
   display: grid;
-  place-items: center;
+  place-items: center; /* keep true centering */
 }
 
 .centerContent{
@@ -109,7 +109,7 @@ a{ color: inherit; }
   width: 320px;
   height: 320px;
   display: block;
-  margin: 0 auto 4px; /* tighter: bring text up */
+  margin: 0 auto 4px;
 
   animation: spinPause 6s ease-in-out infinite;
   will-change: transform;
@@ -129,7 +129,7 @@ a{ color: inherit; }
 .brandName{
   margin: 0;
   margin-top: 0;
-  font-size: 70px;         /* bigger */
+  font-size: 70px;
   line-height: 1.02;
   font-weight: 900;
   letter-spacing: -0.02em;
@@ -138,9 +138,9 @@ a{ color: inherit; }
 
 /* Strapline bigger and pulled up */
 .strapline{
-  margin: 6px auto 0;      /* closer */
+  margin: 6px auto 0;
   color: rgba(255,255,255,0.92);
-  font-size: 22px;         /* bigger */
+  font-size: 22px;
   line-height: 1.25;
   font-weight: 500;
   white-space: nowrap;
@@ -151,7 +151,7 @@ a{ color: inherit; }
 .ctaRow{
   display: flex;
   justify-content: center;
-  margin-top: 14px;        /* closer */
+  margin-top: 14px;
 }
 
 /* Primary CTA */
@@ -175,39 +175,13 @@ a{ color: inherit; }
   transform: translateY(1px);
 }
 
-/* ✅ Secondary CTA (outline) */
-.btnSecondary{
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 14px 28px;
-  border-radius: 999px;
-  background: rgba(255,255,255,0.04);
-  color: rgba(255,255,255,0.92);
-  font-weight: 850;
-  text-decoration: none;
-  border: 1px solid rgba(255,255,255,0.18);
-  min-width: 280px;
-  font-size: 18px;
-  box-shadow: 0 10px 26px rgba(0,0,0,0.18);
-  transition: transform 140ms ease, border-color 140ms ease, background 140ms ease;
-}
-
-.btnSecondary:hover{
-  border-color: rgba(255,255,255,0.26);
-  background: rgba(255,255,255,0.06);
-  transform: translateY(-1px);
-}
-.btnSecondary:active{
-  transform: translateY(1px);
-}
-
 /* =========================
    Reviews block (Home page)
    ========================= */
 
 .reviewsPanel{
   width: min(760px, 94vw);
+  margin: 0 auto; /* hard-center */
   border-radius: 22px;
   border: 1px solid rgba(255,255,255,0.14);
   background: rgba(10,14,20,0.58);
@@ -254,13 +228,8 @@ a{ color: inherit; }
   font-size: 13px;
 }
 
-.dotSep{
-  opacity: 0.65;
-}
-
-.mutedLine{
-  opacity: 0.9;
-}
+.dotSep{ opacity: 0.65; }
+.mutedLine{ opacity: 0.9; }
 
 .reviewGrid{
   display: grid;
@@ -279,15 +248,13 @@ a{ color: inherit; }
 .reviewTop{
   display: flex;
   align-items: center;
-  justify-content: space-between;
   gap: 10px;
   margin-bottom: 8px;
 }
 
-/* Stars aligned left (no reviewer names) */
+/* Stars aligned left */
 .reviewTopLeft{
   justify-content: flex-start;
-  margin-bottom: 8px;
 }
 
 .stars{
@@ -303,7 +270,7 @@ a{ color: inherit; }
 }
 
 .starFilled{
-  fill: #FBBF24; /* warm gold */
+  fill: #FBBF24;
 }
 
 .reviewText{
@@ -380,9 +347,7 @@ a{ color: inherit; }
   line-height: 1.75;
 }
 
-.modalBody p{
-  margin: 0 0 18px;
-}
+.modalBody p{ margin: 0 0 18px; }
 
 /* Socials */
 .socialsTitle{
@@ -411,9 +376,8 @@ a{ color: inherit; }
   width: 100%;
 }
 
-/* Bigger icons inside a box */
 .socialIcon{
-  width: 44px;             /* bigger box */
+  width: 44px;
   height: 44px;
   border-radius: 14px;
   display: grid;
@@ -423,7 +387,7 @@ a{ color: inherit; }
 }
 
 .socialIcon svg{
-  width: 24px;             /* bigger icon */
+  width: 24px;
   height: 24px;
 }
 
@@ -431,29 +395,26 @@ a{ color: inherit; }
 @media (max-width: 560px){
   .topRight{ top: 14px; right: 14px; }
 
+  /* Keep centered, just nudge the whole block up */
+  .centerContent{
+    transform: translateY(-22px);
+  }
+
   .spinLogo{
     width: 250px;
     height: 250px;
     margin-bottom: 4px;
   }
 
-  .brandName{
-    font-size: 52px;
-  }
+  .brandName{ font-size: 52px; }
 
-  .strapline{
-    font-size: 19px;  /* bigger, still single line */
-  }
+  .strapline{ font-size: 19px; }
 
-  .btnPrimary{
-    min-width: 240px;
-  }
-  .btnSecondary{
-    min-width: 240px;
-  }
+  .btnPrimary{ min-width: 240px; }
 
   .reviewsPanel{
-    padding: 12px 12px 10px;
+    width: min(520px, 94vw);
+    margin: 0 auto;
   }
 
   .reviewsHeader{
@@ -469,20 +430,13 @@ a{ color: inherit; }
     border-radius: 22px;
   }
 
-  .modalH1{
-    font-size: 30px;
-  }
-
-  .modalSub{
-    font-size: 16px;
-  }
+  .modalH1{ font-size: 30px; }
+  .modalSub{ font-size: 16px; }
 
   .modalBody{
     font-size: 16px;
     line-height: 1.7;
   }
 
-  .socialsGrid{
-    max-width: 100%;
-  }
+  .socialsGrid{ max-width: 100%; }
 }
