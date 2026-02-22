@@ -87,7 +87,7 @@ export default function Home() {
               </a>
 
               {/* Reviews block (replaces Install now) */}
-              <div className="reviewsPanel" role="region" aria-label="App reviews">
+              <div className="reviewsPanel" role="region" aria-label="Ratings and reviews">
                 <div className="reviewsHeader">
                   <div className="reviewsTitle">App reviews</div>
                   <div className="reviewsSubtitle">
