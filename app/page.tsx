@@ -372,9 +372,7 @@ export default function Home() {
                 </a>
               ))}
             </div>
-            <p className="footerCopy">
-              © {new Date().getFullYear()} GruntWrk. All rights reserved.
-            </p>
+            <p className="footerCopy">GruntWrk</p>
           </div>
         </div>
       </footer>
