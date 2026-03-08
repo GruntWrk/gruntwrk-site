@@ -572,12 +572,12 @@ a { color: inherit; }
 .footerBrand {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 4px;
 }
 .footerBrandName {
-  font-size: 20px;
+  font-size: 24px;
   font-weight: 900;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
   color: #ffffff;
 }
 .footerStoreCol {

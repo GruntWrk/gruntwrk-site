@@ -297,7 +297,7 @@ export default function Home() {
             </h2>
             <div className="reviewsSectionMeta" data-reveal data-reveal-delay="80">
               <span className="ratingPillLarge">4.8</span>
-              <span className="reviewsSectionSub">Early Access · 3 reviews</span>
+              <span className="reviewsSectionSub">Early Access</span>
             </div>
           </div>
           <div className="reviewsGrid">
@@ -337,7 +337,7 @@ export default function Home() {
               </p>
             </div>
             <div className="missionAccent">
-              &ldquo;Grunt work is where the future of value is being created.&rdquo;
+              &ldquo;GruntWrk is where the future of value is being created.&rdquo;
             </div>
           </div>
         </div>
@@ -348,8 +348,16 @@ export default function Home() {
         <div className="sectionInner">
           <div className="footerTop">
             <div className="footerBrand">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/brand/gruntwrk-g.svg" alt="" width={28} height={28} />
+              <svg className="navLogoIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" aria-hidden="true">
+                <path
+                  d="M 511 176 L 186 502 L 512 827 L 837 501 L 650 315 L 466 499 L 530 566 L 647 451 L 707 511 L 525 693 L 335 503 L 586 252 Z"
+                  fill="#22c55e"
+                  stroke="#22c55e"
+                  strokeWidth="40"
+                  strokeLinejoin="round"
+                  style={{ paintOrder: "stroke fill" }}
+                />
+              </svg>
               <span className="footerBrandName">GruntWrk</span>
             </div>
             <div className="footerStoreCol">
@@ -372,7 +380,7 @@ export default function Home() {
                 </a>
               ))}
             </div>
-            <p className="footerCopy">GruntWrk</p>
+
           </div>
         </div>
       </footer>
