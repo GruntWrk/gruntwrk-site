@@ -234,17 +234,14 @@ export default function Home() {
           <div className="howGrid">
             {[
               {
-                icon: <ProvideIcon />,
                 title: "Provide a service",
                 desc: "Got skills? Post your services and get found by people who need exactly what you offer.",
               },
               {
-                icon: <RequestIcon />,
                 title: "Request a service",
                 desc: "Need something done? Post your job and let providers come to you.",
               },
               {
-                icon: <FindIcon />,
                 title: "Find providers",
                 desc: "Browse trusted providers near you on the map or search by skill.",
               },
@@ -255,9 +252,11 @@ export default function Home() {
                 data-reveal
                 data-reveal-delay={String(i * 90)}
               >
-                <div className="howIcon">{card.icon}</div>
-                <h3 className="howTitle">{card.title}</h3>
-                <p className="howDesc">{card.desc}</p>
+                <span className="howNum">{i + 1}</span>
+                <div className="howCardBody">
+                  <h3 className="howTitle">{card.title}</h3>
+                  <p className="howDesc">{card.desc}</p>
+                </div>
               </div>
             ))}
           </div>
