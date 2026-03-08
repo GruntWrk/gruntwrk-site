@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata = {
   title: "GruntWrk",
-  description: "Get work done. Find work fast.",
+  description: "A global platform that enables physical work. Post any work that needs doing, or find work near you.",
 };
 
 export default function RootLayout({ children }: { children: any }) {
