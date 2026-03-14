@@ -1,34 +1,82 @@
-// app/page.tsx
 "use client";
 
-import { useEffect } from "react";
+import { type CSSProperties, type KeyboardEvent, useEffect, useRef, useState } from "react";
 
-/* ─── Hero logo — inline so stroke can make the path bolder ─────────── */
-function HeroLogo() {
-  return (
-    <svg
-      className="heroSpinLogo"
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 1024 1024"
-      aria-hidden="true"
-    >
-      <path
-        d="M 511 176 L 186 502 L 512 827 L 837 501 L 650 315 L 466 499 L 530 566 L 647 451 L 707 511 L 525 693 L 335 503 L 586 252 Z"
-        fill="#22c55e"
-        stroke="#22c55e"
-        strokeWidth="32"
-        strokeLinejoin="round"
-        style={{ paintOrder: "stroke fill" }}
-      />
-    </svg>
-  );
-}
+const APP_BASE_URL = "https://app.gruntwrk.com";
+const MARKET_HREF = `${APP_BASE_URL}/market`;
+const REQUEST_SERVICE_HREF = `${APP_BASE_URL}/login?next=${encodeURIComponent("/jobs/new")}`;
+const PROVIDER_HREF = `${APP_BASE_URL}/login?next=${encodeURIComponent("/provider/profile")}`;
+const MARQUEE_BG = `${APP_BASE_URL}/Marquee%20Background.png`;
 
-/* ─── Types ─────────────────────────────────────────────────────────── */
+const CATEGORY_IMAGES: Record<string, string> = {
+  cleaning: `${APP_BASE_URL}/images/categories/cleaning.png`,
+  "furniture-assembly": `${APP_BASE_URL}/images/categories/furniture-assembly.png`,
+  "mounting-installation": `${APP_BASE_URL}/images/categories/mounting-installation.png`,
+  "moving-lifting": `${APP_BASE_URL}/images/categories/moving-lifting.png`,
+  "home-repairs": `${APP_BASE_URL}/images/categories/home-repairs.png`,
+  outdoor: `${APP_BASE_URL}/images/categories/outdoor.png`,
+  electrical: `${APP_BASE_URL}/images/categories/electrical.png`,
+  plumbing: `${APP_BASE_URL}/images/categories/plumbing.png`,
+  "painting-decor": `${APP_BASE_URL}/images/categories/painting-decor.png`,
+  "removal-disposal": `${APP_BASE_URL}/images/categories/removal-disposal.png`,
+};
+
+const HERO_CATEGORIES = [
+  { slug: "cleaning", title: "Cleaning", desc: "Home & office deep cleans" },
+  { slug: "furniture-assembly", title: "Assembly", desc: "Flat-pack & furniture" },
+  { slug: "home-repairs", title: "Repairs", desc: "Fixes, carpentry & more" },
+  { slug: "moving-lifting", title: "Moving", desc: "Packing, lifting & vans" },
+  { slug: "electrical", title: "Electrical", desc: "Lights, switches & wiring" },
+  { slug: "plumbing", title: "Plumbing", desc: "Taps, drains & toilets" },
+  { slug: "painting-decor", title: "Painting", desc: "Interior & exterior" },
+  { slug: "outdoor", title: "Outdoor", desc: "Garden & maintenance" },
+  { slug: "mounting-installation", title: "Mounting", desc: "TVs, shelves & blinds" },
+  { slug: "removal-disposal", title: "Removal", desc: "Junk & waste disposal" },
+];
+
+const HOW_STEPS = [
+  {
+    num: "1",
+    title: "Describe what you need",
+    body: "Post your request, location, photos, and budget. Keep it simple and refine details later.",
+  },
+  {
+    num: "2",
+    title: "Choose how to hire",
+    body: "Receive quotes from matched providers or book directly with someone you already trust.",
+  },
+  {
+    num: "3",
+    title: "Manage the job in one place",
+    body: "Use your workbench to message, confirm payment, track progress, and finish the job with confidence.",
+  },
+];
+
+const WORKBENCH_POINTS = [
+  {
+    id: "quotes",
+    title: "Compare quotes clearly",
+    desc: "See your options in one place and choose the provider that fits.",
+  },
+  {
+    id: "book",
+    title: "Book directly when ready",
+    desc: "Already know who you want? Send a request straight to that provider.",
+  },
+  {
+    id: "message",
+    title: "Keep everything together",
+    desc: "Messages, progress, payment, and reviews live inside the job workbench.",
+  },
+  {
+    id: "pay",
+    title: "Pay providers directly",
+    desc: "Clear handoff, clear status, no confusion about what happens next.",
+  },
+] as const;
+
+type WorkbenchPoint = (typeof WORKBENCH_POINTS)[number];
 type Review = { stars: 4 | 5; text: string };
-
-/* ─── Constants ─────────────────────────────────────────────────────── */
-const BROWSE_HREF = "https://app.gruntwrk.com/";
 
 const REVIEWS: Review[] = [
   {
@@ -75,7 +123,43 @@ const SOCIALS = [
   },
 ];
 
-/* ─── Icon components ────────────────────────────────────────────────── */
+function categoryHref(slug: string) {
+  const next = `/jobs/new?category=${encodeURIComponent(slug)}`;
+  return `${APP_BASE_URL}/login?next=${encodeURIComponent(next)}`;
+}
+
+function BrandMark({ className }: { className?: string }) {
+  return (
+    <svg className={className} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" aria-hidden="true">
+      <path
+        d="M 511 176 L 186 502 L 512 827 L 837 501 L 650 315 L 466 499 L 530 566 L 647 451 L 707 511 L 525 693 L 335 503 L 586 252 Z"
+        fill="#22c55e"
+        stroke="#22c55e"
+        strokeWidth="40"
+        strokeLinejoin="round"
+        style={{ paintOrder: "stroke fill" }}
+      />
+    </svg>
+  );
+}
+
+function ArrowIcon() {
+  return (
+    <svg className="btnIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M5 12h14" />
+      <path d="m12 5 7 7-7 7" />
+    </svg>
+  );
+}
+
+function CheckIcon() {
+  return (
+    <svg className="perkIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M20 6 9 17l-5-5" />
+    </svg>
+  );
+}
+
 function StarIcon({ filled }: { filled: boolean }) {
   return (
     <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" className={filled ? "star starFilled" : "star"}>
@@ -87,7 +171,9 @@ function StarIcon({ filled }: { filled: boolean }) {
 function Stars({ count }: { count: 4 | 5 }) {
   return (
     <div className="stars" aria-label={`${count} out of 5 stars`}>
-      {[1, 2, 3, 4, 5].map((n) => <StarIcon key={n} filled={n <= count} />)}
+      {[1, 2, 3, 4, 5].map((n) => (
+        <StarIcon key={n} filled={n <= count} />
+      ))}
     </div>
   );
 }
@@ -108,33 +194,6 @@ function GooglePlayIcon() {
   );
 }
 
-function ProvideIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
-    </svg>
-  );
-}
-
-function RequestIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <rect x="3" y="3" width="18" height="18" rx="2" />
-      <path d="M12 8v8M8 12h8" />
-    </svg>
-  );
-}
-
-function FindIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <circle cx="11" cy="11" r="8" />
-      <path d="m21 21-4.35-4.35" />
-    </svg>
-  );
-}
-
-/* ─── Shared store badge markup ──────────────────────────────────────── */
 function StoreBadges() {
   return (
     <div className="storeBadges">
@@ -156,230 +215,543 @@ function StoreBadges() {
   );
 }
 
-/* ─── Page ───────────────────────────────────────────────────────────── */
-export default function Home() {
-  // Scroll-reveal: observe [data-reveal] elements
+function WorkbenchIcon({ id }: { id: WorkbenchPoint["id"] }) {
+  if (id === "quotes") {
+    return (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M4 6h16" />
+        <path d="M4 12h10" />
+        <path d="M4 18h7" />
+        <path d="m17 15 2 2 3-4" />
+      </svg>
+    );
+  }
+
+  if (id === "book") {
+    return (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M8 11.5 10.5 14 16 8.5" />
+        <path d="M5 4h14l1 4-2 12H6L4 8l1-4Z" />
+      </svg>
+    );
+  }
+
+  if (id === "message") {
+    return (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M7 18.5 3 21V6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H7Z" />
+        <path d="M8 9h8" />
+        <path d="M8 13h5" />
+      </svg>
+    );
+  }
+
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M3 7h18v10H3z" />
+      <path d="M3 10h18" />
+      <path d="M7 15h3" />
+    </svg>
+  );
+}
+
+function HeroPanel() {
+  return (
+    <div className="siteHeroPanel">
+      <div className="siteHeroPanelTop">
+        <span className="siteChip">Job workbench</span>
+        <span className="siteChip siteChipStrong">2 quotes received</span>
+      </div>
+
+      <div className="sitePanelCard">
+        <div className="sitePanelTitle">Fix leaking kitchen tap</div>
+        <div className="sitePanelMeta">Plumbing - Scheduled - Photos added</div>
+        <div className="sitePanelProgress">
+          <span className="sitePanelStep sitePanelStepActive">Request</span>
+          <span className="sitePanelStep sitePanelStepActive">Quotes</span>
+          <span className="sitePanelStep">Payment</span>
+          <span className="sitePanelStep">Review</span>
+        </div>
+      </div>
+
+      <div className="sitePanelQuotes">
+        <div className="siteQuoteCard">
+          <div>
+            <div className="sitePanelTitle">AquaFix Home Help</div>
+            <div className="sitePanelMeta">Available tomorrow - 4.9 stars</div>
+          </div>
+          <div className="siteQuoteTag">Best fit</div>
+        </div>
+        <div className="siteQuoteCard siteQuoteCardMuted">
+          <div>
+            <div className="sitePanelTitle">Northside Repairs</div>
+            <div className="sitePanelMeta">Morning slot open - 4.8 stars</div>
+          </div>
+          <div className="siteQuoteTag siteQuoteTagMuted">Compared</div>
+        </div>
+      </div>
+
+      <div className="siteHeroThread">
+        <div className="siteHeroBubble siteHeroBubbleUser">Can you bring the replacement washer?</div>
+        <div className="siteHeroBubble">Yes. I can do 10:30 and confirm payment details in the workbench.</div>
+      </div>
+    </div>
+  );
+}
+
+function clamp(n: number, min: number, max: number) {
+  return Math.max(min, Math.min(max, n));
+}
+
+function WorkbenchMarquee() {
+  const viewportRef = useRef<HTMLDivElement | null>(null);
+  const slideRefs = useRef<Array<HTMLDivElement | null>>([]);
+  const resumeTimerRef = useRef<number | null>(null);
+  const frameRef = useRef<number | null>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [userPaused, setUserPaused] = useState(false);
+
+  const slideCount = WORKBENCH_POINTS.length + 1;
+
   useEffect(() => {
-    const els = document.querySelectorAll<HTMLElement>("[data-reveal]");
+    return () => {
+      if (resumeTimerRef.current) window.clearTimeout(resumeTimerRef.current);
+      if (frameRef.current) window.cancelAnimationFrame(frameRef.current);
+    };
+  }, []);
+
+  function goToSlide(index: number, behavior: ScrollBehavior) {
+    const viewport = viewportRef.current;
+    const slide = slideRefs.current[index];
+    if (!viewport || !slide) return;
+
+    viewport.scrollTo({
+      left: slide.offsetLeft,
+      behavior,
+    });
+    setActiveIndex(index);
+  }
+
+  function pauseForUser() {
+    setUserPaused(true);
+    if (resumeTimerRef.current) window.clearTimeout(resumeTimerRef.current);
+    resumeTimerRef.current = window.setTimeout(() => setUserPaused(false), 8000);
+  }
+
+  useEffect(() => {
+    if (userPaused) return undefined;
+
+    const delay = activeIndex === slideCount - 1 ? 4200 : 3000;
+    const timer = window.setTimeout(() => {
+      const nextIndex = activeIndex === slideCount - 1 ? 0 : activeIndex + 1;
+      goToSlide(nextIndex, activeIndex === slideCount - 1 ? "auto" : "smooth");
+    }, delay);
+
+    return () => window.clearTimeout(timer);
+  }, [activeIndex, slideCount, userPaused]);
+
+  useEffect(() => {
+    const viewport = viewportRef.current;
+    if (!viewport) return undefined;
+
+    const handleScroll = () => {
+      if (frameRef.current) window.cancelAnimationFrame(frameRef.current);
+      frameRef.current = window.requestAnimationFrame(() => {
+        const nextIndex = slideRefs.current.reduce((closestIndex, slide, index) => {
+          if (!slide) return closestIndex;
+
+          const currentDistance = Math.abs(viewport.scrollLeft - slide.offsetLeft);
+          const closestSlide = slideRefs.current[closestIndex];
+          const closestDistance = closestSlide ? Math.abs(viewport.scrollLeft - closestSlide.offsetLeft) : Number.POSITIVE_INFINITY;
+
+          return currentDistance < closestDistance ? index : closestIndex;
+        }, 0);
+
+        setActiveIndex((current) => (current === nextIndex ? current : nextIndex));
+      });
+    };
+
+    viewport.addEventListener("scroll", handleScroll, { passive: true });
+    return () => viewport.removeEventListener("scroll", handleScroll);
+  }, [slideCount]);
+
+  function handleKeyDown(event: KeyboardEvent<HTMLDivElement>) {
+    if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
+
+    event.preventDefault();
+    pauseForUser();
+    const direction = event.key === "ArrowRight" ? 1 : -1;
+    const nextIndex = clamp(activeIndex + direction, 0, slideCount - 1);
+    goToSlide(nextIndex, "smooth");
+  }
+
+  return (
+    <section className="siteWorkbenchSection">
+      <div
+        className="sectionInner siteWorkbenchPanel"
+        aria-labelledby="site-workbench-title"
+        style={{
+          "--site-marquee-bg": `linear-gradient(110deg, rgba(13, 22, 18, 0.84) 0%, rgba(13, 22, 18, 0.44) 42%, rgba(13, 22, 18, 0.62) 100%), url("${MARQUEE_BG}")`,
+        } as CSSProperties}
+      >
+        <div className="siteWorkbenchFrame">
+          <div className="siteWorkbenchCopy" data-reveal>
+            <span className="siteSectionKicker siteSectionKickerDark">In one workbench</span>
+            <h2 id="site-workbench-title" className="siteWorkbenchTitle">
+              Easily compare, book, message, and pay.
+            </h2>
+          </div>
+
+          <div className="siteWorkbenchStage" data-reveal data-reveal-delay="80">
+            <div
+              ref={viewportRef}
+              className="siteWorkbenchViewport"
+              aria-label="Customer benefits carousel"
+              tabIndex={0}
+              onKeyDown={handleKeyDown}
+              onPointerDown={pauseForUser}
+              onTouchStart={pauseForUser}
+            >
+              <div className="siteWorkbenchTrack">
+                {WORKBENCH_POINTS.map((point, index) => (
+                  <div
+                    key={point.id}
+                    ref={(node) => {
+                      slideRefs.current[index] = node;
+                    }}
+                    className="siteWorkbenchSlide"
+                  >
+                    <article className="siteWorkbenchCard">
+                      <div className="siteWorkbenchCardIcon">
+                        <WorkbenchIcon id={point.id} />
+                      </div>
+                      <div className="siteWorkbenchCardCopy">
+                        <h3 className="siteWorkbenchCardTitle">{point.title}</h3>
+                        <p className="siteWorkbenchCardDesc">{point.desc}</p>
+                      </div>
+                    </article>
+                  </div>
+                ))}
+
+                <div
+                  ref={(node) => {
+                    slideRefs.current[slideCount - 1] = node;
+                  }}
+                  className="siteWorkbenchSlide siteWorkbenchSlideStack"
+                >
+                  <div className="siteWorkbenchStack" aria-label="All benefits together">
+                    {WORKBENCH_POINTS.map((point) => (
+                      <article key={`${point.id}-stack`} className="siteWorkbenchStackCard">
+                        <div className="siteWorkbenchCardIcon">
+                          <WorkbenchIcon id={point.id} />
+                        </div>
+                        <div className="siteWorkbenchCardCopy">
+                          <h3 className="siteWorkbenchCardTitle">{point.title}</h3>
+                          <p className="siteWorkbenchCardDesc">{point.desc}</p>
+                        </div>
+                      </article>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="siteWorkbenchControls">
+              <div className="siteWorkbenchDots" role="tablist" aria-label="Select carousel slide">
+                {Array.from({ length: slideCount }).map((_, index) => (
+                  <button
+                    key={`dot-${index}`}
+                    type="button"
+                    className={`siteWorkbenchDot ${index === activeIndex ? "isActive" : ""}`}
+                    aria-label={index === slideCount - 1 ? "Show all points together" : `Show point ${index + 1}`}
+                    aria-selected={index === activeIndex}
+                    role="tab"
+                    onClick={() => {
+                      pauseForUser();
+                      goToSlide(index, "smooth");
+                    }}
+                  />
+                ))}
+              </div>
+
+              <p className="siteWorkbenchHint">
+                Swipe left or right to revisit any card. Auto-scroll keeps moving.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export default function Home() {
+  useEffect(() => {
+    const els = Array.from(document.querySelectorAll<HTMLElement>("[data-reveal]"));
+
+    if (typeof window === "undefined" || typeof window.IntersectionObserver === "undefined") {
+      els.forEach((el) => el.classList.add("revealed"));
+      return;
+    }
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const el = entry.target as HTMLElement;
-            const delay = el.dataset.revealDelay ?? "0";
-            el.style.transitionDelay = `${delay}ms`;
-            el.classList.add("revealed");
-            observer.unobserve(el);
-          }
+          if (!entry.isIntersecting) return;
+
+          const el = entry.target as HTMLElement;
+          const delay = el.dataset.revealDelay ?? "0";
+          el.style.transitionDelay = `${delay}ms`;
+          el.classList.add("revealed");
+          observer.unobserve(el);
         });
       },
       { threshold: 0.12 }
     );
+
     els.forEach((el) => observer.observe(el));
     return () => observer.disconnect();
   }, []);
 
   return (
     <>
-      {/* ── 1. Sticky nav ─────────────────────────────────────────────── */}
       <header className="stickyNav">
         <div className="navInner">
           <a href="/" className="navLogo" aria-label="GruntWrk home">
-            <svg className="navLogoIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" aria-hidden="true">
-              <path
-                d="M 511 176 L 186 502 L 512 827 L 837 501 L 650 315 L 466 499 L 530 566 L 647 451 L 707 511 L 525 693 L 335 503 L 586 252 Z"
-                fill="#22c55e"
-                stroke="#22c55e"
-                strokeWidth="40"
-                strokeLinejoin="round"
-                style={{ paintOrder: "stroke fill" }}
-              />
-            </svg>
+            <BrandMark className="navLogoIcon" />
             <span className="navLogoText">GruntWrk</span>
           </a>
-          <a href={BROWSE_HREF} className="btnPrimary btnSmall">
-            Browse services
+
+          <a href={REQUEST_SERVICE_HREF} className="btnPrimary btnSmall">
+            Request a service
           </a>
         </div>
       </header>
 
-      {/* ── 2. Hero ───────────────────────────────────────────────────── */}
-      <section className="heroSection">
-        <div className="heroBg" />
-        <div className="heroOverlay" />
-        <div className="heroContent">
-          <div className="heroText">
-            <div className="heroBrand">
-              <HeroLogo />
-              <h1 className="heroBrandName">GruntWrk</h1>
+      <main className="siteHome">
+        <section className="siteHeroSection">
+          <div className="sectionInner">
+            <div className="siteHero">
+              <div className="siteHeroShell">
+                <div className="siteHeroCopy" data-reveal>
+                  <span className="siteHeroEyebrow">Local services, managed simply</span>
+                  <h1 className="siteHeroTitle">Find the right local provider without the back and forth</h1>
+                  <p className="siteHeroSub">
+                    Request a service, compare quotes, or book directly with a provider you trust.
+                    GruntWrk keeps chat, progress, payment, and next steps together in one clear place.
+                  </p>
+                  <div className="siteHeroActions">
+                    <a href={REQUEST_SERVICE_HREF} className="btnPrimary">
+                      Request a service
+                      <ArrowIcon />
+                    </a>
+                    <a href={MARKET_HREF} className="btnSecondary">
+                      Browse providers
+                      <ArrowIcon />
+                    </a>
+                  </div>
+                  <p className="siteHeroNote">
+                    Simple for customers. Practical for providers. Clear from start to finish.
+                  </p>
+                </div>
+
+                <div className="siteHeroVisual" data-reveal data-reveal-delay="120">
+                  <HeroPanel />
+                </div>
+              </div>
             </div>
-            <p className="heroSub">
-              A global platform that enables physical work. Post any work that
-              needs doing, or find work near you.
-            </p>
-            <div className="heroCta">
-              <a href={BROWSE_HREF} className="btnPrimary">
-                Browse services
-              </a>
+          </div>
+        </section>
+
+        <section className="siteCategoriesSection">
+          <div className="sectionInner">
+            <div className="siteSectionHeader">
+              <span className="siteSectionKicker" data-reveal>Start here</span>
+              <h2 className="siteSectionTitle" data-reveal data-reveal-delay="40">
+                What do you need help with?
+              </h2>
+              <p className="siteSectionSub" data-reveal data-reveal-delay="80">
+                Choose a service and start the fastest path to getting it done.
+              </p>
+            </div>
+
+            <div className="siteCatGrid">
+              {HERO_CATEGORIES.map((cat, index) => (
+                <a
+                  key={cat.slug}
+                  href={categoryHref(cat.slug)}
+                  className={`siteCatCard ${index < 4 ? "isFeatured" : ""}`}
+                  data-reveal
+                  data-reveal-delay={String(index * 40)}
+                >
+                  <img
+                    src={CATEGORY_IMAGES[cat.slug]}
+                    alt={cat.title}
+                    className="siteCatPhoto"
+                    loading={index > 3 ? "lazy" : undefined}
+                  />
+                  <div className="siteCatOverlay" />
+                  <div className="siteCatArrow">
+                    <ArrowIcon />
+                  </div>
+                  <div className="siteCatLabel">
+                    <span className="siteCatName">{cat.title}</span>
+                    <span className="siteCatDesc">{cat.desc}</span>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <WorkbenchMarquee />
+
+        <section className="siteHowSection">
+          <div className="sectionInner">
+            <div className="siteSectionHeader">
+              <span className="siteSectionKicker" data-reveal>How it works</span>
+              <h2 className="siteSectionTitle" data-reveal data-reveal-delay="40">
+                A simple flow from request to completion
+              </h2>
+            </div>
+
+            <div className="siteHowGrid">
+              {HOW_STEPS.map((step, index) => (
+                <article key={step.num} className="siteHowCard" data-reveal data-reveal-delay={String(index * 80)}>
+                  <div className="siteHowNum">{step.num}</div>
+                  <div className="siteHowCopy">
+                    <h3 className="siteHowTitle">{step.title}</h3>
+                    <p className="siteHowBody">{step.body}</p>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="siteProviderSection">
+          <div className="sectionInner">
+            <div className="siteProviderCard" data-reveal>
+              <div className="siteProviderCopy">
+                <span className="siteProviderBadge">For providers</span>
+                <h2 className="siteProviderTitle">Get found locally and manage work without the chaos</h2>
+                <p className="siteProviderDesc">
+                  Create a public profile, share your availability, receive direct requests, and send
+                  quotes for work that fits. GruntWrk helps you keep customer communication, payment
+                  steps, and job progress organized in one workflow.
+                </p>
+
+                <ul className="siteProviderPerks">
+                  <li>
+                    <CheckIcon />
+                    Show your services and availability
+                  </li>
+                  <li>
+                    <CheckIcon />
+                    Receive direct requests from local customers
+                  </li>
+                  <li>
+                    <CheckIcon />
+                    Send quotes without chasing people across apps
+                  </li>
+                  <li>
+                    <CheckIcon />
+                    Build trust through completed work and reviews
+                  </li>
+                </ul>
+
+                <a href={PROVIDER_HREF} className="btnPrimary siteProviderBtn">
+                  Start offering services
+                  <ArrowIcon />
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="screensSection">
+          <div className="appsSectionHeader">
+            <div className="appsSectionCopy">
+              <span className="siteSectionKicker" data-reveal>Apps coming soon</span>
+              <h2 className="sectionHeading appsHeading" data-reveal data-reveal-delay="40">
+                The GruntWrk workbench is coming to iOS and Android.
+              </h2>
+              <p className="siteSectionSub appsSub" data-reveal data-reveal-delay="80">
+                Browse providers, manage jobs, and keep payment and messages in one place from your phone.
+              </p>
+            </div>
+            <div data-reveal data-reveal-delay="120">
               <StoreBadges />
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* ── 3. How it works ───────────────────────────────────────────── */}
-      <section className="howSection">
-        <div className="sectionInner">
-          <h2 className="sectionHeading" data-reveal>Simple by design.</h2>
-          <div className="howGrid">
-            {[
-              {
-                title: "Provide a service",
-                desc: "Got skills? Post your services and get found by people who need exactly what you offer.",
-              },
-              {
-                title: "Request a service",
-                desc: "Need something done? Post your job and let providers come to you.",
-              },
-              {
-                title: "Find providers",
-                desc: "Browse trusted providers near you on the map or search by skill.",
-              },
-            ].map((card, i) => (
-              <div
-                key={i}
-                className="howCard"
-                data-reveal
-                data-reveal-delay={String(i * 90)}
-              >
-                <span className="howNum">{i + 1}</span>
-                <div className="howCardBody">
-                  <h3 className="howTitle">{card.title}</h3>
-                  <p className="howDesc">{card.desc}</p>
+          <div className="screensScroller">
+            {[1, 2, 3, 4, 5].map((n) => (
+              <div key={n} className="phoneFrame" data-reveal data-reveal-delay={String(n * 60)}>
+                <div className="phoneNotch" />
+                <div className="phoneScreen">
+                  <img src={`/screenshots/screen${n}.jpg`} alt={`GruntWrk app screen ${n}`} className="phoneImg" />
                 </div>
               </div>
             ))}
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* ── 4. App screenshots ────────────────────────────────────────── */}
-      <section className="screensSection">
-        <div className="sectionInner">
-          <h2 className="sectionHeading" data-reveal>
-            Everything you need, in one place.
-          </h2>
-        </div>
-        <div className="screensScroller">
-          {[1, 2, 3, 4, 5].map((n) => (
-            <div key={n} className="phoneFrame" data-reveal data-reveal-delay={String(n * 60)}>
-              <div className="phoneNotch" />
-              <div className="phoneScreen">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={`/screenshots/screen${n}.jpg`}
-                  alt={`GruntWrk app screen ${n}`}
-                  className="phoneImg"
-                />
+        <section className="reviewsSection">
+          <div className="sectionInner">
+            <div className="reviewsSectionHeader">
+              <h2 className="sectionHeading" data-reveal>
+                Customer reviews.
+              </h2>
+              <div className="reviewsSectionMeta" data-reveal data-reveal-delay="80">
+                <span className="ratingPillLarge">4.8</span>
+                <span className="reviewsSectionSub">Early Access</span>
               </div>
             </div>
-          ))}
-        </div>
-      </section>
 
-      {/* ── 5. Reviews ────────────────────────────────────────────────── */}
-      <section className="reviewsSection">
-        <div className="sectionInner">
-          <div className="reviewsSectionHeader">
-            <h2 className="sectionHeading" data-reveal>
-              What people are saying.
-            </h2>
-            <div className="reviewsSectionMeta" data-reveal data-reveal-delay="80">
-              <span className="ratingPillLarge">4.8</span>
-              <span className="reviewsSectionSub">Early Access</span>
+            <div className="reviewsGrid">
+              {REVIEWS.map((review, index) => (
+                <div key={index} className="reviewCardNew" data-reveal data-reveal-delay={String(index * 80)}>
+                  <Stars count={review.stars} />
+                  <p className="reviewTextNew">{review.text}</p>
+                </div>
+              ))}
             </div>
           </div>
-          <div className="reviewsGrid">
-            {REVIEWS.map((r, idx) => (
-              <div key={idx} className="reviewCardNew" data-reveal data-reveal-delay={String(idx * 80)}>
-                <Stars count={r.stars} />
-                <p className="reviewTextNew">{r.text}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+        </section>
+      </main>
 
-      {/* ── 6. Mission ────────────────────────────────────────────────── */}
-      <section className="missionSection">
-        <div className="sectionInner">
-          <div className="missionCard" data-reveal>
-            <h2 className="missionHeading">
-              We didn&apos;t choose the name to make it sound better.
-            </h2>
-            <div className="missionBody">
-              <p>
-                As algorithms automate more and more white-collar, office-based
-                work, something important is happening beneath the surface. Work
-                that cannot be outsourced to a machine becomes more scarce.
-                Scarcity creates value. Over the next decades, we believe the
-                fastest-growing cohort of wealth will come from people who can
-                do real, physical work.
-              </p>
-              <p>
-                GruntWrk is a global platform that enables physical work. A
-                neutral place where people post any work that needs to be done,
-                and others choose to do it. Just visibility. Just real work. We
-                didn&apos;t choose the name GruntWrk to make it sound better. We
-                chose it because we believe grunt work is where the future of
-                value is being created.
-              </p>
-            </div>
-            <div className="missionAccent">
-              &ldquo;GruntWrk is where the future of value is being created.&rdquo;
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── 7. Footer ─────────────────────────────────────────────────── */}
       <footer className="siteFooter">
         <div className="sectionInner">
           <div className="footerTop">
             <div className="footerBrand">
-              <svg className="navLogoIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" aria-hidden="true">
-                <path
-                  d="M 511 176 L 186 502 L 512 827 L 837 501 L 650 315 L 466 499 L 530 566 L 647 451 L 707 511 L 525 693 L 335 503 L 586 252 Z"
-                  fill="#22c55e"
-                  stroke="#22c55e"
-                  strokeWidth="40"
-                  strokeLinejoin="round"
-                  style={{ paintOrder: "stroke fill" }}
-                />
-              </svg>
+              <BrandMark className="navLogoIcon" />
               <span className="footerBrandName">GruntWrk</span>
             </div>
+
             <div className="footerStoreCol">
               <p className="footerStoreLabel">Available soon on iOS and Android</p>
               <StoreBadges />
             </div>
           </div>
+
           <div className="footerBottom">
             <div className="footerSocials">
-              {SOCIALS.map((s) => (
+              {SOCIALS.map((social) => (
                 <a
-                  key={s.label}
-                  href={s.href}
+                  key={social.label}
+                  href={social.href}
                   className="footerSocialLink"
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label={s.label}
+                  aria-label={social.label}
                 >
-                  {s.icon}
+                  {social.icon}
                 </a>
               ))}
             </div>
 
+            <p className="footerCopy">Built to make local service jobs clearer for both customers and providers.</p>
           </div>
         </div>
       </footer>
