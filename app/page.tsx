@@ -28,7 +28,7 @@ function HeroLogo() {
 type Review = { stars: 4 | 5; text: string };
 
 /* ─── Constants ─────────────────────────────────────────────────────── */
-const BROWSE_HREF = "https://app.gruntwrk.com/notice-board";
+const BROWSE_HREF = "https://app.gruntwrk.com/";
 
 const REVIEWS: Review[] = [
   {
