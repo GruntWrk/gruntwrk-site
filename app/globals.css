@@ -1438,6 +1438,12 @@ a {
   padding-top: 18px;
 }
 
+.siteFrame {
+  width: min(100%, calc(100% - 20px));
+  margin: 10px auto;
+  border: 1px solid rgba(15,17,23,0.08);
+}
+
 .appShellHeader {
   position: sticky;
   top: 0;
@@ -2390,4 +2396,5 @@ a {
   }
 }
 /* ==== End App Homepage Mirror ==== */
+
 

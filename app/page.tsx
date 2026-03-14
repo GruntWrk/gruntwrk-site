@@ -579,7 +579,7 @@ function HomeTrustMarquee(props: { backgroundImage: string }) {
 
 export default function Home() {
   return (
-    <>
+    <div className="siteFrame">
       <AppShellHeader />
 
       <main className="sitePage">
@@ -764,7 +764,8 @@ export default function Home() {
           </div>
         </div>
       </footer>
-    </>
+    </div>
   );
 }
+
 
