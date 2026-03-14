@@ -3,9 +3,15 @@
 import { type CSSProperties, type KeyboardEvent, useEffect, useRef, useState } from "react";
 
 const APP_BASE_URL = "https://app.gruntwrk.com";
-const MARKET_HREF = `${APP_BASE_URL}/market`;
-const REQUEST_SERVICE_HREF = `${APP_BASE_URL}/login?next=${encodeURIComponent("/jobs/new")}`;
-const PROVIDER_HREF = `${APP_BASE_URL}/login?next=${encodeURIComponent("/provider/profile")}`;
+const HOME_HREF = APP_BASE_URL;
+const REQUEST_SERVICE_HREF = loginHref("/jobs/new");
+const PROVIDER_HREF = loginHref("/provider/profile");
+const DASHBOARD_HREF = loginHref("/dashboard");
+const MESSAGES_HREF = loginHref("/messages");
+const NOTICE_BOARD_HREF = loginHref("/notice-board");
+const CONTACTS_HREF = loginHref("/contacts");
+const NOTIFICATIONS_HREF = loginHref("/messages?tab=notifications");
+const PROFILE_HREF = `${APP_BASE_URL}/login`;
 const MARQUEE_BG = `${APP_BASE_URL}/Marquee%20Background.png`;
 
 const CATEGORY_IMAGES: Record<string, string> = {
@@ -38,17 +44,17 @@ const HOW_STEPS = [
   {
     num: "1",
     title: "Describe what you need",
-    body: "Post your request, location, photos, and budget. Keep it simple and refine details later.",
+    body: "Post your request, location, and budget.",
   },
   {
     num: "2",
-    title: "Choose how to hire",
-    body: "Receive quotes from matched providers or book directly with someone you already trust.",
+    title: "Choose who to hire",
+    body: "Receive quotes from matched providers or book directly with someone you've used before.",
   },
   {
     num: "3",
     title: "Manage the job in one place",
-    body: "Use your workbench to message, confirm payment, track progress, and finish the job with confidence.",
+    body: "Use your workbench to message, confirm the provider, follow payment, and finish the job with confidence.",
   },
 ];
 
@@ -71,7 +77,7 @@ const WORKBENCH_POINTS = [
   {
     id: "pay",
     title: "Pay providers directly",
-    desc: "Clear handoff, clear status, no confusion about what happens next.",
+    desc: "Safe and secure, full record keeping and proof of payments.",
   },
 ] as const;
 
@@ -123,9 +129,20 @@ const SOCIALS = [
   },
 ];
 
-function categoryHref(slug: string) {
-  const next = `/jobs/new?category=${encodeURIComponent(slug)}`;
+const AUTO_ADVANCE_MS = 3000;
+const STACK_PAUSE_MS = 4200;
+const USER_IDLE_MS = 8000;
+
+function loginHref(next: string) {
   return `${APP_BASE_URL}/login?next=${encodeURIComponent(next)}`;
+}
+
+function categoryHref(slug: string) {
+  return loginHref(`/jobs/new?category=${encodeURIComponent(slug)}`);
+}
+
+function clamp(n: number, min: number, max: number) {
+  return Math.max(min, Math.min(max, n));
 }
 
 function BrandMark({ className }: { className?: string }) {
@@ -156,6 +173,84 @@ function CheckIcon() {
   return (
     <svg className="perkIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
       <path d="M20 6 9 17l-5-5" />
+    </svg>
+  );
+}
+
+function HomeIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M3 11.5 12 4l9 7.5" />
+      <path d="M5 10.5V20h14v-9.5" />
+    </svg>
+  );
+}
+
+function DashboardIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <rect x="3.5" y="3.5" width="7" height="7" rx="1.5" />
+      <rect x="13.5" y="3.5" width="7" height="7" rx="1.5" />
+      <rect x="3.5" y="13.5" width="7" height="7" rx="1.5" />
+      <rect x="13.5" y="13.5" width="7" height="7" rx="1.5" />
+    </svg>
+  );
+}
+
+function MessageIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M21 11.5a8.5 8.5 0 1 1-4.3-7.4A8.5 8.5 0 0 1 21 11.5Z" />
+      <path d="M8 20l-2 3" />
+    </svg>
+  );
+}
+
+function NoticeBoardIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M8 6h13" />
+      <path d="M8 12h13" />
+      <path d="M8 18h13" />
+      <path d="M3 6h.01" />
+      <path d="M3 12h.01" />
+      <path d="M3 18h.01" />
+    </svg>
+  );
+}
+
+function GlobeIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="9" />
+      <path d="M3 12h18" />
+      <path d="M12 3a14.5 14.5 0 0 1 0 18" />
+      <path d="M12 3a14.5 14.5 0 0 0 0 18" />
+    </svg>
+  );
+}
+
+function BellIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M15 17H5.5a1 1 0 0 1-.8-1.6l1.3-1.8V10a6 6 0 1 1 12 0v3.6l1.3 1.8a1 1 0 0 1-.8 1.6H15Z" />
+      <path d="M10 20a2 2 0 0 0 4 0" />
+    </svg>
+  );
+}
+
+function AvatarArt() {
+  return (
+    <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+      <defs>
+        <linearGradient id="avatar-bg" x1="10%" x2="90%" y1="10%" y2="90%">
+          <stop offset="0%" stopColor="#d7f7e7" />
+          <stop offset="100%" stopColor="#8cd4b0" />
+        </linearGradient>
+      </defs>
+      <rect width="48" height="48" rx="24" fill="url(#avatar-bg)" />
+      <circle cx="24" cy="18" r="8" fill="#ffffff" />
+      <path d="M11 41c1.9-7.3 7-11 13-11s11.1 3.7 13 11" fill="#ffffff" />
     </svg>
   );
 }
@@ -255,55 +350,52 @@ function WorkbenchIcon({ id }: { id: WorkbenchPoint["id"] }) {
   );
 }
 
-function HeroPanel() {
+function AppShellHeader() {
   return (
-    <div className="siteHeroPanel">
-      <div className="siteHeroPanelTop">
-        <span className="siteChip">Job workbench</span>
-        <span className="siteChip siteChipStrong">2 quotes received</span>
-      </div>
-
-      <div className="sitePanelCard">
-        <div className="sitePanelTitle">Fix leaking kitchen tap</div>
-        <div className="sitePanelMeta">Plumbing - Scheduled - Photos added</div>
-        <div className="sitePanelProgress">
-          <span className="sitePanelStep sitePanelStepActive">Request</span>
-          <span className="sitePanelStep sitePanelStepActive">Quotes</span>
-          <span className="sitePanelStep">Payment</span>
-          <span className="sitePanelStep">Review</span>
-        </div>
-      </div>
-
-      <div className="sitePanelQuotes">
-        <div className="siteQuoteCard">
-          <div>
-            <div className="sitePanelTitle">AquaFix Home Help</div>
-            <div className="sitePanelMeta">Available tomorrow - 4.9 stars</div>
+    <header className="appShellHeader">
+      <div className="appShellHeaderInner">
+        <a href={HOME_HREF} className="appShellBrand" aria-label="Go to app homepage">
+          <BrandMark className="navLogoIcon" />
+          <div className="appShellBrandCopy">
+            <span className="appShellBrandName">GruntWrk</span>
+            <span className="appShellBrandSub">Get work done. Find work fast.</span>
           </div>
-          <div className="siteQuoteTag">Best fit</div>
-        </div>
-        <div className="siteQuoteCard siteQuoteCardMuted">
-          <div>
-            <div className="sitePanelTitle">Northside Repairs</div>
-            <div className="sitePanelMeta">Morning slot open - 4.8 stars</div>
-          </div>
-          <div className="siteQuoteTag siteQuoteTagMuted">Compared</div>
-        </div>
-      </div>
+        </a>
 
-      <div className="siteHeroThread">
-        <div className="siteHeroBubble siteHeroBubbleUser">Can you bring the replacement washer?</div>
-        <div className="siteHeroBubble">Yes. I can do 10:30 and confirm payment details in the workbench.</div>
+        <div className="appShellActions">
+          <nav className="appShellNav" aria-label="Primary navigation">
+            <a href={HOME_HREF} className="appShellIconLink isActive" aria-label="Home">
+              <HomeIcon />
+            </a>
+            <a href={DASHBOARD_HREF} className="appShellIconLink" aria-label="Dashboard">
+              <DashboardIcon />
+            </a>
+            <a href={MESSAGES_HREF} className="appShellIconLink" aria-label="Messages">
+              <MessageIcon />
+            </a>
+            <a href={NOTICE_BOARD_HREF} className="appShellIconLink" aria-label="Notice board">
+              <NoticeBoardIcon />
+            </a>
+            <a href={CONTACTS_HREF} className="appShellIconLink" aria-label="Contacts">
+              <GlobeIcon />
+            </a>
+          </nav>
+
+          <a href={NOTIFICATIONS_HREF} className="appShellIconLink appShellBellLink" aria-label="Notifications">
+            <BellIcon />
+            <span className="appShellHeaderBadge">7</span>
+          </a>
+
+          <a href={PROFILE_HREF} className="appShellAvatar" aria-label="Profile and settings">
+            <AvatarArt />
+          </a>
+        </div>
       </div>
-    </div>
+    </header>
   );
 }
 
-function clamp(n: number, min: number, max: number) {
-  return Math.max(min, Math.min(max, n));
-}
-
-function WorkbenchMarquee() {
+function HomeTrustMarquee(props: { backgroundImage: string }) {
   const viewportRef = useRef<HTMLDivElement | null>(null);
   const slideRefs = useRef<Array<HTMLDivElement | null>>([]);
   const resumeTimerRef = useRef<number | null>(null);
@@ -335,13 +427,13 @@ function WorkbenchMarquee() {
   function pauseForUser() {
     setUserPaused(true);
     if (resumeTimerRef.current) window.clearTimeout(resumeTimerRef.current);
-    resumeTimerRef.current = window.setTimeout(() => setUserPaused(false), 8000);
+    resumeTimerRef.current = window.setTimeout(() => setUserPaused(false), USER_IDLE_MS);
   }
 
   useEffect(() => {
     if (userPaused) return undefined;
 
-    const delay = activeIndex === slideCount - 1 ? 4200 : 3000;
+    const delay = activeIndex === slideCount - 1 ? STACK_PAUSE_MS : AUTO_ADVANCE_MS;
     const timer = window.setTimeout(() => {
       const nextIndex = activeIndex === slideCount - 1 ? 0 : activeIndex + 1;
       goToSlide(nextIndex, activeIndex === slideCount - 1 ? "auto" : "smooth");
@@ -386,98 +478,98 @@ function WorkbenchMarquee() {
   }
 
   return (
-    <section className="siteWorkbenchSection">
-      <div
-        className="sectionInner siteWorkbenchPanel"
-        aria-labelledby="site-workbench-title"
-        style={{
-          "--site-marquee-bg": `linear-gradient(110deg, rgba(13, 22, 18, 0.84) 0%, rgba(13, 22, 18, 0.44) 42%, rgba(13, 22, 18, 0.62) 100%), url("${MARQUEE_BG}")`,
-        } as CSSProperties}
-      >
-        <div className="siteWorkbenchFrame">
-          <div className="siteWorkbenchCopy" data-reveal>
-            <span className="siteSectionKicker siteSectionKickerDark">In one workbench</span>
-            <h2 id="site-workbench-title" className="siteWorkbenchTitle">
-              Easily compare, book, message, and pay.
-            </h2>
-          </div>
+    <section
+      className="hp-workbench-marquee"
+      aria-labelledby="hp-workbench-marquee-title"
+      style={
+        {
+          "--hp-marquee-bg": `linear-gradient(110deg, rgba(13, 22, 18, 0.84) 0%, rgba(13, 22, 18, 0.44) 42%, rgba(13, 22, 18, 0.62) 100%), url("${props.backgroundImage}")`,
+        } as CSSProperties
+      }
+    >
+      <div className="hp-workbench-marquee-frame">
+        <div className="hp-workbench-copy">
+          <span className="hp-workbench-kicker">In one workbench</span>
+          <h2 id="hp-workbench-marquee-title" className="hp-workbench-title">
+            Easily compare, book, message, and pay.
+          </h2>
+        </div>
 
-          <div className="siteWorkbenchStage" data-reveal data-reveal-delay="80">
-            <div
-              ref={viewportRef}
-              className="siteWorkbenchViewport"
-              aria-label="Customer benefits carousel"
-              tabIndex={0}
-              onKeyDown={handleKeyDown}
-              onPointerDown={pauseForUser}
-              onTouchStart={pauseForUser}
-            >
-              <div className="siteWorkbenchTrack">
-                {WORKBENCH_POINTS.map((point, index) => (
-                  <div
-                    key={point.id}
-                    ref={(node) => {
-                      slideRefs.current[index] = node;
-                    }}
-                    className="siteWorkbenchSlide"
-                  >
-                    <article className="siteWorkbenchCard">
-                      <div className="siteWorkbenchCardIcon">
+        <div className="hp-workbench-stage">
+          <div
+            ref={viewportRef}
+            className="hp-workbench-viewport"
+            aria-label="Customer benefits carousel"
+            tabIndex={0}
+            onKeyDown={handleKeyDown}
+            onPointerDown={pauseForUser}
+            onTouchStart={pauseForUser}
+          >
+            <div className="hp-workbench-track">
+              {WORKBENCH_POINTS.map((point, index) => (
+                <div
+                  key={point.id}
+                  ref={(node) => {
+                    slideRefs.current[index] = node;
+                  }}
+                  className="hp-workbench-slide"
+                >
+                  <article className="hp-workbench-card">
+                    <div className="hp-workbench-card-icon">
+                      <WorkbenchIcon id={point.id} />
+                    </div>
+                    <div className="hp-workbench-card-copy">
+                      <h3 className="hp-workbench-card-title">{point.title}</h3>
+                      <p className="hp-workbench-card-desc">{point.desc}</p>
+                    </div>
+                  </article>
+                </div>
+              ))}
+
+              <div
+                ref={(node) => {
+                  slideRefs.current[slideCount - 1] = node;
+                }}
+                className="hp-workbench-slide hp-workbench-slide-stack"
+              >
+                <div className="hp-workbench-stack" aria-label="All benefits together">
+                  {WORKBENCH_POINTS.map((point) => (
+                    <article key={`${point.id}-stack`} className="hp-workbench-stack-card">
+                      <div className="hp-workbench-card-icon">
                         <WorkbenchIcon id={point.id} />
                       </div>
-                      <div className="siteWorkbenchCardCopy">
-                        <h3 className="siteWorkbenchCardTitle">{point.title}</h3>
-                        <p className="siteWorkbenchCardDesc">{point.desc}</p>
+                      <div className="hp-workbench-card-copy">
+                        <h3 className="hp-workbench-card-title">{point.title}</h3>
+                        <p className="hp-workbench-card-desc">{point.desc}</p>
                       </div>
                     </article>
-                  </div>
-                ))}
-
-                <div
-                  ref={(node) => {
-                    slideRefs.current[slideCount - 1] = node;
-                  }}
-                  className="siteWorkbenchSlide siteWorkbenchSlideStack"
-                >
-                  <div className="siteWorkbenchStack" aria-label="All benefits together">
-                    {WORKBENCH_POINTS.map((point) => (
-                      <article key={`${point.id}-stack`} className="siteWorkbenchStackCard">
-                        <div className="siteWorkbenchCardIcon">
-                          <WorkbenchIcon id={point.id} />
-                        </div>
-                        <div className="siteWorkbenchCardCopy">
-                          <h3 className="siteWorkbenchCardTitle">{point.title}</h3>
-                          <p className="siteWorkbenchCardDesc">{point.desc}</p>
-                        </div>
-                      </article>
-                    ))}
-                  </div>
+                  ))}
                 </div>
               </div>
             </div>
+          </div>
 
-            <div className="siteWorkbenchControls">
-              <div className="siteWorkbenchDots" role="tablist" aria-label="Select carousel slide">
-                {Array.from({ length: slideCount }).map((_, index) => (
-                  <button
-                    key={`dot-${index}`}
-                    type="button"
-                    className={`siteWorkbenchDot ${index === activeIndex ? "isActive" : ""}`}
-                    aria-label={index === slideCount - 1 ? "Show all points together" : `Show point ${index + 1}`}
-                    aria-selected={index === activeIndex}
-                    role="tab"
-                    onClick={() => {
-                      pauseForUser();
-                      goToSlide(index, "smooth");
-                    }}
-                  />
-                ))}
-              </div>
-
-              <p className="siteWorkbenchHint">
-                Swipe left or right to revisit any card. Auto-scroll keeps moving.
-              </p>
+          <div className="hp-workbench-controls">
+            <div className="hp-workbench-dots" role="tablist" aria-label="Select carousel slide">
+              {Array.from({ length: slideCount }).map((_, index) => (
+                <button
+                  key={`dot-${index}`}
+                  type="button"
+                  className={`hp-workbench-dot ${index === activeIndex ? "is-active" : ""}`}
+                  aria-label={index === slideCount - 1 ? "Show all points together" : `Show point ${index + 1}`}
+                  aria-selected={index === activeIndex}
+                  role="tab"
+                  onClick={() => {
+                    pauseForUser();
+                    goToSlide(index, "smooth");
+                  }}
+                />
+              ))}
             </div>
+
+            <p className="hp-workbench-hint">
+              Swipe left or right to revisit any card. Auto-scroll keeps moving.
+            </p>
           </div>
         </div>
       </div>
@@ -486,208 +578,127 @@ function WorkbenchMarquee() {
 }
 
 export default function Home() {
-  useEffect(() => {
-    const els = Array.from(document.querySelectorAll<HTMLElement>("[data-reveal]"));
-
-    if (typeof window === "undefined" || typeof window.IntersectionObserver === "undefined") {
-      els.forEach((el) => el.classList.add("revealed"));
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-
-          const el = entry.target as HTMLElement;
-          const delay = el.dataset.revealDelay ?? "0";
-          el.style.transitionDelay = `${delay}ms`;
-          el.classList.add("revealed");
-          observer.unobserve(el);
-        });
-      },
-      { threshold: 0.12 }
-    );
-
-    els.forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
-  }, []);
-
   return (
     <>
-      <header className="stickyNav">
-        <div className="navInner">
-          <a href="/" className="navLogo" aria-label="GruntWrk home">
-            <BrandMark className="navLogoIcon" />
-            <span className="navLogoText">GruntWrk</span>
-          </a>
+      <AppShellHeader />
 
-          <a href={REQUEST_SERVICE_HREF} className="btnPrimary btnSmall">
-            Request a service
-          </a>
-        </div>
-      </header>
-
-      <main className="siteHome">
-        <section className="siteHeroSection">
-          <div className="sectionInner">
-            <div className="siteHero">
-              <div className="siteHeroShell">
-                <div className="siteHeroCopy" data-reveal>
-                  <span className="siteHeroEyebrow">Local services, managed simply</span>
-                  <h1 className="siteHeroTitle">Find the right local provider without the back and forth</h1>
-                  <p className="siteHeroSub">
-                    Request a service, compare quotes, or book directly with a provider you trust.
-                    GruntWrk keeps chat, progress, payment, and next steps together in one clear place.
-                  </p>
-                  <div className="siteHeroActions">
-                    <a href={REQUEST_SERVICE_HREF} className="btnPrimary">
-                      Request a service
-                      <ArrowIcon />
-                    </a>
-                    <a href={MARKET_HREF} className="btnSecondary">
-                      Browse providers
-                      <ArrowIcon />
-                    </a>
-                  </div>
-                  <p className="siteHeroNote">
-                    Simple for customers. Practical for providers. Clear from start to finish.
-                  </p>
-                </div>
-
-                <div className="siteHeroVisual" data-reveal data-reveal-delay="120">
-                  <HeroPanel />
+      <main className="sitePage">
+        <div className="hp">
+          <section className="hp-hero">
+            <div className="hp-hero-shell">
+              <div className="hp-hero-content">
+                <h1 className="hp-hero-title">Find the right person for the job</h1>
+                <p className="hp-hero-sub">
+                  Post the job, compare providers, chat, agree the price, and pay.
+                  Everything in one place.
+                </p>
+                <div className="hp-hero-actions">
+                  <a href={REQUEST_SERVICE_HREF} className="hp-btn-primary">
+                    Request a service
+                    <ArrowIcon />
+                  </a>
                 </div>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
 
-        <section className="siteCategoriesSection">
-          <div className="sectionInner">
-            <div className="siteSectionHeader">
-              <span className="siteSectionKicker" data-reveal>Start here</span>
-              <h2 className="siteSectionTitle" data-reveal data-reveal-delay="40">
-                What do you need help with?
-              </h2>
-              <p className="siteSectionSub" data-reveal data-reveal-delay="80">
-                Choose a service and start the fastest path to getting it done.
-              </p>
+          <section className="hp-categories">
+            <div className="hp-section-head">
+              <h2 className="hp-h2">What do you need help with?</h2>
+              <p className="hp-subtitle">Choose a service and start the fastest path to getting it done.</p>
             </div>
 
-            <div className="siteCatGrid">
+            <div className="hp-cat-grid">
               {HERO_CATEGORIES.map((cat, index) => (
                 <a
                   key={cat.slug}
                   href={categoryHref(cat.slug)}
-                  className={`siteCatCard ${index < 4 ? "isFeatured" : ""}`}
-                  data-reveal
-                  data-reveal-delay={String(index * 40)}
+                  className={`hp-cat-card ${index < 4 ? "hp-cat-featured" : ""}`}
+                  style={{ animationDelay: `${index * 50}ms` }}
                 >
                   <img
                     src={CATEGORY_IMAGES[cat.slug]}
                     alt={cat.title}
-                    className="siteCatPhoto"
+                    className="hp-cat-photo"
                     loading={index > 3 ? "lazy" : undefined}
                   />
-                  <div className="siteCatOverlay" />
-                  <div className="siteCatArrow">
-                    <ArrowIcon />
+                  <div className="hp-cat-overlay" />
+                  <div className="hp-cat-label">
+                    <span className="hp-cat-name">{cat.title}</span>
+                    <span className="hp-cat-desc">{cat.desc}</span>
                   </div>
-                  <div className="siteCatLabel">
-                    <span className="siteCatName">{cat.title}</span>
-                    <span className="siteCatDesc">{cat.desc}</span>
+                  <div className="hp-cat-arrow">
+                    <ArrowIcon />
                   </div>
                 </a>
               ))}
             </div>
-          </div>
-        </section>
+          </section>
 
-        <WorkbenchMarquee />
+          <HomeTrustMarquee backgroundImage={MARQUEE_BG} />
 
-        <section className="siteHowSection">
-          <div className="sectionInner">
-            <div className="siteSectionHeader">
-              <span className="siteSectionKicker" data-reveal>How it works</span>
-              <h2 className="siteSectionTitle" data-reveal data-reveal-delay="40">
-                A simple flow from request to completion
-              </h2>
+          <section className="hp-how">
+            <div className="hp-section-head">
+              <h2 className="hp-h2">How Gruntwrk works</h2>
+              <p className="hp-subtitle">A simple flow from request to completion</p>
             </div>
 
-            <div className="siteHowGrid">
+            <div className="hp-how-grid">
               {HOW_STEPS.map((step, index) => (
-                <article key={step.num} className="siteHowCard" data-reveal data-reveal-delay={String(index * 80)}>
-                  <div className="siteHowNum">{step.num}</div>
-                  <div className="siteHowCopy">
-                    <h3 className="siteHowTitle">{step.title}</h3>
-                    <p className="siteHowBody">{step.body}</p>
+                <article key={step.num} className="hp-how-card" style={{ animationDelay: `${index * 80}ms` }}>
+                  <div className="hp-how-num">{step.num}</div>
+                  <div className="hp-how-copy">
+                    <h3 className="hp-how-title">{step.title}</h3>
+                    <p className="hp-how-body">{step.body}</p>
                   </div>
                 </article>
               ))}
             </div>
-          </div>
-        </section>
+          </section>
 
-        <section className="siteProviderSection">
-          <div className="sectionInner">
-            <div className="siteProviderCard" data-reveal>
-              <div className="siteProviderCopy">
-                <span className="siteProviderBadge">For providers</span>
-                <h2 className="siteProviderTitle">Get found locally and manage work without the chaos</h2>
-                <p className="siteProviderDesc">
-                  Create a public profile, share your availability, receive direct requests, and send
-                  quotes for work that fits. GruntWrk helps you keep customer communication, payment
-                  steps, and job progress organized in one workflow.
+          <section className="hp-provider">
+            <div className="hp-provider-inner">
+              <div className="hp-provider-left">
+                <div className="hp-provider-badge">For providers</div>
+                <h2 className="hp-provider-title">Get found locally and manage work without the chaos</h2>
+                <p className="hp-provider-desc">
+                  Create a public profile, share your availability, receive direct requests,
+                  and send quotes for work that fits. Gruntwrk helps you keep customer
+                  communication, payment steps, and job progress organized in one workflow.
                 </p>
-
-                <ul className="siteProviderPerks">
-                  <li>
-                    <CheckIcon />
-                    Show your services and availability
-                  </li>
-                  <li>
-                    <CheckIcon />
-                    Receive direct requests from local customers
-                  </li>
-                  <li>
-                    <CheckIcon />
-                    Send quotes without chasing people across apps
-                  </li>
-                  <li>
-                    <CheckIcon />
-                    Build trust through completed work and reviews
-                  </li>
+                <ul className="hp-provider-perks">
+                  <li><CheckIcon /> Show your services and availability</li>
+                  <li><CheckIcon /> Receive direct requests from local customers</li>
+                  <li><CheckIcon /> Send quotes without chasing people across apps</li>
+                  <li><CheckIcon /> Build trust through completed work and reviews</li>
                 </ul>
-
-                <a href={PROVIDER_HREF} className="btnPrimary siteProviderBtn">
+                <a className="hp-btn-primary" href={PROVIDER_HREF}>
                   Start offering services
                   <ArrowIcon />
                 </a>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
+        </div>
 
         <section className="screensSection">
           <div className="appsSectionHeader">
             <div className="appsSectionCopy">
-              <span className="siteSectionKicker" data-reveal>Apps coming soon</span>
-              <h2 className="sectionHeading appsHeading" data-reveal data-reveal-delay="40">
-                The GruntWrk workbench is coming to iOS and Android.
-              </h2>
-              <p className="siteSectionSub appsSub" data-reveal data-reveal-delay="80">
+              <span className="siteSectionKicker">Apps coming soon</span>
+              <h2 className="sectionHeading appsHeading">The GruntWrk workbench is coming to iOS and Android.</h2>
+              <p className="siteSectionSub appsSub">
                 Browse providers, manage jobs, and keep payment and messages in one place from your phone.
               </p>
             </div>
-            <div data-reveal data-reveal-delay="120">
+
+            <div>
               <StoreBadges />
             </div>
           </div>
 
           <div className="screensScroller">
             {[1, 2, 3, 4, 5].map((n) => (
-              <div key={n} className="phoneFrame" data-reveal data-reveal-delay={String(n * 60)}>
+              <div key={n} className="phoneFrame">
                 <div className="phoneNotch" />
                 <div className="phoneScreen">
                   <img src={`/screenshots/screen${n}.jpg`} alt={`GruntWrk app screen ${n}`} className="phoneImg" />
@@ -700,10 +711,8 @@ export default function Home() {
         <section className="reviewsSection">
           <div className="sectionInner">
             <div className="reviewsSectionHeader">
-              <h2 className="sectionHeading" data-reveal>
-                Customer reviews.
-              </h2>
-              <div className="reviewsSectionMeta" data-reveal data-reveal-delay="80">
+              <h2 className="sectionHeading">Customer reviews.</h2>
+              <div className="reviewsSectionMeta">
                 <span className="ratingPillLarge">4.8</span>
                 <span className="reviewsSectionSub">Early Access</span>
               </div>
@@ -711,7 +720,7 @@ export default function Home() {
 
             <div className="reviewsGrid">
               {REVIEWS.map((review, index) => (
-                <div key={index} className="reviewCardNew" data-reveal data-reveal-delay={String(index * 80)}>
+                <div key={index} className="reviewCardNew">
                   <Stars count={review.stars} />
                   <p className="reviewTextNew">{review.text}</p>
                 </div>
@@ -758,3 +767,4 @@ export default function Home() {
     </>
   );
 }
+
