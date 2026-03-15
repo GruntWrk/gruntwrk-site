@@ -4,7 +4,7 @@ import { type CSSProperties, type KeyboardEvent, useEffect, useRef, useState } f
 
 const APP_BASE_URL = "https://app.gruntwrk.com";
 const HOME_HREF = APP_BASE_URL;
-const REQUEST_SERVICE_HREF = loginHref("/jobs/new");
+const REQUEST_SERVICE_HREF = appHref("/jobs/new");
 const PROVIDER_HREF = loginHref("/provider/profile");
 const MARQUEE_BG = `${APP_BASE_URL}/Marquee%20Background.png`;
 
@@ -131,8 +131,12 @@ function loginHref(next: string) {
   return `${APP_BASE_URL}/login?next=${encodeURIComponent(next)}`;
 }
 
+function appHref(path: string) {
+  return `${APP_BASE_URL}${path}`;
+}
+
 function categoryHref(slug: string) {
-  return loginHref(`/jobs/new?category=${encodeURIComponent(slug)}`);
+  return appHref(`/jobs/new?category=${encodeURIComponent(slug)}`);
 }
 
 function clamp(n: number, min: number, max: number) {
