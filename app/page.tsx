@@ -6,12 +6,6 @@ const APP_BASE_URL = "https://app.gruntwrk.com";
 const HOME_HREF = APP_BASE_URL;
 const REQUEST_SERVICE_HREF = loginHref("/jobs/new");
 const PROVIDER_HREF = loginHref("/provider/profile");
-const DASHBOARD_HREF = loginHref("/dashboard");
-const MESSAGES_HREF = loginHref("/messages");
-const NOTICE_BOARD_HREF = loginHref("/notice-board");
-const CONTACTS_HREF = loginHref("/contacts");
-const NOTIFICATIONS_HREF = loginHref("/messages?tab=notifications");
-const PROFILE_HREF = `${APP_BASE_URL}/login`;
 const MARQUEE_BG = `${APP_BASE_URL}/Marquee%20Background.png`;
 
 const CATEGORY_IMAGES: Record<string, string> = {
@@ -177,84 +171,6 @@ function CheckIcon() {
   );
 }
 
-function HomeIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M3 11.5 12 4l9 7.5" />
-      <path d="M5 10.5V20h14v-9.5" />
-    </svg>
-  );
-}
-
-function DashboardIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <rect x="3.5" y="3.5" width="7" height="7" rx="1.5" />
-      <rect x="13.5" y="3.5" width="7" height="7" rx="1.5" />
-      <rect x="3.5" y="13.5" width="7" height="7" rx="1.5" />
-      <rect x="13.5" y="13.5" width="7" height="7" rx="1.5" />
-    </svg>
-  );
-}
-
-function MessageIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M21 11.5a8.5 8.5 0 1 1-4.3-7.4A8.5 8.5 0 0 1 21 11.5Z" />
-      <path d="M8 20l-2 3" />
-    </svg>
-  );
-}
-
-function NoticeBoardIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M8 6h13" />
-      <path d="M8 12h13" />
-      <path d="M8 18h13" />
-      <path d="M3 6h.01" />
-      <path d="M3 12h.01" />
-      <path d="M3 18h.01" />
-    </svg>
-  );
-}
-
-function GlobeIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <circle cx="12" cy="12" r="9" />
-      <path d="M3 12h18" />
-      <path d="M12 3a14.5 14.5 0 0 1 0 18" />
-      <path d="M12 3a14.5 14.5 0 0 0 0 18" />
-    </svg>
-  );
-}
-
-function BellIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M15 17H5.5a1 1 0 0 1-.8-1.6l1.3-1.8V10a6 6 0 1 1 12 0v3.6l1.3 1.8a1 1 0 0 1-.8 1.6H15Z" />
-      <path d="M10 20a2 2 0 0 0 4 0" />
-    </svg>
-  );
-}
-
-function AvatarArt() {
-  return (
-    <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
-      <defs>
-        <linearGradient id="avatar-bg" x1="10%" x2="90%" y1="10%" y2="90%">
-          <stop offset="0%" stopColor="#d7f7e7" />
-          <stop offset="100%" stopColor="#8cd4b0" />
-        </linearGradient>
-      </defs>
-      <rect width="48" height="48" rx="24" fill="url(#avatar-bg)" />
-      <circle cx="24" cy="18" r="8" fill="#ffffff" />
-      <path d="M11 41c1.9-7.3 7-11 13-11s11.1 3.7 13 11" fill="#ffffff" />
-    </svg>
-  );
-}
-
 function StarIcon({ filled }: { filled: boolean }) {
   return (
     <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" className={filled ? "star starFilled" : "star"}>
@@ -361,35 +277,6 @@ function AppShellHeader() {
             <span className="appShellBrandSub">Get work done. Find work fast.</span>
           </div>
         </a>
-
-        <div className="appShellActions">
-          <nav className="appShellNav" aria-label="Primary navigation">
-            <a href={HOME_HREF} className="appShellIconLink isActive" aria-label="Home">
-              <HomeIcon />
-            </a>
-            <a href={DASHBOARD_HREF} className="appShellIconLink" aria-label="Dashboard">
-              <DashboardIcon />
-            </a>
-            <a href={MESSAGES_HREF} className="appShellIconLink" aria-label="Messages">
-              <MessageIcon />
-            </a>
-            <a href={NOTICE_BOARD_HREF} className="appShellIconLink" aria-label="Notice board">
-              <NoticeBoardIcon />
-            </a>
-            <a href={CONTACTS_HREF} className="appShellIconLink" aria-label="Contacts">
-              <GlobeIcon />
-            </a>
-          </nav>
-
-          <a href={NOTIFICATIONS_HREF} className="appShellIconLink appShellBellLink" aria-label="Notifications">
-            <BellIcon />
-            <span className="appShellHeaderBadge">7</span>
-          </a>
-
-          <a href={PROFILE_HREF} className="appShellAvatar" aria-label="Profile and settings">
-            <AvatarArt />
-          </a>
-        </div>
       </div>
     </header>
   );

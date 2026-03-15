@@ -1459,7 +1459,7 @@ a {
   margin: 0 auto;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: 16px;
   padding: 18px 0;
 }
@@ -1493,84 +1493,6 @@ a {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-}
-
-.appShellActions {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.appShellNav {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.appShellIconLink {
-  position: relative;
-  width: 44px;
-  height: 44px;
-  display: grid;
-  place-items: center;
-  border-radius: 14px;
-  color: rgba(15,17,23,0.58);
-  text-decoration: none;
-  transition: background 180ms ease, color 180ms ease, transform 180ms ease;
-}
-
-.appShellIconLink svg {
-  width: 22px;
-  height: 22px;
-}
-
-.appShellIconLink:hover {
-  background: rgba(62,207,142,0.08);
-  color: rgba(15,17,23,0.86);
-  transform: translateY(-1px);
-}
-
-.appShellIconLink.isActive {
-  background: rgba(62,207,142,0.1);
-  color: #3ECF8E;
-}
-
-.appShellHeaderBadge {
-  position: absolute;
-  top: 2px;
-  right: 2px;
-  min-width: 18px;
-  height: 18px;
-  padding: 0 6px;
-  border-radius: 999px;
-  background: rgba(62,207,142,0.95);
-  color: rgba(7,17,12,0.95);
-  font-size: 12px;
-  font-weight: 900;
-  line-height: 18px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.16);
-}
-
-.appShellAvatar {
-  width: 48px;
-  height: 48px;
-  border-radius: 999px;
-  overflow: hidden;
-  display: grid;
-  place-items: center;
-  border: 2px solid rgba(62,207,142,0.3);
-  background: rgba(62,207,142,0.1);
-  text-decoration: none;
-  flex-shrink: 0;
-}
-
-.appShellAvatar svg {
-  width: 100%;
-  height: 100%;
-  display: block;
 }
 
 .hp {
@@ -2224,43 +2146,11 @@ a {
 
 @media (max-width: 760px) {
   .appShellHeaderInner {
-    flex-wrap: wrap;
     padding: 14px 0 12px;
   }
 
   .appShellBrand {
-    width: 100%;
-  }
-
-  .appShellActions {
-    width: 100%;
-    justify-content: space-between;
-  }
-
-  .appShellNav {
-    gap: 4px;
-    overflow-x: auto;
-    scrollbar-width: none;
-  }
-
-  .appShellNav::-webkit-scrollbar {
-    display: none;
-  }
-
-  .appShellIconLink {
-    width: 40px;
-    height: 40px;
-    border-radius: 12px;
-  }
-
-  .appShellIconLink svg {
-    width: 20px;
-    height: 20px;
-  }
-
-  .appShellAvatar {
-    width: 42px;
-    height: 42px;
+    width: auto;
   }
 }
 
