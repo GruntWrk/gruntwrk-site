@@ -1543,7 +1543,7 @@ a {
 
 .hp-hero .hp-btn-primary {
   min-width: min(300px, 100%);
-  font-size: 1rem;
+  font-size: 1.1rem;
   justify-content: center;
 }
 
@@ -1699,7 +1699,7 @@ a {
 }
 
 .hp-cat-name {
-  font-size: 1.88rem;
+  font-size: 1.5rem;
   font-weight: 700;
   line-height: 1.2;
   color: #fff;
@@ -1707,7 +1707,7 @@ a {
 }
 
 .hp-cat-desc {
-  font-size: 1.36rem;
+  font-size: 1.09rem;
   color: rgba(255,255,255,0.75);
   line-height: 1.4;
 }
@@ -1773,19 +1773,6 @@ a {
   max-width: 520px;
   display: grid;
   gap: 10px;
-}
-
-.hp-workbench-kicker {
-  display: inline-flex;
-  align-self: start;
-  padding: 6px 12px;
-  border-radius: 999px;
-  background: rgba(255,255,255,0.14);
-  color: rgba(255,255,255,0.9);
-  font-size: 0.74rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
 }
 
 .hp-workbench-title {
@@ -1926,13 +1913,6 @@ a {
 .hp-workbench-dot.is-active {
   background: #3ECF8E;
   transform: scale(1.12);
-}
-
-.hp-workbench-hint {
-  margin: 0;
-  font-size: 0.82rem;
-  line-height: 1.5;
-  color: rgba(255,255,255,0.82);
 }
 
 .hp-how {
@@ -2192,11 +2172,11 @@ a {
   }
 
   .hp-cat-name {
-    font-size: 1.72rem;
+    font-size: 1.38rem;
   }
 
   .hp-cat-desc {
-    font-size: 1.24rem;
+    font-size: 0.99rem;
   }
 
   .hp-workbench-marquee {
@@ -2252,10 +2232,6 @@ a {
 
   .hp-workbench-controls {
     align-items: flex-start;
-  }
-
-  .hp-workbench-hint {
-    font-size: 0.78rem;
   }
 
   .hp-how-grid {

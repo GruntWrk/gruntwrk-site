@@ -376,7 +376,6 @@ function HomeTrustMarquee(props: { backgroundImage: string }) {
     >
       <div className="hp-workbench-marquee-frame">
         <div className="hp-workbench-copy">
-          <span className="hp-workbench-kicker">In one workbench</span>
           <h2 id="hp-workbench-marquee-title" className="hp-workbench-title">
             Easily compare, book, message, and pay.
           </h2>
@@ -453,10 +452,6 @@ function HomeTrustMarquee(props: { backgroundImage: string }) {
                 />
               ))}
             </div>
-
-            <p className="hp-workbench-hint">
-              Swipe left or right to revisit any card. Auto-scroll keeps moving.
-            </p>
           </div>
         </div>
       </div>

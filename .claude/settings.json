@@ -1,0 +1,25 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "Bash(git -C c:/dev/gruntwrk-site status --short)",
+      "Bash(git -C c:/dev/gruntwrk-site log --oneline -3)",
+      "Bash(git -C c:/dev/gruntwrk-site add app/globals.css app/layout.tsx app/page.tsx)",
+      "Bash(git -C:*)",
+      "Read(//c/dev/gruntwrk-app/components/**)",
+      "Read(//c/dev/gruntwrk-app/app/**)",
+      "Read(//c/dev/gruntwrk-app/**)",
+      "Bash(grep -n \"notice-media\\\\|SignedJobImage.*notice\\\\|noticeImage\\\\|storage.from\" /c/dev/gruntwrk-app/app/p/[id]/page.tsx)",
+      "Bash(xargs grep -l \"jobs.*rls\\\\|RLS.*jobs\\\\|enable.*rls\")",
+      "Bash(xargs grep -l \"notice-board\\\\|feed\")",
+      "Bash(grep -n \"not_found\\\\|error.*not_found\" /c/dev/gruntwrk-app/app/auctions/[id]/AuctionDetailClient.tsx)",
+      "Bash(grep -n \"fetch\\\\|supabase.*from.*jobs\" /c/dev/gruntwrk-app/app/auctions/[id]/AuctionDetailClient.tsx)"
+    ],
+    "additionalDirectories": [
+      "c:\\dev\\gruntwrk-app\\components",
+      "c:\\dev\\gruntwrk-app\\app\\api\\storage\\job-image-signed",
+      "c:\\dev\\gruntwrk-app\\app\\notice-board\\feed",
+      "c:\\dev\\gruntwrk-app\\app\\auctions\\[id]\\data"
+    ]
+  }
+}
