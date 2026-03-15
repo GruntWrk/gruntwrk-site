@@ -4,6 +4,7 @@ import { type CSSProperties, type KeyboardEvent, useEffect, useRef, useState } f
 
 const APP_BASE_URL = "https://app.gruntwrk.com";
 const HOME_HREF = APP_BASE_URL;
+const LOGIN_HREF = appHref("/login");
 const REQUEST_SERVICE_HREF = appHref("/jobs/new");
 const PROVIDER_HREF = loginHref("/provider/profile");
 const MARQUEE_BG = `${APP_BASE_URL}/Marquee%20Background.png`;
@@ -281,6 +282,15 @@ function AppShellHeader() {
             <span className="appShellBrandSub">Get work done. Find work fast.</span>
           </div>
         </a>
+
+        <div className="appShellHeaderActions">
+          <a href={PROVIDER_HREF} className="appShellHeaderBtn appShellHeaderBtnPrimary">
+            Start offering services
+          </a>
+          <a href={LOGIN_HREF} className="appShellHeaderBtn appShellHeaderBtnSecondary">
+            Login
+          </a>
+        </div>
       </div>
     </header>
   );
