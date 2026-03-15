@@ -13,7 +13,10 @@
       "Bash(xargs grep -l \"jobs.*rls\\\\|RLS.*jobs\\\\|enable.*rls\")",
       "Bash(xargs grep -l \"notice-board\\\\|feed\")",
       "Bash(grep -n \"not_found\\\\|error.*not_found\" /c/dev/gruntwrk-app/app/auctions/[id]/AuctionDetailClient.tsx)",
-      "Bash(grep -n \"fetch\\\\|supabase.*from.*jobs\" /c/dev/gruntwrk-app/app/auctions/[id]/AuctionDetailClient.tsx)"
+      "Bash(grep -n \"fetch\\\\|supabase.*from.*jobs\" /c/dev/gruntwrk-app/app/auctions/[id]/AuctionDetailClient.tsx)",
+      "WebFetch(domain:www.fixando.pt)",
+      "WebFetch(domain:help.fixando.com)",
+      "WebFetch(domain:blog.fixando.pt)"
     ],
     "additionalDirectories": [
       "c:\\dev\\gruntwrk-app\\components",
