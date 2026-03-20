@@ -133,21 +133,6 @@ const FEE_COMPARISON_ROWS = [
   },
 ] as const;
 
-const DIFFERENCE_MARKET_STEPS = [
-  "Pay for leads",
-  "Pay for visibility",
-  "Pay for subscriptions",
-  "Then still pay transaction fees",
-] as const;
-
-const DIFFERENCE_GRUNTWRK_POINTS = [
-  "Not a lead-selling middleman",
-  "A workbench platform",
-  "Clients and providers deal directly with each other",
-] as const;
-
-const DIFFERENCE_PILLS = ["No lead fees", "Direct client-provider contact", "One shared workbench"] as const;
-
 type WorkbenchPoint = (typeof WORKBENCH_POINTS)[number];
 type Review = { stars: 4 | 5; text: string };
 
@@ -578,75 +563,6 @@ export default function Home() {
                     <ArrowIcon />
                   </a>
                 </div>
-              </div>
-            </div>
-          </section>
-
-          <section className="hp-difference" aria-labelledby="hp-difference-title">
-            <div className="hp-difference-shell">
-              <div className="hp-difference-lead">
-                <span className="hp-difference-kicker">Our difference</span>
-                <h2 id="hp-difference-title" className="hp-difference-title">What makes GruntWrk different?</h2>
-                <p className="hp-difference-intro">
-                  GruntWrk removes the middleman, while giving you the tools to get the job done.
-                </p>
-
-                <div className="hp-difference-pills" aria-label="Key GruntWrk differences">
-                  {DIFFERENCE_PILLS.map((pill) => (
-                    <span key={pill} className="hp-difference-pill">
-                      {pill}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              <div className="hp-difference-grid">
-                <article className="hp-difference-card hp-difference-card-market">
-                  <div className="hp-difference-card-top">
-                    <span className="hp-difference-card-eyebrow">Most others</span>
-                    <h3 className="hp-difference-card-title">Charge at every step</h3>
-                    <p className="hp-difference-card-copy">
-                      Most others act like a middleman and charge at every step:
-                    </p>
-                  </div>
-
-                  <ol className="hp-difference-steps">
-                    {DIFFERENCE_MARKET_STEPS.map((step, index) => (
-                      <li key={step} className="hp-difference-step">
-                        <span className="hp-difference-step-num">{String(index + 1).padStart(2, "0")}</span>
-                        <span className="hp-difference-step-copy">{step}</span>
-                      </li>
-                    ))}
-                  </ol>
-                </article>
-
-                <article className="hp-difference-card hp-difference-card-grunt">
-                  <div className="hp-difference-card-top">
-                    <span className="hp-difference-card-eyebrow hp-difference-card-eyebrow-strong">The GruntWrk difference</span>
-                    <h3 className="hp-difference-card-title">Direct connection, shared workbench</h3>
-                    <p className="hp-difference-card-copy">
-                      You keep the direct relationship, while the platform keeps the job organised.
-                    </p>
-                  </div>
-
-                  <ul className="hp-difference-list">
-                    {DIFFERENCE_GRUNTWRK_POINTS.map((point) => (
-                      <li key={point} className="hp-difference-list-item">
-                        <span className="hp-difference-check" aria-hidden="true">
-                          <CheckIcon />
-                        </span>
-                        <span className="hp-difference-list-copy">{point}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <div className="hp-difference-footer">
-                    <span className="hp-difference-footer-label">The platform</span>
-                    <p className="hp-difference-footer-copy">
-                      Lets you search, message, pay, and keep records.
-                    </p>
-                  </div>
-                </article>
               </div>
             </div>
           </section>
