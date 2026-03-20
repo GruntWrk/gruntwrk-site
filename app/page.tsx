@@ -49,7 +49,7 @@ const HOW_STEPS = [
   {
     num: "3",
     title: "Manage the job in one place",
-    body: "Use your workbench to message, confirm the provider, follow payment, and finish the job with confidence.",
+    body: "Use your workbench to message, confirm the provider, follow payment, and rebook trusted providers with confidence.",
   },
 ];
 
@@ -71,10 +71,82 @@ const WORKBENCH_POINTS = [
   },
   {
     id: "pay",
-    title: "Pay providers directly",
-    desc: "Safe and secure, full record keeping and proof of payments.",
+    title: "Pay and rebook with confidence",
+    desc: "Keep clear payment records and come back to trusted providers when you need them again.",
   },
 ] as const;
+
+const FEE_COMPARISON_ROWS = [
+  {
+    fee: "Registration fee",
+    marketSummary: "Some marketplaces charge a one-time provider onboarding fee before you can start taking work.",
+    competitors: ["Taskrabbit"],
+    gruntwrk: "Free",
+  },
+  {
+    fee: "Lead or contact fee",
+    marketSummary: "Pay to unlock customer details or spend money each time you want to pursue a job.",
+    competitors: ["Fixando", "Zaask", "Bark"],
+    gruntwrk: "Free",
+  },
+  {
+    fee: "Credit packs",
+    marketSummary: "Prepay for credits or contact packs before you can quote on requests.",
+    competitors: ["Fixando", "Zaask", "Bark"],
+    gruntwrk: "Free",
+  },
+  {
+    fee: "Visibility boosts",
+    marketSummary: "Pay extra to appear higher in search or unlock more exposure for your profile.",
+    competitors: ["Fixando", "Checkatrade"],
+    gruntwrk: "Free",
+  },
+  {
+    fee: "Subscription or membership",
+    marketSummary: "Monthly platform access or plan fees just to stay listed and compete for work.",
+    competitors: ["Bark", "Checkatrade"],
+    gruntwrk: "Free",
+  },
+  {
+    fee: "Shortlist or acceptance fee",
+    marketSummary: "Charged when a customer shortlists you or shows a stronger signal of intent.",
+    competitors: ["MyBuilder"],
+    gruntwrk: "Free",
+  },
+  {
+    fee: "Payment-processing add-on fee",
+    marketSummary: "Extra payment-related charges layered on top of other marketplace fees.",
+    competitors: ["Fixando", "Taskrabbit", "Checkatrade"],
+    gruntwrk: "Free",
+  },
+  {
+    fee: "Payout reserve or holdback",
+    marketSummary: "A portion of provider funds can be retained on-platform before payout is released.",
+    competitors: ["Fixando"],
+    gruntwrk: "Free",
+  },
+  {
+    fee: "Booking or payment fee",
+    marketSummary: "A single transaction fee when the booking and payment are completed through the platform.",
+    competitors: ["Fixando", "Taskrabbit", "Checkatrade"],
+    gruntwrk: "10% booking/payment fee",
+  },
+] as const;
+
+const DIFFERENCE_MARKET_STEPS = [
+  "Pay for leads",
+  "Pay for visibility",
+  "Pay for subscriptions",
+  "Then still pay transaction fees",
+] as const;
+
+const DIFFERENCE_GRUNTWRK_POINTS = [
+  "Not a lead-selling middleman",
+  "A workbench platform",
+  "Clients and providers deal directly with each other",
+] as const;
+
+const DIFFERENCE_PILLS = ["No lead fees", "Direct client-provider contact", "One shared workbench"] as const;
 
 type WorkbenchPoint = (typeof WORKBENCH_POINTS)[number];
 type Review = { stars: 4 | 5; text: string };
@@ -271,6 +343,18 @@ function WorkbenchIcon({ id }: { id: WorkbenchPoint["id"] }) {
   );
 }
 
+function BlurredCompetitors({ names }: { names: readonly string[] }) {
+  return (
+    <div className="hp-fee-market-list" aria-label="Example competitor marketplaces">
+      {names.map((name) => (
+        <span key={name} className="hp-fee-market-badge hp-fee-market-badge-blur">
+          {name}
+        </span>
+      ))}
+    </div>
+  );
+}
+
 function AppShellHeader() {
   return (
     <header className="appShellHeader">
@@ -391,7 +475,7 @@ function HomeTrustMarquee(props: { backgroundImage: string }) {
       <div className="hp-workbench-marquee-frame">
         <div className="hp-workbench-copy">
           <h2 id="hp-workbench-marquee-title" className="hp-workbench-title">
-            Easily compare, book, message, and pay.
+            Compare, book, message, pay, and rebook.
           </h2>
         </div>
 
@@ -498,6 +582,75 @@ export default function Home() {
             </div>
           </section>
 
+          <section className="hp-difference" aria-labelledby="hp-difference-title">
+            <div className="hp-difference-shell">
+              <div className="hp-difference-lead">
+                <span className="hp-difference-kicker">Our difference</span>
+                <h2 id="hp-difference-title" className="hp-difference-title">What makes GruntWrk different?</h2>
+                <p className="hp-difference-intro">
+                  GruntWrk removes the middleman, while giving you the tools to get the job done.
+                </p>
+
+                <div className="hp-difference-pills" aria-label="Key GruntWrk differences">
+                  {DIFFERENCE_PILLS.map((pill) => (
+                    <span key={pill} className="hp-difference-pill">
+                      {pill}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <div className="hp-difference-grid">
+                <article className="hp-difference-card hp-difference-card-market">
+                  <div className="hp-difference-card-top">
+                    <span className="hp-difference-card-eyebrow">Most others</span>
+                    <h3 className="hp-difference-card-title">Charge at every step</h3>
+                    <p className="hp-difference-card-copy">
+                      Most others act like a middleman and charge at every step:
+                    </p>
+                  </div>
+
+                  <ol className="hp-difference-steps">
+                    {DIFFERENCE_MARKET_STEPS.map((step, index) => (
+                      <li key={step} className="hp-difference-step">
+                        <span className="hp-difference-step-num">{String(index + 1).padStart(2, "0")}</span>
+                        <span className="hp-difference-step-copy">{step}</span>
+                      </li>
+                    ))}
+                  </ol>
+                </article>
+
+                <article className="hp-difference-card hp-difference-card-grunt">
+                  <div className="hp-difference-card-top">
+                    <span className="hp-difference-card-eyebrow hp-difference-card-eyebrow-strong">The GruntWrk difference</span>
+                    <h3 className="hp-difference-card-title">Direct connection, shared workbench</h3>
+                    <p className="hp-difference-card-copy">
+                      You keep the direct relationship, while the platform keeps the job organised.
+                    </p>
+                  </div>
+
+                  <ul className="hp-difference-list">
+                    {DIFFERENCE_GRUNTWRK_POINTS.map((point) => (
+                      <li key={point} className="hp-difference-list-item">
+                        <span className="hp-difference-check" aria-hidden="true">
+                          <CheckIcon />
+                        </span>
+                        <span className="hp-difference-list-copy">{point}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <div className="hp-difference-footer">
+                    <span className="hp-difference-footer-label">The platform</span>
+                    <p className="hp-difference-footer-copy">
+                      Lets you search, message, pay, and keep records.
+                    </p>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </section>
+
           <section className="hp-categories">
             <div className="hp-section-head">
               <h2 className="hp-h2">What do you need help with?</h2>
@@ -556,17 +709,19 @@ export default function Home() {
             <div className="hp-provider-inner">
               <div className="hp-provider-left">
                 <div className="hp-provider-badge">For providers</div>
-                <h2 className="hp-provider-title">Get found locally and manage work without the chaos</h2>
+                <h2 className="hp-provider-title">Run your service business without paying to chase leads</h2>
                 <p className="hp-provider-desc">
-                  Create a public profile, share your availability, receive direct requests,
-                  and send quotes for work that fits. Gruntwrk helps you keep customer
-                  communication, payment steps, and job progress organized in one workflow.
+                  Build a public profile, share your availability, receive direct requests,
+                  compare quotes, message customers, take payment, and rebook repeat work
+                  from one workbench. GruntWrk is built to help providers run the job from
+                  first request to repeat booking without lead fees, contact packs, or
+                  visibility boosts.
                 </p>
                 <ul className="hp-provider-perks">
-                  <li><CheckIcon /> Show your services and availability</li>
-                  <li><CheckIcon /> Receive direct requests from local customers</li>
-                  <li><CheckIcon /> Send quotes without chasing people across apps</li>
-                  <li><CheckIcon /> Build trust through completed work and reviews</li>
+                  <li><CheckIcon /> No pay-per-lead or contact unlock fees</li>
+                  <li><CheckIcon /> No credit packs, subscriptions, or boost charges</li>
+                  <li><CheckIcon /> Public profile, availability, and direct requests</li>
+                  <li><CheckIcon /> Quotes, messaging, payment steps, and repeat bookings in one workbench</li>
                 </ul>
                 <a className="hp-btn-primary" href={PROVIDER_HREF}>
                   Start offering services
@@ -574,6 +729,61 @@ export default function Home() {
                 </a>
               </div>
             </div>
+          </section>
+
+          <section className="hp-fees" aria-labelledby="hp-fees-title">
+            <div className="hp-fees-head">
+              <div className="hp-fees-kicker">Cost difference</div>
+              <h2 id="hp-fees-title" className="hp-h2">Most others charge at every step. GruntWrk does not.</h2>
+              <p className="hp-subtitle hp-fees-subtitle">
+                The GruntWrk workbench is the platform. Providers manage quotes, direct bookings, messaging,
+                payment steps, and repeat jobs in one place. We do not charge pay-per-lead fees, contact packs,
+                subscriptions, or visibility boosts. We only charge the booking/payment fee that keeps the
+                platform running.
+              </p>
+            </div>
+
+            <div className="hp-fees-pills" aria-label="Key fee differences">
+              <span className="hp-fees-pill">No pay-per-lead</span>
+              <span className="hp-fees-pill">No credit packs</span>
+              <span className="hp-fees-pill">No subscriptions</span>
+              <span className="hp-fees-pill">No visibility boosts</span>
+              <span className="hp-fees-pill hp-fees-pill-strong">Only 10% booking/payment fee</span>
+            </div>
+
+            <div className="hp-fee-table-wrap">
+              <table className="hp-fee-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Fee type</th>
+                    <th scope="col">Typical marketplaces</th>
+                    <th scope="col">GruntWrk</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {FEE_COMPARISON_ROWS.map((row) => (
+                    <tr key={row.fee}>
+                      <td>
+                        <span className="hp-fee-label">{row.fee}</span>
+                      </td>
+                      <td>
+                        <BlurredCompetitors names={row.competitors} />
+                        <p className="hp-fee-market-copy">{row.marketSummary}</p>
+                      </td>
+                      <td>
+                        <span className={`hp-fee-grunt ${row.gruntwrk.startsWith("10%") ? "is-fee" : "is-free"}`}>
+                          {row.gruntwrk}
+                        </span>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            <p className="hp-fee-note">
+              Based on public pricing and help-center pages reviewed on March 16, 2026. Fees vary by service and market.
+            </p>
           </section>
         </div>
 
@@ -590,17 +800,6 @@ export default function Home() {
             <div>
               <StoreBadges />
             </div>
-          </div>
-
-          <div className="screensScroller">
-            {[1, 2, 3, 4, 5].map((n) => (
-              <div key={n} className="phoneFrame">
-                <div className="phoneNotch" />
-                <div className="phoneScreen">
-                  <img src={`/screenshots/screen${n}.jpg`} alt={`GruntWrk app screen ${n}`} className="phoneImg" />
-                </div>
-              </div>
-            ))}
           </div>
         </section>
 
