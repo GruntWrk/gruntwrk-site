@@ -1,7 +1,9 @@
 {
   "meta": {
     "title": "GruntWrk | Serviços Locais Baratos e Acessíveis — Compare Orçamentos",
-    "description": "Encontre prestadores de serviços locais baratos e fiáveis. Compare orçamentos, comunique num só lugar e gira cada passo, do pedido ao pagamento, com o GruntWrk."
+    "description": "Encontre prestadores de serviços locais baratos e fiáveis. Compare orçamentos para limpeza, reparações, canalização, eletricidade, pintura, mudanças e mais. Sem taxas de leads, sem intermediários — gira cada passo do pedido ao pagamento com o GruntWrk.",
+    "keywords": "serviços locais baratos, prestadores de serviços acessíveis, comparar orçamentos, contratar ajuda local, serviços de limpeza, reparações domésticas, canalização, eletricidade, pintura, mudanças, montagem, canalizador barato, eletricista barato, limpeza barata, serviços baratos Portugal, alternativa Fixando, alternativa Zaask, marketplace de serviços, sem taxas de leads, grátis para aderir",
+    "seoHeading": "Serviços locais baratos e acessíveis — limpeza, reparações, canalização, eletricidade, mudanças e mais. Compare orçamentos de prestadores fiáveis, contrate com confiança e pague com segurança. GruntWrk é a forma económica e simples de resolver trabalhos sem taxas de intermediários."
   },
   "nav": {
     "startOffering": "Começar a oferecer serviços",
@@ -123,16 +125,16 @@
     "subtitle": "Escolha um serviço e comece o caminho mais rápido para o concluir."
   },
   "categories": [
-    { "slug": "cleaning", "title": "Limpeza", "desc": "Limpezas profundas de casa e escritório" },
-    { "slug": "furniture-assembly", "title": "Montagem", "desc": "Móveis e flat-pack" },
-    { "slug": "home-repairs", "title": "Reparações", "desc": "Arranjos, carpintaria e mais" },
-    { "slug": "moving-lifting", "title": "Mudanças", "desc": "Embalagem, transporte e carrinhas" },
-    { "slug": "electrical", "title": "Eletricidade", "desc": "Luzes, interruptores e cablagem" },
-    { "slug": "plumbing", "title": "Canalização", "desc": "Torneiras, esgotos e sanitas" },
-    { "slug": "painting-decor", "title": "Pintura", "desc": "Interior e exterior" },
-    { "slug": "outdoor", "title": "Exterior", "desc": "Jardim e manutenção" },
-    { "slug": "mounting-installation", "title": "Instalação", "desc": "TVs, prateleiras e estores" },
-    { "slug": "removal-disposal", "title": "Remoção", "desc": "Entulho e eliminação de resíduos" }
+    { "slug": "cleaning", "title": "Limpeza", "desc": "Limpezas profundas de casa e escritório", "alt": "Serviços de limpeza baratos — limpezas profundas de casa e escritório" },
+    { "slug": "furniture-assembly", "title": "Montagem", "desc": "Móveis e flat-pack", "alt": "Montagem de móveis barata — montagem de flat-pack e mobiliário" },
+    { "slug": "home-repairs", "title": "Reparações", "desc": "Arranjos, carpintaria e mais", "alt": "Reparações domésticas acessíveis — arranjos, carpintaria e serviços de faz-tudo" },
+    { "slug": "moving-lifting", "title": "Mudanças", "desc": "Embalagem, transporte e carrinhas", "alt": "Serviços de mudanças baratos — embalagem, transporte e aluguer de carrinhas" },
+    { "slug": "electrical", "title": "Eletricidade", "desc": "Luzes, interruptores e cablagem", "alt": "Eletricista barato — luzes, interruptores e cablagem elétrica" },
+    { "slug": "plumbing", "title": "Canalização", "desc": "Torneiras, esgotos e sanitas", "alt": "Canalizador barato — torneiras, esgotos e reparação de sanitas" },
+    { "slug": "painting-decor", "title": "Pintura", "desc": "Interior e exterior", "alt": "Serviços de pintura baratos — pintura interior e exterior" },
+    { "slug": "outdoor", "title": "Exterior", "desc": "Jardim e manutenção", "alt": "Serviços de jardim e manutenção exterior baratos" },
+    { "slug": "mounting-installation", "title": "Instalação", "desc": "TVs, prateleiras e estores", "alt": "Instalação e montagem acessível — TVs, prateleiras e estores" },
+    { "slug": "removal-disposal", "title": "Remoção", "desc": "Entulho e eliminação de resíduos", "alt": "Remoção de entulho e eliminação de resíduos barata" }
   ],
   "howItWorks": {
     "heading": "Como funciona o GruntWrk",

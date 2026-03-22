@@ -21,6 +21,7 @@ export async function generateMetadata({
   return {
     title: dict.meta.title,
     description: dict.meta.description,
+    keywords: dict.meta.keywords,
     alternates: {
       canonical: `${SITE_URL}/${locale}`,
       languages: alternateLanguages,
@@ -32,6 +33,11 @@ export async function generateMetadata({
       siteName: "GruntWrk",
       locale: locale === "pt" ? "pt_PT" : "en_US",
       type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: dict.meta.title,
+      description: dict.meta.description,
     },
   };
 }

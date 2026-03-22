@@ -485,6 +485,7 @@ export default function HomePage({ dict, locale }: { dict: Dictionary; locale: L
             <div className="hp-hero-shell">
               <div className="hp-hero-content">
                 <h1 className="hp-hero-title">{dict.hero.title}</h1>
+                <p className="sr-only">{dict.meta.seoHeading}</p>
                 <div className="hp-hero-actions">
                   <a href={PROVIDER_HREF} className="hp-btn-primary">
                     {dict.hero.ctaProvider}
@@ -613,7 +614,7 @@ export default function HomePage({ dict, locale }: { dict: Dictionary; locale: L
                   >
                     <img
                       src={CATEGORY_IMAGES[cat.slug]}
-                      alt={cat.title}
+                      alt={cat.alt || cat.title}
                       className="hp-cat-photo"
                       loading={index > 3 ? "lazy" : undefined}
                     />
