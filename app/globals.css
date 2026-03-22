@@ -1441,6 +1441,35 @@ a {
   background: #34c080;
 }
 
+.langToggleBar {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.langToggle {
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.langActive {
+  color: var(--brand);
+}
+
+.langLink {
+  color: var(--muted-2);
+  text-decoration: none;
+}
+
+.langLink:hover {
+  color: var(--text);
+}
+
+.langSep {
+  color: var(--muted-2);
+}
+
 .hp {
   max-width: 1100px;
   margin: 0 auto;

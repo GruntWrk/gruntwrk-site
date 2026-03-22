@@ -1,0 +1,207 @@
+{
+  "meta": {
+    "title": "GruntWrk | Serviços Locais Baratos e Acessíveis — Compare Orçamentos",
+    "description": "Encontre prestadores de serviços locais baratos e fiáveis. Compare orçamentos, comunique num só lugar e gira cada passo, do pedido ao pagamento, com o GruntWrk."
+  },
+  "nav": {
+    "startOffering": "Começar a oferecer serviços",
+    "login": "Entrar",
+    "brandSub": "Sem taxas de leads. Sem intermediários."
+  },
+  "hero": {
+    "title": "Grátis para aderir. Grátis para orçamentar. Grátis para contratar.",
+    "ctaProvider": "Começar a oferecer serviços",
+    "ctaCustomer": "Pedir um serviço"
+  },
+  "benefits": {
+    "heading": "Porque é que os clientes pagam menos no GruntWrk",
+    "subtitle": "Quando os prestadores não são cobrados para encontrar trabalho, não precisam de inflacionar os preços. Essa poupança vai diretamente para si.",
+    "items": [
+      {
+        "id": "cheaper",
+        "title": "Preços acessíveis para si",
+        "desc": "Os prestadores de serviços não pagam taxas de leads, pacotes de créditos ou subscrições para estar no GruntWrk. Isso significa orçamentos mais baratos para si."
+      },
+      {
+        "id": "trust",
+        "title": "Contrate com confiança",
+        "desc": "Veja todos os trabalhos que um prestador concluiu, leia o que outros clientes disseram e verifique as avaliações antes de contratar."
+      },
+      {
+        "id": "payment",
+        "title": "Pagamentos simples e seguros",
+        "desc": "Pague metade adiantado, metade quando o trabalho estiver concluído. A plataforma trata de tudo. Sem dinheiro, sem transferências, sem complicações."
+      }
+    ]
+  },
+  "fees": {
+    "kicker": "Diferença de custos",
+    "heading": "A maioria cobra a cada passo.",
+    "subtitle": "Outras plataformas cobram aos prestadores taxas de leads, pacotes de créditos, subscrições e impulsionamentos de visibilidade. Os prestadores recuperam esses custos cobrando mais aos clientes. O GruntWrk cobra apenas uma taxa de pagamento na plataforma, para que os prestadores ganhem mais e os clientes paguem menos.",
+    "pills": [
+      "Sem pay-per-lead",
+      "Sem pacotes de créditos",
+      "Sem subscrições",
+      "Sem impulsionamentos de visibilidade"
+    ],
+    "pillStrong": "Apenas 10% de taxa de pagamento na plataforma",
+    "tableHeaders": ["Tipo de taxa", "Marketplaces típicos", "GruntWrk"],
+    "note": "Baseado em preços públicos e páginas de ajuda consultadas a 16 de março de 2026. As taxas variam por serviço e mercado.",
+    "rows": [
+      {
+        "fee": "Taxa de registo",
+        "marketSummary": "Alguns marketplaces cobram uma taxa única de integração ao prestador antes de poder começar a aceitar trabalhos.",
+        "competitors": ["Taskrabbit"],
+        "gruntwrk": "Grátis"
+      },
+      {
+        "fee": "Taxa de lead ou contacto",
+        "marketSummary": "Pague para desbloquear detalhes do cliente ou gaste dinheiro cada vez que quiser perseguir um trabalho.",
+        "competitors": ["Fixando", "Zaask", "Bark"],
+        "gruntwrk": "Grátis"
+      },
+      {
+        "fee": "Pacotes de créditos",
+        "marketSummary": "Pré-pague por créditos ou pacotes de contacto antes de poder orçamentar pedidos.",
+        "competitors": ["Fixando", "Zaask", "Bark"],
+        "gruntwrk": "Grátis"
+      },
+      {
+        "fee": "Impulsionamentos de visibilidade",
+        "marketSummary": "Pague extra para aparecer mais alto na pesquisa ou obter mais exposição para o seu perfil.",
+        "competitors": ["Fixando", "Checkatrade"],
+        "gruntwrk": "Grátis"
+      },
+      {
+        "fee": "Subscrição ou adesão",
+        "marketSummary": "Taxas mensais de acesso à plataforma ou planos apenas para se manter listado e competir por trabalho.",
+        "competitors": ["Bark", "Checkatrade"],
+        "gruntwrk": "Grátis"
+      },
+      {
+        "fee": "Taxa de pré-seleção ou aceitação",
+        "marketSummary": "Cobrado quando um cliente o seleciona ou mostra um sinal mais forte de interesse.",
+        "competitors": ["MyBuilder"],
+        "gruntwrk": "Grátis"
+      },
+      {
+        "fee": "Taxa adicional de processamento de pagamento",
+        "marketSummary": "Encargos extras relacionados com pagamentos acumulados sobre outras taxas do marketplace.",
+        "competitors": ["Fixando", "Taskrabbit", "Checkatrade"],
+        "gruntwrk": "Grátis"
+      },
+      {
+        "fee": "Retenção ou reserva de pagamento",
+        "marketSummary": "Uma parte dos fundos do prestador pode ser retida na plataforma antes do pagamento ser libertado.",
+        "competitors": ["Fixando"],
+        "gruntwrk": "Grátis"
+      },
+      {
+        "fee": "Taxa de reserva ou pagamento",
+        "marketSummary": "Uma taxa de transação única quando a reserva e o pagamento são concluídos através da plataforma.",
+        "competitors": ["Fixando", "Taskrabbit", "Checkatrade"],
+        "gruntwrk": "10% taxa de pagamento na plataforma"
+      }
+    ]
+  },
+  "provider": {
+    "badge": "Para prestadores",
+    "title": "Gira o seu negócio de serviços sem pagar para perseguir leads",
+    "desc": "Crie um perfil público, partilhe a sua disponibilidade, receba pedidos diretos, compare orçamentos, comunique com clientes, receba pagamentos e volte a reservar trabalhos recorrentes a partir de uma única bancada de trabalho. O GruntWrk foi criado para ajudar os prestadores a gerir o trabalho desde o primeiro pedido até à reserva recorrente, sem taxas de leads, pacotes de contacto ou impulsionamentos de visibilidade.",
+    "perks": [
+      "Sem taxas de pay-per-lead ou desbloqueio de contacto",
+      "Sem pacotes de créditos, subscrições ou taxas de impulsionamento",
+      "Perfil público, disponibilidade e pedidos diretos",
+      "Orçamentos, mensagens, etapas de pagamento e reservas recorrentes numa só bancada de trabalho",
+      "Os seus clientes pagam menos porque não paga taxas de intermediários"
+    ],
+    "cta": "Começar a oferecer serviços"
+  },
+  "customer": {
+    "badge": "Para clientes",
+    "heading": "Em que precisa de ajuda?",
+    "subtitle": "Escolha um serviço e comece o caminho mais rápido para o concluir."
+  },
+  "categories": [
+    { "slug": "cleaning", "title": "Limpeza", "desc": "Limpezas profundas de casa e escritório" },
+    { "slug": "furniture-assembly", "title": "Montagem", "desc": "Móveis e flat-pack" },
+    { "slug": "home-repairs", "title": "Reparações", "desc": "Arranjos, carpintaria e mais" },
+    { "slug": "moving-lifting", "title": "Mudanças", "desc": "Embalagem, transporte e carrinhas" },
+    { "slug": "electrical", "title": "Eletricidade", "desc": "Luzes, interruptores e cablagem" },
+    { "slug": "plumbing", "title": "Canalização", "desc": "Torneiras, esgotos e sanitas" },
+    { "slug": "painting-decor", "title": "Pintura", "desc": "Interior e exterior" },
+    { "slug": "outdoor", "title": "Exterior", "desc": "Jardim e manutenção" },
+    { "slug": "mounting-installation", "title": "Instalação", "desc": "TVs, prateleiras e estores" },
+    { "slug": "removal-disposal", "title": "Remoção", "desc": "Entulho e eliminação de resíduos" }
+  ],
+  "howItWorks": {
+    "heading": "Como funciona o GruntWrk",
+    "subtitle": "Um fluxo simples do pedido à conclusão",
+    "steps": [
+      {
+        "num": "1",
+        "title": "Descreva o que precisa",
+        "body": "Publique o seu pedido, localização e orçamento."
+      },
+      {
+        "num": "2",
+        "title": "Escolha quem contratar",
+        "body": "Receba orçamentos de prestadores compatíveis ou reserve diretamente alguém que já utilizou antes."
+      },
+      {
+        "num": "3",
+        "title": "Gira o trabalho num só lugar",
+        "body": "Use a sua bancada de trabalho para enviar mensagens, confirmar o prestador, acompanhar o pagamento e voltar a reservar prestadores de confiança."
+      }
+    ]
+  },
+  "workbench": {
+    "title": "Compare, reserve, comunique, pague e volte a reservar.",
+    "carouselLabel": "Carrossel de benefícios para clientes",
+    "allLabel": "Todos os benefícios juntos",
+    "points": [
+      {
+        "id": "quotes",
+        "title": "Compare orçamentos com clareza",
+        "desc": "Os prestadores competem em qualidade e preço, não em quem pagou mais por visibilidade. Veja as suas opções lado a lado e escolha a melhor."
+      },
+      {
+        "id": "book",
+        "title": "Reserve diretamente quando estiver pronto",
+        "desc": "Já sabe quem quer? Envie um pedido diretamente a esse prestador. Verifique as avaliações e trabalhos anteriores primeiro."
+      },
+      {
+        "id": "message",
+        "title": "Mantenha tudo junto",
+        "desc": "Mensagens, progresso, pagamento e avaliações ficam dentro da bancada de trabalho. Um só lugar para todo o histórico."
+      },
+      {
+        "id": "pay",
+        "title": "Pague e volte a reservar com confiança",
+        "desc": "Pague metade adiantado, metade quando o trabalho estiver concluído. Sem dinheiro, sem transferências. A plataforma trata de tudo."
+      }
+    ]
+  },
+  "reviews": {
+    "heading": "O que as pessoas estão a dizer.",
+    "ratingLabel": "Acesso Antecipado",
+    "items": [
+      { "stars": 5, "text": "Plataforma muito eficaz para ligar clientes e prestadores de serviços. Encontrar e reservar um trabalho é simples e rápido." },
+      { "stars": 4, "text": "A funcionalidade de quadro de avisos está bem organizada e facilita a procura de serviços disponíveis na sua zona." },
+      { "stars": 5, "text": "Gosto de como os perfis mostram avaliações, competências e reviews. Ajuda os utilizadores a avaliar rapidamente os prestadores." },
+      { "stars": 5, "text": "Sem taxas de leads, sem pacotes de créditos. Basta inscrever-me e começar a orçamentar. Mais do que ganho fica comigo." }
+    ]
+  },
+  "apps": {
+    "kicker": "Apps em breve",
+    "heading": "A bancada de trabalho GruntWrk está a chegar ao iOS e Android.",
+    "subtitle": "Navegue por prestadores, gira trabalhos e mantenha pagamentos e mensagens num só lugar a partir do seu telemóvel.",
+    "comingSoon": "Em breve",
+    "appStore": "App Store",
+    "googlePlay": "Google Play"
+  },
+  "footer": {
+    "storeLabel": "Disponível em breve no iOS e Android",
+    "copy": "Criado para tornar os serviços locais acessíveis e claros para clientes e prestadores."
+  }
+}

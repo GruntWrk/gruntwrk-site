@@ -1,0 +1,207 @@
+{
+  "meta": {
+    "title": "GruntWrk | Affordable Local Services — Compare Quotes & Hire",
+    "description": "Find cheap, reliable local service providers. Compare quotes, chat in one place, and manage every step from request to payment with GruntWrk."
+  },
+  "nav": {
+    "startOffering": "Start offering services",
+    "login": "Login",
+    "brandSub": "No lead fees. No middleman."
+  },
+  "hero": {
+    "title": "Free to join. Free to quote. Free to hire.",
+    "ctaProvider": "Start offering services",
+    "ctaCustomer": "Request a service"
+  },
+  "benefits": {
+    "heading": "Why customers pay less on GruntWrk",
+    "subtitle": "When providers aren't charged to find work, they don't need to inflate their prices. That saving goes straight to you.",
+    "items": [
+      {
+        "id": "cheaper",
+        "title": "Affordable prices for you",
+        "desc": "Service providers don't pay lead fees, credit packs, or subscriptions to be on GruntWrk. That means more affordable quotes for you."
+      },
+      {
+        "id": "trust",
+        "title": "Hire with confidence",
+        "desc": "See every job a provider has completed, read what other customers said, and check their ratings before you hire."
+      },
+      {
+        "id": "payment",
+        "title": "Simple, secure payments",
+        "desc": "Pay half upfront, half when the job is done. The platform handles everything. No cash, no transfers, no hassle."
+      }
+    ]
+  },
+  "fees": {
+    "kicker": "Cost difference",
+    "heading": "Most others charge at every step.",
+    "subtitle": "Other platforms charge providers lead fees, credit packs, subscriptions, and visibility boosts. Providers recover those costs by charging customers more. GruntWrk only charges a platform payment fee, so providers keep more and customers pay less.",
+    "pills": [
+      "No pay-per-lead",
+      "No credit packs",
+      "No subscriptions",
+      "No visibility boosts"
+    ],
+    "pillStrong": "Only 10% platform payment fee",
+    "tableHeaders": ["Fee type", "Typical marketplaces", "GruntWrk"],
+    "note": "Based on public pricing and help-center pages reviewed on March 16, 2026. Fees vary by service and market.",
+    "rows": [
+      {
+        "fee": "Registration fee",
+        "marketSummary": "Some marketplaces charge a one-time provider onboarding fee before you can start taking work.",
+        "competitors": ["Taskrabbit"],
+        "gruntwrk": "Free"
+      },
+      {
+        "fee": "Lead or contact fee",
+        "marketSummary": "Pay to unlock customer details or spend money each time you want to pursue a job.",
+        "competitors": ["Fixando", "Zaask", "Bark"],
+        "gruntwrk": "Free"
+      },
+      {
+        "fee": "Credit packs",
+        "marketSummary": "Prepay for credits or contact packs before you can quote on requests.",
+        "competitors": ["Fixando", "Zaask", "Bark"],
+        "gruntwrk": "Free"
+      },
+      {
+        "fee": "Visibility boosts",
+        "marketSummary": "Pay extra to appear higher in search or unlock more exposure for your profile.",
+        "competitors": ["Fixando", "Checkatrade"],
+        "gruntwrk": "Free"
+      },
+      {
+        "fee": "Subscription or membership",
+        "marketSummary": "Monthly platform access or plan fees just to stay listed and compete for work.",
+        "competitors": ["Bark", "Checkatrade"],
+        "gruntwrk": "Free"
+      },
+      {
+        "fee": "Shortlist or acceptance fee",
+        "marketSummary": "Charged when a customer shortlists you or shows a stronger signal of intent.",
+        "competitors": ["MyBuilder"],
+        "gruntwrk": "Free"
+      },
+      {
+        "fee": "Payment-processing add-on fee",
+        "marketSummary": "Extra payment-related charges layered on top of other marketplace fees.",
+        "competitors": ["Fixando", "Taskrabbit", "Checkatrade"],
+        "gruntwrk": "Free"
+      },
+      {
+        "fee": "Payout reserve or holdback",
+        "marketSummary": "A portion of provider funds can be retained on-platform before payout is released.",
+        "competitors": ["Fixando"],
+        "gruntwrk": "Free"
+      },
+      {
+        "fee": "Booking or payment fee",
+        "marketSummary": "A single transaction fee when the booking and payment are completed through the platform.",
+        "competitors": ["Fixando", "Taskrabbit", "Checkatrade"],
+        "gruntwrk": "10% platform payment fee"
+      }
+    ]
+  },
+  "provider": {
+    "badge": "For providers",
+    "title": "Run your service business without paying to chase leads",
+    "desc": "Build a public profile, share your availability, receive direct requests, compare quotes, message customers, take payment, and rebook repeat work from one workbench. GruntWrk is built to help providers run the job from first request to repeat booking without lead fees, contact packs, or visibility boosts.",
+    "perks": [
+      "No pay-per-lead or contact unlock fees",
+      "No credit packs, subscriptions, or boost charges",
+      "Public profile, availability, and direct requests",
+      "Quotes, messaging, payment steps, and repeat bookings in one workbench",
+      "Your customers pay less because you don't pay middleman fees"
+    ],
+    "cta": "Start offering services"
+  },
+  "customer": {
+    "badge": "For customers",
+    "heading": "What do you need help with?",
+    "subtitle": "Choose a service and start the fastest path to getting it done."
+  },
+  "categories": [
+    { "slug": "cleaning", "title": "Cleaning", "desc": "Home & office deep cleans" },
+    { "slug": "furniture-assembly", "title": "Assembly", "desc": "Flat-pack & furniture" },
+    { "slug": "home-repairs", "title": "Repairs", "desc": "Fixes, carpentry & more" },
+    { "slug": "moving-lifting", "title": "Moving", "desc": "Packing, lifting & vans" },
+    { "slug": "electrical", "title": "Electrical", "desc": "Lights, switches & wiring" },
+    { "slug": "plumbing", "title": "Plumbing", "desc": "Taps, drains & toilets" },
+    { "slug": "painting-decor", "title": "Painting", "desc": "Interior & exterior" },
+    { "slug": "outdoor", "title": "Outdoor", "desc": "Garden & maintenance" },
+    { "slug": "mounting-installation", "title": "Mounting", "desc": "TVs, shelves & blinds" },
+    { "slug": "removal-disposal", "title": "Removal", "desc": "Junk & waste disposal" }
+  ],
+  "howItWorks": {
+    "heading": "How GruntWrk works",
+    "subtitle": "A simple flow from request to completion",
+    "steps": [
+      {
+        "num": "1",
+        "title": "Describe what you need",
+        "body": "Post your request, location, and budget."
+      },
+      {
+        "num": "2",
+        "title": "Choose who to hire",
+        "body": "Receive quotes from matched providers or book directly with someone you've used before."
+      },
+      {
+        "num": "3",
+        "title": "Manage the job in one place",
+        "body": "Use your workbench to message, confirm the provider, follow payment, and rebook trusted providers with confidence."
+      }
+    ]
+  },
+  "workbench": {
+    "title": "Compare, book, message, pay, and rebook.",
+    "carouselLabel": "Customer benefits carousel",
+    "allLabel": "All benefits together",
+    "points": [
+      {
+        "id": "quotes",
+        "title": "Compare quotes clearly",
+        "desc": "Providers compete on quality and price, not on who paid more for visibility. See your options side by side and pick the right fit."
+      },
+      {
+        "id": "book",
+        "title": "Book directly when ready",
+        "desc": "Already know who you want? Send a request straight to that provider. Check their ratings and previous jobs first."
+      },
+      {
+        "id": "message",
+        "title": "Keep everything together",
+        "desc": "Messages, progress, payment, and reviews live inside the job workbench. One place for the full history."
+      },
+      {
+        "id": "pay",
+        "title": "Pay and rebook with confidence",
+        "desc": "Pay half upfront, half when the job is done. No cash, no transfers. The platform handles it all."
+      }
+    ]
+  },
+  "reviews": {
+    "heading": "What people are saying.",
+    "ratingLabel": "Early Access",
+    "items": [
+      { "stars": 5, "text": "Very effective platform for connecting clients and service providers. Finding and booking a job is simple and fast." },
+      { "stars": 4, "text": "The notice board feature is well organised and makes it easy to find available services in your area." },
+      { "stars": 5, "text": "I like how profiles show ratings, skills, and reviews. It helps users quickly evaluate providers." },
+      { "stars": 5, "text": "No lead fees, no credit packs. I just sign up and start quoting. More of what I earn stays with me." }
+    ]
+  },
+  "apps": {
+    "kicker": "Apps coming soon",
+    "heading": "The GruntWrk workbench is coming to iOS and Android.",
+    "subtitle": "Browse providers, manage jobs, and keep payment and messages in one place from your phone.",
+    "comingSoon": "Coming soon",
+    "appStore": "App Store",
+    "googlePlay": "Google Play"
+  },
+  "footer": {
+    "storeLabel": "Available soon on iOS and Android",
+    "copy": "Built to make local services affordable and clear for both customers and providers."
+  }
+}

@@ -1,6 +1,7 @@
 "use client";
 
 import { type CSSProperties, type KeyboardEvent, useEffect, useRef, useState } from "react";
+import type { Dictionary, Locale } from "../../lib/i18n";
 
 const APP_BASE_URL = "https://app.gruntwrk.com";
 const HOME_HREF = APP_BASE_URL;
@@ -22,190 +23,14 @@ const CATEGORY_IMAGES: Record<string, string> = {
   "removal-disposal": `${APP_BASE_URL}/images/categories/removal-disposal.png`,
 };
 
-const HERO_CATEGORIES = [
-  { slug: "cleaning", title: "Cleaning", desc: "Home & office deep cleans" },
-  { slug: "furniture-assembly", title: "Assembly", desc: "Flat-pack & furniture" },
-  { slug: "home-repairs", title: "Repairs", desc: "Fixes, carpentry & more" },
-  { slug: "moving-lifting", title: "Moving", desc: "Packing, lifting & vans" },
-  { slug: "electrical", title: "Electrical", desc: "Lights, switches & wiring" },
-  { slug: "plumbing", title: "Plumbing", desc: "Taps, drains & toilets" },
-  { slug: "painting-decor", title: "Painting", desc: "Interior & exterior" },
-  { slug: "outdoor", title: "Outdoor", desc: "Garden & maintenance" },
-  { slug: "mounting-installation", title: "Mounting", desc: "TVs, shelves & blinds" },
-  { slug: "removal-disposal", title: "Removal", desc: "Junk & waste disposal" },
-];
-
-const HOW_STEPS = [
-  {
-    num: "1",
-    title: "Describe what you need",
-    body: "Post your request, location, and budget.",
-  },
-  {
-    num: "2",
-    title: "Choose who to hire",
-    body: "Receive quotes from matched providers or book directly with someone you've used before.",
-  },
-  {
-    num: "3",
-    title: "Manage the job in one place",
-    body: "Use your workbench to message, confirm the provider, follow payment, and rebook trusted providers with confidence.",
-  },
-];
-
-const WORKBENCH_POINTS = [
-  {
-    id: "quotes",
-    title: "Compare quotes clearly",
-    desc: "Providers compete on quality and price, not on who paid more for visibility. See your options side by side and pick the right fit.",
-  },
-  {
-    id: "book",
-    title: "Book directly when ready",
-    desc: "Already know who you want? Send a request straight to that provider. Check their ratings and previous jobs first.",
-  },
-  {
-    id: "message",
-    title: "Keep everything together",
-    desc: "Messages, progress, payment, and reviews live inside the job workbench. One place for the full history.",
-  },
-  {
-    id: "pay",
-    title: "Pay and rebook with confidence",
-    desc: "Pay half upfront, half when the job is done. No cash, no transfers. The platform handles it all.",
-  },
-] as const;
-
-const FEE_COMPARISON_ROWS = [
-  {
-    fee: "Registration fee",
-    marketSummary: "Some marketplaces charge a one-time provider onboarding fee before you can start taking work.",
-    competitors: ["Taskrabbit"],
-    gruntwrk: "Free",
-  },
-  {
-    fee: "Lead or contact fee",
-    marketSummary: "Pay to unlock customer details or spend money each time you want to pursue a job.",
-    competitors: ["Fixando", "Zaask", "Bark"],
-    gruntwrk: "Free",
-  },
-  {
-    fee: "Credit packs",
-    marketSummary: "Prepay for credits or contact packs before you can quote on requests.",
-    competitors: ["Fixando", "Zaask", "Bark"],
-    gruntwrk: "Free",
-  },
-  {
-    fee: "Visibility boosts",
-    marketSummary: "Pay extra to appear higher in search or unlock more exposure for your profile.",
-    competitors: ["Fixando", "Checkatrade"],
-    gruntwrk: "Free",
-  },
-  {
-    fee: "Subscription or membership",
-    marketSummary: "Monthly platform access or plan fees just to stay listed and compete for work.",
-    competitors: ["Bark", "Checkatrade"],
-    gruntwrk: "Free",
-  },
-  {
-    fee: "Shortlist or acceptance fee",
-    marketSummary: "Charged when a customer shortlists you or shows a stronger signal of intent.",
-    competitors: ["MyBuilder"],
-    gruntwrk: "Free",
-  },
-  {
-    fee: "Payment-processing add-on fee",
-    marketSummary: "Extra payment-related charges layered on top of other marketplace fees.",
-    competitors: ["Fixando", "Taskrabbit", "Checkatrade"],
-    gruntwrk: "Free",
-  },
-  {
-    fee: "Payout reserve or holdback",
-    marketSummary: "A portion of provider funds can be retained on-platform before payout is released.",
-    competitors: ["Fixando"],
-    gruntwrk: "Free",
-  },
-  {
-    fee: "Booking or payment fee",
-    marketSummary: "A single transaction fee when the booking and payment are completed through the platform.",
-    competitors: ["Fixando", "Taskrabbit", "Checkatrade"],
-    gruntwrk: "10% platform payment fee",
-  },
-] as const;
-
-const CUSTOMER_BENEFITS = [
-  {
-    id: "cheaper",
-    title: "Lower prices for you",
-    desc: "Service providers don't pay lead fees, credit packs, or subscriptions to be on GruntWrk. That means they don't need to pass those costs on to you.",
-  },
-  {
-    id: "trust",
-    title: "Hire with confidence",
-    desc: "See every job a provider has completed, read what other customers said, and check their ratings before you hire.",
-  },
-  {
-    id: "payment",
-    title: "Simple, secure payments",
-    desc: "Pay half upfront, half when the job is done. The platform handles everything. No cash, no transfers, no hassle.",
-  },
-] as const;
-
-type WorkbenchPoint = (typeof WORKBENCH_POINTS)[number];
-type Review = { stars: 4 | 5; text: string };
-
-const REVIEWS: Review[] = [
-  {
-    stars: 5,
-    text: "Very effective platform for connecting clients and service providers. Finding and booking a job is simple and fast.",
-  },
-  {
-    stars: 4,
-    text: "The notice board feature is well organised and makes it easy to find available services in your area.",
-  },
-  {
-    stars: 5,
-    text: "I like how profiles show ratings, skills, and reviews. It helps users quickly evaluate providers.",
-  },
-  {
-    stars: 5,
-    text: "No lead fees, no credit packs. I just sign up and start quoting. More of what I earn stays with me.",
-  },
-];
-
-const SOCIALS = [
-  {
-    label: "LinkedIn",
-    href: "https://www.linkedin.com/company/gruntwrk",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-      </svg>
-    ),
-  },
-  {
-    label: "X",
-    href: "https://x.com/gruntwrk_x",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.259 5.631L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z" />
-      </svg>
-    ),
-  },
-  {
-    label: "TikTok",
-    href: "https://www.tiktok.com/@gruntwrk_official",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-        <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z" />
-      </svg>
-    ),
-  },
-];
-
 const AUTO_ADVANCE_MS = 3000;
 const STACK_PAUSE_MS = 4200;
 const USER_IDLE_MS = 8000;
+
+const LOCALES_TOGGLE: { code: Locale; label: string }[] = [
+  { code: "en", label: "EN" },
+  { code: "pt", label: "PT" },
+];
 
 function loginHref(next: string) {
   return `${APP_BASE_URL}/login?next=${encodeURIComponent(next)}`;
@@ -255,7 +80,7 @@ function CheckIcon() {
   );
 }
 
-function BenefitIcon({ id }: { id: "cheaper" | "trust" | "payment" }) {
+function BenefitIcon({ id }: { id: string }) {
   if (id === "cheaper") {
     return (
       <svg className="hp-cb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -291,7 +116,7 @@ function StarIcon({ filled }: { filled: boolean }) {
   );
 }
 
-function Stars({ count }: { count: 4 | 5 }) {
+function Stars({ count }: { count: number }) {
   return (
     <div className="stars" aria-label={`${count} out of 5 stars`}>
       {[1, 2, 3, 4, 5].map((n) => (
@@ -317,28 +142,7 @@ function GooglePlayIcon() {
   );
 }
 
-function StoreBadges() {
-  return (
-    <div className="storeBadges">
-      <div className="storeBadge storeBadgeDisabled">
-        <AppleIcon />
-        <div className="storeBadgeLabels">
-          <span className="storeBadgeSmall">Coming soon</span>
-          <span className="storeBadgeLarge">App Store</span>
-        </div>
-      </div>
-      <div className="storeBadge storeBadgeDisabled">
-        <GooglePlayIcon />
-        <div className="storeBadgeLabels">
-          <span className="storeBadgeSmall">Coming soon</span>
-          <span className="storeBadgeLarge">Google Play</span>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function WorkbenchIcon({ id }: { id: WorkbenchPoint["id"] }) {
+function WorkbenchIcon({ id }: { id: string }) {
   if (id === "quotes") {
     return (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -378,7 +182,7 @@ function WorkbenchIcon({ id }: { id: WorkbenchPoint["id"] }) {
   );
 }
 
-function BlurredCompetitors({ names }: { names: readonly string[] }) {
+function BlurredCompetitors({ names }: { names: string[] }) {
   return (
     <div className="hp-fee-market-list" aria-label="Example competitor marketplaces">
       {names.map((name) => (
@@ -390,7 +194,26 @@ function BlurredCompetitors({ names }: { names: readonly string[] }) {
   );
 }
 
-function AppShellHeader() {
+function LanguageToggle({ current }: { current: Locale }) {
+  return (
+    <div className="langToggle">
+      {LOCALES_TOGGLE.map((loc, i) => (
+        <span key={loc.code}>
+          {i > 0 && <span className="langSep">{"\u00A0|\u00A0"}</span>}
+          {loc.code === current ? (
+            <span className="langActive">{loc.label}</span>
+          ) : (
+            <a href={`/${loc.code}`} className="langLink">
+              {loc.label}
+            </a>
+          )}
+        </span>
+      ))}
+    </div>
+  );
+}
+
+function AppShellHeader({ dict, locale }: { dict: Dictionary; locale: Locale }) {
   return (
     <header className="appShellHeader">
       <div className="appShellHeaderInner">
@@ -398,16 +221,16 @@ function AppShellHeader() {
           <BrandMark className="navLogoIcon" />
           <div className="appShellBrandCopy">
             <span className="appShellBrandName">GruntWrk</span>
-            <span className="appShellBrandSub">No lead fees. No middleman.</span>
+            <span className="appShellBrandSub">{dict.nav.brandSub}</span>
           </div>
         </a>
 
         <div className="appShellHeaderActions">
           <a href={PROVIDER_HREF} className="appShellHeaderBtn appShellHeaderBtnPrimary">
-            Start offering services
+            {dict.nav.startOffering}
           </a>
           <a href={LOGIN_HREF} className="appShellHeaderBtn appShellHeaderBtnSecondary">
-            Login
+            {dict.nav.login}
           </a>
         </div>
       </div>
@@ -415,7 +238,29 @@ function AppShellHeader() {
   );
 }
 
-function HomeTrustMarquee(props: { backgroundImage: string }) {
+function StoreBadges({ dict }: { dict: Dictionary }) {
+  return (
+    <div className="storeBadges">
+      <div className="storeBadge storeBadgeDisabled">
+        <AppleIcon />
+        <div className="storeBadgeLabels">
+          <span className="storeBadgeSmall">{dict.apps.comingSoon}</span>
+          <span className="storeBadgeLarge">{dict.apps.appStore}</span>
+        </div>
+      </div>
+      <div className="storeBadge storeBadgeDisabled">
+        <GooglePlayIcon />
+        <div className="storeBadgeLabels">
+          <span className="storeBadgeSmall">{dict.apps.comingSoon}</span>
+          <span className="storeBadgeLarge">{dict.apps.googlePlay}</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function HomeTrustMarquee({ dict, backgroundImage }: { dict: Dictionary; backgroundImage: string }) {
+  const points = dict.workbench.points;
   const viewportRef = useRef<HTMLDivElement | null>(null);
   const slideRefs = useRef<Array<HTMLDivElement | null>>([]);
   const resumeTimerRef = useRef<number | null>(null);
@@ -423,7 +268,7 @@ function HomeTrustMarquee(props: { backgroundImage: string }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [userPaused, setUserPaused] = useState(false);
 
-  const slideCount = WORKBENCH_POINTS.length + 1;
+  const slideCount = points.length + 1;
 
   useEffect(() => {
     return () => {
@@ -503,14 +348,14 @@ function HomeTrustMarquee(props: { backgroundImage: string }) {
       aria-labelledby="hp-workbench-marquee-title"
       style={
         {
-          "--hp-marquee-bg": `linear-gradient(110deg, rgba(13, 22, 18, 0.84) 0%, rgba(13, 22, 18, 0.44) 42%, rgba(13, 22, 18, 0.62) 100%), url("${props.backgroundImage}")`,
+          "--hp-marquee-bg": `linear-gradient(110deg, rgba(13, 22, 18, 0.84) 0%, rgba(13, 22, 18, 0.44) 42%, rgba(13, 22, 18, 0.62) 100%), url("${backgroundImage}")`,
         } as CSSProperties
       }
     >
       <div className="hp-workbench-marquee-frame">
         <div className="hp-workbench-copy">
           <h2 id="hp-workbench-marquee-title" className="hp-workbench-title">
-            Compare, book, message, pay, and rebook.
+            {dict.workbench.title}
           </h2>
         </div>
 
@@ -518,14 +363,14 @@ function HomeTrustMarquee(props: { backgroundImage: string }) {
           <div
             ref={viewportRef}
             className="hp-workbench-viewport"
-            aria-label="Customer benefits carousel"
+            aria-label={dict.workbench.carouselLabel}
             tabIndex={0}
             onKeyDown={handleKeyDown}
             onPointerDown={pauseForUser}
             onTouchStart={pauseForUser}
           >
             <div className="hp-workbench-track">
-              {WORKBENCH_POINTS.map((point, index) => (
+              {points.map((point, index) => (
                 <div
                   key={point.id}
                   ref={(node) => {
@@ -551,8 +396,8 @@ function HomeTrustMarquee(props: { backgroundImage: string }) {
                 }}
                 className="hp-workbench-slide hp-workbench-slide-stack"
               >
-                <div className="hp-workbench-stack" aria-label="All benefits together">
-                  {WORKBENCH_POINTS.map((point) => (
+                <div className="hp-workbench-stack" aria-label={dict.workbench.allLabel}>
+                  {points.map((point) => (
                     <article key={`${point.id}-stack`} className="hp-workbench-stack-card">
                       <div className="hp-workbench-card-icon">
                         <WorkbenchIcon id={point.id} />
@@ -575,7 +420,7 @@ function HomeTrustMarquee(props: { backgroundImage: string }) {
                   key={`dot-${index}`}
                   type="button"
                   className={`hp-workbench-dot ${index === activeIndex ? "is-active" : ""}`}
-                  aria-label={index === slideCount - 1 ? "Show all points together" : `Show point ${index + 1}`}
+                  aria-label={index === slideCount - 1 ? dict.workbench.allLabel : `Show point ${index + 1}`}
                   aria-selected={index === activeIndex}
                   role="tab"
                   onClick={() => {
@@ -592,24 +437,61 @@ function HomeTrustMarquee(props: { backgroundImage: string }) {
   );
 }
 
-export default function Home() {
+const SOCIALS = [
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/company/gruntwrk",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+      </svg>
+    ),
+  },
+  {
+    label: "X",
+    href: "https://x.com/gruntwrk_x",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.259 5.631L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z" />
+      </svg>
+    ),
+  },
+  {
+    label: "TikTok",
+    href: "https://www.tiktok.com/@gruntwrk_official",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z" />
+      </svg>
+    ),
+  },
+];
+
+export default function HomePage({ dict, locale }: { dict: Dictionary; locale: Locale }) {
+  const categories = dict.categories;
+  const reviews = dict.reviews.items;
+  const feeRows = dict.fees.rows;
+
   return (
     <div className="siteFrame">
-      <AppShellHeader />
+      <AppShellHeader dict={dict} locale={locale} />
 
       <main className="sitePage">
         <div className="hp">
+          <div className="langToggleBar">
+            <LanguageToggle current={locale} />
+          </div>
           <section className="hp-hero">
             <div className="hp-hero-shell">
               <div className="hp-hero-content">
-                <h1 className="hp-hero-title">Free to join. Free to quote. Free to hire.</h1>
+                <h1 className="hp-hero-title">{dict.hero.title}</h1>
                 <div className="hp-hero-actions">
                   <a href={PROVIDER_HREF} className="hp-btn-primary">
-                    Start offering services
+                    {dict.hero.ctaProvider}
                     <ArrowIcon />
                   </a>
                   <a href={REQUEST_SERVICE_HREF} className="hp-btn-secondary">
-                    Request a service
+                    {dict.hero.ctaCustomer}
                     <ArrowIcon />
                   </a>
                 </div>
@@ -619,15 +501,12 @@ export default function Home() {
 
           <section className="hp-cb">
             <div className="hp-section-head">
-              <h2 className="hp-h2">Why customers pay less on GruntWrk</h2>
-              <p className="hp-subtitle">
-                When providers aren't charged to find work, they don't need to inflate their prices.
-                That saving goes straight to you.
-              </p>
+              <h2 className="hp-h2">{dict.benefits.heading}</h2>
+              <p className="hp-subtitle">{dict.benefits.subtitle}</p>
             </div>
 
             <div className="hp-cb-grid">
-              {CUSTOMER_BENEFITS.map((benefit) => (
+              {dict.benefits.items.map((benefit) => (
                 <article key={benefit.id} className="hp-cb-card">
                   <h3 className="hp-cb-title">{benefit.title}</h3>
                   <p className="hp-cb-desc">{benefit.desc}</p>
@@ -638,34 +517,29 @@ export default function Home() {
 
           <section className="hp-fees" aria-labelledby="hp-fees-title">
             <div className="hp-fees-head">
-              <div className="hp-fees-kicker">Cost difference</div>
-              <h2 id="hp-fees-title" className="hp-h2">Most others charge at every step.</h2>
-              <p className="hp-subtitle hp-fees-subtitle">
-                Other platforms charge providers lead fees, credit packs, subscriptions, and visibility boosts.
-                Providers recover those costs by charging customers more.
-                GruntWrk only charges a platform payment fee, so providers keep more and customers pay less.
-              </p>
+              <div className="hp-fees-kicker">{dict.fees.kicker}</div>
+              <h2 id="hp-fees-title" className="hp-h2">{dict.fees.heading}</h2>
+              <p className="hp-subtitle hp-fees-subtitle">{dict.fees.subtitle}</p>
             </div>
 
             <div className="hp-fees-pills" aria-label="Key fee differences">
-              <span className="hp-fees-pill">No pay-per-lead</span>
-              <span className="hp-fees-pill">No credit packs</span>
-              <span className="hp-fees-pill">No subscriptions</span>
-              <span className="hp-fees-pill">No visibility boosts</span>
-              <span className="hp-fees-pill hp-fees-pill-strong">Only 10% platform payment fee</span>
+              {dict.fees.pills.map((pill) => (
+                <span key={pill} className="hp-fees-pill">{pill}</span>
+              ))}
+              <span className="hp-fees-pill hp-fees-pill-strong">{dict.fees.pillStrong}</span>
             </div>
 
             <div className="hp-fee-table-wrap">
               <table className="hp-fee-table">
                 <thead>
                   <tr>
-                    <th scope="col">Fee type</th>
-                    <th scope="col">Typical marketplaces</th>
-                    <th scope="col">GruntWrk</th>
+                    {dict.fees.tableHeaders.map((header) => (
+                      <th key={header} scope="col">{header}</th>
+                    ))}
                   </tr>
                 </thead>
                 <tbody>
-                  {FEE_COMPARISON_ROWS.map((row) => (
+                  {feeRows.map((row) => (
                     <tr key={row.fee}>
                       <td>
                         <span className="hp-fee-label">{row.fee}</span>
@@ -686,7 +560,7 @@ export default function Home() {
             </div>
 
             <div className="hp-fee-cards">
-              {FEE_COMPARISON_ROWS.map((row) => (
+              {feeRows.map((row) => (
                 <article key={`m-${row.fee}`} className="hp-fee-card">
                   <div className="hp-fee-card-head">
                     <span className="hp-fee-label">{row.fee}</span>
@@ -699,32 +573,22 @@ export default function Home() {
               ))}
             </div>
 
-            <p className="hp-fee-note">
-              Based on public pricing and help-center pages reviewed on March 16, 2026. Fees vary by service and market.
-            </p>
+            <p className="hp-fee-note">{dict.fees.note}</p>
           </section>
 
           <section className="hp-provider">
             <div className="hp-provider-inner">
               <div className="hp-provider-left">
-                <div className="hp-provider-badge">For providers</div>
-                <h2 className="hp-provider-title">Run your service business without paying to chase leads</h2>
-                <p className="hp-provider-desc">
-                  Build a public profile, share your availability, receive direct requests,
-                  compare quotes, message customers, take payment, and rebook repeat work
-                  from one workbench. GruntWrk is built to help providers run the job from
-                  first request to repeat booking without lead fees, contact packs, or
-                  visibility boosts.
-                </p>
+                <div className="hp-provider-badge">{dict.provider.badge}</div>
+                <h2 className="hp-provider-title">{dict.provider.title}</h2>
+                <p className="hp-provider-desc">{dict.provider.desc}</p>
                 <ul className="hp-provider-perks">
-                  <li><CheckIcon /> No pay-per-lead or contact unlock fees</li>
-                  <li><CheckIcon /> No credit packs, subscriptions, or boost charges</li>
-                  <li><CheckIcon /> Public profile, availability, and direct requests</li>
-                  <li><CheckIcon /> Quotes, messaging, payment steps, and repeat bookings in one workbench</li>
-                  <li><CheckIcon /> Your customers pay less because you don't pay middleman fees</li>
+                  {dict.provider.perks.map((perk) => (
+                    <li key={perk}><CheckIcon /> {perk}</li>
+                  ))}
                 </ul>
                 <a className="hp-btn-primary" href={PROVIDER_HREF}>
-                  Start offering services
+                  {dict.provider.cta}
                   <ArrowIcon />
                 </a>
               </div>
@@ -734,13 +598,13 @@ export default function Home() {
           <section className="hp-customer">
             <div className="hp-customer-inner">
               <div className="hp-section-head">
-                <div className="hp-customer-badge">For customers</div>
-                <h2 className="hp-h2">What do you need help with?</h2>
-                <p className="hp-subtitle">Choose a service and start the fastest path to getting it done.</p>
+                <div className="hp-customer-badge">{dict.customer.badge}</div>
+                <h2 className="hp-h2">{dict.customer.heading}</h2>
+                <p className="hp-subtitle">{dict.customer.subtitle}</p>
               </div>
 
               <div className="hp-cat-grid">
-                {HERO_CATEGORIES.map((cat, index) => (
+                {categories.map((cat, index) => (
                   <a
                     key={cat.slug}
                     href={categoryHref(cat.slug)}
@@ -769,12 +633,12 @@ export default function Home() {
 
           <section className="hp-how">
             <div className="hp-section-head">
-              <h2 className="hp-h2">How GruntWrk works</h2>
-              <p className="hp-subtitle">A simple flow from request to completion</p>
+              <h2 className="hp-h2">{dict.howItWorks.heading}</h2>
+              <p className="hp-subtitle">{dict.howItWorks.subtitle}</p>
             </div>
 
             <div className="hp-how-grid">
-              {HOW_STEPS.map((step, index) => (
+              {dict.howItWorks.steps.map((step, index) => (
                 <article key={step.num} className="hp-how-card" style={{ animationDelay: `${index * 80}ms` }}>
                   <div className="hp-how-num">{step.num}</div>
                   <div className="hp-how-copy">
@@ -786,24 +650,23 @@ export default function Home() {
             </div>
           </section>
 
-          <HomeTrustMarquee backgroundImage={MARQUEE_BG} />
+          <HomeTrustMarquee dict={dict} backgroundImage={MARQUEE_BG} />
         </div>
 
         <section className="reviewsSection">
           <div className="sectionInner">
             <div className="reviewsSectionHeader">
-              <h2 className="sectionHeading">What people are saying.</h2>
+              <h2 className="sectionHeading">{dict.reviews.heading}</h2>
               <div className="reviewsSectionMeta">
                 <span className="ratingPillLarge">4.8</span>
-                <span className="reviewsSectionSub">Early Access</span>
+                <span className="reviewsSectionSub">{dict.reviews.ratingLabel}</span>
               </div>
             </div>
-
           </div>
 
           <div className="reviewsMarquee">
             <div className="reviewsTrack">
-              {[...REVIEWS, ...REVIEWS].map((review, index) => (
+              {[...reviews, ...reviews].map((review, index) => (
                 <div key={index} className="reviewCardNew">
                   <Stars count={review.stars} />
                   <p className="reviewTextNew">{review.text}</p>
@@ -816,15 +679,13 @@ export default function Home() {
         <section className="screensSection">
           <div className="appsSectionHeader">
             <div className="appsSectionCopy">
-              <span className="siteSectionKicker">Apps coming soon</span>
-              <h2 className="sectionHeading appsHeading">The GruntWrk workbench is coming to iOS and Android.</h2>
-              <p className="siteSectionSub appsSub">
-                Browse providers, manage jobs, and keep payment and messages in one place from your phone.
-              </p>
+              <span className="siteSectionKicker">{dict.apps.kicker}</span>
+              <h2 className="sectionHeading appsHeading">{dict.apps.heading}</h2>
+              <p className="siteSectionSub appsSub">{dict.apps.subtitle}</p>
             </div>
 
             <div>
-              <StoreBadges />
+              <StoreBadges dict={dict} />
             </div>
           </div>
         </section>
@@ -839,8 +700,8 @@ export default function Home() {
             </div>
 
             <div className="footerStoreCol">
-              <p className="footerStoreLabel">Available soon on iOS and Android</p>
-              <StoreBadges />
+              <p className="footerStoreLabel">{dict.footer.storeLabel}</p>
+              <StoreBadges dict={dict} />
             </div>
           </div>
 
@@ -860,12 +721,10 @@ export default function Home() {
               ))}
             </div>
 
-            <p className="footerCopy">Built to make local service jobs clearer for both customers and providers.</p>
+            <p className="footerCopy">{dict.footer.copy}</p>
           </div>
         </div>
       </footer>
     </div>
   );
 }
-
-
