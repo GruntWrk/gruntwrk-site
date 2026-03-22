@@ -57,22 +57,22 @@ const WORKBENCH_POINTS = [
   {
     id: "quotes",
     title: "Compare quotes clearly",
-    desc: "See your options in one place and choose the provider that fits.",
+    desc: "Providers compete on quality and price, not on who paid more for visibility. See your options side by side and pick the right fit.",
   },
   {
     id: "book",
     title: "Book directly when ready",
-    desc: "Already know who you want? Send a request straight to that provider.",
+    desc: "Already know who you want? Send a request straight to that provider. Check their ratings and previous jobs first.",
   },
   {
     id: "message",
     title: "Keep everything together",
-    desc: "Messages, progress, payment, and reviews live inside the job workbench.",
+    desc: "Messages, progress, payment, and reviews live inside the job workbench. One place for the full history.",
   },
   {
     id: "pay",
     title: "Pay and rebook with confidence",
-    desc: "Keep clear payment records and come back to trusted providers when you need them again.",
+    desc: "Pay half upfront, half when you're happy with the work. No cash, no transfers. The platform handles it all.",
   },
 ] as const;
 
@@ -129,7 +129,25 @@ const FEE_COMPARISON_ROWS = [
     fee: "Booking or payment fee",
     marketSummary: "A single transaction fee when the booking and payment are completed through the platform.",
     competitors: ["Fixando", "Taskrabbit", "Checkatrade"],
-    gruntwrk: "10% booking/payment fee",
+    gruntwrk: "10% platform payment fee",
+  },
+] as const;
+
+const CUSTOMER_BENEFITS = [
+  {
+    id: "cheaper",
+    title: "Lower prices for you",
+    desc: "Service providers don't pay lead fees, credit packs, or subscriptions to be on GruntWrk. That means they don't need to pass those costs on to you.",
+  },
+  {
+    id: "trust",
+    title: "Hire with confidence",
+    desc: "See every job a provider has completed, read what other customers said, and check their ratings before you hire.",
+  },
+  {
+    id: "payment",
+    title: "Simple, secure payments",
+    desc: "Pay half upfront, half when you're happy. The platform handles everything. No cash, no transfers, no hassle.",
   },
 ] as const;
 
@@ -148,6 +166,10 @@ const REVIEWS: Review[] = [
   {
     stars: 5,
     text: "I like how profiles show ratings, skills, and reviews. It helps users quickly evaluate providers.",
+  },
+  {
+    stars: 5,
+    text: "No lead fees, no credit packs. I just sign up and start quoting. More of what I earn stays with me.",
   },
 ];
 
@@ -229,6 +251,34 @@ function CheckIcon() {
   return (
     <svg className="perkIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
       <path d="M20 6 9 17l-5-5" />
+    </svg>
+  );
+}
+
+function BenefitIcon({ id }: { id: "cheaper" | "trust" | "payment" }) {
+  if (id === "cheaper") {
+    return (
+      <svg className="hp-cb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M12 2v20" />
+        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+      </svg>
+    );
+  }
+
+  if (id === "trust") {
+    return (
+      <svg className="hp-cb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+        <path d="m9 12 2 2 4-4" />
+      </svg>
+    );
+  }
+
+  return (
+    <svg className="hp-cb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <rect x="1" y="4" width="22" height="16" rx="2" />
+      <path d="M1 10h22" />
+      <path d="M6 16h4" />
     </svg>
   );
 }
@@ -348,7 +398,7 @@ function AppShellHeader() {
           <BrandMark className="navLogoIcon" />
           <div className="appShellBrandCopy">
             <span className="appShellBrandName">GruntWrk</span>
-            <span className="appShellBrandSub">Get work done. Find work fast.</span>
+            <span className="appShellBrandSub">No lead fees. No middleman.</span>
           </div>
         </a>
 
@@ -552,17 +602,136 @@ export default function Home() {
           <section className="hp-hero">
             <div className="hp-hero-shell">
               <div className="hp-hero-content">
-                <h1 className="hp-hero-title">Find the right person for the job</h1>
+                <h1 className="hp-hero-title">Free to join. Free to quote. Free to hire.</h1>
                 <p className="hp-hero-sub">
-                  Post the job, compare providers, chat, agree the price, and pay.
-                  Everything in one place.
+                  Other platforms charge service providers at every step.
+                  Those costs get passed on to you.
+                  GruntWrk only charges a 10&nbsp;% fee when the job is booked and paid.
                 </p>
                 <div className="hp-hero-actions">
-                  <a href={REQUEST_SERVICE_HREF} className="hp-btn-primary">
+                  <a href={PROVIDER_HREF} className="hp-btn-primary">
+                    Start offering services
+                    <ArrowIcon />
+                  </a>
+                  <a href={REQUEST_SERVICE_HREF} className="hp-btn-secondary">
                     Request a service
                     <ArrowIcon />
                   </a>
                 </div>
+              </div>
+            </div>
+          </section>
+
+          <section className="hp-cb">
+            <div className="hp-section-head">
+              <h2 className="hp-h2">Why customers pay less on GruntWrk</h2>
+              <p className="hp-subtitle">
+                When providers aren't charged to find work, they don't need to inflate their prices.
+                That saving goes straight to you.
+              </p>
+            </div>
+
+            <div className="hp-cb-grid">
+              {CUSTOMER_BENEFITS.map((benefit) => (
+                <article key={benefit.id} className="hp-cb-card">
+                  <h3 className="hp-cb-title">{benefit.title}</h3>
+                  <p className="hp-cb-desc">{benefit.desc}</p>
+                </article>
+              ))}
+            </div>
+          </section>
+
+          <section className="hp-fees" aria-labelledby="hp-fees-title">
+            <div className="hp-fees-head">
+              <div className="hp-fees-kicker">Cost difference</div>
+              <h2 id="hp-fees-title" className="hp-h2">Most others charge at every step.</h2>
+              <p className="hp-subtitle hp-fees-subtitle">
+                Other platforms charge providers lead fees, credit packs, subscriptions, and visibility boosts.
+                Providers recover those costs by charging customers more.
+                GruntWrk only charges a platform payment fee, so providers keep more and customers pay less.
+              </p>
+            </div>
+
+            <div className="hp-fees-pills" aria-label="Key fee differences">
+              <span className="hp-fees-pill">No pay-per-lead</span>
+              <span className="hp-fees-pill">No credit packs</span>
+              <span className="hp-fees-pill">No subscriptions</span>
+              <span className="hp-fees-pill">No visibility boosts</span>
+              <span className="hp-fees-pill hp-fees-pill-strong">Only 10% platform payment fee</span>
+            </div>
+
+            <div className="hp-fee-table-wrap">
+              <table className="hp-fee-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Fee type</th>
+                    <th scope="col">Typical marketplaces</th>
+                    <th scope="col">GruntWrk</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {FEE_COMPARISON_ROWS.map((row) => (
+                    <tr key={row.fee}>
+                      <td>
+                        <span className="hp-fee-label">{row.fee}</span>
+                      </td>
+                      <td>
+                        <BlurredCompetitors names={row.competitors} />
+                        <p className="hp-fee-market-copy">{row.marketSummary}</p>
+                      </td>
+                      <td>
+                        <span className={`hp-fee-grunt ${row.gruntwrk.startsWith("10%") ? "is-fee" : "is-free"}`}>
+                          {row.gruntwrk}
+                        </span>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            <div className="hp-fee-cards">
+              {FEE_COMPARISON_ROWS.map((row) => (
+                <article key={`m-${row.fee}`} className="hp-fee-card">
+                  <div className="hp-fee-card-head">
+                    <span className="hp-fee-label">{row.fee}</span>
+                    <span className={`hp-fee-grunt ${row.gruntwrk.startsWith("10%") ? "is-fee" : "is-free"}`}>
+                      {row.gruntwrk}
+                    </span>
+                  </div>
+                  <p className="hp-fee-market-copy">{row.marketSummary}</p>
+                </article>
+              ))}
+            </div>
+
+            <p className="hp-fee-note">
+              Based on public pricing and help-center pages reviewed on March 16, 2026. Fees vary by service and market.
+            </p>
+          </section>
+
+          <section className="hp-provider">
+            <div className="hp-provider-inner">
+              <div className="hp-provider-left">
+                <div className="hp-provider-badge">For providers</div>
+                <h2 className="hp-provider-title">Run your service business without paying to chase leads</h2>
+                <p className="hp-provider-desc">
+                  Build a public profile, share your availability, receive direct requests,
+                  compare quotes, message customers, take payment, and rebook repeat work
+                  from one workbench. GruntWrk is built to help providers run the job from
+                  first request to repeat booking without lead fees, contact packs, or
+                  visibility boosts.
+                </p>
+                <ul className="hp-provider-perks">
+                  <li><CheckIcon /> No pay-per-lead or contact unlock fees</li>
+                  <li><CheckIcon /> No credit packs, subscriptions, or boost charges</li>
+                  <li><CheckIcon /> Public profile, availability, and direct requests</li>
+                  <li><CheckIcon /> Quotes, messaging, payment steps, and repeat bookings in one workbench</li>
+                  <li><CheckIcon /> Your customers pay less because you don't pay middleman fees</li>
+                </ul>
+                <a className="hp-btn-primary" href={PROVIDER_HREF}>
+                  Start offering services
+                  <ArrowIcon />
+                </a>
               </div>
             </div>
           </section>
@@ -600,11 +769,9 @@ export default function Home() {
             </div>
           </section>
 
-          <HomeTrustMarquee backgroundImage={MARQUEE_BG} />
-
           <section className="hp-how">
             <div className="hp-section-head">
-              <h2 className="hp-h2">How Gruntwrk works</h2>
+              <h2 className="hp-h2">How GruntWrk works</h2>
               <p className="hp-subtitle">A simple flow from request to completion</p>
             </div>
 
@@ -621,108 +788,13 @@ export default function Home() {
             </div>
           </section>
 
-          <section className="hp-provider">
-            <div className="hp-provider-inner">
-              <div className="hp-provider-left">
-                <div className="hp-provider-badge">For providers</div>
-                <h2 className="hp-provider-title">Run your service business without paying to chase leads</h2>
-                <p className="hp-provider-desc">
-                  Build a public profile, share your availability, receive direct requests,
-                  compare quotes, message customers, take payment, and rebook repeat work
-                  from one workbench. GruntWrk is built to help providers run the job from
-                  first request to repeat booking without lead fees, contact packs, or
-                  visibility boosts.
-                </p>
-                <ul className="hp-provider-perks">
-                  <li><CheckIcon /> No pay-per-lead or contact unlock fees</li>
-                  <li><CheckIcon /> No credit packs, subscriptions, or boost charges</li>
-                  <li><CheckIcon /> Public profile, availability, and direct requests</li>
-                  <li><CheckIcon /> Quotes, messaging, payment steps, and repeat bookings in one workbench</li>
-                </ul>
-                <a className="hp-btn-primary" href={PROVIDER_HREF}>
-                  Start offering services
-                  <ArrowIcon />
-                </a>
-              </div>
-            </div>
-          </section>
-
-          <section className="hp-fees" aria-labelledby="hp-fees-title">
-            <div className="hp-fees-head">
-              <div className="hp-fees-kicker">Cost difference</div>
-              <h2 id="hp-fees-title" className="hp-h2">Most others charge at every step. GruntWrk does not.</h2>
-              <p className="hp-subtitle hp-fees-subtitle">
-                The GruntWrk workbench is the platform. Providers manage quotes, direct bookings, messaging,
-                payment steps, and repeat jobs in one place. We do not charge pay-per-lead fees, contact packs,
-                subscriptions, or visibility boosts. We only charge the booking/payment fee that keeps the
-                platform running.
-              </p>
-            </div>
-
-            <div className="hp-fees-pills" aria-label="Key fee differences">
-              <span className="hp-fees-pill">No pay-per-lead</span>
-              <span className="hp-fees-pill">No credit packs</span>
-              <span className="hp-fees-pill">No subscriptions</span>
-              <span className="hp-fees-pill">No visibility boosts</span>
-              <span className="hp-fees-pill hp-fees-pill-strong">Only 10% booking/payment fee</span>
-            </div>
-
-            <div className="hp-fee-table-wrap">
-              <table className="hp-fee-table">
-                <thead>
-                  <tr>
-                    <th scope="col">Fee type</th>
-                    <th scope="col">Typical marketplaces</th>
-                    <th scope="col">GruntWrk</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {FEE_COMPARISON_ROWS.map((row) => (
-                    <tr key={row.fee}>
-                      <td>
-                        <span className="hp-fee-label">{row.fee}</span>
-                      </td>
-                      <td>
-                        <BlurredCompetitors names={row.competitors} />
-                        <p className="hp-fee-market-copy">{row.marketSummary}</p>
-                      </td>
-                      <td>
-                        <span className={`hp-fee-grunt ${row.gruntwrk.startsWith("10%") ? "is-fee" : "is-free"}`}>
-                          {row.gruntwrk}
-                        </span>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-
-            <p className="hp-fee-note">
-              Based on public pricing and help-center pages reviewed on March 16, 2026. Fees vary by service and market.
-            </p>
-          </section>
+          <HomeTrustMarquee backgroundImage={MARQUEE_BG} />
         </div>
-
-        <section className="screensSection">
-          <div className="appsSectionHeader">
-            <div className="appsSectionCopy">
-              <span className="siteSectionKicker">Apps coming soon</span>
-              <h2 className="sectionHeading appsHeading">The GruntWrk workbench is coming to iOS and Android.</h2>
-              <p className="siteSectionSub appsSub">
-                Browse providers, manage jobs, and keep payment and messages in one place from your phone.
-              </p>
-            </div>
-
-            <div>
-              <StoreBadges />
-            </div>
-          </div>
-        </section>
 
         <section className="reviewsSection">
           <div className="sectionInner">
             <div className="reviewsSectionHeader">
-              <h2 className="sectionHeading">Customer reviews.</h2>
+              <h2 className="sectionHeading">What people are saying.</h2>
               <div className="reviewsSectionMeta">
                 <span className="ratingPillLarge">4.8</span>
                 <span className="reviewsSectionSub">Early Access</span>
@@ -736,6 +808,22 @@ export default function Home() {
                   <p className="reviewTextNew">{review.text}</p>
                 </div>
               ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="screensSection">
+          <div className="appsSectionHeader">
+            <div className="appsSectionCopy">
+              <span className="siteSectionKicker">Apps coming soon</span>
+              <h2 className="sectionHeading appsHeading">The GruntWrk workbench is coming to iOS and Android.</h2>
+              <p className="siteSectionSub appsSub">
+                Browse providers, manage jobs, and keep payment and messages in one place from your phone.
+              </p>
+            </div>
+
+            <div>
+              <StoreBadges />
             </div>
           </div>
         </section>

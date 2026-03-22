@@ -1479,6 +1479,34 @@ a {
   transform: translateY(-1px);
 }
 
+.hp-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 26px;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--text);
+  font-size: 0.92rem;
+  font-weight: 700;
+  text-decoration: none;
+  border: 1.5px solid var(--border);
+  transition: background 180ms ease, border-color 180ms ease, transform 180ms ease;
+  white-space: nowrap;
+}
+
+.hp-hero .hp-btn-secondary {
+  min-width: min(300px, 100%);
+  font-size: 1.1rem;
+  justify-content: center;
+}
+
+.hp-btn-secondary:hover {
+  background: rgba(15,17,23,0.04);
+  border-color: rgba(15,17,23,0.2);
+  transform: translateY(-1px);
+}
+
 .hp-hero {
   border-radius: 20px;
   padding: 48px 36px 44px;
@@ -1549,6 +1577,58 @@ a {
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
+}
+
+/* ── Customer benefits ── */
+
+.hp-cb {
+  display: grid;
+  gap: 20px;
+}
+
+.hp-cb-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.hp-cb-card {
+  padding: 32px 28px;
+  border-radius: var(--radius);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.hp-cb-icon-wrap {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: rgba(34,197,94,0.1);
+  color: var(--brand-dark);
+}
+
+.hp-cb-icon {
+  width: 22px;
+  height: 22px;
+}
+
+.hp-cb-title {
+  font-size: 1.1rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+
+.hp-cb-desc {
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--muted);
 }
 
 .hp-categories {
@@ -2139,6 +2219,26 @@ a {
   color: #1d4ed8;
 }
 
+.hp-fee-cards {
+  display: none;
+}
+
+.hp-fee-card {
+  padding: 18px;
+  border-radius: 14px;
+  border: 1px solid rgba(15,17,23,0.08);
+  background: rgba(255,255,255,0.86);
+  display: grid;
+  gap: 10px;
+}
+
+.hp-fee-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
 .hp-fee-note {
   margin: 0;
   font-size: 0.78rem;
@@ -2210,6 +2310,10 @@ a {
 
   .hp-hero-title {
     max-width: 12.5ch;
+  }
+
+  .hp-cb-grid {
+    grid-template-columns: 1fr;
   }
 
   .hp-cat-grid {
@@ -2400,13 +2504,13 @@ a {
     border-radius: 18px;
   }
 
-  .hp-fee-table {
-    min-width: 680px;
+  .hp-fee-table-wrap {
+    display: none;
   }
 
-  .hp-fee-table th,
-  .hp-fee-table td {
-    padding: 14px 14px;
+  .hp-fee-cards {
+    display: grid;
+    gap: 12px;
   }
 }
 
