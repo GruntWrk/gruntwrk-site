@@ -1610,7 +1610,6 @@ a {
   line-height: 1.06;
   letter-spacing: -0.04em;
   color: var(--text);
-  max-width: 12ch;
   text-wrap: balance;
 }
 
@@ -2376,9 +2375,6 @@ a {
     display: none;
   }
 
-  .hp-hero-title {
-    max-width: 12.5ch;
-  }
 
   .hp-cb-grid {
     grid-template-columns: 1fr;
