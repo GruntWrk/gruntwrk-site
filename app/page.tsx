@@ -72,7 +72,7 @@ const WORKBENCH_POINTS = [
   {
     id: "pay",
     title: "Pay and rebook with confidence",
-    desc: "Pay half upfront, half when you're happy with the work. No cash, no transfers. The platform handles it all.",
+    desc: "Pay half upfront, half when the job is done. No cash, no transfers. The platform handles it all.",
   },
 ] as const;
 
@@ -147,7 +147,7 @@ const CUSTOMER_BENEFITS = [
   {
     id: "payment",
     title: "Simple, secure payments",
-    desc: "Pay half upfront, half when you're happy. The platform handles everything. No cash, no transfers, no hassle.",
+    desc: "Pay half upfront, half when the job is done. The platform handles everything. No cash, no transfers, no hassle.",
   },
 ] as const;
 
