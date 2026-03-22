@@ -525,9 +525,9 @@ export default function HomePage({ dict, locale }: { dict: Dictionary; locale: L
               <p className="hp-subtitle">{dict.benefits.subtitle}</p>
             </div>
 
-            <div className="hp-cb-grid">
+            <div className="hp-cb-list">
               {dict.benefits.items.map((benefit) => (
-                <article key={benefit.id} className="hp-cb-card">
+                <article key={benefit.id} className="hp-cb-row">
                   <h3 className="hp-cb-title">{benefit.title}</h3>
                   <p className="hp-cb-desc">{benefit.desc}</p>
                 </article>

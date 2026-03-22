@@ -1281,6 +1281,10 @@ a {
     align-items: flex-start;
   }
 
+  .hp-cb-list {
+    grid-template-columns: 1fr;
+  }
+
   .reviewsSection {
     padding-top: 72px;
     padding-bottom: 72px;
@@ -1646,48 +1650,28 @@ a {
   gap: 20px;
 }
 
-.hp-cb-grid {
+.hp-cb-list {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  gap: 24px;
 }
 
-.hp-cb-card {
-  padding: 32px 28px;
-  border-radius: var(--radius);
-  background: var(--surface);
-  border: 1px solid var(--border);
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-.hp-cb-icon-wrap {
-  width: 44px;
-  height: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 12px;
-  background: rgba(34,197,94,0.1);
-  color: var(--brand-dark);
-}
-
-.hp-cb-icon {
-  width: 22px;
-  height: 22px;
+.hp-cb-row {
+  padding: 24px 0 24px 20px;
+  border-left: 4px solid #3ECF8E;
 }
 
 .hp-cb-title {
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   font-weight: 800;
   letter-spacing: -0.02em;
   color: var(--text);
+  margin-bottom: 8px;
 }
 
 .hp-cb-desc {
-  font-size: 0.92rem;
-  line-height: 1.55;
+  font-size: 0.88rem;
+  line-height: 1.6;
   color: var(--muted);
 }
 
@@ -2388,9 +2372,6 @@ a {
   }
 
 
-  .hp-cb-grid {
-    grid-template-columns: 1fr;
-  }
 
   .hp-cat-grid {
     grid-template-columns: repeat(3, 1fr);
