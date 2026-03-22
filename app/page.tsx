@@ -738,6 +738,7 @@ export default function Home() {
 
           <section className="hp-categories">
             <div className="hp-section-head">
+              <div className="hp-customer-badge">For customers</div>
               <h2 className="hp-h2">What do you need help with?</h2>
               <p className="hp-subtitle">Choose a service and start the fastest path to getting it done.</p>
             </div>
@@ -801,8 +802,11 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="reviewsGrid">
-              {REVIEWS.map((review, index) => (
+          </div>
+
+          <div className="reviewsMarquee">
+            <div className="reviewsTrack">
+              {[...REVIEWS, ...REVIEWS].map((review, index) => (
                 <div key={index} className="reviewCardNew">
                   <Stars count={review.stars} />
                   <p className="reviewTextNew">{review.text}</p>
