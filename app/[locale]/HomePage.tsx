@@ -219,7 +219,10 @@ function AppShellHeader({ dict, locale }: { dict: Dictionary; locale: Locale }) 
       <div className="appShellHeaderInner">
         <a href={HOME_HREF} className="appShellBrand" aria-label="Go to app homepage">
           <BrandMark className="navLogoIcon" />
-          <span className="appShellBrandName">GruntWrk</span>
+          <div className="appShellBrandCopy">
+            <span className="appShellBrandName">GruntWrk</span>
+            <span className="appShellBrandSub">{dict.nav.brandSub}</span>
+          </div>
         </a>
 
         <div className="appShellHeaderActions">
