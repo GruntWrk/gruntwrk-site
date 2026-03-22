@@ -603,11 +603,6 @@ export default function Home() {
             <div className="hp-hero-shell">
               <div className="hp-hero-content">
                 <h1 className="hp-hero-title">Free to join. Free to quote. Free to hire.</h1>
-                <p className="hp-hero-sub">
-                  Other platforms charge service providers at every step.
-                  Those costs get passed on to you.
-                  GruntWrk only charges a 10&nbsp;% fee when the job is booked and paid.
-                </p>
                 <div className="hp-hero-actions">
                   <a href={PROVIDER_HREF} className="hp-btn-primary">
                     Start offering services
@@ -736,37 +731,39 @@ export default function Home() {
             </div>
           </section>
 
-          <section className="hp-categories">
-            <div className="hp-section-head">
-              <div className="hp-customer-badge">For customers</div>
-              <h2 className="hp-h2">What do you need help with?</h2>
-              <p className="hp-subtitle">Choose a service and start the fastest path to getting it done.</p>
-            </div>
+          <section className="hp-customer">
+            <div className="hp-customer-inner">
+              <div className="hp-section-head">
+                <div className="hp-customer-badge">For customers</div>
+                <h2 className="hp-h2">What do you need help with?</h2>
+                <p className="hp-subtitle">Choose a service and start the fastest path to getting it done.</p>
+              </div>
 
-            <div className="hp-cat-grid">
-              {HERO_CATEGORIES.map((cat, index) => (
-                <a
-                  key={cat.slug}
-                  href={categoryHref(cat.slug)}
-                  className={`hp-cat-card ${index < 4 ? "hp-cat-featured" : ""}`}
-                  style={{ animationDelay: `${index * 50}ms` }}
-                >
-                  <img
-                    src={CATEGORY_IMAGES[cat.slug]}
-                    alt={cat.title}
-                    className="hp-cat-photo"
-                    loading={index > 3 ? "lazy" : undefined}
-                  />
-                  <div className="hp-cat-overlay" />
-                  <div className="hp-cat-label">
-                    <span className="hp-cat-name">{cat.title}</span>
-                    <span className="hp-cat-desc">{cat.desc}</span>
-                  </div>
-                  <div className="hp-cat-arrow">
-                    <ArrowIcon />
-                  </div>
-                </a>
-              ))}
+              <div className="hp-cat-grid">
+                {HERO_CATEGORIES.map((cat, index) => (
+                  <a
+                    key={cat.slug}
+                    href={categoryHref(cat.slug)}
+                    className={`hp-cat-card ${index < 4 ? "hp-cat-featured" : ""}`}
+                    style={{ animationDelay: `${index * 50}ms` }}
+                  >
+                    <img
+                      src={CATEGORY_IMAGES[cat.slug]}
+                      alt={cat.title}
+                      className="hp-cat-photo"
+                      loading={index > 3 ? "lazy" : undefined}
+                    />
+                    <div className="hp-cat-overlay" />
+                    <div className="hp-cat-label">
+                      <span className="hp-cat-name">{cat.title}</span>
+                      <span className="hp-cat-desc">{cat.desc}</span>
+                    </div>
+                    <div className="hp-cat-arrow">
+                      <ArrowIcon />
+                    </div>
+                  </a>
+                ))}
+              </div>
             </div>
           </section>
 
