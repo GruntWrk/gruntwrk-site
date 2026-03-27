@@ -801,19 +801,6 @@ export default function HomePage({ dict, locale }: { dict: Dictionary; locale: L
           </div>
         </section>
 
-        <section className="screensSection">
-          <div className="appsSectionHeader">
-            <div className="appsSectionCopy">
-              <span className="siteSectionKicker">{dict.apps.kicker}</span>
-              <h2 className="sectionHeading appsHeading">{dict.apps.heading}</h2>
-              <p className="siteSectionSub appsSub">{dict.apps.subtitle}</p>
-            </div>
-
-            <div>
-              <StoreBadges dict={dict} />
-            </div>
-          </div>
-        </section>
       </main>
 
       <footer className="siteFooter">
