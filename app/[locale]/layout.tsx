@@ -1,5 +1,13 @@
 import { getDictionary, LOCALES, SITE_URL, type Locale } from "../../lib/i18n";
+import { Outfit } from "next/font/google";
 import type { Metadata } from "next";
+
+const outfit = Outfit({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800", "900"],
+  display: "swap",
+  variable: "--font-display",
+});
 
 export function generateStaticParams() {
   return LOCALES.map((locale) => ({ locale }));
@@ -52,7 +60,7 @@ export default function LocaleLayout({
   const locale = (LOCALES.includes(params.locale as Locale) ? params.locale : "en") as Locale;
 
   return (
-    <html lang={locale} data-theme="light">
+    <html lang={locale} data-theme="light" className={outfit.variable}>
       <head>
         <meta name="application-name" content="GruntWrk" />
         <meta name="mobile-web-app-capable" content="yes" />

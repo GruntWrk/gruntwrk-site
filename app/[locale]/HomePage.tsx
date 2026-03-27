@@ -1,6 +1,6 @@
 "use client";
 
-import { type CSSProperties, type KeyboardEvent, useEffect, useRef, useState } from "react";
+import { type CSSProperties, type KeyboardEvent, useCallback, useEffect, useRef, useState } from "react";
 import type { Dictionary, Locale } from "../../lib/i18n";
 
 const APP_BASE_URL = "https://app.gruntwrk.com";
@@ -190,6 +190,112 @@ function BlurredCompetitors({ names }: { names: string[] }) {
           {name}
         </span>
       ))}
+    </div>
+  );
+}
+
+function useReveal() {
+  useEffect(() => {
+    const elements = document.querySelectorAll("[data-reveal]");
+    if (!elements.length) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            (entry.target as HTMLElement).classList.add("revealed");
+            observer.unobserve(entry.target);
+          }
+        }
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+    );
+    for (const el of elements) observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+}
+
+function HeroPreviewCard({ dict }: { dict: Dictionary }) {
+  return (
+    <div className="hp-hero-preview">
+      <div className="hp-hero-preview-card">
+        <div className="hp-preview-header">
+          <span className="hp-preview-dot hp-preview-dot-green" />
+          <span className="hp-preview-status">3 quotes received</span>
+        </div>
+        <div className="hp-preview-job">
+          <span className="hp-preview-job-title">Kitchen deep clean</span>
+          <span className="hp-preview-job-meta">Requested 2h ago</span>
+        </div>
+        <div className="hp-preview-quotes">
+          <div className="hp-preview-quote hp-preview-quote-top">
+            <div className="hp-preview-avatar">A</div>
+            <div className="hp-preview-quote-info">
+              <span className="hp-preview-name">Ana M.</span>
+              <Stars count={5} />
+            </div>
+            <span className="hp-preview-price">£45</span>
+          </div>
+          <div className="hp-preview-quote">
+            <div className="hp-preview-avatar">R</div>
+            <div className="hp-preview-quote-info">
+              <span className="hp-preview-name">Rui S.</span>
+              <Stars count={5} />
+            </div>
+            <span className="hp-preview-price">£52</span>
+          </div>
+          <div className="hp-preview-quote">
+            <div className="hp-preview-avatar">J</div>
+            <div className="hp-preview-quote-info">
+              <span className="hp-preview-name">James L.</span>
+              <Stars count={4} />
+            </div>
+            <span className="hp-preview-price">£48</span>
+          </div>
+        </div>
+        <div className="hp-preview-footer">
+          <span className="hp-preview-free">No lead fees</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function StatsStrip({ dict }: { dict: Dictionary }) {
+  const stats = (dict as any).stats;
+  if (!stats) return null;
+  return (
+    <div className="hp-stats-strip" data-reveal>
+      {stats.map((stat: { value: string; label: string }) => (
+        <div key={stat.label} className="hp-stat">
+          <span className="hp-stat-value">{stat.value}</span>
+          <span className="hp-stat-label">{stat.label}</span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function TrustStrip({ dict }: { dict: Dictionary }) {
+  const firstReview = dict.reviews.items[0] as any;
+  const lastReview = dict.reviews.items[dict.reviews.items.length - 1] as any;
+  return (
+    <div className="hp-trust-strip">
+      <div className="hp-trust-rating">
+        <span className="hp-trust-score">4.8</span>
+        <Stars count={5} />
+        <span className="hp-trust-label">{dict.reviews.ratingLabel}</span>
+      </div>
+      <div className="hp-trust-divider" />
+      <div className="hp-trust-quotes">
+        <div className="hp-trust-quote">
+          <Stars count={firstReview.stars} />
+          <span className="hp-trust-quote-text">{firstReview.text}</span>
+        </div>
+        <div className="hp-trust-quote">
+          <Stars count={lastReview.stars} />
+          <span className="hp-trust-quote-text">{lastReview.text}</span>
+        </div>
+      </div>
     </div>
   );
 }
@@ -472,6 +578,8 @@ export default function HomePage({ dict, locale }: { dict: Dictionary; locale: L
   const reviews = dict.reviews.items;
   const feeRows = dict.fees.rows;
 
+  useReveal();
+
   return (
     <div className="siteFrame">
       <AppShellHeader dict={dict} locale={locale} />
@@ -485,22 +593,28 @@ export default function HomePage({ dict, locale }: { dict: Dictionary; locale: L
             <div className="hp-hero-shell">
               <div className="hp-hero-content">
                 <h1 className="hp-hero-title">{dict.hero.title}</h1>
+                <p className="hp-hero-sub">{(dict.hero as any).subtitle}</p>
                 <p className="sr-only">{dict.meta.seoHeading}</p>
                 <div className="hp-hero-actions">
-                  <a href={PROVIDER_HREF} className="hp-btn-primary">
-                    {dict.hero.ctaProvider}
-                    <ArrowIcon />
-                  </a>
                   <a href={REQUEST_SERVICE_HREF} className="hp-btn-secondary">
                     {dict.hero.ctaCustomer}
                     <ArrowIcon />
                   </a>
+                  <a href={PROVIDER_HREF} className="hp-btn-primary">
+                    {dict.hero.ctaProvider}
+                    <ArrowIcon />
+                  </a>
                 </div>
               </div>
+              <HeroPreviewCard dict={dict} />
             </div>
           </section>
 
-          <section className="hp-how">
+          <TrustStrip dict={dict} />
+
+          <StatsStrip dict={dict} />
+
+          <section className="hp-how" data-reveal>
             <div className="hp-section-head">
               <h2 className="hp-h2">{dict.howItWorks.heading}</h2>
               <p className="hp-subtitle">{dict.howItWorks.subtitle}</p>
@@ -519,7 +633,7 @@ export default function HomePage({ dict, locale }: { dict: Dictionary; locale: L
             </div>
           </section>
 
-          <section className="hp-cb">
+          <section className="hp-cb" data-reveal>
             <div className="hp-section-head">
               <h2 className="hp-h2">{dict.benefits.heading}</h2>
               <p className="hp-subtitle">{dict.benefits.subtitle}</p>
@@ -535,7 +649,7 @@ export default function HomePage({ dict, locale }: { dict: Dictionary; locale: L
             </div>
           </section>
 
-          <section className="hp-fees" aria-labelledby="hp-fees-title">
+          <section className="hp-fees" aria-labelledby="hp-fees-title" data-reveal>
             <div className="hp-fees-head">
               <div className="hp-fees-kicker">{dict.fees.kicker}</div>
               <h2 id="hp-fees-title" className="hp-h2">{dict.fees.heading}</h2>
@@ -569,7 +683,7 @@ export default function HomePage({ dict, locale }: { dict: Dictionary; locale: L
                         <p className="hp-fee-market-copy">{row.marketSummary}</p>
                       </td>
                       <td>
-                        <span className={`hp-fee-grunt ${row.gruntwrk.startsWith("10%") ? "is-fee" : "is-free"}`}>
+                        <span className={`hp-fee-grunt ${row.gruntwrk.startsWith("15%") ? "is-fee" : "is-free"}`}>
                           {row.gruntwrk}
                         </span>
                       </td>
@@ -584,7 +698,7 @@ export default function HomePage({ dict, locale }: { dict: Dictionary; locale: L
                 <article key={`m-${row.fee}`} className="hp-fee-card">
                   <div className="hp-fee-card-head">
                     <span className="hp-fee-label">{row.fee}</span>
-                    <span className={`hp-fee-grunt ${row.gruntwrk.startsWith("10%") ? "is-fee" : "is-free"}`}>
+                    <span className={`hp-fee-grunt ${row.gruntwrk.startsWith("15%") ? "is-fee" : "is-free"}`}>
                       {row.gruntwrk}
                     </span>
                   </div>
@@ -596,7 +710,7 @@ export default function HomePage({ dict, locale }: { dict: Dictionary; locale: L
             <p className="hp-fee-note">{dict.fees.note}</p>
           </section>
 
-          <section className="hp-provider">
+          <section className="hp-provider" data-reveal>
             <div className="hp-provider-inner">
               <div className="hp-provider-left">
                 <div className="hp-provider-badge">{dict.provider.badge}</div>
@@ -615,7 +729,7 @@ export default function HomePage({ dict, locale }: { dict: Dictionary; locale: L
             </div>
           </section>
 
-          <section className="hp-customer">
+          <section className="hp-customer" data-reveal>
             <div className="hp-customer-inner">
               <div className="hp-section-head">
                 <div className="hp-customer-badge">{dict.customer.badge}</div>
@@ -667,12 +781,22 @@ export default function HomePage({ dict, locale }: { dict: Dictionary; locale: L
 
           <div className="reviewsMarquee">
             <div className="reviewsTrack">
-              {[...reviews, ...reviews].map((review, index) => (
-                <div key={index} className="reviewCardNew">
-                  <Stars count={review.stars} />
-                  <p className="reviewTextNew">{review.text}</p>
-                </div>
-              ))}
+              {[...reviews, ...reviews].map((review, index) => {
+                const r = review as any;
+                return (
+                  <div key={index} className="reviewCardNew">
+                    <div className="reviewCardHeader">
+                      {r.name && <div className="reviewAvatar">{r.name.charAt(0)}</div>}
+                      <div className="reviewCardMeta">
+                        {r.name && <span className="reviewName">{r.name}</span>}
+                        <Stars count={review.stars} />
+                      </div>
+                      {r.role && <span className="reviewRole">{r.role}</span>}
+                    </div>
+                    <p className="reviewTextNew">{review.text}</p>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </section>

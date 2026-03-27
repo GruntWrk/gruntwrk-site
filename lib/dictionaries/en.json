@@ -1,9 +1,9 @@
 {
   "meta": {
-    "title": "GruntWrk | Affordable Local Services — Compare Quotes & Hire",
-    "description": "Find cheap, reliable local service providers. Compare quotes for cleaning, repairs, plumbing, electrical, painting, moving and more. No lead fees, no middleman — manage every step from request to payment with GruntWrk.",
+    "title": "GruntWrk | Affordable Local Services. Compare Quotes & Hire",
+    "description": "Find cheap, reliable local service providers. Compare quotes for cleaning, repairs, plumbing, electrical, painting, moving and more. No lead fees, no middleman. Manage every step from request to payment with GruntWrk.",
     "keywords": "affordable local services, cheap service providers, compare quotes, hire local help, cleaning services, home repairs, plumbing, electrical, painting, moving, assembly, handyman, affordable quotes, cheap handyman, local tradespeople, service marketplace, no lead fees, free to join",
-    "seoHeading": "Affordable local services — cleaning, repairs, plumbing, electrical, moving and more. Compare quotes from trusted providers, hire with confidence, and pay securely. GruntWrk is the cheap, simple way to get work done without middleman fees."
+    "seoHeading": "Affordable local services: cleaning, repairs, plumbing, electrical, moving and more. Compare quotes from trusted providers, hire with confidence, and pay securely. GruntWrk is the cheap, simple way to get work done without middleman fees."
   },
   "nav": {
     "startOffering": "Start offering services",
@@ -12,9 +12,16 @@
   },
   "hero": {
     "title": "Free to join. Free to quote. Free to hire.",
+    "subtitle": "Compare quotes from local service providers. No lead fees, no middleman markup. Just affordable prices and trusted service.",
     "ctaProvider": "Start offering services",
     "ctaCustomer": "Request a service"
   },
+  "stats": [
+    { "value": "100+", "label": "Locations" },
+    { "value": "10+", "label": "Service categories" },
+    { "value": "4.8", "label": "Average rating" },
+    { "value": "15%", "label": "Only fee charged" }
+  ],
   "benefits": {
     "heading": "Why customers pay less on GruntWrk",
     "subtitle": "When providers aren't charged to find work, they don't need to inflate their prices. That saving goes straight to you.",
@@ -39,14 +46,14 @@
   "fees": {
     "kicker": "Cost difference",
     "heading": "Most others charge at every step.",
-    "subtitle": "Other platforms charge providers lead fees, credit packs, subscriptions, and visibility boosts. Providers recover those costs by charging customers more. GruntWrk only charges a platform payment fee, so providers keep more and customers pay less.",
+    "subtitle": "Other platforms charge providers lead fees, credit packs, subscriptions, and visibility boosts. Providers recover those costs by charging customers more. GruntWrk only charges a 15% platform fee, so providers keep more and customers pay less.",
     "pills": [
       "No pay-per-lead",
       "No credit packs",
       "No subscriptions",
       "No visibility boosts"
     ],
-    "pillStrong": "Only 10% platform payment fee",
+    "pillStrong": "15% platform fee",
     "tableHeaders": ["Fee type", "Typical marketplaces", "GruntWrk"],
     "note": "Based on public pricing and help-center pages reviewed on March 16, 2026. Fees vary by service and market.",
     "rows": [
@@ -102,7 +109,7 @@
         "fee": "Booking or payment fee",
         "marketSummary": "A single transaction fee when the booking and payment are completed through the platform.",
         "competitors": ["Fixando", "Taskrabbit", "Checkatrade"],
-        "gruntwrk": "10% platform payment fee"
+        "gruntwrk": "15%"
       }
     ]
   },
@@ -125,15 +132,15 @@
     "subtitle": "Choose a service and start the fastest path to getting it done."
   },
   "categories": [
-    { "slug": "cleaning", "title": "Cleaning", "desc": "Home & office deep cleans", "alt": "Affordable cleaning services — home and office deep cleans" },
-    { "slug": "furniture-assembly", "title": "Assembly", "desc": "Flat-pack & furniture", "alt": "Cheap furniture assembly — flat-pack and furniture building" },
-    { "slug": "home-repairs", "title": "Repairs", "desc": "Fixes, carpentry & more", "alt": "Affordable home repairs — fixes, carpentry and handyman services" },
-    { "slug": "moving-lifting", "title": "Moving", "desc": "Packing, lifting & vans", "alt": "Cheap moving services — packing, lifting and van hire" },
-    { "slug": "electrical", "title": "Electrical", "desc": "Lights, switches & wiring", "alt": "Affordable electrician services — lights, switches and wiring" },
-    { "slug": "plumbing", "title": "Plumbing", "desc": "Taps, drains & toilets", "alt": "Cheap plumbing services — taps, drains and toilet repairs" },
-    { "slug": "painting-decor", "title": "Painting", "desc": "Interior & exterior", "alt": "Affordable painting services — interior and exterior decorating" },
+    { "slug": "cleaning", "title": "Cleaning", "desc": "Home & office deep cleans", "alt": "Affordable cleaning services: home and office deep cleans" },
+    { "slug": "furniture-assembly", "title": "Assembly", "desc": "Flat-pack & furniture", "alt": "Cheap furniture assembly: flat-pack and furniture building" },
+    { "slug": "home-repairs", "title": "Repairs", "desc": "Fixes, carpentry & more", "alt": "Affordable home repairs: fixes, carpentry and handyman services" },
+    { "slug": "moving-lifting", "title": "Moving", "desc": "Packing, lifting & vans", "alt": "Cheap moving services: packing, lifting and van hire" },
+    { "slug": "electrical", "title": "Electrical", "desc": "Lights, switches & wiring", "alt": "Affordable electrician services: lights, switches and wiring" },
+    { "slug": "plumbing", "title": "Plumbing", "desc": "Taps, drains & toilets", "alt": "Cheap plumbing services: taps, drains and toilet repairs" },
+    { "slug": "painting-decor", "title": "Painting", "desc": "Interior & exterior", "alt": "Affordable painting services: interior and exterior decorating" },
     { "slug": "outdoor", "title": "Outdoor", "desc": "Garden & maintenance", "alt": "Cheap garden and outdoor maintenance services" },
-    { "slug": "mounting-installation", "title": "Mounting", "desc": "TVs, shelves & blinds", "alt": "Affordable mounting and installation — TVs, shelves and blinds" },
+    { "slug": "mounting-installation", "title": "Mounting", "desc": "TVs, shelves & blinds", "alt": "Affordable mounting and installation: TVs, shelves and blinds" },
     { "slug": "removal-disposal", "title": "Removal", "desc": "Junk & waste disposal", "alt": "Cheap junk removal and waste disposal services" }
   ],
   "howItWorks": {
@@ -188,10 +195,10 @@
     "heading": "What people are saying.",
     "ratingLabel": "Early Access",
     "items": [
-      { "stars": 5, "text": "Very effective platform for connecting clients and service providers. Finding and booking a job is simple and fast." },
-      { "stars": 4, "text": "The notice board feature is well organised and makes it easy to find available services in your area." },
-      { "stars": 5, "text": "I like how profiles show ratings, skills, and reviews. It helps users quickly evaluate providers." },
-      { "stars": 5, "text": "No lead fees, no credit packs. I just sign up and start quoting. More of what I earn stays with me." }
+      { "stars": 5, "text": "Very effective platform for connecting clients and service providers. Finding and booking a job is simple and fast.", "name": "Maria S.", "role": "Customer" },
+      { "stars": 4, "text": "The notice board feature is well organised and makes it easy to find available services in your area.", "name": "David R.", "role": "Customer" },
+      { "stars": 5, "text": "I like how profiles show ratings, skills, and reviews. It helps users quickly evaluate providers.", "name": "Lucia T.", "role": "Customer" },
+      { "stars": 5, "text": "No lead fees, no credit packs. I just sign up and start quoting. More of what I earn stays with me.", "name": "James P.", "role": "Provider" }
     ]
   },
   "apps": {

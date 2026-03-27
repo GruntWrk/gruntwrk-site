@@ -1,9 +1,9 @@
 {
   "meta": {
-    "title": "GruntWrk | Serviços Locais Baratos e Acessíveis — Compare Orçamentos",
-    "description": "Encontre prestadores de serviços locais baratos e fiáveis. Compare orçamentos para limpeza, reparações, canalização, eletricidade, pintura, mudanças e mais. Sem taxas de leads, sem intermediários — gira cada passo do pedido ao pagamento com o GruntWrk.",
+    "title": "GruntWrk | Serviços Locais Baratos e Acessíveis. Compare Orçamentos",
+    "description": "Encontre prestadores de serviços locais baratos e fiáveis. Compare orçamentos para limpeza, reparações, canalização, eletricidade, pintura, mudanças e mais. Sem taxas de leads, sem intermediários. Gira cada passo do pedido ao pagamento com o GruntWrk.",
     "keywords": "serviços locais baratos, prestadores de serviços acessíveis, comparar orçamentos, contratar ajuda local, serviços de limpeza, reparações domésticas, canalização, eletricidade, pintura, mudanças, montagem, canalizador barato, eletricista barato, limpeza barata, serviços baratos Portugal, alternativa Fixando, alternativa Zaask, marketplace de serviços, sem taxas de leads, grátis para aderir",
-    "seoHeading": "Serviços locais baratos e acessíveis — limpeza, reparações, canalização, eletricidade, mudanças e mais. Compare orçamentos de prestadores fiáveis, contrate com confiança e pague com segurança. GruntWrk é a forma económica e simples de resolver trabalhos sem taxas de intermediários."
+    "seoHeading": "Serviços locais baratos e acessíveis: limpeza, reparações, canalização, eletricidade, mudanças e mais. Compare orçamentos de prestadores fiáveis, contrate com confiança e pague com segurança. GruntWrk é a forma económica e simples de resolver trabalhos sem taxas de intermediários."
   },
   "nav": {
     "startOffering": "Começar a oferecer serviços",
@@ -13,8 +13,15 @@
   "hero": {
     "title": "Grátis para aderir. Grátis para orçamentar. Grátis para contratar.",
     "ctaProvider": "Começar a oferecer serviços",
-    "ctaCustomer": "Pedir um serviço"
+    "ctaCustomer": "Pedir um serviço",
+    "subtitle": "Compare orçamentos de prestadores de serviços locais. Sem taxas de leads, sem intermediários. Apenas preços acessíveis para limpeza, reparações, canalização, eletricidade, mudanças e mais."
   },
+  "stats": [
+    { "value": "100+", "label": "Localizações" },
+    { "value": "10+", "label": "Categorias de serviço" },
+    { "value": "4.8", "label": "Avaliação média" },
+    { "value": "15%", "label": "Única taxa cobrada" }
+  ],
   "benefits": {
     "heading": "Porque é que os clientes pagam menos no GruntWrk",
     "subtitle": "Quando os prestadores não são cobrados para encontrar trabalho, não precisam de inflacionar os preços. Essa poupança vai diretamente para si.",
@@ -46,7 +53,7 @@
       "Sem subscrições",
       "Sem impulsionamentos de visibilidade"
     ],
-    "pillStrong": "Apenas 10% de taxa de pagamento na plataforma",
+    "pillStrong": "15% de taxa na plataforma",
     "tableHeaders": ["Tipo de taxa", "Marketplaces típicos", "GruntWrk"],
     "note": "Baseado em preços públicos e páginas de ajuda consultadas a 16 de março de 2026. As taxas variam por serviço e mercado.",
     "rows": [
@@ -102,7 +109,7 @@
         "fee": "Taxa de reserva ou pagamento",
         "marketSummary": "Uma taxa de transação única quando a reserva e o pagamento são concluídos através da plataforma.",
         "competitors": ["Fixando", "Taskrabbit", "Checkatrade"],
-        "gruntwrk": "10% taxa de pagamento na plataforma"
+        "gruntwrk": "15%"
       }
     ]
   },
@@ -125,15 +132,15 @@
     "subtitle": "Escolha um serviço e comece o caminho mais rápido para o concluir."
   },
   "categories": [
-    { "slug": "cleaning", "title": "Limpeza", "desc": "Limpezas profundas de casa e escritório", "alt": "Serviços de limpeza baratos — limpezas profundas de casa e escritório" },
-    { "slug": "furniture-assembly", "title": "Montagem", "desc": "Móveis e flat-pack", "alt": "Montagem de móveis barata — montagem de flat-pack e mobiliário" },
-    { "slug": "home-repairs", "title": "Reparações", "desc": "Arranjos, carpintaria e mais", "alt": "Reparações domésticas acessíveis — arranjos, carpintaria e serviços de faz-tudo" },
-    { "slug": "moving-lifting", "title": "Mudanças", "desc": "Embalagem, transporte e carrinhas", "alt": "Serviços de mudanças baratos — embalagem, transporte e aluguer de carrinhas" },
-    { "slug": "electrical", "title": "Eletricidade", "desc": "Luzes, interruptores e cablagem", "alt": "Eletricista barato — luzes, interruptores e cablagem elétrica" },
-    { "slug": "plumbing", "title": "Canalização", "desc": "Torneiras, esgotos e sanitas", "alt": "Canalizador barato — torneiras, esgotos e reparação de sanitas" },
-    { "slug": "painting-decor", "title": "Pintura", "desc": "Interior e exterior", "alt": "Serviços de pintura baratos — pintura interior e exterior" },
+    { "slug": "cleaning", "title": "Limpeza", "desc": "Limpezas profundas de casa e escritório", "alt": "Serviços de limpeza baratos: limpezas profundas de casa e escritório" },
+    { "slug": "furniture-assembly", "title": "Montagem", "desc": "Móveis e flat-pack", "alt": "Montagem de móveis barata: montagem de flat-pack e mobiliário" },
+    { "slug": "home-repairs", "title": "Reparações", "desc": "Arranjos, carpintaria e mais", "alt": "Reparações domésticas acessíveis: arranjos, carpintaria e serviços de faz-tudo" },
+    { "slug": "moving-lifting", "title": "Mudanças", "desc": "Embalagem, transporte e carrinhas", "alt": "Serviços de mudanças baratos: embalagem, transporte e aluguer de carrinhas" },
+    { "slug": "electrical", "title": "Eletricidade", "desc": "Luzes, interruptores e cablagem", "alt": "Eletricista barato: luzes, interruptores e cablagem elétrica" },
+    { "slug": "plumbing", "title": "Canalização", "desc": "Torneiras, esgotos e sanitas", "alt": "Canalizador barato: torneiras, esgotos e reparação de sanitas" },
+    { "slug": "painting-decor", "title": "Pintura", "desc": "Interior e exterior", "alt": "Serviços de pintura baratos: pintura interior e exterior" },
     { "slug": "outdoor", "title": "Exterior", "desc": "Jardim e manutenção", "alt": "Serviços de jardim e manutenção exterior baratos" },
-    { "slug": "mounting-installation", "title": "Instalação", "desc": "TVs, prateleiras e estores", "alt": "Instalação e montagem acessível — TVs, prateleiras e estores" },
+    { "slug": "mounting-installation", "title": "Instalação", "desc": "TVs, prateleiras e estores", "alt": "Instalação e montagem acessível: TVs, prateleiras e estores" },
     { "slug": "removal-disposal", "title": "Remoção", "desc": "Entulho e eliminação de resíduos", "alt": "Remoção de entulho e eliminação de resíduos barata" }
   ],
   "howItWorks": {
@@ -188,10 +195,10 @@
     "heading": "O que as pessoas estão a dizer.",
     "ratingLabel": "Acesso Antecipado",
     "items": [
-      { "stars": 5, "text": "Plataforma muito eficaz para ligar clientes e prestadores de serviços. Encontrar e reservar um trabalho é simples e rápido." },
-      { "stars": 4, "text": "A funcionalidade de quadro de avisos está bem organizada e facilita a procura de serviços disponíveis na sua zona." },
-      { "stars": 5, "text": "Gosto de como os perfis mostram avaliações, competências e reviews. Ajuda os utilizadores a avaliar rapidamente os prestadores." },
-      { "stars": 5, "text": "Sem taxas de leads, sem pacotes de créditos. Basta inscrever-me e começar a orçamentar. Mais do que ganho fica comigo." }
+      { "stars": 5, "text": "Plataforma muito eficaz para ligar clientes e prestadores de serviços. Encontrar e reservar um trabalho é simples e rápido.", "name": "Maria S.", "role": "Cliente" },
+      { "stars": 4, "text": "A funcionalidade de quadro de avisos está bem organizada e facilita a procura de serviços disponíveis na sua zona.", "name": "David R.", "role": "Cliente" },
+      { "stars": 5, "text": "Gosto de como os perfis mostram avaliações, competências e reviews. Ajuda os utilizadores a avaliar rapidamente os prestadores.", "name": "Lucia T.", "role": "Cliente" },
+      { "stars": 5, "text": "Sem taxas de leads, sem pacotes de créditos. Basta inscrever-me e começar a orçamentar. Mais do que ganho fica comigo.", "name": "James P.", "role": "Prestador" }
     ]
   },
   "apps": {
