@@ -209,7 +209,7 @@ function useReveal() {
       },
       { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
     );
-    for (const el of elements) observer.observe(el);
+    elements.forEach((el) => observer.observe(el));
     return () => observer.disconnect();
   }, []);
 }
