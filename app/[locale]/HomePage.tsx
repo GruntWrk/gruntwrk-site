@@ -615,6 +615,22 @@ export default function HomePage({ dict, locale }: { dict: Dictionary; locale: L
 
           <StatsStrip dict={dict} />
 
+          <section className="hp-cb" data-reveal>
+            <div className="hp-section-head">
+              <h2 className="hp-h2">{dict.benefits.heading}</h2>
+              <p className="hp-subtitle">{dict.benefits.subtitle}</p>
+            </div>
+
+            <div className="hp-cb-list">
+              {dict.benefits.items.map((benefit) => (
+                <article key={benefit.id} className="hp-cb-row">
+                  <h3 className="hp-cb-title">{benefit.title}</h3>
+                  <p className="hp-cb-desc">{benefit.desc}</p>
+                </article>
+              ))}
+            </div>
+          </section>
+
           <section className="hp-how" data-reveal>
             <div className="hp-section-head">
               <h2 className="hp-h2">{dict.howItWorks.heading}</h2>
@@ -634,19 +650,39 @@ export default function HomePage({ dict, locale }: { dict: Dictionary; locale: L
             </div>
           </section>
 
-          <section className="hp-cb" data-reveal>
-            <div className="hp-section-head">
-              <h2 className="hp-h2">{dict.benefits.heading}</h2>
-              <p className="hp-subtitle">{dict.benefits.subtitle}</p>
-            </div>
+          <section className="hp-customer" data-reveal>
+            <div className="hp-customer-inner">
+              <div className="hp-section-head">
+                <div className="hp-customer-badge">{dict.customer.badge}</div>
+                <h2 className="hp-h2">{dict.customer.heading}</h2>
+                <p className="hp-subtitle">{dict.customer.subtitle}</p>
+              </div>
 
-            <div className="hp-cb-list">
-              {dict.benefits.items.map((benefit) => (
-                <article key={benefit.id} className="hp-cb-row">
-                  <h3 className="hp-cb-title">{benefit.title}</h3>
-                  <p className="hp-cb-desc">{benefit.desc}</p>
-                </article>
-              ))}
+              <div className="hp-cat-grid">
+                {categories.map((cat, index) => (
+                  <a
+                    key={cat.slug}
+                    href={categoryHref(cat.slug)}
+                    className={`hp-cat-card ${index < 4 ? "hp-cat-featured" : ""}`}
+                    style={{ animationDelay: `${index * 50}ms` }}
+                  >
+                    <img
+                      src={CATEGORY_IMAGES[cat.slug]}
+                      alt={cat.alt || cat.title}
+                      className="hp-cat-photo"
+                      loading={index > 3 ? "lazy" : undefined}
+                    />
+                    <div className="hp-cat-overlay" />
+                    <div className="hp-cat-label">
+                      <span className="hp-cat-name">{cat.title}</span>
+                      <span className="hp-cat-desc">{cat.desc}</span>
+                    </div>
+                    <div className="hp-cat-arrow">
+                      <ArrowIcon />
+                    </div>
+                  </a>
+                ))}
+              </div>
             </div>
           </section>
 
@@ -726,42 +762,6 @@ export default function HomePage({ dict, locale }: { dict: Dictionary; locale: L
                   {dict.provider.cta}
                   <ArrowIcon />
                 </a>
-              </div>
-            </div>
-          </section>
-
-          <section className="hp-customer" data-reveal>
-            <div className="hp-customer-inner">
-              <div className="hp-section-head">
-                <div className="hp-customer-badge">{dict.customer.badge}</div>
-                <h2 className="hp-h2">{dict.customer.heading}</h2>
-                <p className="hp-subtitle">{dict.customer.subtitle}</p>
-              </div>
-
-              <div className="hp-cat-grid">
-                {categories.map((cat, index) => (
-                  <a
-                    key={cat.slug}
-                    href={categoryHref(cat.slug)}
-                    className={`hp-cat-card ${index < 4 ? "hp-cat-featured" : ""}`}
-                    style={{ animationDelay: `${index * 50}ms` }}
-                  >
-                    <img
-                      src={CATEGORY_IMAGES[cat.slug]}
-                      alt={cat.alt || cat.title}
-                      className="hp-cat-photo"
-                      loading={index > 3 ? "lazy" : undefined}
-                    />
-                    <div className="hp-cat-overlay" />
-                    <div className="hp-cat-label">
-                      <span className="hp-cat-name">{cat.title}</span>
-                      <span className="hp-cat-desc">{cat.desc}</span>
-                    </div>
-                    <div className="hp-cat-arrow">
-                      <ArrowIcon />
-                    </div>
-                  </a>
-                ))}
               </div>
             </div>
           </section>
