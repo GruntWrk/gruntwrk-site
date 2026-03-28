@@ -20,7 +20,7 @@
     { "value": "100+", "label": "Localizações" },
     { "value": "10+", "label": "Categorias de serviço" },
     { "value": "4.8", "label": "Avaliação média" },
-    { "value": "15%", "label": "Única taxa cobrada" }
+    { "value": "€0", "label": "Taxas para clientes" }
   ],
   "benefits": {
     "heading": "Porque é que os clientes pagam menos no GruntWrk",
@@ -46,14 +46,14 @@
   "fees": {
     "kicker": "Diferença de custos",
     "heading": "A maioria cobra a cada passo.",
-    "subtitle": "Outras plataformas cobram aos prestadores taxas de leads, pacotes de créditos, subscrições e impulsionamentos de visibilidade. Os prestadores recuperam esses custos cobrando mais aos clientes. O GruntWrk cobra apenas uma taxa de pagamento na plataforma, para que os prestadores ganhem mais e os clientes paguem menos.",
+    "subtitle": "Os clientes usam o GruntWrk de forma totalmente gratuita. Cobramos aos prestadores uma simples taxa de 15% sobre trabalhos concluidos. Sem taxas de leads, sem pacotes de creditos, sem subscricoes. Os prestadores ganham mais e os clientes pagam menos.",
     "pills": [
       "Sem pay-per-lead",
       "Sem pacotes de créditos",
       "Sem subscrições",
       "Sem impulsionamentos de visibilidade"
     ],
-    "pillStrong": "15% de taxa na plataforma",
+    "pillStrong": "15% taxa do prestador apenas",
     "tableHeaders": ["Tipo de taxa", "Marketplaces típicos", "GruntWrk"],
     "note": "Baseado em preços públicos e páginas de ajuda consultadas a 16 de março de 2026. As taxas variam por serviço e mercado.",
     "rows": [
@@ -109,7 +109,7 @@
         "fee": "Taxa de reserva ou pagamento",
         "marketSummary": "Uma taxa de transação única quando a reserva e o pagamento são concluídos através da plataforma.",
         "competitors": ["Fixando", "Taskrabbit", "Checkatrade"],
-        "gruntwrk": "15%"
+        "gruntwrk": "15% (apenas prestador)"
       }
     ]
   },

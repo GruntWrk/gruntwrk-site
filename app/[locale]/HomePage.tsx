@@ -233,7 +233,7 @@ function HeroPreviewCard({ dict }: { dict: Dictionary }) {
               <span className="hp-preview-name">Ana M.</span>
               <Stars count={5} />
             </div>
-            <span className="hp-preview-price">£45</span>
+            <span className="hp-preview-price">$45</span>
           </div>
           <div className="hp-preview-quote">
             <div className="hp-preview-avatar">R</div>
@@ -241,7 +241,7 @@ function HeroPreviewCard({ dict }: { dict: Dictionary }) {
               <span className="hp-preview-name">Rui S.</span>
               <Stars count={5} />
             </div>
-            <span className="hp-preview-price">£52</span>
+            <span className="hp-preview-price">$52</span>
           </div>
           <div className="hp-preview-quote">
             <div className="hp-preview-avatar">J</div>
@@ -249,10 +249,11 @@ function HeroPreviewCard({ dict }: { dict: Dictionary }) {
               <span className="hp-preview-name">James L.</span>
               <Stars count={4} />
             </div>
-            <span className="hp-preview-price">£48</span>
+            <span className="hp-preview-price">$48</span>
           </div>
         </div>
         <div className="hp-preview-footer">
+          <span className="hp-preview-free">Free for customers</span>
           <span className="hp-preview-free">No lead fees</span>
         </div>
       </div>

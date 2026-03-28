@@ -20,7 +20,7 @@
     { "value": "100+", "label": "Locations" },
     { "value": "10+", "label": "Service categories" },
     { "value": "4.8", "label": "Average rating" },
-    { "value": "15%", "label": "Only fee charged" }
+    { "value": "$0", "label": "Customer fees" }
   ],
   "benefits": {
     "heading": "Why customers pay less on GruntWrk",
@@ -46,14 +46,14 @@
   "fees": {
     "kicker": "Cost difference",
     "heading": "Most others charge at every step.",
-    "subtitle": "Other platforms charge providers lead fees, credit packs, subscriptions, and visibility boosts. Providers recover those costs by charging customers more. GruntWrk only charges a 15% platform fee, so providers keep more and customers pay less.",
+    "subtitle": "Customers use GruntWrk completely free. We charge providers a simple 15% platform fee on completed jobs. No lead fees, no credit packs, no subscriptions. Providers keep more and customers pay less.",
     "pills": [
       "No pay-per-lead",
       "No credit packs",
       "No subscriptions",
       "No visibility boosts"
     ],
-    "pillStrong": "15% platform fee",
+    "pillStrong": "15% provider fee only",
     "tableHeaders": ["Fee type", "Typical marketplaces", "GruntWrk"],
     "note": "Based on public pricing and help-center pages reviewed on March 16, 2026. Fees vary by service and market.",
     "rows": [
@@ -109,7 +109,7 @@
         "fee": "Booking or payment fee",
         "marketSummary": "A single transaction fee when the booking and payment are completed through the platform.",
         "competitors": ["Fixando", "Taskrabbit", "Checkatrade"],
-        "gruntwrk": "15%"
+        "gruntwrk": "15% (provider only)"
       }
     ]
   },
