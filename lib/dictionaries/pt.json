@@ -38,8 +38,8 @@
       },
       {
         "id": "payment",
-        "title": "Pagamentos simples e seguros",
-        "desc": "Pague quando o trabalho estiver concluído. A plataforma trata de tudo. Sem dinheiro, sem transferências, sem complicações."
+        "title": "Pagamentos rapidos e diretos",
+        "desc": "Pague diretamente ao prestador quando o trabalho estiver concluido. Sem esperas, sem intermediarios, sem complicacoes."
       }
     ]
   },
@@ -187,7 +187,7 @@
       {
         "id": "pay",
         "title": "Pague e volte a reservar com confiança",
-        "desc": "Pague quando o trabalho estiver concluído. Sem dinheiro, sem transferências. A plataforma trata de tudo."
+        "desc": "Pague diretamente ao prestador quando o trabalho estiver concluido. Sem esperas, sem intermediarios."
       }
     ]
   },
