@@ -39,7 +39,7 @@
       {
         "id": "payment",
         "title": "Fast, direct payments",
-        "desc": "Pay your provider directly once the job is done. No waiting, no middleman, no hassle."
+        "desc": "Pay your provider directly once the job is done. No waiting, no hassle."
       }
     ]
   },
@@ -160,7 +160,7 @@
       {
         "num": "3",
         "title": "Manage the job in one place",
-        "body": "Use your workbench to message, confirm the provider, follow payment, and rebook trusted providers with confidence."
+        "body": "Use your workbench to message, confirm the provider, and rebook trusted providers with confidence."
       }
     ]
   },
@@ -187,7 +187,7 @@
       {
         "id": "pay",
         "title": "Pay and rebook with confidence",
-        "desc": "Pay your provider directly once the job is done. No waiting, no middleman."
+        "desc": "Pay your provider directly once the job is done. No waiting, no hassle."
       }
     ]
   },

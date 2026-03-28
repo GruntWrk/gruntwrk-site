@@ -39,7 +39,7 @@
       {
         "id": "payment",
         "title": "Pagamentos rapidos e diretos",
-        "desc": "Pague diretamente ao prestador quando o trabalho estiver concluido. Sem esperas, sem intermediarios, sem complicacoes."
+        "desc": "Pague diretamente ao prestador quando o trabalho estiver concluido. Sem esperas, sem complicacoes, sem complicacoes."
       }
     ]
   },
@@ -160,7 +160,7 @@
       {
         "num": "3",
         "title": "Gira o trabalho num só lugar",
-        "body": "Use a sua bancada de trabalho para enviar mensagens, confirmar o prestador, acompanhar o pagamento e voltar a reservar prestadores de confiança."
+        "body": "Use a sua bancada de trabalho para enviar mensagens, confirmar o prestador e voltar a reservar prestadores de confiança."
       }
     ]
   },
@@ -187,7 +187,7 @@
       {
         "id": "pay",
         "title": "Pague e volte a reservar com confiança",
-        "desc": "Pague diretamente ao prestador quando o trabalho estiver concluido. Sem esperas, sem intermediarios."
+        "desc": "Pague diretamente ao prestador quando o trabalho estiver concluido. Sem esperas, sem complicacoes."
       }
     ]
   },
