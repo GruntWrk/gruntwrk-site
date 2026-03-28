@@ -39,7 +39,7 @@
       {
         "id": "payment",
         "title": "Pagamentos simples e seguros",
-        "desc": "Pague metade adiantado, metade quando o trabalho estiver concluído. A plataforma trata de tudo. Sem dinheiro, sem transferências, sem complicações."
+        "desc": "Pague quando o trabalho estiver concluído. A plataforma trata de tudo. Sem dinheiro, sem transferências, sem complicações."
       }
     ]
   },
@@ -187,7 +187,7 @@
       {
         "id": "pay",
         "title": "Pague e volte a reservar com confiança",
-        "desc": "Pague metade adiantado, metade quando o trabalho estiver concluído. Sem dinheiro, sem transferências. A plataforma trata de tudo."
+        "desc": "Pague quando o trabalho estiver concluído. Sem dinheiro, sem transferências. A plataforma trata de tudo."
       }
     ]
   },

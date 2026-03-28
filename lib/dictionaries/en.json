@@ -39,7 +39,7 @@
       {
         "id": "payment",
         "title": "Simple, secure payments",
-        "desc": "Pay half upfront, half when the job is done. The platform handles everything. No cash, no transfers, no hassle."
+        "desc": "Pay once the job is done. The platform handles everything. No cash, no transfers, no hassle."
       }
     ]
   },
@@ -187,7 +187,7 @@
       {
         "id": "pay",
         "title": "Pay and rebook with confidence",
-        "desc": "Pay half upfront, half when the job is done. No cash, no transfers. The platform handles it all."
+        "desc": "Pay once the job is done. No cash, no transfers. The platform handles it all."
       }
     ]
   },
