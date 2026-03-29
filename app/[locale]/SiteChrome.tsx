@@ -1,4 +1,6 @@
 import type { Dictionary } from "../../lib/i18n";
+import type { Locale } from "../../lib/i18n";
+import { TrackedCtaLink } from "../TrackedCtaLink";
 
 const APP_BASE_URL = "https://app.gruntwrk.com";
 const LOGIN_HREF = `${APP_BASE_URL}/login`;
@@ -79,7 +81,7 @@ const SOCIALS = [
   },
 ];
 
-export function SiteHeader({ dict }: { dict: Dictionary }) {
+export function SiteHeader({ dict, locale }: { dict: Dictionary; locale: Locale }) {
   return (
     <header className="appShellHeader">
       <div className="appShellHeaderInner">
@@ -92,9 +94,15 @@ export function SiteHeader({ dict }: { dict: Dictionary }) {
         </a>
 
         <div className="appShellHeaderActions">
-          <a href={PROVIDER_SIGNUP_HREF} className="appShellHeaderBtn appShellHeaderBtnPrimary">
+          <TrackedCtaLink
+            href={PROVIDER_SIGNUP_HREF}
+            className="appShellHeaderBtn appShellHeaderBtnPrimary"
+            ctaLocation="seo_header"
+            locale={locale}
+            pageKind="seo"
+          >
             {dict.nav.startOffering}
-          </a>
+          </TrackedCtaLink>
           <a href={LOGIN_HREF} className="appShellHeaderBtn appShellHeaderBtnSecondary">
             {dict.nav.login}
           </a>
@@ -142,4 +150,3 @@ export function SiteFooter({ dict }: { dict: Dictionary }) {
     </footer>
   );
 }
-

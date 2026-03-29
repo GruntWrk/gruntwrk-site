@@ -10,6 +10,7 @@ import {
   type ResolvedSeoPage,
 } from "../../../lib/seoPages";
 import { buildBreadcrumbSchema, buildServiceSchema } from "../../../lib/schema";
+import { TrackedCtaLink } from "../../TrackedCtaLink";
 import { SiteFooter, SiteHeader } from "../SiteChrome";
 import { SeoRevealProvider } from "./SeoReveal";
 
@@ -231,7 +232,15 @@ function HowItWorks({
   );
 }
 
-function ProviderCtaSection({ cta }: { cta: NonNullable<ResolvedSeoPage["providerCta"]> }) {
+function ProviderCtaSection({
+  cta,
+  locale,
+  pageKind,
+}: {
+  cta: NonNullable<ResolvedSeoPage["providerCta"]>;
+  locale: Locale;
+  pageKind: ResolvedSeoPage["kind"];
+}) {
   return (
     <section className="hp-provider" data-reveal>
       <div className="hp-provider-inner">
@@ -248,9 +257,15 @@ function ProviderCtaSection({ cta }: { cta: NonNullable<ResolvedSeoPage["provide
             ))}
           </ul>
           <div>
-            <a href={cta.cta.href} className="hp-btn-primary">
+            <TrackedCtaLink
+              href={cta.cta.href}
+              className="hp-btn-primary"
+              ctaLocation="seo_provider_section"
+              locale={locale}
+              pageKind={pageKind}
+            >
               {cta.cta.label}
-            </a>
+            </TrackedCtaLink>
           </div>
         </div>
       </div>
@@ -317,7 +332,7 @@ export default function SeoPage({
 
   return (
     <div className="siteFrame seoPageFrame">
-      <SiteHeader dict={dict} />
+      <SiteHeader dict={dict} locale={locale} />
       <SeoRevealProvider />
       <SeoSubNav locale={locale} page={page} cities={nav.cities} services={nav.services} />
 
@@ -344,13 +359,25 @@ export default function SeoPage({
               <p className="seoHeroDescription">{page.heroDescription}</p>
 
               <div className="seoHeroActions">
-                <a href={page.primaryCta.href} className="hp-btn-secondary">
+                <TrackedCtaLink
+                  href={page.primaryCta.href}
+                  className="hp-btn-secondary"
+                  ctaLocation="seo_hero_primary"
+                  locale={locale}
+                  pageKind={page.kind}
+                >
                   {page.primaryCta.label}
-                </a>
+                </TrackedCtaLink>
                 {page.secondaryCta ? (
-                  <a href={page.secondaryCta.href} className="hp-btn-primary">
+                  <TrackedCtaLink
+                    href={page.secondaryCta.href}
+                    className="hp-btn-primary"
+                    ctaLocation="seo_hero_secondary"
+                    locale={locale}
+                    pageKind={page.kind}
+                  >
                     {page.secondaryCta.label}
-                  </a>
+                  </TrackedCtaLink>
                 ) : null}
               </div>
             </div>
@@ -431,7 +458,7 @@ export default function SeoPage({
         {page.providerCta ? (
           <section className="seoSection">
             <div className="sectionInner">
-              <ProviderCtaSection cta={page.providerCta} />
+              <ProviderCtaSection cta={page.providerCta} locale={locale} pageKind={page.kind} />
             </div>
           </section>
         ) : null}

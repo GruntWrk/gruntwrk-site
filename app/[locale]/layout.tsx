@@ -2,6 +2,10 @@ import { getDictionary, LOCALES, SITE_URL, type Locale } from "../../lib/i18n";
 import { Outfit } from "next/font/google";
 import type { Metadata } from "next";
 import { buildOrganizationSchema, buildWebsiteSchema } from "../../lib/schema";
+import {
+  buildGoogleTagBootstrapSnippet,
+  PRIMARY_GOOGLE_TAG_ID,
+} from "../../lib/googleTag";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -62,6 +66,7 @@ export default function LocaleLayout({
 }) {
   const locale = (LOCALES.includes(params.locale as Locale) ? params.locale : "en") as Locale;
   const schema = [buildWebsiteSchema(locale), buildOrganizationSchema(locale)];
+  const googleTagBootstrap = buildGoogleTagBootstrapSnippet();
 
   return (
     <html lang={locale} data-theme="light" className={outfit.variable}>
@@ -84,6 +89,16 @@ export default function LocaleLayout({
         <link rel="icon" type="image/png" sizes="64x64" href="/favicon-64.png" />
         <link rel="icon" type="image/png" sizes="128x128" href="/favicon-128.png" />
         <link rel="icon" type="image/png" sizes="256x256" href="/favicon-256.png" />
+        {PRIMARY_GOOGLE_TAG_ID ? (
+          <>
+            <script async src={`https://www.googletagmanager.com/gtag/js?id=${PRIMARY_GOOGLE_TAG_ID}`} />
+            <script
+              dangerouslySetInnerHTML={{
+                __html: googleTagBootstrap,
+              }}
+            />
+          </>
+        ) : null}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

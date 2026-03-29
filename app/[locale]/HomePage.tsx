@@ -1,6 +1,7 @@
 "use client";
 
 import { type CSSProperties, type KeyboardEvent, useCallback, useEffect, useRef, useState } from "react";
+import { TrackedCtaLink } from "../TrackedCtaLink";
 import type { Dictionary, Locale } from "../../lib/i18n";
 import { LOCALES, SITE_URL } from "../../lib/i18n";
 import type { SeoNavItem } from "../../lib/seoPages";
@@ -335,9 +336,15 @@ function AppShellHeader({ dict, locale }: { dict: Dictionary; locale: Locale }) 
         </a>
 
         <div className="appShellHeaderActions">
-          <a href={PROVIDER_HREF} className="appShellHeaderBtn appShellHeaderBtnPrimary">
+          <TrackedCtaLink
+            href={PROVIDER_HREF}
+            className="appShellHeaderBtn appShellHeaderBtnPrimary"
+            ctaLocation="home_header"
+            locale={locale}
+            pageKind="home"
+          >
             {dict.nav.startOffering}
-          </a>
+          </TrackedCtaLink>
           <a href={LOGIN_HREF} className="appShellHeaderBtn appShellHeaderBtnSecondary">
             {dict.nav.login}
           </a>
@@ -622,14 +629,26 @@ export default function HomePage({ dict, locale, nav }: { dict: Dictionary; loca
                 <p className="hp-hero-sub">{(dict.hero as any).subtitle}</p>
                 <p className="sr-only">{dict.meta.seoHeading}</p>
                 <div className="hp-hero-actions">
-                  <a href={REQUEST_SERVICE_HREF} className="hp-btn-secondary">
+                  <TrackedCtaLink
+                    href={REQUEST_SERVICE_HREF}
+                    className="hp-btn-secondary"
+                    ctaLocation="home_hero_customer"
+                    locale={locale}
+                    pageKind="home"
+                  >
                     {dict.hero.ctaCustomer}
                     <ArrowIcon />
-                  </a>
-                  <a href={PROVIDER_HREF} className="hp-btn-primary">
+                  </TrackedCtaLink>
+                  <TrackedCtaLink
+                    href={PROVIDER_HREF}
+                    className="hp-btn-primary"
+                    ctaLocation="home_hero_provider"
+                    locale={locale}
+                    pageKind="home"
+                  >
                     {dict.hero.ctaProvider}
                     <ArrowIcon />
-                  </a>
+                  </TrackedCtaLink>
                 </div>
               </div>
               <HeroPreviewCard dict={dict} />
@@ -800,10 +819,16 @@ export default function HomePage({ dict, locale, nav }: { dict: Dictionary; loca
                     <li key={perk}><CheckIcon /> {perk}</li>
                   ))}
                 </ul>
-                <a className="hp-btn-primary" href={PROVIDER_HREF}>
+                <TrackedCtaLink
+                  className="hp-btn-primary"
+                  href={PROVIDER_HREF}
+                  ctaLocation="home_provider_section"
+                  locale={locale}
+                  pageKind="home"
+                >
                   {dict.provider.cta}
                   <ArrowIcon />
-                </a>
+                </TrackedCtaLink>
               </div>
             </div>
           </section>
