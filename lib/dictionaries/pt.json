@@ -22,6 +22,10 @@
     { "value": "4.8", "label": "Avaliação média" },
     { "value": "€0", "label": "Taxas para clientes" }
   ],
+  "video": {
+    "heading": "Veja como funciona o GruntWrk",
+    "subtitle": "Uma visao rapida de como ligamos clientes a prestadores de servicos locais, sem taxas escondidas."
+  },
   "benefits": {
     "heading": "Porque é que os clientes pagam menos no GruntWrk",
     "subtitle": "Quando os prestadores não são cobrados para encontrar trabalho, não precisam de inflacionar os preços. Essa poupança vai diretamente para si.",
