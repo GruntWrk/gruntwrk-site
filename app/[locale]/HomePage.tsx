@@ -2,6 +2,8 @@
 
 import { type CSSProperties, type KeyboardEvent, useCallback, useEffect, useRef, useState } from "react";
 import type { Dictionary, Locale } from "../../lib/i18n";
+import { LOCALES, SITE_URL } from "../../lib/i18n";
+import type { SeoNavItem } from "../../lib/seoPages";
 
 const APP_BASE_URL = "https://app.gruntwrk.com";
 const HOME_HREF = APP_BASE_URL;
@@ -556,22 +558,63 @@ const SOCIALS = [
   },
 ];
 
-export default function HomePage({ dict, locale }: { dict: Dictionary; locale: Locale }) {
+export default function HomePage({ dict, locale, nav }: { dict: Dictionary; locale: Locale; nav: { cities: SeoNavItem[]; services: SeoNavItem[] } }) {
   const categories = dict.categories;
   const reviews = dict.reviews.items;
   const feeRows = dict.fees.rows;
 
   useReveal();
 
+  const citiesLabel = locale === "pt" ? "Cidades" : "Cities";
+  const servicesLabel = locale === "pt" ? "Servicos" : "Services";
+
   return (
     <div className="siteFrame">
       <AppShellHeader dict={dict} locale={locale} />
 
+      <nav className="seoSubNav" aria-label="Site navigation">
+        <div className="seoSubNavInner">
+          <div className="seoSubNavLinks">
+            <details className="seoSubNavGroup">
+              <summary className="seoSubNavTrigger">
+                {citiesLabel}
+                <svg className="seoSubNavChevron" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 4.5L6 7.5L9 4.5" /></svg>
+              </summary>
+              <div className="seoSubNavDropdown">
+                {nav.cities.map((item) => (
+                  <a key={item.href} href={item.href} className="seoSubNavDropdownLink">{item.label}</a>
+                ))}
+              </div>
+            </details>
+            <details className="seoSubNavGroup">
+              <summary className="seoSubNavTrigger">
+                {servicesLabel}
+                <svg className="seoSubNavChevron" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 4.5L6 7.5L9 4.5" /></svg>
+              </summary>
+              <div className="seoSubNavDropdown">
+                {nav.services.map((item) => (
+                  <a key={item.href} href={item.href} className="seoSubNavDropdownLink">{item.label}</a>
+                ))}
+              </div>
+            </details>
+          </div>
+          <div className="langToggle">
+            {LOCALES.map((loc, index) => (
+              <span key={loc}>
+                {index > 0 && <span className="langSep">{"\u00A0|\u00A0"}</span>}
+                {loc === locale ? (
+                  <span className="langActive">{loc.toUpperCase()}</span>
+                ) : (
+                  <a href={`/${loc}`} className="langLink">{loc.toUpperCase()}</a>
+                )}
+              </span>
+            ))}
+          </div>
+        </div>
+      </nav>
+
       <main className="sitePage">
         <div className="hp">
-          <div className="langToggleBar">
-            <LanguageToggle current={locale} />
-          </div>
           <section className="hp-hero">
             <div className="hp-hero-shell">
               <div className="hp-hero-content">

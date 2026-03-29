@@ -1,6 +1,7 @@
 import { getDictionary, LOCALES, SITE_URL, type Locale } from "../../lib/i18n";
 import { Outfit } from "next/font/google";
 import type { Metadata } from "next";
+import { buildOrganizationSchema, buildWebsiteSchema } from "../../lib/schema";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -25,8 +26,10 @@ export async function generateMetadata({
   for (const loc of LOCALES) {
     alternateLanguages[loc] = `${SITE_URL}/${loc}`;
   }
+  alternateLanguages["x-default"] = SITE_URL;
 
   return {
+    metadataBase: new URL(SITE_URL),
     title: dict.meta.title,
     description: dict.meta.description,
     keywords: dict.meta.keywords,
@@ -58,6 +61,7 @@ export default function LocaleLayout({
   params: { locale: string };
 }) {
   const locale = (LOCALES.includes(params.locale as Locale) ? params.locale : "en") as Locale;
+  const schema = [buildWebsiteSchema(locale), buildOrganizationSchema(locale)];
 
   return (
     <html lang={locale} data-theme="light" className={outfit.variable}>
@@ -83,13 +87,7 @@ export default function LocaleLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "WebSite",
-              name: "GruntWrk",
-              url: `${SITE_URL}/${locale}`,
-              inLanguage: locale,
-            }),
+            __html: JSON.stringify(schema),
           }}
         />
       </head>
