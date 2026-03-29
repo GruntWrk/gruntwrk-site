@@ -86,4 +86,3 @@ Use `/handoff` at the start of a session and `/handoff-save` at the end.
 - [ ] Add real App Store and Play Store links when apps are published (replace disabled badges)
 - [ ] Mobile responsiveness pass — hero brand/logo size on very small screens, phone frame scroll
 - [ ] Consider adding a 4th review card once more early-access feedback arrives
-- [ ] Delete `app/AboutModal.tsx` and `app/InstallPrompt.tsx` (retired, still on disk)
