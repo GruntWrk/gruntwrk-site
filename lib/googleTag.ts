@@ -1,9 +1,3 @@
-const rawTagIds = [
-  process.env.NEXT_PUBLIC_GOOGLE_TAG_ID,
-  process.env.NEXT_PUBLIC_GA4_MEASUREMENT_ID,
-  process.env.NEXT_PUBLIC_GOOGLE_ADS_ID,
-];
-
 function splitIds(value?: string) {
   if (!value) return [];
   return value
@@ -12,7 +6,26 @@ function splitIds(value?: string) {
     .filter(Boolean);
 }
 
-export const GOOGLE_TAG_IDS = Array.from(new Set(rawTagIds.flatMap(splitIds)));
+function extractGoogleAdsTagIds(sendToValue?: string) {
+  return splitIds(sendToValue)
+    .map((item) => item.split("/")[0]?.trim() ?? "")
+    .filter(Boolean);
+}
+
+const rawTagIds = [
+  process.env.NEXT_PUBLIC_GOOGLE_TAG_ID,
+  process.env.NEXT_PUBLIC_GA4_MEASUREMENT_ID,
+  process.env.NEXT_PUBLIC_GOOGLE_ADS_ID,
+];
+
+const inferredAdsTagIds = [
+  process.env.NEXT_PUBLIC_GOOGLE_ADS_CUSTOMER_REQUEST_SEND_TO,
+  process.env.NEXT_PUBLIC_GOOGLE_ADS_PROVIDER_SIGNUP_SEND_TO,
+].flatMap(extractGoogleAdsTagIds);
+
+export const GOOGLE_TAG_IDS = Array.from(
+  new Set([...rawTagIds.flatMap(splitIds), ...inferredAdsTagIds])
+);
 export const PRIMARY_GOOGLE_TAG_ID = GOOGLE_TAG_IDS[0] ?? "";
 
 export const GOOGLE_CTA_EVENTS = {
