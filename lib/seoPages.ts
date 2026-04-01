@@ -6,6 +6,7 @@ const PT_COUNTRY = "PT";
 export type SeoPageKind =
   | "audience"
   | "city"
+  | "city-provider"
   | "services-index"
   | "service"
   | "city-service"
@@ -268,12 +269,12 @@ const SERVICES: ServiceDefinition[] = [
     providerBullets: {
       en: [
         "Ideal for electricians and multi-trade businesses looking for local work.",
-        "Showcase your specialties on a public profile that customers can find.",
+        "Showcase your specialties on a personal profile visible to GruntWrk clients.",
         "Build a repeat client base from one workbench.",
       ],
       pt: [
         "Ideal para eletricistas e negocios multiespecialidade a procurar trabalho local.",
-        "Mostre as suas especialidades num perfil publico que os clientes encontram.",
+        "Mostre as suas especialidades num perfil pessoal visivel para clientes GruntWrk.",
         "Construa uma base de clientes recorrentes a partir de uma so bancada.",
       ],
     },
@@ -454,8 +455,8 @@ function buildProvidersPage(locale: Locale): Omit<ResolvedSeoPage, "id" | "kind"
       ? "Ganhe trabalho local sem pagar para perseguir leads"
       : "Win local work without paying to chase leads",
     heroDescription: isPt
-      ? "Crie um perfil público, receba pedidos diretos e pague apenas a taxa de prestador de 15% quando o trabalho avança."
-      : "Create a public profile, receive direct requests, and only pay the 15% provider fee when the work moves ahead.",
+      ? "Crie um perfil pessoal, receba pedidos diretos e pague apenas a taxa de prestador de 15% quando o trabalho avança."
+      : "Create a personal profile, receive direct requests, and only pay the 15% provider fee when the work moves ahead.",
     primaryCta: { label: LABELS.join[locale], href: buildProviderSignupHref() },
     secondaryCta: { label: LABELS.services[locale], href: localizedPath(locale, [LABELS.servicesSegment[locale]]) },
     sections: [
@@ -463,12 +464,12 @@ function buildProvidersPage(locale: Locale): Omit<ResolvedSeoPage, "id" | "kind"
         title: isPt ? "Como o GruntWrk ajuda prestadores" : "How GruntWrk helps providers",
         items: isPt
           ? [
-              "Mostre o seu trabalho num perfil público que os clientes conseguem avaliar rapidamente.",
+              "Mostre o seu trabalho num perfil pessoal que os clientes GruntWrk conseguem avaliar rapidamente.",
               "Receba pedidos diretos sem ter de comprar créditos ou desbloquear leads.",
               "Construa clientes recorrentes para limpezas, reparações, pintura, mudanças e mais.",
             ]
           : [
-              "Show your work on a public profile customers can assess quickly.",
+              "Show your work on a personal profile that GruntWrk clients can assess quickly.",
               "Receive direct requests without buying credits or unlocking leads.",
               "Build repeat customers for cleaning, repairs, painting, moving, and more.",
             ],
@@ -523,6 +524,130 @@ function buildProvidersPage(locale: Locale): Omit<ResolvedSeoPage, "id" | "kind"
   };
 }
 
+function buildCityProviderPage(
+  locale: Locale,
+  city: CityDefinition
+): Omit<ResolvedSeoPage, "id" | "kind" | "locale" | "slug" | "path" | "alternates"> {
+  const isPt = locale === "pt";
+  const cityName = city.name[locale];
+  return {
+    title: isPt
+      ? `Trabalho de Servicos em ${cityName} | Registe-se Gratis | GruntWrk`
+      : `Service Work in ${cityName} | Register Free | GruntWrk`,
+    description: isPt
+      ? `Procura trabalho de limpeza, canalizacao, eletricidade ou reparacoes em ${cityName}? Registe-se gratis no GruntWrk e receba pedidos de clientes na sua zona.`
+      : `Looking for cleaning, plumbing, electrical, or repair work in ${cityName}? Register free on GruntWrk and receive client requests in your area.`,
+    eyebrow: isPt ? "Para profissionais" : "For professionals",
+    heroTitle: isPt
+      ? `Procura trabalho em ${cityName}?`
+      : `Looking for work in ${cityName}?`,
+    heroDescription: isPt
+      ? `Registe-se gratis no GruntWrk, crie o seu perfil pessoal e comece a receber pedidos de clientes em ${cityName}. Sem taxas de registo, sem pacotes de creditos.`
+      : `Register free on GruntWrk, create your personal profile, and start receiving client requests in ${cityName}. No registration fees, no credit packs.`,
+    primaryCta: { label: isPt ? "Registar gratis" : "Register free", href: buildProviderSignupHref() },
+    sections: [
+      {
+        title: isPt ? "Porque se registar no GruntWrk" : "Why register on GruntWrk",
+        items: isPt
+          ? [
+              "Registo gratuito e sem compromisso.",
+              `Receba pedidos de trabalho de clientes em ${cityName} diretamente.`,
+              "Sem pagar para responder a pedidos ou desbloquear leads.",
+              "Escolha os trabalhos que lhe interessam e trabalhe no seu horario.",
+              "Pague apenas a taxa de 15% quando o trabalho avanca.",
+            ]
+          : [
+              "Free registration with no commitment.",
+              `Receive work requests from clients in ${cityName} directly.`,
+              "No paying to respond to requests or unlock leads.",
+              "Choose the jobs that interest you and work on your schedule.",
+              "Only pay the 15% fee when the work moves ahead.",
+            ],
+      },
+      {
+        title: isPt ? "Servicos em procura" : "Services in demand",
+        items: isPt
+          ? [
+              "Limpeza domestica e comercial.",
+              "Canalizacao e reparacoes de agua.",
+              "Eletricidade e instalacoes eletricas.",
+              "Reparacoes gerais e manutencao.",
+              "Pintura interior e exterior.",
+              "Mudancas e transportes.",
+            ]
+          : [
+              "Domestic and commercial cleaning.",
+              "Plumbing and water repairs.",
+              "Electrical work and installations.",
+              "General repairs and maintenance.",
+              "Interior and exterior painting.",
+              "Moving and transport.",
+            ],
+      },
+      {
+        title: isPt ? "Como funciona" : "How it works",
+        items: isPt
+          ? [
+              "1. Registe-se gratis e crie o seu perfil pessoal com as suas competencias e disponibilidade.",
+              "2. Receba pedidos de clientes na sua zona e escolha os que lhe interessam.",
+              "3. Combine os detalhes diretamente com o cliente e realize o trabalho.",
+            ]
+          : [
+              "1. Register free and create your personal profile with your skills and availability.",
+              "2. Receive requests from clients in your area and choose the ones that interest you.",
+              "3. Arrange the details directly with the client and do the work.",
+            ],
+      },
+    ],
+    faqTitle: LABELS.faq[locale],
+    faqs: isPt
+      ? [
+          {
+            question: "Quanto custa registar-me?",
+            answer: "O registo e gratis. So paga a taxa de prestador de 15% quando um trabalho avanca atraves da plataforma.",
+          },
+          {
+            question: "Que tipo de trabalhos posso receber?",
+            answer: `Em ${cityName}, os servicos mais pedidos incluem limpeza domestica, canalizacao, eletricidade, reparacoes, pintura e mudancas.`,
+          },
+          {
+            question: "Posso escolher os meus horarios?",
+            answer: "Sim. Define a sua disponibilidade no perfil e so aceita os pedidos que lhe interessam. Sem obrigacao de aceitar tudo.",
+          },
+          {
+            question: "Os clientes veem o meu perfil?",
+            answer: "O seu perfil pessoal e visivel apenas para clientes registados no GruntWrk que procurem servicos na sua zona e categoria.",
+          },
+        ]
+      : [
+          {
+            question: "How much does it cost to register?",
+            answer: "Registration is free. You only pay the 15% provider fee when a job moves ahead through the platform.",
+          },
+          {
+            question: "What kind of work can I receive?",
+            answer: `In ${cityName}, the most requested services include domestic cleaning, plumbing, electrical work, repairs, painting, and moving.`,
+          },
+          {
+            question: "Can I choose my own hours?",
+            answer: "Yes. Set your availability in your profile and only accept the requests that interest you. No obligation to accept everything.",
+          },
+          {
+            question: "Do clients see my profile?",
+            answer: "Your personal profile is only visible to registered GruntWrk clients looking for services in your area and category.",
+          },
+        ],
+    breadcrumbs: [
+      { label: LABELS.home[locale], href: localizedPath(locale, []) },
+      { label: cityName, href: localizedPath(locale, [city.slug[locale]]) },
+      {
+        label: isPt ? "Trabalho" : "Work",
+        href: localizedPath(locale, [city.slug[locale], isPt ? "trabalho" : "work"]),
+      },
+    ],
+  };
+}
+
 function buildCustomersPage(locale: Locale): Omit<ResolvedSeoPage, "id" | "kind" | "locale" | "slug" | "path" | "alternates"> {
   const isPt = locale === "pt";
   return {
@@ -544,12 +669,12 @@ function buildCustomersPage(locale: Locale): Omit<ResolvedSeoPage, "id" | "kind"
         title: isPt ? "O que os clientes ganham" : "What customers get",
         items: isPt
           ? [
-              "Perfis públicos e sinais de confiança mais claros.",
+              "Perfis pessoais e sinais de confiança mais claros.",
               "Um fluxo simples para pedir trabalho prático.",
               "Uma forma fácil de voltar a contratar quem já funcionou bem.",
             ]
           : [
-              "Clearer public profiles and trust signals.",
+              "Clearer personal profiles and trust signals.",
               "A simple workflow for practical local jobs.",
               "An easier way to rebook providers who already worked out well.",
             ],
@@ -935,12 +1060,12 @@ function buildComparisonPage(locale: Locale, competitor: "fixando" | "zaask") {
           title: isPt ? "O que o GruntWrk oferece" : "What GruntWrk offers instead",
           items: isPt
             ? [
-                "Perfis públicos para clientes avaliarem melhor antes de pedir trabalho.",
+                "Perfis pessoais para clientes avaliarem melhor antes de pedir trabalho.",
                 "Pedidos mais diretos entre clientes e prestadores.",
                 "Taxa de prestador de 15% quando o trabalho avança, em vez de pagar só para responder.",
               ]
             : [
-                "Public profiles so customers can judge fit before requesting work.",
+                "Personal profiles so clients can judge fit before requesting work.",
                 "More direct requests between customers and providers.",
                 "A 15% provider fee when work moves ahead, instead of paying just to respond.",
               ],
@@ -1016,6 +1141,17 @@ function buildPages() {
         slug: citySlug,
         path: localizedPath(locale, citySlug),
         ...buildCityPage(locale, city),
+        alternates: {} as Record<Locale, string>,
+      });
+
+      const cityProviderSlug = [city.slug[locale], locale === "pt" ? "trabalho" : "work"];
+      pages.push({
+        id: `city-provider-${city.id}`,
+        kind: "city-provider",
+        locale,
+        slug: cityProviderSlug,
+        path: localizedPath(locale, cityProviderSlug),
+        ...buildCityProviderPage(locale, city),
         alternates: {} as Record<Locale, string>,
       });
 

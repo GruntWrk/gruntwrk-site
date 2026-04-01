@@ -120,11 +120,11 @@
   "provider": {
     "badge": "Para prestadores",
     "title": "Gira o seu negócio de serviços sem pagar para perseguir leads",
-    "desc": "Crie um perfil público, partilhe a sua disponibilidade, receba pedidos diretos, compare orçamentos, comunique com clientes, receba pagamentos e volte a reservar trabalhos recorrentes a partir de uma única bancada de trabalho. O GruntWrk foi criado para ajudar os prestadores a gerir o trabalho desde o primeiro pedido até à reserva recorrente, sem taxas de leads, pacotes de contacto ou impulsionamentos de visibilidade.",
+    "desc": "Crie um perfil pessoal, partilhe a sua disponibilidade, receba pedidos diretos, compare orçamentos, comunique com clientes, receba pagamentos e volte a reservar trabalhos recorrentes a partir de uma única bancada de trabalho. O GruntWrk foi criado para ajudar os prestadores a gerir o trabalho desde o primeiro pedido até à reserva recorrente, sem taxas de leads, pacotes de contacto ou impulsionamentos de visibilidade.",
     "perks": [
       "Sem taxas de pay-per-lead ou desbloqueio de contacto",
       "Sem pacotes de créditos, subscrições ou taxas de impulsionamento",
-      "Perfil público, disponibilidade e pedidos diretos",
+      "Perfil pessoal, disponibilidade e pedidos diretos",
       "Orçamentos, mensagens e reservas recorrentes numa só bancada de trabalho"
     ],
     "cta": "Começar a oferecer serviços"
