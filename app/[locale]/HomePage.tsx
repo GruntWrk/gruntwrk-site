@@ -256,7 +256,7 @@ function HeroPreviewCard({ dict }: { dict: Dictionary }) {
           </div>
         </div>
         <div className="hp-preview-footer">
-          <span className="hp-preview-free">Free for customers</span>
+          <span className="hp-preview-free">Direct payment</span>
           <span className="hp-preview-free">No lead fees</span>
         </div>
       </div>
@@ -335,20 +335,26 @@ function AppShellHeader({ dict, locale }: { dict: Dictionary; locale: Locale }) 
           </div>
         </a>
 
-        <div className="appShellHeaderActions">
-          <TrackedCtaLink
-            href={PROVIDER_HREF}
-            className="appShellHeaderBtn appShellHeaderBtnPrimary"
-            ctaLocation="home_header"
-            locale={locale}
-            pageKind="home"
-          >
-            {dict.nav.startOffering}
-          </TrackedCtaLink>
+        <nav className="appShellHeaderNav" aria-label="Primary navigation">
+          <a href={appHref("/notice-board")} className="appShellHeaderNavBtn" aria-label={dict.nav.jobs}>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <rect x="3" y="3" width="7" height="7" rx="1" /><rect x="3" y="14" width="7" height="7" rx="1" />
+              <line x1="14" y1="4" x2="21" y2="4" /><line x1="14" y1="9" x2="21" y2="9" />
+              <line x1="14" y1="15" x2="21" y2="15" /><line x1="14" y1="20" x2="21" y2="20" />
+            </svg>
+            <span className="appShellHeaderNavLabel">{dict.nav.jobs}</span>
+          </a>
+          <a href={appHref("/contacts")} className="appShellHeaderNavBtn" aria-label={dict.nav.providers}>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="10" /><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+              <path d="M2 12h20" />
+            </svg>
+            <span className="appShellHeaderNavLabel">{dict.nav.providers}</span>
+          </a>
           <a href={LOGIN_HREF} className="appShellHeaderBtn appShellHeaderBtnSecondary">
             {dict.nav.login}
           </a>
-        </div>
+        </nav>
       </div>
     </header>
   );
@@ -628,16 +634,33 @@ export default function HomePage({ dict, locale, nav }: { dict: Dictionary; loca
                 <h1 className="hp-hero-title">{dict.hero.title}</h1>
                 <p className="hp-hero-sub">{(dict.hero as any).subtitle}</p>
                 <p className="sr-only">{dict.meta.seoHeading}</p>
-                <div className="hp-hero-actions">
+                <div className="hp-hero-actions hp-hero-actions-row">
                   <TrackedCtaLink
-                    href={REQUEST_SERVICE_HREF}
-                    className="hp-btn-secondary hp-hero-cta-full"
-                    ctaLocation="home_hero_customer"
+                    href={appHref("/notice-board")}
+                    className="hp-hero-cta hp-hero-cta-green"
+                    ctaLocation="home_hero_browse_jobs"
                     locale={locale}
                     pageKind="home"
                   >
-                    {dict.hero.ctaCustomer}
-                    <ArrowIcon />
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      <rect x="3" y="3" width="7" height="7" rx="1" /><rect x="3" y="14" width="7" height="7" rx="1" />
+                      <line x1="14" y1="4" x2="21" y2="4" /><line x1="14" y1="9" x2="21" y2="9" />
+                      <line x1="14" y1="15" x2="21" y2="15" /><line x1="14" y1="20" x2="21" y2="20" />
+                    </svg>
+                    {locale === "pt" ? "Quadro de trabalhos" : "Job Noticeboard"}
+                  </TrackedCtaLink>
+                  <TrackedCtaLink
+                    href={appHref("/contacts")}
+                    className="hp-hero-cta hp-hero-cta-blue"
+                    ctaLocation="home_hero_browse_providers"
+                    locale={locale}
+                    pageKind="home"
+                  >
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      <circle cx="12" cy="12" r="10" /><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+                      <path d="M2 12h20" />
+                    </svg>
+                    {locale === "pt" ? "Encontrar prestadores" : "Find Providers"}
                   </TrackedCtaLink>
                 </div>
               </div>
@@ -660,6 +683,30 @@ export default function HomePage({ dict, locale, nav }: { dict: Dictionary; loca
           <TrustStrip dict={dict} />
 
           <StatsStrip dict={dict} />
+
+          {/* Payment model strip */}
+          <section className="hp-payment-model" data-reveal>
+            <div className="hp-payment-model-inner">
+              <div className="hp-payment-model-item">
+                <span className="hp-payment-model-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2v20"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                </span>
+                <span className="hp-payment-model-text">{locale === "pt" ? "Os clientes pagam diretamente aos prestadores" : "Customers pay providers directly"}</span>
+              </div>
+              <div className="hp-payment-model-item">
+                <span className="hp-payment-model-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </span>
+                <span className="hp-payment-model-text">{locale === "pt" ? "Sem caução, sem atrasos nos pagamentos" : "No escrow, no payout delays"}</span>
+              </div>
+              <div className="hp-payment-model-item">
+                <span className="hp-payment-model-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 12l2 2 4-4"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg>
+                </span>
+                <span className="hp-payment-model-text">{locale === "pt" ? "Sem taxas de leads e sem subscrições" : "No lead fees and no subscriptions"}</span>
+              </div>
+            </div>
+          </section>
 
           <section className="hp-customer" data-reveal>
             <div className="hp-customer-inner">
@@ -756,7 +803,7 @@ export default function HomePage({ dict, locale, nav }: { dict: Dictionary; loca
                         <p className="hp-fee-market-copy">{row.marketSummary}</p>
                       </td>
                       <td>
-                        <span className={`hp-fee-grunt ${row.gruntwrk.startsWith("15%") ? "is-fee" : "is-free"}`}>
+                        <span className={`hp-fee-grunt ${row.gruntwrk.startsWith("10%") ? "is-fee" : "is-free"}`}>
                           {row.gruntwrk}
                         </span>
                       </td>
@@ -771,7 +818,7 @@ export default function HomePage({ dict, locale, nav }: { dict: Dictionary; loca
                 <article key={`m-${row.fee}`} className="hp-fee-card">
                   <div className="hp-fee-card-head">
                     <span className="hp-fee-label">{row.fee}</span>
-                    <span className={`hp-fee-grunt ${row.gruntwrk.startsWith("15%") ? "is-fee" : "is-free"}`}>
+                    <span className={`hp-fee-grunt ${row.gruntwrk.startsWith("10%") ? "is-fee" : "is-free"}`}>
                       {row.gruntwrk}
                     </span>
                   </div>

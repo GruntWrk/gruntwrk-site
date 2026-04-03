@@ -371,13 +371,70 @@ h1, h2, h3,
 
 .navLogoIcon { width: 44px; height: 44px; flex-shrink: 0; }
 
-.appShellHeaderActions {
+.appShellHeaderActions,
+.appShellHeaderNav {
   display: flex;
   align-items: center;
   justify-content: flex-end;
   gap: 10px;
   margin-left: auto;
   flex-shrink: 0;
+}
+
+.appShellHeaderNavLink {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text);
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: background 180ms ease, color 180ms ease;
+  white-space: nowrap;
+}
+.appShellHeaderNavLink:hover {
+  background: rgba(62,207,142,0.08);
+  color: var(--brand);
+}
+
+.appShellHeaderIconBtn {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  color: var(--text);
+  text-decoration: none;
+  transition: background 180ms ease, color 180ms ease;
+}
+.appShellHeaderIconBtn:hover {
+  background: rgba(62,207,142,0.10);
+  color: var(--brand);
+}
+
+.appShellHeaderNavBtn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 6px 2px 4px;
+  min-width: 56px;
+  color: var(--muted-2);
+  text-decoration: none;
+  border-radius: 0;
+  transition: color 200ms ease;
+  position: relative;
+}
+.appShellHeaderNavBtn:hover {
+  color: var(--brand);
+}
+.appShellHeaderNavLabel {
+  font-size: 9px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  color: inherit;
 }
 
 .appShellHeaderBtn {
@@ -472,6 +529,13 @@ h1, h2, h3,
 
 .hp-btn-primary:hover { background: #1d4ed8; transform: translateY(-1px); }
 
+.hp-btn-outline {
+  background: transparent;
+  color: #3ECF8E;
+  border: 1.5px solid rgba(62,207,142,0.3);
+}
+.hp-btn-outline:hover { background: rgba(62,207,142,0.08); transform: translateY(-1px); }
+
 /* Hero: customer CTA is primary (larger, dominant) */
 .hp-hero .hp-btn-secondary {
   font-size: 1.05rem;
@@ -557,6 +621,49 @@ h1, h2, h3,
   display: grid;
   grid-template-columns: 1fr;
   gap: 12px;
+}
+
+.hp-hero-actions-row {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.hp-hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  border-radius: 12px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+  border: none;
+  transition: background 180ms ease, transform 180ms ease;
+}
+.hp-hero-cta:hover {
+  transform: translateY(-1px);
+}
+
+.hp-hero-cta-green {
+  background: #3ECF8E;
+  color: #fff;
+  box-shadow: 0 10px 24px rgba(62,207,142,0.18);
+}
+.hp-hero-cta-green:hover {
+  background: #34c080;
+}
+
+.hp-hero-cta-blue {
+  background: #2563eb;
+  color: #fff;
+  box-shadow: 0 10px 24px rgba(37,99,235,0.18);
+}
+.hp-hero-cta-blue:hover {
+  background: #1d4ed8;
 }
 
 /* ── Hero video ── */
@@ -695,6 +802,42 @@ h1, h2, h3,
 }
 
 /* ── Stats strip ── */
+/* Payment model strip */
+.hp-payment-model {
+  padding: 0;
+}
+.hp-payment-model-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: wrap;
+  padding: 24px 28px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+.hp-payment-model-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.hp-payment-model-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: rgba(62,207,142,0.10);
+  display: grid;
+  place-items: center;
+  color: #3ECF8E;
+  flex-shrink: 0;
+}
+.hp-payment-model-text {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
 .hp-stats-strip {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -1242,8 +1385,9 @@ h1, h2, h3,
 @media (max-width: 760px) {
   .appShellHeaderInner { width: min(100%, calc(100% - 24px)); padding: 14px 0 12px; gap: 12px; }
   .appShellBrand { width: auto; }
-  .appShellHeaderActions { gap: 8px; }
+  .appShellHeaderActions, .appShellHeaderNav { gap: 8px; }
   .appShellHeaderBtn { min-height: 38px; padding: 10px 14px; font-size: 0.84rem; }
+  .appShellHeaderNavLink { display: none; }
   .hp-cb-list { grid-template-columns: 1fr; }
   .reviewsSection { padding-top: 72px; padding-bottom: 72px; }
   .reviewsSectionHeader { flex-direction: column; align-items: flex-start; }
@@ -1270,6 +1414,7 @@ h1, h2, h3,
   .hp-hero-actions { grid-template-columns: 1fr; }
   .hp-hero-preview-card { width: 100%; }
   .hp-stats-strip { grid-template-columns: repeat(2, 1fr); border-radius: 14px; }
+  .hp-payment-model-inner { flex-direction: column; align-items: flex-start; gap: 16px; padding: 20px; }
   .hp-how { padding: 28px 20px; }
   .hp-trust-strip { flex-direction: column; gap: 12px; }
   .hp-trust-divider { display: none; }

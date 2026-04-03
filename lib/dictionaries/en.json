@@ -1,20 +1,24 @@
 {
   "meta": {
-    "title": "GruntWrk | Affordable Local Services. Compare Quotes & Hire",
-    "description": "Find cheap, reliable local service providers. Compare quotes for cleaning, repairs, plumbing, electrical, painting, moving and more. No lead fees, no middleman. Manage every step from request to payment with GruntWrk.",
-    "keywords": "affordable local services, cheap service providers, compare quotes, hire local help, cleaning services, home repairs, plumbing, electrical, painting, moving, assembly, handyman, affordable quotes, cheap handyman, local tradespeople, service marketplace, no lead fees, free to join",
-    "seoHeading": "Affordable local services: cleaning, repairs, plumbing, electrical, moving and more. Compare quotes from trusted providers, hire with confidence, and pay securely. GruntWrk is the cheap, simple way to get work done without middleman fees."
+    "title": "GruntWrk | Public Local Jobs and Providers. Browse, Compare & Hire",
+    "description": "Browse public local jobs and providers. Compare quotes for cleaning, repairs, plumbing, electrical, painting, moving and more. No lead fees, no subscriptions. Customers pay providers directly. Providers pay a 10% job fee only when work moves ahead.",
+    "keywords": "public local jobs, local providers, compare quotes, hire local help, cleaning services, home repairs, plumbing, electrical, painting, moving, assembly, handyman, local tradespeople, no lead fees, direct payment, provider directory",
+    "seoHeading": "Public local jobs and providers: cleaning, repairs, plumbing, electrical, moving and more. Browse first, sign up when you want to post or reply. Customers pay providers directly. Providers pay GruntWrk a 10% job fee only when work moves ahead."
   },
   "nav": {
-    "startOffering": "Start offering services",
-    "login": "Login",
-    "brandSub": "Get work done. Find work fast."
+    "startOffering": "For Providers",
+    "login": "Sign in",
+    "brandSub": "Public local jobs and providers",
+    "jobs": "Jobs",
+    "providers": "Providers"
   },
   "hero": {
-    "title": "Free to join. Free to quote. Free to hire.",
-    "subtitle": "Compare quotes from local service providers. No lead fees, no middleman markup. Just affordable prices and trusted service.",
-    "ctaProvider": "Start offering services",
-    "ctaCustomer": "Request a service"
+    "title": "The public network for local jobs and providers",
+    "subtitle": "Browse jobs freely, contact providers, and pay them directly. No middleman, no lead fees, no subscriptions.",
+    "ctaProvider": "Start as a provider",
+    "ctaCustomer": "Post a job",
+    "ctaBrowseJobs": "Browse jobs",
+    "ctaBrowseProviders": "Browse providers"
   },
   "stats": [
     { "value": "100+", "label": "Locations" },
@@ -28,7 +32,7 @@
   },
   "benefits": {
     "heading": "Why customers pay less on GruntWrk",
-    "subtitle": "When providers aren't charged to find work, they don't need to inflate their prices. That saving goes straight to you.",
+    "subtitle": "Customers pay providers directly using the methods they already trust. No escrow, no payout delays, no platform markup.",
     "items": [
       {
         "id": "cheaper",
@@ -42,22 +46,22 @@
       },
       {
         "id": "payment",
-        "title": "Fast, direct payments",
-        "desc": "Pay your provider directly once the job is done. No waiting, no hassle."
+        "title": "Direct payment, no delays",
+        "desc": "Pay your provider directly using cash, bank transfer, or MB Way. No escrow, no payout delays, no platform-held money."
       }
     ]
   },
   "fees": {
     "kicker": "Cost difference",
     "heading": "Most others charge at every step.",
-    "subtitle": "Customers use GruntWrk completely free. We charge providers a simple 15% platform fee on completed jobs. No lead fees, no credit packs, no subscriptions. Providers keep more and customers pay less.",
+    "subtitle": "Customers use GruntWrk completely free. Providers pay a simple 10% job fee only when work moves ahead. No lead fees, no credit packs, no subscriptions. Providers keep more and customers pay less.",
     "pills": [
       "No pay-per-lead",
       "No credit packs",
       "No subscriptions",
       "No visibility boosts"
     ],
-    "pillStrong": "15% provider fee only",
+    "pillStrong": "10% provider job fee only",
     "tableHeaders": ["Fee type", "Typical marketplaces", "GruntWrk"],
     "note": "Based on public pricing and help-center pages reviewed on March 16, 2026. Fees vary by service and market.",
     "rows": [
@@ -113,21 +117,21 @@
         "fee": "Booking or payment fee",
         "marketSummary": "A single transaction fee when the booking and payment are completed through the platform.",
         "competitors": ["Fixando", "Taskrabbit", "Checkatrade"],
-        "gruntwrk": "15% (provider only)"
+        "gruntwrk": "10% (provider only)"
       }
     ]
   },
   "provider": {
     "badge": "For providers",
     "title": "Get found locally and manage work without the cost",
-    "desc": "Build a personal profile, share your availability, receive direct requests, compare quotes, message customers, take payment, and rebook repeat work from one workbench. GruntWrk is built to help providers run the job from first request to repeat booking without lead fees, contact packs, or visibility boosts.",
+    "desc": "Create a public profile, share your availability, and receive direct requests. Customers pay you directly. No lead fees, no contact packs, no subscriptions.",
     "perks": [
-      "No pay-per-lead or contact unlock fees",
-      "No credit packs, subscriptions, or boost charges",
-      "Personal profile, availability, and direct requests",
-      "Quotes, messaging, and repeat bookings in one workbench"
+      "No gatekeeping",
+      "Customers pay you directly, no payout delays",
+      "Public profile, availability, and direct requests",
+      "No lead fees and no subscriptions"
     ],
-    "cta": "Start offering services"
+    "cta": "Start as a provider"
   },
   "customer": {
     "badge": "For customers",
@@ -163,7 +167,7 @@
       {
         "num": "3",
         "title": "Manage the job in one place",
-        "body": "Use your workbench to message, confirm the provider, and rebook trusted providers with confidence."
+        "body": "Message, confirm, and pay your provider directly. Manage everything from your private workbench."
       }
     ]
   },
@@ -189,8 +193,8 @@
       },
       {
         "id": "pay",
-        "title": "Pay and rebook with confidence",
-        "desc": "Pay your provider directly once the job is done. No waiting, no hassle."
+        "title": "Pay directly and rebook with confidence",
+        "desc": "Pay your provider directly once the job is done. No escrow, no payout delays."
       }
     ]
   },

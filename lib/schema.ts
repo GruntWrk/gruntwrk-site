@@ -14,8 +14,8 @@ export function buildOrganizationSchema(locale: Locale) {
     logo: `${SITE_URL}/brand/gruntwrk-g.svg`,
     description:
       locale === "pt"
-        ? "Marketplace de serviços locais para clientes e prestadores, com foco inicial em Portugal."
-        : "Local services marketplace for customers and providers, with an initial focus on Portugal.",
+        ? "Diretório público de trabalhos e prestadores locais, com foco inicial em Portugal."
+        : "Public directory of local jobs and providers, with an initial focus on Portugal.",
     areaServed: ["Portugal", "Lisbon", "Porto"],
   };
 }

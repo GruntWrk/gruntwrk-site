@@ -125,12 +125,12 @@ const CITIES: CityDefinition[] = [
       en: [
         "Providers don't pay to find you, so they quote what the job actually costs.",
         "See ratings, reviews, and completed jobs before you hire anyone.",
-        "One place to message, pay, and rebook providers you trust.",
+        "Pay your provider directly. Manage messaging and rebookings from one workbench.",
       ],
       pt: [
         "Os prestadores nao pagam para o encontrar, por isso orcam o custo real do trabalho.",
         "Veja avaliacoes, reviews e trabalhos concluidos antes de contratar.",
-        "Um so lugar para comunicar, pagar e voltar a reservar prestadores de confianca.",
+        "Pague diretamente ao prestador. Gira mensagens e novas reservas numa so bancada.",
       ],
     },
   },
@@ -139,19 +139,19 @@ const CITIES: CityDefinition[] = [
     slug: { en: "porto", pt: "porto" },
     name: { en: "Porto", pt: "Porto" },
     intro: {
-      en: "Find cleaners, plumbers, electricians, painters, and movers who don't inflate prices to cover platform fees. Compare quotes and hire directly.",
-      pt: "Encontre profissionais de limpeza, canalizacao, eletricidade, pintura e mudancas que nao inflacionam precos para cobrir taxas da plataforma. Compare orcamentos e contrate diretamente.",
+      en: "Find cleaners, plumbers, electricians, painters, and movers who don't inflate prices to cover job fees. Compare quotes and hire directly.",
+      pt: "Encontre profissionais de limpeza, canalizacao, eletricidade, pintura e mudancas que nao inflacionam precos para cobrir taxas de trabalho. Compare orcamentos e contrate diretamente.",
     },
     why: {
       en: [
         "No lead fees means providers quote what the job is worth, not what the platform costs.",
         "Public profiles with ratings, skills, and job history. No guessing.",
-        "Message, pay, and rebook from one workbench. No chasing.",
+        "Pay your provider directly. Manage messaging and rebookings from one workbench.",
       ],
       pt: [
         "Sem taxas de leads, os prestadores orcam o valor real do trabalho, nao o custo da plataforma.",
         "Perfis publicos com avaliacoes, competencias e historico. Sem adivinhar.",
-        "Comunique, pague e volte a reservar numa so bancada. Sem perseguir.",
+        "Pague diretamente ao prestador. Gira mensagens e novas reservas numa so bancada.",
       ],
     },
   },
@@ -169,12 +169,12 @@ const SERVICES: ServiceDefinition[] = [
     },
     customerBullets: {
       en: [
-        "Get quotes from local cleaners who don't inflate prices to cover platform fees.",
+        "Get quotes from local cleaners who don't inflate prices to cover job fees.",
         "Book one-off deep cleans or set up regular weekly cleaning.",
         "Check ratings, reviews, and completed jobs before you hire.",
       ],
       pt: [
-        "Receba orcamentos de profissionais que nao inflacionam precos para cobrir taxas da plataforma.",
+        "Receba orcamentos de profissionais que nao inflacionam precos para cobrir taxas de trabalho.",
         "Reserve limpezas profundas pontuais ou configure limpezas semanais regulares.",
         "Veja avaliacoes, reviews e trabalhos concluidos antes de contratar.",
       ],
@@ -407,12 +407,12 @@ const SERVICES: ServiceDefinition[] = [
     },
     customerBullets: {
       en: [
-        "Get quotes from local assemblers who don't inflate prices to cover platform fees.",
+        "Get quotes from local assemblers who don't inflate prices to cover job fees.",
         "Ideal for flat-pack furniture, wardrobes, beds, desks, and shelving units.",
         "Check ratings and reviews before you hire anyone.",
       ],
       pt: [
-        "Receba orçamentos de montadores locais que não inflacionam preços para cobrir taxas da plataforma.",
+        "Receba orçamentos de montadores locais que não inflacionam preços para cobrir taxas de trabalho.",
         "Ideal para móveis flat-pack, roupeiros, camas, secretárias e estantes.",
         "Veja avaliações e reviews antes de contratar.",
       ],
@@ -636,8 +636,8 @@ function buildProvidersPage(locale: Locale): Omit<ResolvedSeoPage, "id" | "kind"
       ? "Ganhe trabalho local sem pagar para perseguir leads"
       : "Win local work without paying to chase leads",
     heroDescription: isPt
-      ? "Crie um perfil público, receba pedidos diretos e pague apenas a taxa de prestador de 15% quando o trabalho avança."
-      : "Create a public profile, receive direct requests, and only pay the 15% provider fee when the work moves ahead.",
+      ? "Crie um perfil público, receba pedidos diretos e pague apenas a taxa de trabalho de 10% quando o trabalho avança."
+      : "Create a public profile, receive direct requests, and only pay the 10% provider job fee when the work moves ahead.",
     primaryCta: { label: LABELS.join[locale], href: buildProviderSignupHref() },
     secondaryCta: { label: LABELS.services[locale], href: localizedPath(locale, [LABELS.servicesSegment[locale]]) },
     sections: [
@@ -675,21 +675,21 @@ function buildProvidersPage(locale: Locale): Omit<ResolvedSeoPage, "id" | "kind"
       ? [
           {
             question: "Como funciona o preço para prestadores?",
-            answer: "No GruntWrk não paga para responder. A taxa do prestador é 15% quando o trabalho avança através da plataforma.",
+            answer: "No GruntWrk não paga para responder. A taxa de trabalho é 10% quando o trabalho avança.",
           },
           {
             question: "Posso aderir se estiver numa das cidades suportadas?",
-            answer: "Sim. O GruntWrk está aberto a prestadores nas categorias principais do marketplace nas cidades suportadas.",
+            answer: "Sim. O GruntWrk está aberto a prestadores nas categorias principais nas cidades suportadas.",
           },
         ]
       : [
           {
             question: "How does pricing work for providers?",
-            answer: "On GruntWrk you do not pay to respond. The provider fee is 15% when the work moves ahead through the platform.",
+            answer: "On GruntWrk you do not pay to respond. The provider job fee is 10% when the work moves ahead.",
           },
           {
             question: "Can I join if I am based in a supported city?",
-            answer: "Yes. GruntWrk is open to providers across the main marketplace categories in the supported cities.",
+            answer: "Yes. GruntWrk is open to providers across the main service categories in the supported cities.",
           },
         ],
     cardsTitle: isPt ? "Onde há procura local" : "Where local demand is building",
@@ -735,14 +735,14 @@ function buildCityProviderPage(
               `Receba pedidos de trabalho de clientes em ${cityName} diretamente.`,
               "Sem pagar para responder a pedidos ou desbloquear leads.",
               "Escolha os trabalhos que lhe interessam e trabalhe no seu horario.",
-              "Pague apenas a taxa de 15% quando o trabalho avanca.",
+              "Pague apenas a taxa de trabalho de 10% quando o trabalho avanca.",
             ]
           : [
               "Free registration with no commitment.",
               `Receive work requests from clients in ${cityName} directly.`,
               "No paying to respond to requests or unlock leads.",
               "Choose the jobs that interest you and work on your schedule.",
-              "Only pay the 15% fee when the work moves ahead.",
+              "Only pay the 10% job fee when the work moves ahead.",
             ],
       },
       {
@@ -785,7 +785,7 @@ function buildCityProviderPage(
       ? [
           {
             question: "Quanto custa registar-me?",
-            answer: "O registo e gratis. So paga a taxa de prestador de 15% quando um trabalho avanca atraves da plataforma.",
+            answer: "O registo e gratis. So paga a taxa de trabalho de 10% quando um trabalho avanca.",
           },
           {
             question: "Que tipo de trabalhos posso receber?",
@@ -803,7 +803,7 @@ function buildCityProviderPage(
       : [
           {
             question: "How much does it cost to register?",
-            answer: "Registration is free. You only pay the 15% provider fee when a job moves ahead through the platform.",
+            answer: "Registration is free. You only pay the 10% provider job fee when a job moves ahead.",
           },
           {
             question: "What kind of work can I receive?",
@@ -903,7 +903,7 @@ function buildProviderRegisterPage(locale: Locale): Omit<ResolvedSeoPage, "id" |
       ? [
           {
             question: "Como funciona o preço para prestadores?",
-            answer: "No GruntWrk não paga para responder. A taxa do prestador é 15% quando o trabalho avança através da plataforma.",
+            answer: "No GruntWrk não paga para responder. A taxa de trabalho é 10% quando o trabalho avança.",
           },
           {
             question: "Que serviços posso oferecer?",
@@ -917,7 +917,7 @@ function buildProviderRegisterPage(locale: Locale): Omit<ResolvedSeoPage, "id" |
       : [
           {
             question: "How does pricing work for providers?",
-            answer: "On GruntWrk you do not pay to respond. The provider fee is 15% when the work moves ahead through the platform.",
+            answer: "On GruntWrk you do not pay to respond. The provider job fee is 10% when the work moves ahead.",
           },
           {
             question: "What services can I offer?",
@@ -944,8 +944,8 @@ function buildCustomersPage(locale: Locale): Omit<ResolvedSeoPage, "id" | "kind"
       : "Request local services through GruntWrk.",
     eyebrow: isPt ? "Para clientes" : "For customers",
     heroTitle: isPt
-      ? "Encontre ajuda local sem a fricção habitual dos marketplaces"
-      : "Find local help without the usual marketplace friction",
+      ? "Encontre ajuda local sem a fricção habitual das plataformas"
+      : "Find local help without the usual platform friction",
     heroDescription: isPt
       ? "Compare perfis de prestadores, peça trabalho prático e volte a reservar quem faz um bom trabalho."
       : "Compare provider profiles, request practical jobs, and rebook the people who do great work.",
@@ -1055,13 +1055,13 @@ function buildCityPage(locale: Locale, city: CityDefinition): Omit<ResolvedSeoPa
   const stats: SeoStat[] = isPt
     ? [
         { value: "0\u20AC", label: "Taxas para clientes" },
-        { value: "15%", label: "Taxa do prestador" },
+        { value: "10%", label: "Taxa de trabalho" },
         { value: "4.8", label: "Avaliacao media" },
         { value: "0", label: "Taxas de leads" },
       ]
     : [
         { value: "$0", label: "Customer fees" },
-        { value: "15%", label: "Provider fee only" },
+        { value: "10%", label: "Job fee only" },
         { value: "4.8", label: "Average rating" },
         { value: "0", label: "Lead fees" },
       ];
@@ -1076,18 +1076,18 @@ function buildCityPage(locale: Locale, city: CityDefinition): Omit<ResolvedSeoPa
       : [
           { title: "Lower prices for you", desc: "Providers don't pay to find you, so they quote what the job actually costs." },
           { title: "Hire with confidence", desc: "See ratings, reviews, and completed jobs before you hire anyone." },
-          { title: "Everything in one place", desc: "One place to message, pay, and rebook providers you trust." },
+          { title: "Direct payment", desc: "Pay your provider directly. Manage messaging and rebookings from one workbench." },
         ]
     : isPt
       ? [
           { title: "Precos honestos", desc: "Sem taxas de leads, os prestadores orcam o valor real do trabalho, nao o custo da plataforma." },
           { title: "Sem adivinhar", desc: "Perfis publicos com avaliacoes, competencias e historico." },
-          { title: "Sem perseguir", desc: "Comunique, pague e volte a reservar numa so bancada." },
+          { title: "Pagamento direto", desc: "Pague diretamente ao prestador. Gira mensagens e novas reservas numa so bancada." },
         ]
       : [
           { title: "Honest pricing", desc: "No lead fees means providers quote what the job is worth, not what the platform costs." },
           { title: "No guessing", desc: "Public profiles with ratings, skills, and job history." },
-          { title: "No chasing", desc: "Message, pay, and rebook from one workbench." },
+          { title: "Direct payment", desc: "Pay your provider directly. Manage messaging and rebookings from one workbench." },
         ];
 
   const howSteps: SeoStep[] = isPt
@@ -1106,7 +1106,7 @@ function buildCityPage(locale: Locale, city: CityDefinition): Omit<ResolvedSeoPa
     ? {
         badge: "Para prestadores",
         title: `E prestador de servicos em ${cityName}?`,
-        desc: "Adira ao GruntWrk e comece a receber pedidos diretos. Sem taxas de leads, sem pacotes de creditos, sem subscricoes. So paga 15% quando um trabalho e concluido e pago.",
+        desc: "Adira ao GruntWrk e comece a receber pedidos diretos. Sem taxas de leads, sem pacotes de creditos, sem subscricoes. So paga a taxa de trabalho de 10% quando um trabalho e concluido e pago.",
         perks: [
           "Sem taxas de pay-per-lead ou desbloqueio de contacto",
           "Sem pacotes de creditos, subscricoes ou taxas de boost",
@@ -1118,7 +1118,7 @@ function buildCityPage(locale: Locale, city: CityDefinition): Omit<ResolvedSeoPa
     : {
         badge: "For providers",
         title: `Are you a service provider in ${cityName}?`,
-        desc: "Join GruntWrk and start receiving direct requests. No lead fees, no credit packs, no subscriptions. You only pay 15% when a job is completed and paid.",
+        desc: "Join GruntWrk and start receiving direct requests. No lead fees, no credit packs, no subscriptions. You only pay the 10% job fee when a job is completed and paid.",
         perks: [
           "No pay-per-lead or contact unlock fees",
           "No credit packs, subscriptions, or boost charges",
@@ -1160,12 +1160,12 @@ function buildCityPage(locale: Locale, city: CityDefinition): Omit<ResolvedSeoPa
     faqs: isPt
       ? [
           { question: `Como funciona o GruntWrk em ${city.name.pt}?`, answer: "Descreva o que precisa, receba orcamentos de prestadores locais e contrate diretamente. Sem taxas de leads, sem pacotes de creditos." },
-          { question: "Quanto custa para clientes?", answer: "Nada. Os clientes nao pagam taxas. Os prestadores pagam 15% quando o trabalho e concluido e pago." },
+          { question: "Quanto custa para clientes?", answer: "Nada. Os clientes nao pagam taxas. Os prestadores pagam a taxa de trabalho de 10% quando o trabalho e concluido e pago." },
           { question: "Posso voltar a reservar o mesmo prestador?", answer: "Sim. Quando encontrar alguem de confianca, pode voltar a reserva-lo diretamente pela bancada de trabalho." },
         ]
       : [
           { question: `How does GruntWrk work in ${city.name.en}?`, answer: "Describe what you need, get quotes from local providers, and hire directly. No lead fees, no credit packs." },
-          { question: "How much does it cost for customers?", answer: "Nothing. Customers pay zero fees. Providers pay 15% when the job is completed and paid." },
+          { question: "How much does it cost for customers?", answer: "Nothing. Customers pay zero fees. Providers pay a 10% job fee when the job is completed and paid." },
           { question: "Can I rebook the same provider?", answer: "Yes. Once you find someone you trust, you can rebook them directly from your workbench." },
         ],
     cardsTitle: isPt ? "Explorar serviços" : "Explore services",
@@ -1263,12 +1263,12 @@ function buildComparisonPage(locale: Locale, competitor: "fixando" | "zaask") {
             ? [
                 "Perfis públicos para clientes avaliarem melhor antes de pedir trabalho.",
                 "Pedidos mais diretos entre clientes e prestadores.",
-                "Taxa de prestador de 15% quando o trabalho avança, em vez de pagar só para responder.",
+                "Taxa de trabalho de 10% quando o trabalho avança, em vez de pagar só para responder.",
               ]
             : [
                 "Public profiles so customers can judge fit before requesting work.",
                 "More direct requests between customers and providers.",
-                "A 15% provider fee when work moves ahead, instead of paying just to respond.",
+                "A 10% provider job fee when work moves ahead, instead of paying just to respond.",
               ],
         },
       ],

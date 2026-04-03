@@ -93,20 +93,26 @@ export function SiteHeader({ dict, locale }: { dict: Dictionary; locale: Locale 
           </div>
         </a>
 
-        <div className="appShellHeaderActions">
-          <TrackedCtaLink
-            href={PROVIDER_SIGNUP_HREF}
-            className="appShellHeaderBtn appShellHeaderBtnPrimary"
-            ctaLocation="seo_header"
-            locale={locale}
-            pageKind="seo"
-          >
-            {dict.nav.startOffering}
-          </TrackedCtaLink>
+        <nav className="appShellHeaderNav" aria-label="Primary navigation">
+          <a href={`${APP_BASE_URL}/notice-board`} className="appShellHeaderNavBtn" aria-label={dict.nav.jobs}>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <rect x="3" y="3" width="7" height="7" rx="1" /><rect x="3" y="14" width="7" height="7" rx="1" />
+              <line x1="14" y1="4" x2="21" y2="4" /><line x1="14" y1="9" x2="21" y2="9" />
+              <line x1="14" y1="15" x2="21" y2="15" /><line x1="14" y1="20" x2="21" y2="20" />
+            </svg>
+            <span className="appShellHeaderNavLabel">{dict.nav.jobs}</span>
+          </a>
+          <a href={`${APP_BASE_URL}/contacts`} className="appShellHeaderNavBtn" aria-label={dict.nav.providers}>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="10" /><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+              <path d="M2 12h20" />
+            </svg>
+            <span className="appShellHeaderNavLabel">{dict.nav.providers}</span>
+          </a>
           <a href={LOGIN_HREF} className="appShellHeaderBtn appShellHeaderBtnSecondary">
             {dict.nav.login}
           </a>
-        </div>
+        </nav>
       </div>
     </header>
   );
