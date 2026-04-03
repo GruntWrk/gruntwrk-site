@@ -671,24 +671,7 @@ export default function HomePage({ dict, locale, nav }: { dict: Dictionary; loca
 
           <StatsStrip dict={dict} />
 
-          <section className="hp-video" data-reveal>
-            <div className="hp-section-head">
-              <h2 className="hp-h2">{dict.video.heading}</h2>
-              <p className="hp-subtitle">{dict.video.subtitle}</p>
-            </div>
-            <div className="hp-video-wrap">
-              <video
-                className="hp-video-player"
-                controls
-                preload="metadata"
-                playsInline
-              >
-                <source src="/videos/gruntwrk-explained.mp4" type="video/mp4" />
-              </video>
-            </div>
-          </section>
-
-          <section className="hp-cb" data-reveal>
+<section className="hp-cb" data-reveal>
             <div className="hp-section-head">
               <h2 className="hp-h2">{dict.benefits.heading}</h2>
               <p className="hp-subtitle">{dict.benefits.subtitle}</p>
