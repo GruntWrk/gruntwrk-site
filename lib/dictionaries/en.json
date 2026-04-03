@@ -120,11 +120,11 @@
   "provider": {
     "badge": "For providers",
     "title": "Get found locally and manage work without the cost",
-    "desc": "Build a public profile, share your availability, receive direct requests, compare quotes, message customers, take payment, and rebook repeat work from one workbench. GruntWrk is built to help providers run the job from first request to repeat booking without lead fees, contact packs, or visibility boosts.",
+    "desc": "Build a personal profile, share your availability, receive direct requests, compare quotes, message customers, take payment, and rebook repeat work from one workbench. GruntWrk is built to help providers run the job from first request to repeat booking without lead fees, contact packs, or visibility boosts.",
     "perks": [
       "No pay-per-lead or contact unlock fees",
       "No credit packs, subscriptions, or boost charges",
-      "Public profile, availability, and direct requests",
+      "Personal profile, availability, and direct requests",
       "Quotes, messaging, and repeat bookings in one workbench"
     ],
     "cta": "Start offering services"

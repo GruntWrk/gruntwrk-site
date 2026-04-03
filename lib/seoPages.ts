@@ -6,6 +6,7 @@ const PT_COUNTRY = "PT";
 export type SeoPageKind =
   | "audience"
   | "city"
+  | "city-provider"
   | "services-index"
   | "service"
   | "comparison";
@@ -704,6 +705,130 @@ function buildProvidersPage(locale: Locale): Omit<ResolvedSeoPage, "id" | "kind"
   };
 }
 
+function buildCityProviderPage(
+  locale: Locale,
+  city: CityDefinition
+): Omit<ResolvedSeoPage, "id" | "kind" | "locale" | "slug" | "path" | "alternates"> {
+  const isPt = locale === "pt";
+  const cityName = city.name[locale];
+  return {
+    title: isPt
+      ? `Trabalho de Servicos em ${cityName} | Registe-se Gratis | GruntWrk`
+      : `Service Work in ${cityName} | Register Free | GruntWrk`,
+    description: isPt
+      ? `Procura trabalho de limpeza, canalizacao, eletricidade ou reparacoes em ${cityName}? Registe-se gratis no GruntWrk e receba pedidos de clientes na sua zona.`
+      : `Looking for cleaning, plumbing, electrical, or repair work in ${cityName}? Register free on GruntWrk and receive client requests in your area.`,
+    eyebrow: isPt ? "Para profissionais" : "For professionals",
+    heroTitle: isPt
+      ? `Procura trabalho em ${cityName}?`
+      : `Looking for work in ${cityName}?`,
+    heroDescription: isPt
+      ? `Registe-se gratis no GruntWrk, crie o seu perfil pessoal e comece a receber pedidos de clientes em ${cityName}. Sem taxas de registo, sem pacotes de creditos.`
+      : `Register free on GruntWrk, create your personal profile, and start receiving client requests in ${cityName}. No registration fees, no credit packs.`,
+    primaryCta: { label: isPt ? "Registar gratis" : "Register free", href: buildProviderSignupHref() },
+    sections: [
+      {
+        title: isPt ? "Porque se registar no GruntWrk" : "Why register on GruntWrk",
+        items: isPt
+          ? [
+              "Registo gratuito e sem compromisso.",
+              `Receba pedidos de trabalho de clientes em ${cityName} diretamente.`,
+              "Sem pagar para responder a pedidos ou desbloquear leads.",
+              "Escolha os trabalhos que lhe interessam e trabalhe no seu horario.",
+              "Pague apenas a taxa de 15% quando o trabalho avanca.",
+            ]
+          : [
+              "Free registration with no commitment.",
+              `Receive work requests from clients in ${cityName} directly.`,
+              "No paying to respond to requests or unlock leads.",
+              "Choose the jobs that interest you and work on your schedule.",
+              "Only pay the 15% fee when the work moves ahead.",
+            ],
+      },
+      {
+        title: isPt ? "Servicos em procura" : "Services in demand",
+        items: isPt
+          ? [
+              "Limpeza domestica e comercial.",
+              "Canalizacao e reparacoes de agua.",
+              "Eletricidade e instalacoes eletricas.",
+              "Reparacoes gerais e manutencao.",
+              "Pintura interior e exterior.",
+              "Mudancas e transportes.",
+            ]
+          : [
+              "Domestic and commercial cleaning.",
+              "Plumbing and water repairs.",
+              "Electrical work and installations.",
+              "General repairs and maintenance.",
+              "Interior and exterior painting.",
+              "Moving and transport.",
+            ],
+      },
+      {
+        title: isPt ? "Como funciona" : "How it works",
+        items: isPt
+          ? [
+              "1. Registe-se gratis e crie o seu perfil pessoal com as suas competencias e disponibilidade.",
+              "2. Receba pedidos de clientes na sua zona e escolha os que lhe interessam.",
+              "3. Combine os detalhes diretamente com o cliente e realize o trabalho.",
+            ]
+          : [
+              "1. Register free and create your personal profile with your skills and availability.",
+              "2. Receive requests from clients in your area and choose the ones that interest you.",
+              "3. Arrange the details directly with the client and do the work.",
+            ],
+      },
+    ],
+    faqTitle: LABELS.faq[locale],
+    faqs: isPt
+      ? [
+          {
+            question: "Quanto custa registar-me?",
+            answer: "O registo e gratis. So paga a taxa de prestador de 15% quando um trabalho avanca atraves da plataforma.",
+          },
+          {
+            question: "Que tipo de trabalhos posso receber?",
+            answer: `Em ${cityName}, os servicos mais pedidos incluem limpeza domestica, canalizacao, eletricidade, reparacoes, pintura e mudancas.`,
+          },
+          {
+            question: "Posso escolher os meus horarios?",
+            answer: "Sim. Define a sua disponibilidade no perfil e so aceita os pedidos que lhe interessam. Sem obrigacao de aceitar tudo.",
+          },
+          {
+            question: "Os clientes veem o meu perfil?",
+            answer: "O seu perfil pessoal e visivel apenas para clientes registados no GruntWrk que procurem servicos na sua zona e categoria.",
+          },
+        ]
+      : [
+          {
+            question: "How much does it cost to register?",
+            answer: "Registration is free. You only pay the 15% provider fee when a job moves ahead through the platform.",
+          },
+          {
+            question: "What kind of work can I receive?",
+            answer: `In ${cityName}, the most requested services include domestic cleaning, plumbing, electrical work, repairs, painting, and moving.`,
+          },
+          {
+            question: "Can I choose my own hours?",
+            answer: "Yes. Set your availability in your profile and only accept the requests that interest you. No obligation to accept everything.",
+          },
+          {
+            question: "Do clients see my profile?",
+            answer: "Your personal profile is only visible to registered GruntWrk clients looking for services in your area and category.",
+          },
+        ],
+    breadcrumbs: [
+      { label: LABELS.home[locale], href: localizedPath(locale, []) },
+      { label: cityName, href: localizedPath(locale, [city.slug[locale]]) },
+      {
+        label: isPt ? "Trabalho" : "Work",
+        href: localizedPath(locale, [city.slug[locale], isPt ? "trabalho" : "work"]),
+      },
+    ],
+  };
+}
+
 function buildProviderRegisterPage(locale: Locale): Omit<ResolvedSeoPage, "id" | "kind" | "locale" | "slug" | "path" | "alternates"> {
   const isPt = locale === "pt";
   return {
@@ -1225,6 +1350,17 @@ function buildPages() {
         slug: citySlug,
         path: localizedPath(locale, citySlug),
         ...buildCityPage(locale, city),
+        alternates: {} as Record<Locale, string>,
+      });
+
+      const cityProviderSlug = [city.slug[locale], locale === "pt" ? "trabalho" : "work"];
+      pages.push({
+        id: `city-provider-${city.id}`,
+        kind: "city-provider",
+        locale,
+        slug: cityProviderSlug,
+        path: localizedPath(locale, cityProviderSlug),
+        ...buildCityProviderPage(locale, city),
         alternates: {} as Record<Locale, string>,
       });
     }
