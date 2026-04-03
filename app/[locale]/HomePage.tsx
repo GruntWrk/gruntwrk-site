@@ -707,6 +707,31 @@ export default function HomePage({ dict, locale, nav }: { dict: Dictionary; loca
             </div>
           </section>
 
+          <section className="hp-provider" data-reveal>
+            <div className="hp-provider-inner">
+              <div className="hp-provider-left">
+                <div className="hp-provider-badge">{dict.provider.badge}</div>
+                <h2 className="hp-provider-title">{dict.provider.title}</h2>
+                <p className="hp-provider-desc">{dict.provider.desc}</p>
+                <ul className="hp-provider-perks">
+                  {dict.provider.perks.map((perk) => (
+                    <li key={perk}><CheckIcon /> {perk}</li>
+                  ))}
+                </ul>
+                <TrackedCtaLink
+                  className="hp-btn-primary"
+                  href={PROVIDER_HREF}
+                  ctaLocation="home_provider_section"
+                  locale={locale}
+                  pageKind="home"
+                >
+                  {dict.provider.cta}
+                  <ArrowIcon />
+                </TrackedCtaLink>
+              </div>
+            </div>
+          </section>
+
           <section className="hp-fees" aria-labelledby="hp-fees-title" data-reveal>
             <div className="hp-fees-head">
               <div className="hp-fees-kicker">{dict.fees.kicker}</div>
@@ -766,31 +791,6 @@ export default function HomePage({ dict, locale, nav }: { dict: Dictionary; loca
             </div>
 
             <p className="hp-fee-note">{dict.fees.note}</p>
-          </section>
-
-          <section className="hp-provider" data-reveal>
-            <div className="hp-provider-inner">
-              <div className="hp-provider-left">
-                <div className="hp-provider-badge">{dict.provider.badge}</div>
-                <h2 className="hp-provider-title">{dict.provider.title}</h2>
-                <p className="hp-provider-desc">{dict.provider.desc}</p>
-                <ul className="hp-provider-perks">
-                  {dict.provider.perks.map((perk) => (
-                    <li key={perk}><CheckIcon /> {perk}</li>
-                  ))}
-                </ul>
-                <TrackedCtaLink
-                  className="hp-btn-primary"
-                  href={PROVIDER_HREF}
-                  ctaLocation="home_provider_section"
-                  locale={locale}
-                  pageKind="home"
-                >
-                  {dict.provider.cta}
-                  <ArrowIcon />
-                </TrackedCtaLink>
-              </div>
-            </div>
           </section>
 
           <section className="hp-cb" data-reveal>
