@@ -36,7 +36,7 @@ export type SeoProviderCta = {
   title: string;
   desc: string;
   perks: string[];
-  cta: { label: string; href: string };
+  cta?: { label: string; href: string };
 };
 export type SeoReview = { stars: number; text: string; name: string; role: string };
 export type SeoNavItem = { label: string; href: string; active?: boolean };
@@ -846,6 +846,28 @@ function buildProviderRegisterPage(locale: Locale): Omit<ResolvedSeoPage, "id" |
       ? "Crie um perfil público, partilhe a sua disponibilidade, receba pedidos diretos e envie orçamentos para trabalho que encaixa. O GruntWrk ajuda-o a manter a comunicação com clientes, passos de pagamento e progresso do trabalho organizados num só fluxo."
       : "Create a public profile, share your availability, receive direct requests, and send quotes for work that fits. GruntWrk helps you keep customer communication, payment steps, and job progress organized in one workflow.",
     primaryCta: { label: isPt ? "Começar a oferecer serviços" : "Start offering services", href: buildProviderSignupHref() },
+    providerCta: {
+      badge: isPt ? "Para prestadores" : "For providers",
+      title: isPt
+        ? "Seja encontrado localmente e gira trabalho sem o custo"
+        : "Get found locally and manage work without the cost",
+      desc: isPt
+        ? "Crie um perfil público, partilhe a sua disponibilidade, receba pedidos diretos e envie orçamentos para trabalho que encaixa. O GruntWrk ajuda-o a manter a comunicação com clientes, passos de pagamento e progresso do trabalho organizados num só fluxo."
+        : "Create a public profile, share your availability, receive direct requests, and send quotes for work that fits. GruntWrk helps you keep customer communication, payment steps, and job progress organized in one workflow.",
+      perks: isPt
+        ? [
+            "Mostre os seus serviços e disponibilidade",
+            "Receba pedidos diretos de clientes locais",
+            "Envie orçamentos sem perseguir pessoas entre apps",
+            "Construa confiança através de trabalho concluído e avaliações",
+          ]
+        : [
+            "Show your services and availability",
+            "Receive direct requests from local customers",
+            "Send quotes without chasing people across apps",
+            "Build trust through completed work and reviews",
+          ],
+    },
     sections: [
       {
         title: isPt ? "Como o GruntWrk ajuda prestadores" : "How GruntWrk helps providers",

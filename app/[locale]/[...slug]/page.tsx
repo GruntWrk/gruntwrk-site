@@ -256,17 +256,19 @@ function ProviderCtaSection({
               </li>
             ))}
           </ul>
-          <div>
-            <TrackedCtaLink
-              href={cta.cta.href}
-              className="hp-btn-primary"
-              ctaLocation="seo_provider_section"
-              locale={locale}
-              pageKind={pageKind}
-            >
-              {cta.cta.label}
-            </TrackedCtaLink>
-          </div>
+          {cta.cta ? (
+            <div>
+              <TrackedCtaLink
+                href={cta.cta.href}
+                className="hp-btn-primary"
+                ctaLocation="seo_provider_section"
+                locale={locale}
+                pageKind={pageKind}
+              >
+                {cta.cta.label}
+              </TrackedCtaLink>
+            </div>
+          ) : null}
         </div>
       </div>
     </section>
