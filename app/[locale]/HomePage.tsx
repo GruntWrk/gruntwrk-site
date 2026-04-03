@@ -631,22 +631,12 @@ export default function HomePage({ dict, locale, nav }: { dict: Dictionary; loca
                 <div className="hp-hero-actions">
                   <TrackedCtaLink
                     href={REQUEST_SERVICE_HREF}
-                    className="hp-btn-secondary"
+                    className="hp-btn-secondary hp-hero-cta-full"
                     ctaLocation="home_hero_customer"
                     locale={locale}
                     pageKind="home"
                   >
                     {dict.hero.ctaCustomer}
-                    <ArrowIcon />
-                  </TrackedCtaLink>
-                  <TrackedCtaLink
-                    href={PROVIDER_HREF}
-                    className="hp-btn-primary"
-                    ctaLocation="home_hero_provider"
-                    locale={locale}
-                    pageKind="home"
-                  >
-                    {dict.hero.ctaProvider}
                     <ArrowIcon />
                   </TrackedCtaLink>
                 </div>
