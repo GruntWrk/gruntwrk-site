@@ -651,7 +651,19 @@ export default function HomePage({ dict, locale, nav }: { dict: Dictionary; loca
                   </TrackedCtaLink>
                 </div>
               </div>
-              <HeroPreviewCard dict={dict} />
+              <div className="hp-hero-video">
+                <video
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  controls
+                  preload="metadata"
+                  className="hp-hero-video-player"
+                >
+                  <source src="/gruntwrk-demo.mp4" type="video/mp4" />
+                </video>
+              </div>
             </div>
           </section>
 

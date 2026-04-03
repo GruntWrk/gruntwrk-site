@@ -559,6 +559,19 @@ h1, h2, h3,
   gap: 12px;
 }
 
+/* ── Hero video ── */
+.hp-hero-video {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.hp-hero-video-player {
+  width: 100%;
+  max-width: 420px;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0,0,0,.10);
+}
+
 /* ── Hero preview card ── */
 .hp-hero-preview { display: flex; justify-content: flex-end; }
 
@@ -1261,6 +1274,8 @@ h1, h2, h3,
   .appShellBrandSub { display: none; }
   .hp-hero-shell { grid-template-columns: 1fr; }
   .hp-hero-preview { justify-content: flex-start; }
+  .hp-hero-video { justify-content: center; }
+  .hp-hero-video-player { max-width: 100%; }
   .hp-stats-strip { grid-template-columns: repeat(2, 1fr); }
   .hp-cat-grid { grid-template-columns: repeat(3, 1fr); }
   .hp-workbench-marquee, .hp-workbench-marquee-frame { min-height: 500px; }
