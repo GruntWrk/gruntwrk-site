@@ -671,41 +671,6 @@ export default function HomePage({ dict, locale, nav }: { dict: Dictionary; loca
 
           <StatsStrip dict={dict} />
 
-<section className="hp-cb" data-reveal>
-            <div className="hp-section-head">
-              <h2 className="hp-h2">{dict.benefits.heading}</h2>
-              <p className="hp-subtitle">{dict.benefits.subtitle}</p>
-            </div>
-
-            <div className="hp-cb-list">
-              {dict.benefits.items.map((benefit) => (
-                <article key={benefit.id} className="hp-cb-row">
-                  <h3 className="hp-cb-title">{benefit.title}</h3>
-                  <p className="hp-cb-desc">{benefit.desc}</p>
-                </article>
-              ))}
-            </div>
-          </section>
-
-          <section className="hp-how" data-reveal>
-            <div className="hp-section-head">
-              <h2 className="hp-h2">{dict.howItWorks.heading}</h2>
-              <p className="hp-subtitle">{dict.howItWorks.subtitle}</p>
-            </div>
-
-            <div className="hp-how-grid">
-              {dict.howItWorks.steps.map((step, index) => (
-                <article key={step.num} className="hp-how-card" style={{ animationDelay: `${index * 80}ms` }}>
-                  <div className="hp-how-num">{step.num}</div>
-                  <div className="hp-how-copy">
-                    <h3 className="hp-how-title">{step.title}</h3>
-                    <p className="hp-how-body">{step.body}</p>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </section>
-
           <section className="hp-customer" data-reveal>
             <div className="hp-customer-inner">
               <div className="hp-section-head">
@@ -825,6 +790,41 @@ export default function HomePage({ dict, locale, nav }: { dict: Dictionary; loca
                   <ArrowIcon />
                 </TrackedCtaLink>
               </div>
+            </div>
+          </section>
+
+          <section className="hp-cb" data-reveal>
+            <div className="hp-section-head">
+              <h2 className="hp-h2">{dict.benefits.heading}</h2>
+              <p className="hp-subtitle">{dict.benefits.subtitle}</p>
+            </div>
+
+            <div className="hp-cb-list">
+              {dict.benefits.items.map((benefit) => (
+                <article key={benefit.id} className="hp-cb-row">
+                  <h3 className="hp-cb-title">{benefit.title}</h3>
+                  <p className="hp-cb-desc">{benefit.desc}</p>
+                </article>
+              ))}
+            </div>
+          </section>
+
+          <section className="hp-how" data-reveal>
+            <div className="hp-section-head">
+              <h2 className="hp-h2">{dict.howItWorks.heading}</h2>
+              <p className="hp-subtitle">{dict.howItWorks.subtitle}</p>
+            </div>
+
+            <div className="hp-how-grid">
+              {dict.howItWorks.steps.map((step, index) => (
+                <article key={step.num} className="hp-how-card" style={{ animationDelay: `${index * 80}ms` }}>
+                  <div className="hp-how-num">{step.num}</div>
+                  <div className="hp-how-copy">
+                    <h3 className="hp-how-title">{step.title}</h3>
+                    <p className="hp-how-body">{step.body}</p>
+                  </div>
+                </article>
+              ))}
             </div>
           </section>
 
