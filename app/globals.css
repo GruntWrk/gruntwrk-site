@@ -1410,6 +1410,18 @@ h1, h2, h3,
   box-shadow: 0 14px 32px rgba(62,207,142,0.22);
 }
 
+.seoHeroActions .hp-btn-secondary:only-child {
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  box-shadow: 0 10px 24px rgba(37,99,235,0.18);
+}
+
+.seoHeroActions .hp-btn-secondary:only-child:hover {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+}
+
 .seoHeroPanel .hp-btn-primary {
   font-size: 1.05rem;
   padding: 14px 28px;

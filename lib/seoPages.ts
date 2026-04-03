@@ -845,8 +845,7 @@ function buildProviderRegisterPage(locale: Locale): Omit<ResolvedSeoPage, "id" |
     heroDescription: isPt
       ? "Crie um perfil público, partilhe a sua disponibilidade, receba pedidos diretos e envie orçamentos para trabalho que encaixa. O GruntWrk ajuda-o a manter a comunicação com clientes, passos de pagamento e progresso do trabalho organizados num só fluxo."
       : "Create a public profile, share your availability, receive direct requests, and send quotes for work that fits. GruntWrk helps you keep customer communication, payment steps, and job progress organized in one workflow.",
-    primaryCta: { label: LABELS.join[locale], href: buildProviderSignupHref() },
-    secondaryCta: { label: LABELS.services[locale], href: localizedPath(locale, [LABELS.servicesSegment[locale]]) },
+    primaryCta: { label: isPt ? "Começar a oferecer serviços" : "Start offering services", href: buildProviderSignupHref() },
     providerCta: {
       badge: isPt ? "Para prestadores" : "For providers",
       title: isPt
