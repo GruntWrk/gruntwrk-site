@@ -22,13 +22,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: new Date(),
     changeFrequency: "weekly" as const,
     priority:
-      page.kind === "city-service"
+      page.kind === "service"
         ? 0.88
-        : page.kind === "service"
-          ? 0.84
-          : page.kind === "city"
-            ? 0.8
-            : 0.72,
+        : page.kind === "city"
+          ? 0.8
+          : 0.72,
     alternates: {
       languages: {
         ...page.alternates,

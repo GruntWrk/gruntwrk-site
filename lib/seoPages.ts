@@ -8,7 +8,6 @@ export type SeoPageKind =
   | "city"
   | "services-index"
   | "service"
-  | "city-service"
   | "comparison";
 
 export type SeoSection = {
@@ -396,6 +395,196 @@ const SERVICES: ServiceDefinition[] = [
       pt: ["Mudanças de apartamento", "Ajuda a embalar", "Carga e descarga", "Recolha de móveis"],
     },
   },
+  {
+    id: "furniture-assembly",
+    appCategory: "furniture-assembly",
+    slug: { en: "furniture-assembly", pt: "montagem-mobiliario" },
+    name: { en: "Furniture assembly services", pt: "Serviços de montagem de mobiliário" },
+    summary: {
+      en: "Wardrobes, beds, desks, flat-pack. Get quotes from assemblers who price the job, not the platform.",
+      pt: "Roupeiros, camas, secretárias, flat-pack. Orçamentos de montadores que cobram o trabalho, não a plataforma.",
+    },
+    customerBullets: {
+      en: [
+        "Get quotes from local assemblers who don't inflate prices to cover platform fees.",
+        "Ideal for flat-pack furniture, wardrobes, beds, desks, and shelving units.",
+        "Check ratings and reviews before you hire anyone.",
+      ],
+      pt: [
+        "Receba orçamentos de montadores locais que não inflacionam preços para cobrir taxas da plataforma.",
+        "Ideal para móveis flat-pack, roupeiros, camas, secretárias e estantes.",
+        "Veja avaliações e reviews antes de contratar.",
+      ],
+    },
+    providerBullets: {
+      en: [
+        "Ideal for solo assemblers and handymen looking for steady local work.",
+        "Build a repeat client base without paying per lead or per contact.",
+        "Receive direct requests from customers in your area.",
+      ],
+      pt: [
+        "Ideal para montadores independentes e profissionais de bricolage a procurar trabalho local estável.",
+        "Construa uma base de clientes recorrentes sem pagar por lead ou por contacto.",
+        "Receba pedidos diretos de clientes na sua zona.",
+      ],
+    },
+    commonJobs: {
+      en: ["Wardrobe assembly", "Bed assembly", "Desk and office furniture", "Disassembly and reassembly"],
+      pt: ["Montagem de roupeiros", "Montagem de camas", "Secretárias e mobiliário de escritório", "Desmontagem e remontagem"],
+    },
+  },
+  {
+    id: "mounting-installation",
+    appCategory: "mounting-installation",
+    slug: { en: "mounting-installation", pt: "montagem-instalacao" },
+    name: { en: "Mounting & installation services", pt: "Serviços de montagem e instalação" },
+    summary: {
+      en: "TVs, shelves, curtains, mirrors, appliances. Compare installers without inflated lead-fee pricing.",
+      pt: "TVs, prateleiras, cortinas, espelhos, eletrodomésticos. Compare instaladores sem preços inflacionados por taxas.",
+    },
+    customerBullets: {
+      en: [
+        "Get quotes for TV mounting, shelves, curtains, and appliance installation from local professionals.",
+        "Compare on skills, reviews, and price. Not who paid the most for visibility.",
+        "Find someone reliable and rebook them whenever you need help.",
+      ],
+      pt: [
+        "Receba orçamentos para montagem de TVs, prateleiras, cortinas e instalação de eletrodomésticos de profissionais locais.",
+        "Compare por competências, reviews e preço. Não por quem pagou mais por visibilidade.",
+        "Encontre alguém de confiança e volte a reservar sempre que precisar.",
+      ],
+    },
+    providerBullets: {
+      en: [
+        "Ideal for handymen and installers looking for local mounting and fitting work.",
+        "Get found by customers nearby without buying leads or credits.",
+        "Build repeat relationships through direct bookings.",
+      ],
+      pt: [
+        "Ideal para profissionais de bricolage e instaladores a procurar trabalho local de montagem.",
+        "Seja encontrado por clientes próximos sem comprar leads ou créditos.",
+        "Construa relações recorrentes através de reservas diretas.",
+      ],
+    },
+    commonJobs: {
+      en: ["TV mounting", "Shelf installation", "Curtain and blind fitting", "Mirror and picture hanging"],
+      pt: ["Montagem de TVs", "Instalação de prateleiras", "Instalação de cortinas e estores", "Colocação de espelhos e quadros"],
+    },
+  },
+  {
+    id: "outdoor",
+    appCategory: "outdoor",
+    slug: { en: "outdoor-maintenance", pt: "manutencao-exterior" },
+    name: { en: "Outdoor maintenance services", pt: "Serviços de manutenção exterior" },
+    summary: {
+      en: "Gardening, lawn care, hedge trimming, pressure washing. Compare outdoor professionals at honest rates.",
+      pt: "Jardinagem, relvados, sebes, lavagem com pressão. Compare profissionais de exterior a preços honestos.",
+    },
+    customerBullets: {
+      en: [
+        "Get quotes from local gardeners and outdoor maintenance professionals without lead-fee markups.",
+        "Book one-off cleanups or set up regular garden maintenance.",
+        "Check ratings, reviews, and completed jobs before you hire.",
+      ],
+      pt: [
+        "Receba orçamentos de jardineiros e profissionais de manutenção exterior sem margens de taxas de lead.",
+        "Reserve limpezas pontuais ou configure manutenção regular de jardim.",
+        "Veja avaliações, reviews e trabalhos concluídos antes de contratar.",
+      ],
+    },
+    providerBullets: {
+      en: [
+        "Ideal for gardeners, landscapers, and outdoor maintenance teams looking for local work.",
+        "Build a repeat client base without paying per lead or per contact.",
+        "Receive direct requests from homeowners and property managers in your area.",
+      ],
+      pt: [
+        "Ideal para jardineiros, paisagistas e equipas de manutenção exterior a procurar trabalho local.",
+        "Construa uma base de clientes recorrentes sem pagar por lead ou por contacto.",
+        "Receba pedidos diretos de proprietários e gestores de propriedade na sua zona.",
+      ],
+    },
+    commonJobs: {
+      en: ["Gardening", "Lawn care", "Hedge trimming", "Pressure washing"],
+      pt: ["Jardinagem", "Cuidado de relvados", "Poda de sebes", "Lavagem com pressão"],
+    },
+  },
+  {
+    id: "removal-disposal",
+    appCategory: "removal-disposal",
+    slug: { en: "removal-disposal", pt: "remocao-residuos" },
+    name: { en: "Removal & disposal services", pt: "Serviços de remoção e resíduos" },
+    summary: {
+      en: "Trash removal, furniture disposal, green waste, garage cleanouts. Compare without middleman markup.",
+      pt: "Recolha de lixo, remoção de mobiliário, resíduos verdes, limpeza de garagens. Compare sem margens de intermediário.",
+    },
+    customerBullets: {
+      en: [
+        "Get quotes for removal and disposal from local professionals without lead-fee markups.",
+        "Ideal for furniture disposal, green waste, garage cleanouts, and post-renovation clearance.",
+        "Find someone reliable for responsible, efficient removal.",
+      ],
+      pt: [
+        "Receba orçamentos para remoção e eliminação de profissionais locais sem margens de taxas de lead.",
+        "Ideal para remoção de mobiliário, resíduos verdes, limpeza de garagens e limpeza pós-obra.",
+        "Encontre alguém de confiança para remoção eficiente e responsável.",
+      ],
+    },
+    providerBullets: {
+      en: [
+        "Ideal for removal teams, van operators, and waste clearance businesses.",
+        "Receive removal requests without paying per enquiry or per lead.",
+        "Cross-sell related services like moving, cleaning, or outdoor maintenance.",
+      ],
+      pt: [
+        "Ideal para equipas de remoção, operadores de carrinha e empresas de recolha de resíduos.",
+        "Receba pedidos de remoção sem pagar por pedido ou por lead.",
+        "Venda serviços relacionados como mudanças, limpeza ou manutenção exterior.",
+      ],
+    },
+    commonJobs: {
+      en: ["Trash removal", "Furniture disposal", "Green waste removal", "Garage cleanout"],
+      pt: ["Recolha de lixo", "Remoção de mobiliário", "Remoção de resíduos verdes", "Limpeza de garagens"],
+    },
+  },
+  {
+    id: "other-services",
+    appCategory: "other-services",
+    slug: { en: "other-services", pt: "outros-servicos" },
+    name: { en: "Other services", pt: "Outros serviços" },
+    summary: {
+      en: "General help, odd jobs, custom requests. Post any job and get quotes from local providers.",
+      pt: "Ajuda geral, biscates, pedidos personalizados. Publique qualquer trabalho e receba orçamentos de profissionais locais.",
+    },
+    customerBullets: {
+      en: [
+        "Post any job that doesn't fit a single trade category and get quotes from local providers.",
+        "Compare on skills, reviews, and price with no category limits.",
+        "Find someone reliable for any practical task you need done.",
+      ],
+      pt: [
+        "Publique qualquer trabalho que não se enquadre numa categoria e receba orçamentos de profissionais locais.",
+        "Compare por competências, reviews e preço sem limites de categoria.",
+        "Encontre alguém de confiança para qualquer tarefa prática que precise.",
+      ],
+    },
+    providerBullets: {
+      en: [
+        "Ideal for multi-skill providers who handle a range of practical jobs.",
+        "Get found by customers nearby without buying leads or credits.",
+        "A catch-all category for skills that span multiple trades.",
+      ],
+      pt: [
+        "Ideal para prestadores multicompetência que fazem vários tipos de trabalho prático.",
+        "Seja encontrado por clientes próximos sem comprar leads ou créditos.",
+        "Categoria abrangente para competências que abrangem vários ofícios.",
+      ],
+    },
+    commonJobs: {
+      en: ["General help", "Odd jobs", "Custom requests", "Miscellaneous tasks"],
+      pt: ["Ajuda geral", "Biscates", "Pedidos personalizados", "Tarefas diversas"],
+    },
+  },
 ];
 
 function localizedPath(locale: Locale, slug: string[]) {
@@ -424,14 +613,6 @@ function buildServiceCard(locale: Locale, service: ServiceDefinition): SeoCard {
     title: service.name[locale],
     description: service.summary[locale],
     href: localizedPath(locale, [LABELS.servicesSegment[locale], service.slug[locale]]),
-  };
-}
-
-function buildCityServiceCard(locale: Locale, city: CityDefinition, service: ServiceDefinition): SeoCard {
-  return {
-    title: `${service.name[locale]}: ${city.name[locale]}`,
-    description: service.summary[locale],
-    href: localizedPath(locale, [city.slug[locale], service.slug[locale]]),
   };
 }
 
@@ -465,24 +646,24 @@ function buildProvidersPage(locale: Locale): Omit<ResolvedSeoPage, "id" | "kind"
           ? [
               "Mostre o seu trabalho num perfil público que os clientes conseguem avaliar rapidamente.",
               "Receba pedidos diretos sem ter de comprar créditos ou desbloquear leads.",
-              "Construa clientes recorrentes para limpezas, reparações, pintura, mudanças e mais.",
+              "Construa clientes recorrentes para limpezas, canalização, eletricidade, reparações, pintura, mudanças, montagem, manutenção exterior, remoção e mais.",
             ]
           : [
               "Show your work on a public profile customers can assess quickly.",
               "Receive direct requests without buying credits or unlocking leads.",
-              "Build repeat customers for cleaning, repairs, painting, moving, and more.",
+              "Build repeat customers for cleaning, plumbing, electrical, repairs, painting, moving, assembly, outdoor maintenance, removal, and more.",
             ],
       },
       {
         title: isPt ? "Quem encaixa melhor" : "Who GruntWrk fits best",
         items: isPt
           ? [
-              "Limpezas, canalização, eletricidade, reparações, pintura e mudanças.",
+              "Limpezas, canalização, eletricidade, reparações, pintura, mudanças, montagem de mobiliário, montagem e instalação, manutenção exterior, remoção e outros serviços.",
               "Profissionais independentes e pequenas equipas.",
               "Negócios locais que querem mais pedidos diretos e repetição.",
             ]
           : [
-              "Cleaning, plumbing, electrical, repairs, painting, and moving.",
+              "Cleaning, plumbing, electrical, repairs, painting, moving, furniture assembly, mounting and installation, outdoor maintenance, removal, and other services.",
               "Independent providers and small teams.",
               "Local businesses that want more direct bookings and repeat work.",
             ],
@@ -523,6 +704,114 @@ function buildProvidersPage(locale: Locale): Omit<ResolvedSeoPage, "id" | "kind"
   };
 }
 
+function buildProviderRegisterPage(locale: Locale): Omit<ResolvedSeoPage, "id" | "kind" | "locale" | "slug" | "path" | "alternates"> {
+  const isPt = locale === "pt";
+  return {
+    title: isPt
+      ? "Registar como prestador | GruntWrk"
+      : "Register as a provider | GruntWrk",
+    description: isPt
+      ? "Junte-se ao GruntWrk como prestador de serviços. Sem taxas de leads, sem subscrições. Receba pedidos diretos de clientes locais."
+      : "Join GruntWrk as a service provider. No lead fees, no subscriptions. Receive direct requests from local customers.",
+    eyebrow: isPt ? "Para prestadores" : "For providers",
+    heroTitle: isPt
+      ? "Seja encontrado localmente e gira trabalho sem o custo"
+      : "Get found locally and manage work without the cost",
+    heroDescription: isPt
+      ? "Crie um perfil público, partilhe a sua disponibilidade, receba pedidos diretos e envie orçamentos para trabalho que encaixa. O GruntWrk ajuda-o a manter a comunicação com clientes, passos de pagamento e progresso do trabalho organizados num só fluxo."
+      : "Create a public profile, share your availability, receive direct requests, and send quotes for work that fits. GruntWrk helps you keep customer communication, payment steps, and job progress organized in one workflow.",
+    primaryCta: { label: LABELS.join[locale], href: buildProviderSignupHref() },
+    secondaryCta: { label: LABELS.services[locale], href: localizedPath(locale, [LABELS.servicesSegment[locale]]) },
+    providerCta: {
+      badge: isPt ? "Para prestadores" : "For providers",
+      title: isPt
+        ? "Seja encontrado localmente e gira trabalho sem o custo"
+        : "Get found locally and manage work without the cost",
+      desc: isPt
+        ? "Crie um perfil público, partilhe a sua disponibilidade, receba pedidos diretos e envie orçamentos para trabalho que encaixa. O GruntWrk ajuda-o a manter a comunicação com clientes, passos de pagamento e progresso do trabalho organizados num só fluxo."
+        : "Create a public profile, share your availability, receive direct requests, and send quotes for work that fits. GruntWrk helps you keep customer communication, payment steps, and job progress organized in one workflow.",
+      perks: isPt
+        ? [
+            "Mostre os seus serviços e disponibilidade",
+            "Receba pedidos diretos de clientes locais",
+            "Envie orçamentos sem perseguir pessoas entre apps",
+            "Construa confiança através de trabalho concluído e avaliações",
+          ]
+        : [
+            "Show your services and availability",
+            "Receive direct requests from local customers",
+            "Send quotes without chasing people across apps",
+            "Build trust through completed work and reviews",
+          ],
+      cta: { label: isPt ? "Começar a oferecer serviços" : "Start offering services", href: buildProviderSignupHref() },
+    },
+    sections: [
+      {
+        title: isPt ? "Como o GruntWrk ajuda prestadores" : "How GruntWrk helps providers",
+        items: isPt
+          ? [
+              "Mostre o seu trabalho num perfil público que os clientes conseguem avaliar rapidamente.",
+              "Receba pedidos diretos sem ter de comprar créditos ou desbloquear leads.",
+              "Construa clientes recorrentes para limpezas, canalização, eletricidade, reparações, pintura, mudanças, montagem, manutenção exterior, remoção e mais.",
+            ]
+          : [
+              "Show your work on a public profile customers can assess quickly.",
+              "Receive direct requests without buying credits or unlocking leads.",
+              "Build repeat customers for cleaning, plumbing, electrical, repairs, painting, moving, assembly, outdoor maintenance, removal, and more.",
+            ],
+      },
+      {
+        title: isPt ? "Quem encaixa melhor" : "Who GruntWrk fits best",
+        items: isPt
+          ? [
+              "Limpezas, canalização, eletricidade, reparações, pintura, mudanças, montagem de mobiliário, montagem e instalação, manutenção exterior, remoção e outros serviços.",
+              "Profissionais independentes e pequenas equipas.",
+              "Negócios locais que querem mais pedidos diretos e repetição.",
+            ]
+          : [
+              "Cleaning, plumbing, electrical, repairs, painting, moving, furniture assembly, mounting and installation, outdoor maintenance, removal, and other services.",
+              "Independent providers and small teams.",
+              "Local businesses that want more direct bookings and repeat work.",
+            ],
+      },
+    ],
+    faqTitle: LABELS.faq[locale],
+    faqs: isPt
+      ? [
+          {
+            question: "Como funciona o preço para prestadores?",
+            answer: "No GruntWrk não paga para responder. A taxa do prestador é 15% quando o trabalho avança através da plataforma.",
+          },
+          {
+            question: "Que serviços posso oferecer?",
+            answer: "Limpezas, canalização, eletricidade, reparações domésticas, pintura, mudanças, montagem de mobiliário, montagem e instalação, manutenção exterior, remoção e outros serviços.",
+          },
+          {
+            question: "Preciso de pagar para aderir?",
+            answer: "Não. A adesão é gratuita. Não há taxas de leads, pacotes de créditos ou subscrições mensais.",
+          },
+        ]
+      : [
+          {
+            question: "How does pricing work for providers?",
+            answer: "On GruntWrk you do not pay to respond. The provider fee is 15% when the work moves ahead through the platform.",
+          },
+          {
+            question: "What services can I offer?",
+            answer: "Cleaning, plumbing, electrical, home repairs, painting, moving, furniture assembly, mounting and installation, outdoor maintenance, removal, and other services.",
+          },
+          {
+            question: "Do I need to pay to join?",
+            answer: "No. Joining is free. There are no lead fees, credit packs, or monthly subscriptions.",
+          },
+        ],
+    breadcrumbs: [
+      { label: LABELS.home[locale], href: localizedPath(locale, []) },
+      { label: isPt ? "Registar" : "Register", href: localizedPath(locale, [isPt ? "registar" : "register"]) },
+    ],
+  };
+}
+
 function buildCustomersPage(locale: Locale): Omit<ResolvedSeoPage, "id" | "kind" | "locale" | "slug" | "path" | "alternates"> {
   const isPt = locale === "pt";
   return {
@@ -558,8 +847,8 @@ function buildCustomersPage(locale: Locale): Omit<ResolvedSeoPage, "id" | "kind"
         title: isPt ? "Serviços que pode pedir" : "Services you can request",
         paragraphs: [
           isPt
-            ? "Use o GruntWrk para pedir limpezas, canalização, eletricidade, reparações domésticas, pintura e mudanças."
-            : "Use GruntWrk to request cleaning, plumbing, electrical work, home repairs, painting, and moving help.",
+            ? "Use o GruntWrk para pedir limpezas, canalização, eletricidade, reparações domésticas, pintura, mudanças, montagem de mobiliário, montagem e instalação, manutenção exterior, remoção e outros serviços."
+            : "Use GruntWrk to request cleaning, plumbing, electrical work, home repairs, painting, moving, furniture assembly, mounting and installation, outdoor maintenance, removal, and other services.",
         ],
       },
     ],
@@ -756,8 +1045,8 @@ function buildCityPage(locale: Locale, city: CityDefinition): Omit<ResolvedSeoPa
           { question: "How much does it cost for customers?", answer: "Nothing. Customers pay zero fees. Providers pay 15% when the job is completed and paid." },
           { question: "Can I rebook the same provider?", answer: "Yes. Once you find someone you trust, you can rebook them directly from your workbench." },
         ],
-    cardsTitle: isPt ? "Explorar servicos" : "Explore services",
-    cards: SERVICES.map((service) => buildCityServiceCard(locale, city, service)),
+    cardsTitle: isPt ? "Explorar serviços" : "Explore services",
+    cards: SERVICES.map((service) => buildServiceCard(locale, service)),
     breadcrumbs: [
       { label: LABELS.home[locale], href: localizedPath(locale, []) },
       { label: city.name[locale], href: localizedPath(locale, [city.slug[locale]]) },
@@ -795,8 +1084,6 @@ function buildServicePage(locale: Locale, service: ServiceDefinition): Omit<Reso
         items: service.providerBullets[locale],
       },
     ],
-    cardsTitle: isPt ? "Explorar por cidade" : "Explore by city",
-    cards: CITIES.map((city) => buildCityServiceCard(locale, city, service)),
     breadcrumbs: [
       { label: LABELS.home[locale], href: localizedPath(locale, []) },
       { label: LABELS.services[locale], href: localizedPath(locale, [LABELS.servicesSegment[locale]]) },
@@ -807,90 +1094,6 @@ function buildServicePage(locale: Locale, service: ServiceDefinition): Omit<Reso
       description: service.summary[locale],
       serviceType: service.name[locale],
       areaServed: ["Portugal", "Lisbon", "Porto"],
-    },
-  };
-}
-
-function buildCityServicePage(
-  locale: Locale,
-  city: CityDefinition,
-  service: ServiceDefinition
-): Omit<ResolvedSeoPage, "id" | "kind" | "locale" | "slug" | "path" | "alternates"> {
-  const isPt = locale === "pt";
-  return {
-    title: isPt
-      ? `${service.name.pt} em ${city.name.pt} | GruntWrk`
-      : `${service.name.en} in ${city.name.en} | GruntWrk`,
-    description: isPt
-      ? `${service.summary.pt} Disponível em ${city.name.pt} através do GruntWrk.`
-      : `${service.summary.en} Available in ${city.name.en} through GruntWrk.`,
-    eyebrow: city.name[locale],
-    heroTitle: isPt
-      ? `${service.name.pt} em ${city.name.pt}`
-      : `${service.name.en} in ${city.name.en}`,
-    heroDescription: isPt
-      ? `Compare orcamentos de ${service.name.pt.toLowerCase()} em ${city.name.pt}. Sem taxas de leads, precos mais baixos para si.`
-      : `Compare quotes for ${service.name.en.toLowerCase()} in ${city.name.en}. No lead fees mean lower prices for you.`,
-    primaryCta: { label: LABELS.request[locale], href: buildCustomerRequestHref(service.appCategory) },
-    secondaryCta: { label: LABELS.join[locale], href: buildProviderSignupHref(city.name.en) },
-    sections: [
-      {
-        title: isPt ? "Para clientes" : "For customers",
-        items: service.customerBullets[locale],
-      },
-      {
-        title: isPt ? "Pedidos comuns" : "Common jobs",
-        items: service.commonJobs[locale],
-      },
-      {
-        title: isPt ? "Para prestadores" : "For providers",
-        items: service.providerBullets[locale],
-      },
-    ],
-    faqTitle: LABELS.faq[locale],
-    faqs: isPt
-      ? [
-          {
-            question: `Que ${service.name.pt.toLowerCase()} posso pedir em ${city.name.pt}?`,
-            answer: `${service.commonJobs.pt.join(", ")}. Publique o seu pedido e profissionais locais enviam orcamentos.`,
-          },
-          {
-            question: `Quanto custam ${service.name.pt.toLowerCase()} em ${city.name.pt}?`,
-            answer: `Depende do trabalho, mas como os profissionais no GruntWrk nao pagam taxas de leads, os orcamentos refletem o custo real do trabalho, nao o custo da plataforma.`,
-          },
-          {
-            question: "Posso voltar a reservar o mesmo profissional?",
-            answer: "Sim. Quando encontrar alguem de confianca, pode voltar a reserva-lo diretamente pela bancada de trabalho.",
-          },
-        ]
-      : [
-          {
-            question: `What ${service.name.en.toLowerCase()} can I book in ${city.name.en}?`,
-            answer: `${service.commonJobs.en.join(", ")}. Post your request and local providers send you quotes.`,
-          },
-          {
-            question: `How much do ${service.name.en.toLowerCase()} cost in ${city.name.en}?`,
-            answer: `Prices depend on the job, but because providers on GruntWrk don't pay lead fees, their quotes reflect the actual cost of the work, not the cost of the platform.`,
-          },
-          {
-            question: "Can I rebook the same provider?",
-            answer: "Yes. Once you find someone you trust, you can rebook them directly from your workbench.",
-          },
-        ],
-    breadcrumbs: [
-      { label: LABELS.home[locale], href: localizedPath(locale, []) },
-      { label: city.name[locale], href: localizedPath(locale, [city.slug[locale]]) },
-      { label: service.name[locale], href: localizedPath(locale, [city.slug[locale], service.slug[locale]]) },
-    ],
-    serviceSchema: {
-      name: isPt
-        ? `${service.name.pt} em ${city.name.pt}`
-        : `${service.name.en} in ${city.name.en}`,
-      description: isPt
-        ? `${service.summary.pt} Encontre ou ofereça este serviço em ${city.name.pt} através do GruntWrk.`
-        : `${service.summary.en} Find or offer this service in ${city.name.en} through GruntWrk.`,
-      serviceType: service.name[locale],
-      areaServed: [city.name.en, "Portugal"],
     },
   };
 }
@@ -980,6 +1183,12 @@ function buildPages() {
         slug: [LABELS.servicesSegment[locale]],
         page: buildServicesIndexPage(locale),
       },
+      {
+        id: "provider-register",
+        kind: "audience" as const,
+        slug: [locale === "pt" ? "registar" : "register"],
+        page: buildProviderRegisterPage(locale),
+      },
     ];
 
     for (const entry of staticEntries) {
@@ -1018,19 +1227,6 @@ function buildPages() {
         ...buildCityPage(locale, city),
         alternates: {} as Record<Locale, string>,
       });
-
-      for (const service of SERVICES) {
-        const cityServiceSlug = [city.slug[locale], service.slug[locale]];
-        pages.push({
-          id: `city-service-${city.id}-${service.id}`,
-          kind: "city-service",
-          locale,
-          slug: cityServiceSlug,
-          path: localizedPath(locale, cityServiceSlug),
-          ...buildCityServicePage(locale, city, service),
-          alternates: {} as Record<Locale, string>,
-        });
-      }
     }
 
     for (const competitor of ["fixando", "zaask"] as const) {
