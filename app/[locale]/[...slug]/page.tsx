@@ -9,7 +9,7 @@ import {
   type SeoNavItem,
   type ResolvedSeoPage,
 } from "../../../lib/seoPages";
-import { buildBreadcrumbSchema, buildServiceSchema } from "../../../lib/schema";
+import { buildBreadcrumbSchema, buildFaqSchema, buildServiceSchema } from "../../../lib/schema";
 import { TrackedCtaLink } from "../../TrackedCtaLink";
 import { SiteFooter, SiteHeader } from "../SiteChrome";
 import { SeoRevealProvider } from "./SeoReveal";
@@ -328,6 +328,7 @@ export default function SeoPage({
   const dict = getDictionary(locale);
   const breadcrumbSchema = buildBreadcrumbSchema(page.breadcrumbs);
   const serviceSchema = buildServiceSchema(page);
+  const faqSchema = page.faqs?.length ? buildFaqSchema(page.faqs) : null;
   const nav = getSeoNavItems(locale, page.path);
 
   const isCityPage = page.kind === "city";
@@ -506,6 +507,12 @@ export default function SeoPage({
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+          />
+        ) : null}
+        {faqSchema ? (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
           />
         ) : null}
       </main>

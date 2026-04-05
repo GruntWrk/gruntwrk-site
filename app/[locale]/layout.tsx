@@ -1,7 +1,7 @@
 import { getDictionary, LOCALES, SITE_URL, type Locale } from "../../lib/i18n";
 import { Outfit } from "next/font/google";
 import type { Metadata } from "next";
-import { buildOrganizationSchema, buildWebsiteSchema } from "../../lib/schema";
+import { buildOrganizationSchema, buildWebsiteSchema, buildAggregateRatingSchema } from "../../lib/schema";
 import {
   buildGoogleTagBootstrapSnippet,
   PRIMARY_GOOGLE_TAG_ID,
@@ -65,7 +65,7 @@ export default function LocaleLayout({
   params: { locale: string };
 }) {
   const locale = (LOCALES.includes(params.locale as Locale) ? params.locale : "en") as Locale;
-  const schema = [buildWebsiteSchema(locale), buildOrganizationSchema(locale)];
+  const schema = [buildWebsiteSchema(locale), buildOrganizationSchema(locale), buildAggregateRatingSchema()];
   const googleTagBootstrap = buildGoogleTagBootstrapSnippet();
 
   return (

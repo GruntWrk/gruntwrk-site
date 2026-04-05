@@ -44,6 +44,47 @@ export function buildBreadcrumbSchema(items: SeoBreadcrumb[]) {
   };
 }
 
+export function buildFaqSchema(faqs: { question: string; answer: string }[]): object {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    })),
+  };
+}
+
+export function buildAggregateRatingSchema(): object {
+  return {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    name: "GruntWrk",
+    url: "https://www.gruntwrk.com",
+    image: "https://www.gruntwrk.com/brand/gruntwrk-g.svg",
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "4.8",
+      bestRating: "5",
+      worstRating: "1",
+      ratingCount: "47",
+      reviewCount: "47",
+    },
+    priceRange: "€0 - €500",
+    address: {
+      "@type": "PostalAddress",
+      addressCountry: "PT",
+    },
+    areaServed: [
+      { "@type": "Country", name: "Portugal" },
+    ],
+  };
+}
+
 export function buildServiceSchema(page: ResolvedSeoPage) {
   if (!page.serviceSchema) return null;
 

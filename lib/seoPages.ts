@@ -155,6 +155,342 @@ const CITIES: CityDefinition[] = [
       ],
     },
   },
+  {
+    id: "braga",
+    slug: { en: "braga", pt: "braga" },
+    name: { en: "Braga", pt: "Braga" },
+    intro: {
+      en: "Braga's fast-growing tech scene and student population mean demand for home services is rising. Get quotes from local providers who price fairly because they never pay lead fees.",
+      pt: "O crescente polo tecnologico e a populacao estudantil de Braga aumentam a procura por servicos domesticos. Receba orcamentos de prestadores locais que praticam precos justos porque nunca pagam taxas de leads.",
+    },
+    why: {
+      en: [
+        "A growing city with new apartments and renovations that need reliable tradespeople.",
+        "Providers set honest prices because they never pay per lead or per contact.",
+        "Ratings, reviews, and completed-job history let you hire with confidence.",
+      ],
+      pt: [
+        "Uma cidade em crescimento com novos apartamentos e renovacoes que precisam de profissionais fiaveis.",
+        "Os prestadores praticam precos honestos porque nunca pagam por lead ou por contacto.",
+        "Avaliacoes, reviews e historico de trabalhos permitem contratar com confianca.",
+      ],
+    },
+  },
+  {
+    id: "aveiro",
+    slug: { en: "aveiro", pt: "aveiro" },
+    name: { en: "Aveiro", pt: "Aveiro" },
+    intro: {
+      en: "Known as the Venice of Portugal, Aveiro blends historic charm with modern living. Find local cleaners, plumbers, painters, and handymen who quote what the job actually costs.",
+      pt: "Conhecida como a Veneza de Portugal, Aveiro combina charme historico com vida moderna. Encontre profissionais locais de limpeza, canalizacao, pintura e manutencao que orcam o custo real do trabalho.",
+    },
+    why: {
+      en: [
+        "Local providers who understand the unique needs of Aveiro's canal-side and coastal properties.",
+        "No lead fees keep quotes honest and competitive across the district.",
+        "Direct payment to your provider with full messaging and rebooking from one dashboard.",
+      ],
+      pt: [
+        "Prestadores locais que compreendem as necessidades unicas dos imoveis junto aos canais e a costa de Aveiro.",
+        "Sem taxas de leads, os orcamentos mantem-se honestos e competitivos em todo o distrito.",
+        "Pagamento direto ao prestador com mensagens e reagendamento num so painel.",
+      ],
+    },
+  },
+  {
+    id: "setubal",
+    slug: { en: "setubal", pt: "setubal" },
+    name: { en: "Setúbal", pt: "Setúbal" },
+    intro: {
+      en: "From the Arrabida coast to the city centre, Setubal homeowners and renters need dependable local services. Compare quotes from providers who price the job, not the platform.",
+      pt: "Da costa da Arrabida ao centro da cidade, proprietarios e inquilinos de Setubal precisam de servicos locais fiaveis. Compare orcamentos de prestadores que orcam o trabalho, nao a plataforma.",
+    },
+    why: {
+      en: [
+        "Ideal for holiday rentals and residential properties across the Setubal peninsula.",
+        "Providers quote fairly because they never pay to receive your job request.",
+        "Check verified reviews and past work before choosing who to hire.",
+      ],
+      pt: [
+        "Ideal para alojamentos locais e propriedades residenciais na peninsula de Setubal.",
+        "Os prestadores orcam de forma justa porque nunca pagam para receber o seu pedido.",
+        "Consulte reviews verificados e trabalhos anteriores antes de escolher quem contratar.",
+      ],
+    },
+  },
+  {
+    id: "leiria",
+    slug: { en: "leiria", pt: "leiria" },
+    name: { en: "Leiria", pt: "Leiria" },
+    intro: {
+      en: "Leiria sits at the heart of central Portugal with a thriving local economy. Hire cleaners, electricians, movers, and handymen who quote honestly because they pay zero lead fees.",
+      pt: "Leiria situa-se no coracao do centro de Portugal com uma economia local dinamica. Contrate profissionais de limpeza, eletricidade, mudancas e manutencao que orcam honestamente porque pagam zero taxas de leads.",
+    },
+    why: {
+      en: [
+        "Central location means a strong pool of providers covering Leiria and surrounding towns.",
+        "No middleman markup — every quote reflects the real cost of the work.",
+        "Manage all your jobs, messages, and provider history from a single workbench.",
+      ],
+      pt: [
+        "A localizacao central garante um forte conjunto de prestadores que cobrem Leiria e arredores.",
+        "Sem margens de intermediario — cada orcamento reflete o custo real do trabalho.",
+        "Gira todos os seus trabalhos, mensagens e historico de prestadores numa so bancada.",
+      ],
+    },
+  },
+  {
+    id: "faro",
+    slug: { en: "faro", pt: "faro" },
+    name: { en: "Faro", pt: "Faro" },
+    intro: {
+      en: "The Algarve's capital is home to thousands of holiday properties and a booming expat community. Find local tradespeople who quote what the job costs, not what the platform charges.",
+      pt: "A capital do Algarve alberga milhares de propriedades de ferias e uma comunidade expatriada em crescimento. Encontre profissionais locais que orcam o custo do trabalho, nao o que a plataforma cobra.",
+    },
+    why: {
+      en: [
+        "Perfect for property managers, holiday-let owners, and residents across the Algarve.",
+        "Bilingual providers experienced with both Portuguese and international clients.",
+        "Zero lead fees mean lower quotes and more competitive pricing region-wide.",
+      ],
+      pt: [
+        "Perfeito para gestores de propriedades, proprietarios de alojamento local e residentes em todo o Algarve.",
+        "Prestadores bilingues com experiencia em clientes portugueses e internacionais.",
+        "Zero taxas de leads significam orcamentos mais baixos e precos mais competitivos em toda a regiao.",
+      ],
+    },
+  },
+  {
+    id: "coimbra",
+    slug: { en: "coimbra", pt: "coimbra" },
+    name: { en: "Coimbra", pt: "Coimbra" },
+    intro: {
+      en: "Portugal's historic university city has a constant flow of students and academics who need reliable local services. Get fair quotes from providers who never pay lead fees.",
+      pt: "A historica cidade universitaria de Portugal tem um fluxo constante de estudantes e academicos que precisam de servicos locais fiaveis. Receba orcamentos justos de prestadores que nunca pagam taxas de leads.",
+    },
+    why: {
+      en: [
+        "High demand from student housing, shared flats, and rental turnovers every semester.",
+        "Providers price the work honestly because they are never charged to see your request.",
+        "Verified ratings and job history help you pick the right professional fast.",
+      ],
+      pt: [
+        "Alta procura de alojamento estudantil, apartamentos partilhados e mudancas de inquilinos a cada semestre.",
+        "Os prestadores orcam honestamente porque nunca sao cobrados para ver o seu pedido.",
+        "Avaliacoes verificadas e historico de trabalhos ajudam a escolher o profissional certo rapidamente.",
+      ],
+    },
+  },
+  {
+    id: "viseu",
+    slug: { en: "viseu", pt: "viseu" },
+    name: { en: "Viseu", pt: "Viseu" },
+    intro: {
+      en: "Repeatedly voted one of the best cities to live in Portugal, Viseu combines quality of life with growing demand for home services. Compare quotes from honest local providers.",
+      pt: "Repetidamente eleita uma das melhores cidades para viver em Portugal, Viseu combina qualidade de vida com uma procura crescente por servicos domesticos. Compare orcamentos de prestadores locais honestos.",
+    },
+    why: {
+      en: [
+        "A city known for high living standards and homeowners who value quality work.",
+        "No platform fees on quotes keep pricing transparent for every job.",
+        "Direct provider contact, ratings, and rebooking all in one place.",
+      ],
+      pt: [
+        "Uma cidade conhecida por elevados padroes de vida e proprietarios que valorizam trabalho de qualidade.",
+        "Sem taxas de plataforma nos orcamentos, os precos mantem-se transparentes em cada trabalho.",
+        "Contacto direto com o prestador, avaliacoes e reagendamento tudo num so lugar.",
+      ],
+    },
+  },
+  {
+    id: "santarem",
+    slug: { en: "santarem", pt: "santarem" },
+    name: { en: "Santarém", pt: "Santarém" },
+    intro: {
+      en: "The agricultural heartland of the Ribatejo region, Santarem has a mix of rural estates and town properties that need regular upkeep. Find providers who quote the real cost of the work.",
+      pt: "O coracao agricola da regiao do Ribatejo, Santarem possui uma mistura de quintas rurais e propriedades urbanas que precisam de manutencao regular. Encontre prestadores que orcam o custo real do trabalho.",
+    },
+    why: {
+      en: [
+        "Providers experienced with both rural properties and town apartments across the district.",
+        "Honest quotes because providers never pay to receive your job listing.",
+        "Pay directly and manage everything from messaging to rebooking in one workbench.",
+      ],
+      pt: [
+        "Prestadores com experiencia em propriedades rurais e apartamentos urbanos em todo o distrito.",
+        "Orcamentos honestos porque os prestadores nunca pagam para receber o seu anuncio.",
+        "Pague diretamente e gira tudo, de mensagens a reagendamentos, numa so bancada.",
+      ],
+    },
+  },
+  {
+    id: "viana-do-castelo",
+    slug: { en: "viana-do-castelo", pt: "viana-do-castelo" },
+    name: { en: "Viana do Castelo", pt: "Viana do Castelo" },
+    intro: {
+      en: "Sitting where the Lima river meets the Atlantic, Viana do Castelo blends coastal living with traditional architecture. Hire local tradespeople who quote fairly with zero lead fees.",
+      pt: "Situada onde o rio Lima encontra o Atlantico, Viana do Castelo combina vida costeira com arquitetura tradicional. Contrate profissionais locais que orcam de forma justa com zero taxas de leads.",
+    },
+    why: {
+      en: [
+        "Local providers familiar with the coastal climate and traditional Minho building styles.",
+        "No lead fees mean quotes reflect the true cost of every repair or renovation.",
+        "Ratings and completed-job history give you full transparency before hiring.",
+      ],
+      pt: [
+        "Prestadores locais familiarizados com o clima costeiro e os estilos construtivos tradicionais do Minho.",
+        "Sem taxas de leads, os orcamentos refletem o custo real de cada reparacao ou renovacao.",
+        "Avaliacoes e historico de trabalhos concluidos dao total transparencia antes de contratar.",
+      ],
+    },
+  },
+  {
+    id: "vila-real",
+    slug: { en: "vila-real", pt: "vila-real" },
+    name: { en: "Vila Real", pt: "Vila Real" },
+    intro: {
+      en: "Gateway to the Douro wine region, Vila Real combines rural tradition with a growing urban centre. Find reliable local providers for home repairs, cleaning, painting, and more.",
+      pt: "Porta de entrada para a regiao vinicola do Douro, Vila Real combina tradicao rural com um centro urbano em crescimento. Encontre prestadores locais fiaveis para reparacoes, limpeza, pintura e muito mais.",
+    },
+    why: {
+      en: [
+        "Providers who understand both modern apartments and traditional Douro-region properties.",
+        "Every quote is honest because providers are never charged to bid on your job.",
+        "Compare profiles, ratings, and past work before making your choice.",
+      ],
+      pt: [
+        "Prestadores que compreendem tanto apartamentos modernos como propriedades tradicionais da regiao do Douro.",
+        "Cada orcamento e honesto porque os prestadores nunca sao cobrados para licitar no seu trabalho.",
+        "Compare perfis, avaliacoes e trabalhos anteriores antes de fazer a sua escolha.",
+      ],
+    },
+  },
+  {
+    id: "evora",
+    slug: { en: "evora", pt: "evora" },
+    name: { en: "Évora", pt: "Évora" },
+    intro: {
+      en: "A UNESCO World Heritage city in the Alentejo, Evora's historic buildings and modern homes alike need skilled maintenance. Get quotes from providers who price the work, not the platform.",
+      pt: "Cidade classificada como Patrimonio Mundial da UNESCO no Alentejo, os edificios historicos e casas modernas de Evora precisam de manutencao especializada. Receba orcamentos de prestadores que orcam o trabalho, nao a plataforma.",
+    },
+    why: {
+      en: [
+        "Tradespeople experienced with heritage properties and sensitive restoration work.",
+        "No lead fees keep quotes competitive across the Alentejo region.",
+        "Full provider profiles with ratings, skills, and verified job history.",
+      ],
+      pt: [
+        "Profissionais com experiencia em propriedades patrimoniais e trabalhos de restauro sensivel.",
+        "Sem taxas de leads, os orcamentos mantem-se competitivos em toda a regiao do Alentejo.",
+        "Perfis completos de prestadores com avaliacoes, competencias e historico de trabalhos verificado.",
+      ],
+    },
+  },
+  {
+    id: "castelo-branco",
+    slug: { en: "castelo-branco", pt: "castelo-branco" },
+    name: { en: "Castelo Branco", pt: "Castelo Branco" },
+    intro: {
+      en: "In the heart of the Beira Baixa, Castelo Branco offers affordable living and a steady need for home services. Compare quotes from local providers who never inflate prices with lead fees.",
+      pt: "No coracao da Beira Baixa, Castelo Branco oferece vida acessivel e uma necessidade constante de servicos domesticos. Compare orcamentos de prestadores locais que nunca inflacionam precos com taxas de leads.",
+    },
+    why: {
+      en: [
+        "Affordable region where honest pricing from providers makes a real difference.",
+        "Providers quote what the job costs because they never pay to reach you.",
+        "Direct communication, payment, and rebooking through one simple workbench.",
+      ],
+      pt: [
+        "Uma regiao acessivel onde precos honestos dos prestadores fazem uma diferenca real.",
+        "Os prestadores orcam o custo do trabalho porque nunca pagam para o contactar.",
+        "Comunicacao direta, pagamento e reagendamento atraves de uma bancada simples.",
+      ],
+    },
+  },
+  {
+    id: "guarda",
+    slug: { en: "guarda", pt: "guarda" },
+    name: { en: "Guarda", pt: "Guarda" },
+    intro: {
+      en: "Portugal's highest city sits in the Serra da Estrela foothills where harsh winters demand reliable home maintenance. Find local providers who quote honestly with no platform markups.",
+      pt: "A cidade mais alta de Portugal situa-se nas encostas da Serra da Estrela, onde invernos rigorosos exigem manutencao domestica fiavel. Encontre prestadores locais que orcam honestamente sem margens de plataforma.",
+    },
+    why: {
+      en: [
+        "Providers experienced with mountain-climate repairs, insulation, and weatherproofing.",
+        "Zero lead fees mean every quote reflects the actual cost of the work.",
+        "Verified ratings and job history so you know exactly who you are hiring.",
+      ],
+      pt: [
+        "Prestadores com experiencia em reparacoes de clima de montanha, isolamento e impermeabilizacao.",
+        "Zero taxas de leads significam que cada orcamento reflete o custo real do trabalho.",
+        "Avaliacoes verificadas e historico de trabalhos para saber exatamente quem esta a contratar.",
+      ],
+    },
+  },
+  {
+    id: "braganca",
+    slug: { en: "braganca", pt: "braganca" },
+    name: { en: "Bragança", pt: "Bragança" },
+    intro: {
+      en: "In the remote northeast of Tras-os-Montes, Braganca residents value dependable local tradespeople. Get quotes from providers who price the job fairly because they never pay lead fees.",
+      pt: "No remoto nordeste de Tras-os-Montes, os residentes de Braganca valorizam profissionais locais de confianca. Receba orcamentos de prestadores que orcam o trabalho de forma justa porque nunca pagam taxas de leads.",
+    },
+    why: {
+      en: [
+        "Local providers who know the building traditions and climate challenges of Tras-os-Montes.",
+        "Honest quotes with no middleman fees passed on to you.",
+        "Manage every job from quote to completion in one easy-to-use workbench.",
+      ],
+      pt: [
+        "Prestadores locais que conhecem as tradicoes construtivas e os desafios climaticos de Tras-os-Montes.",
+        "Orcamentos honestos sem taxas de intermediario repassadas a si.",
+        "Gira cada trabalho desde o orcamento ate a conclusao numa bancada facil de usar.",
+      ],
+    },
+  },
+  {
+    id: "portalegre",
+    slug: { en: "portalegre", pt: "portalegre" },
+    name: { en: "Portalegre", pt: "Portalegre" },
+    intro: {
+      en: "Nestled in the Sao Mamede mountains of the Alto Alentejo, Portalegre is a quiet district where finding skilled tradespeople can be a challenge. GruntWrk connects you with local providers who quote fairly.",
+      pt: "Aninhada nas montanhas de Sao Mamede no Alto Alentejo, Portalegre e um distrito tranquilo onde encontrar profissionais qualificados pode ser um desafio. O GruntWrk liga-o a prestadores locais que orcam de forma justa.",
+    },
+    why: {
+      en: [
+        "Bridges the gap between homeowners and skilled providers in a less-served region.",
+        "Providers quote the real job cost because they are never charged lead fees.",
+        "Ratings, reviews, and direct messaging keep the hiring process transparent.",
+      ],
+      pt: [
+        "Liga proprietarios a prestadores qualificados numa regiao com menos oferta.",
+        "Os prestadores orcam o custo real porque nunca lhes sao cobradas taxas de leads.",
+        "Avaliacoes, reviews e mensagens diretas mantem o processo de contratacao transparente.",
+      ],
+    },
+  },
+  {
+    id: "beja",
+    slug: { en: "beja", pt: "beja" },
+    name: { en: "Beja", pt: "Beja" },
+    intro: {
+      en: "In the sun-drenched plains of the Baixo Alentejo, Beja's agricultural estates and town homes need regular upkeep. Compare quotes from local providers with no hidden platform fees.",
+      pt: "Nas planicies soalheiras do Baixo Alentejo, as quintas e moradias de Beja precisam de manutencao regular. Compare orcamentos de prestadores locais sem taxas ocultas de plataforma.",
+    },
+    why: {
+      en: [
+        "Providers familiar with the Alentejo's rural properties, farms, and town residences.",
+        "No lead fees ensure every quote reflects the honest cost of the work.",
+        "Direct payment, full job tracking, and rebooking all from one workbench.",
+      ],
+      pt: [
+        "Prestadores familiarizados com propriedades rurais, quintas e residencias urbanas do Alentejo.",
+        "Sem taxas de leads, cada orcamento reflete o custo honesto do trabalho.",
+        "Pagamento direto, acompanhamento completo e reagendamento tudo numa so bancada.",
+      ],
+    },
+  },
 ];
 
 const SERVICES: ServiceDefinition[] = [
