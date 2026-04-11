@@ -264,18 +264,219 @@ function HeroPreviewCard({ dict }: { dict: Dictionary }) {
   );
 }
 
-function StatsStrip({ dict }: { dict: Dictionary }) {
+// Allow local dev to point the counter at a localhost app. In production
+// NEXT_PUBLIC_APP_BASE_URL is unset and we fall back to the hosted app.
+const PROVIDER_COUNT_API_BASE =
+  (typeof process !== "undefined" && process.env.NEXT_PUBLIC_APP_BASE_URL) ||
+  APP_BASE_URL;
+const PROVIDER_COUNT_ENDPOINT = `${PROVIDER_COUNT_API_BASE}/api/directory/count`;
+const PROVIDER_COUNT_REFRESH_MS = 60_000;
+
+function formatCount(value: number) {
+  return new Intl.NumberFormat("en-US").format(Math.max(0, Math.floor(value)));
+}
+
+// Shared fetch + auto-refresh for the live directory counts. Both the
+// ProviderCounter card and the StatsStrip Locations tile read from this
+// single hook so they stay in sync and we only make one request per cycle.
+function useDirectoryCounts() {
+  const [state, setState] = useState<{
+    providers: number | null;
+    towns: number | null;
+    hasError: boolean;
+  }>({ providers: null, towns: null, hasError: false });
+
+  useEffect(() => {
+    let cancelled = false;
+
+    const load = async () => {
+      try {
+        const res = await fetch(PROVIDER_COUNT_ENDPOINT, {
+          cache: "no-store",
+          headers: { accept: "application/json" },
+        });
+        if (!res.ok) throw new Error(`status_${res.status}`);
+        const data = (await res.json()) as { providers?: unknown; towns?: unknown };
+        if (cancelled) return;
+        setState({
+          providers: typeof data.providers === "number" ? data.providers : 0,
+          towns: typeof data.towns === "number" ? data.towns : 0,
+          hasError: false,
+        });
+      } catch {
+        if (!cancelled) setState((s) => ({ ...s, hasError: true }));
+      }
+    };
+
+    load();
+    const interval = window.setInterval(load, PROVIDER_COUNT_REFRESH_MS);
+    return () => {
+      cancelled = true;
+      window.clearInterval(interval);
+    };
+  }, []);
+
+  return state;
+}
+
+function StatsStrip({
+  dict,
+  liveLocations,
+}: {
+  dict: Dictionary;
+  liveLocations: number | null;
+}) {
   const stats = (dict as any).stats;
+  const animatedLocations = useCountUp(liveLocations ?? 0, 1200);
   if (!stats) return null;
   return (
     <div className="hp-stats-strip" data-reveal>
-      {stats.map((stat: { value: string; label: string }) => (
-        <div key={stat.label} className="hp-stat">
-          <span className="hp-stat-value">{stat.value}</span>
-          <span className="hp-stat-label">{stat.label}</span>
-        </div>
-      ))}
+      {stats.map((stat: { value: string; label: string }, index: number) => {
+        // First tile = Locations. Swap the static "100+" for the live
+        // animated town count once the directory endpoint has responded.
+        const isLocationsTile = index === 0;
+        const hasLiveValue = isLocationsTile && liveLocations !== null;
+        return (
+          <div key={stat.label} className="hp-stat">
+            <span
+              className={`hp-stat-value${
+                hasLiveValue ? " hp-stat-value-live" : ""
+              }`}
+            >
+              {hasLiveValue ? formatCount(animatedLocations) : stat.value}
+            </span>
+            <span className="hp-stat-label">{stat.label}</span>
+          </div>
+        );
+      })}
     </div>
+  );
+}
+
+// Eased count-up from the previously-displayed value to the latest fetched total.
+// easeOutCubic keeps the motion fast up-front then settles — feels premium, not
+// robotic. Respects prefers-reduced-motion by snapping straight to the target.
+function useCountUp(target: number, durationMs = 1600) {
+  const [displayed, setDisplayed] = useState(0);
+  const previousRef = useRef(0);
+  const rafRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const reduceMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+    if (reduceMotion) {
+      setDisplayed(target);
+      previousRef.current = target;
+      return;
+    }
+
+    const start = previousRef.current;
+    const delta = target - start;
+    if (delta === 0) return;
+
+    const startTime = performance.now();
+    const step = (now: number) => {
+      const elapsed = now - startTime;
+      const progress = clamp(elapsed / durationMs, 0, 1);
+      const eased = 1 - Math.pow(1 - progress, 3); // easeOutCubic
+      const next = start + delta * eased;
+      setDisplayed(next);
+      if (progress < 1) {
+        rafRef.current = requestAnimationFrame(step);
+      } else {
+        previousRef.current = target;
+        rafRef.current = null;
+      }
+    };
+
+    rafRef.current = requestAnimationFrame(step);
+    return () => {
+      if (rafRef.current != null) cancelAnimationFrame(rafRef.current);
+    };
+  }, [target, durationMs]);
+
+  return displayed;
+}
+
+function ProviderCounter({
+  dict,
+  locale,
+  providers,
+  towns,
+  hasError,
+}: {
+  dict: Dictionary;
+  locale: Locale;
+  providers: number | null;
+  towns: number | null;
+  hasError: boolean;
+}) {
+  const copy = (dict as any).providerCounter as
+    | {
+        eyebrow: string;
+        heading: string;
+        subheading: string;
+        live: string;
+        townsSuffix: string;
+        cta: string;
+      }
+    | undefined;
+
+  const animatedProviders = useCountUp(providers ?? 0);
+  const animatedTowns = useCountUp(towns ?? 0, 1200);
+
+  if (!copy) return null;
+
+  const isReady = providers !== null && !hasError;
+  const displayProviders = isReady ? formatCount(animatedProviders) : "—";
+  const displayTowns = isReady ? formatCount(animatedTowns) : "—";
+
+  return (
+    <section className="hp-provider-counter" data-reveal aria-live="polite">
+      <div className="hp-pc-card">
+        <div className="hp-pc-grid-bg" aria-hidden="true" />
+        <div className="hp-pc-inner">
+          <div className="hp-pc-eyebrow">
+            <span className="hp-pc-live-dot" aria-hidden="true" />
+            <span className="hp-pc-eyebrow-text">{copy.eyebrow}</span>
+            <span className="hp-pc-live-pill" aria-hidden="true">
+              {copy.live}
+            </span>
+          </div>
+
+          <div className="hp-pc-number-row">
+            <span
+              className={`hp-pc-number${isReady ? "" : " hp-pc-number-loading"}`}
+            >
+              {displayProviders}
+            </span>
+            <span className="hp-pc-number-label">{copy.heading}</span>
+          </div>
+
+          <p className="hp-pc-subheading">{copy.subheading}</p>
+
+          <div className="hp-pc-footer">
+            <div className="hp-pc-contactable">
+              <span className="hp-pc-contactable-dot" aria-hidden="true" />
+              <strong className="hp-pc-contactable-number">
+                {displayTowns}
+              </strong>
+              <span className="hp-pc-contactable-text">{copy.townsSuffix}</span>
+            </div>
+            <TrackedCtaLink
+              href={appHref("/contacts")}
+              className="hp-pc-cta"
+              ctaLocation="home_provider_counter_cta"
+              locale={locale}
+              pageKind="home"
+            >
+              {copy.cta}
+              <ArrowIcon />
+            </TrackedCtaLink>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -576,6 +777,8 @@ export default function HomePage({ dict, locale, nav }: { dict: Dictionary; loca
   const reviews = dict.reviews.items;
   const feeRows = dict.fees.rows;
 
+  const directoryCounts = useDirectoryCounts();
+
   useReveal();
 
   const citiesLabel = locale === "pt" ? "Cidades" : "Cities";
@@ -680,9 +883,17 @@ export default function HomePage({ dict, locale, nav }: { dict: Dictionary; loca
             </div>
           </section>
 
+          <ProviderCounter
+            dict={dict}
+            locale={locale}
+            providers={directoryCounts.providers}
+            towns={directoryCounts.towns}
+            hasError={directoryCounts.hasError}
+          />
+
           <TrustStrip dict={dict} />
 
-          <StatsStrip dict={dict} />
+          <StatsStrip dict={dict} liveLocations={directoryCounts.towns} />
 
           {/* Payment model strip */}
           <section className="hp-payment-model" data-reveal>

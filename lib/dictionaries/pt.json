@@ -13,7 +13,7 @@
     "providers": "Prestadores"
   },
   "hero": {
-    "title": "A rede pública de trabalhos e prestadores locais",
+    "title": "A rede pública de trabalhos locais",
     "ctaProvider": "Começar como prestador",
     "ctaCustomer": "Publicar um trabalho",
     "ctaBrowseJobs": "Consultar trabalhos",
@@ -26,6 +26,14 @@
     { "value": "4.8", "label": "Avaliação média" },
     { "value": "€0", "label": "Taxas para clientes" }
   ],
+  "providerCounter": {
+    "eyebrow": "Directório em direto",
+    "heading": "prestadores locais",
+    "subheading": "Directório de prestadores atualizado em tempo real",
+    "live": "AO VIVO",
+    "townsSuffix": "localidades cobertas",
+    "cta": "Ver prestadores"
+  },
   "video": {
     "heading": "Veja como funciona o GruntWrk",
     "subtitle": "Uma visao rapida de como ligamos clientes a prestadores de servicos locais, sem taxas escondidas."

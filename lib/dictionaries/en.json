@@ -13,7 +13,7 @@
     "providers": "Providers"
   },
   "hero": {
-    "title": "The public network for local jobs and providers",
+    "title": "The public network for local jobs",
     "subtitle": "Browse jobs freely, contact providers, and pay them directly. No middleman, no lead fees, no subscriptions.",
     "ctaProvider": "Start as a provider",
     "ctaCustomer": "Post a job",
@@ -26,6 +26,14 @@
     { "value": "4.8", "label": "Average rating" },
     { "value": "$0", "label": "Customer fees" }
   ],
+  "providerCounter": {
+    "eyebrow": "Live directory",
+    "heading": "local providers",
+    "subheading": "Provider directory updated in real time",
+    "live": "LIVE",
+    "townsSuffix": "towns and cities covered",
+    "cta": "Browse providers"
+  },
   "video": {
     "heading": "See how GruntWrk works",
     "subtitle": "A quick look at how we connect customers with local service providers, without the hidden fees."
