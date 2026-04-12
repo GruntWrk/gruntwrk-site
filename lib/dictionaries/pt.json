@@ -8,17 +8,17 @@
   "nav": {
     "startOffering": "Para Prestadores",
     "login": "Entrar",
-    "brandSub": "Trabalhos e prestadores locais públicos",
+    "brandSub": "Trabalhos e prestadores de serviços locais públicos",
     "jobs": "Trabalhos",
-    "providers": "Prestadores"
+    "providers": "Prestadores de Serviços"
   },
   "hero": {
     "title": "A rede pública para encontrar Prestadores de Serviços",
     "ctaProvider": "Começar como prestador",
     "ctaCustomer": "Publicar um trabalho",
     "ctaBrowseJobs": "Consultar trabalhos",
-    "ctaBrowseProviders": "Consultar prestadores",
-    "subtitle": "Publique trabalhos, encontre prestadores locais e contrate diretamente. Consulte trabalhos livremente, contacte prestadores e pague-lhes diretamente. Sem intermediários, sem taxas de leads, sem subscrições."
+    "ctaBrowseProviders": "Consultar prestadores de serviços",
+    "subtitle": "Encontre prestadores de serviços, contacte-os livremente e pague-lhes diretamente. Sem intermediários, sem taxas de leads, sem subscrições."
   },
   "stats": [
     { "value": "100+", "label": "Localizações" },
@@ -28,11 +28,11 @@
   ],
   "providerCounter": {
     "eyebrow": "Directório em direto",
-    "heading": "prestadores locais",
+    "heading": "prestadores de serviços",
     "subheading": "Directório de prestadores atualizado em tempo real",
     "live": "AO VIVO",
     "townsSuffix": "localidades cobertas",
-    "cta": "Ver prestadores"
+    "cta": "Ver prestadores de serviços"
   },
   "video": {
     "heading": "Veja como funciona o GruntWrk",
@@ -130,7 +130,7 @@
     ]
   },
   "provider": {
-    "badge": "Para prestadores",
+    "badge": "Para prestadores de serviços",
     "title": "Seja encontrado localmente e gira trabalho sem o custo",
     "desc": "Crie um perfil público, partilhe a sua disponibilidade e receba pedidos diretos. Os clientes pagam-lhe diretamente. Paga ao GruntWrk uma taxa de trabalho de 10% separadamente, apenas quando o trabalho avança. Sem taxas de leads, sem pacotes de contacto, sem subscrições.",
     "perks": [
@@ -170,7 +170,7 @@
       {
         "num": "2",
         "title": "Escolha quem contratar",
-        "body": "Receba orçamentos de prestadores compatíveis ou reserve diretamente um prestador à sua escolha."
+        "body": "Receba orçamentos de prestadores de serviços compatíveis ou reserve diretamente um prestador de serviços à sua escolha."
       },
       {
         "num": "3",

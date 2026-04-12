@@ -8,17 +8,17 @@
   "nav": {
     "startOffering": "For Providers",
     "login": "Sign in",
-    "brandSub": "Public local jobs and providers",
+    "brandSub": "Public local jobs and service providers",
     "jobs": "Jobs",
-    "providers": "Providers"
+    "providers": "Service Providers"
   },
   "hero": {
     "title": "The public network to find Service Providers",
-    "subtitle": "Browse jobs freely, contact providers, and pay them directly. No middleman, no lead fees, no subscriptions.",
+    "subtitle": "Find service providers, contact them freely, and pay them directly. No middleman, no lead fees, no subscriptions.",
     "ctaProvider": "Start as a provider",
     "ctaCustomer": "Post a job",
     "ctaBrowseJobs": "Browse jobs",
-    "ctaBrowseProviders": "Browse providers"
+    "ctaBrowseProviders": "Browse service providers"
   },
   "stats": [
     { "value": "100+", "label": "Locations" },
@@ -28,11 +28,11 @@
   ],
   "providerCounter": {
     "eyebrow": "Live directory",
-    "heading": "local providers",
+    "heading": "service providers",
     "subheading": "Provider directory updated in real time",
     "live": "LIVE",
     "townsSuffix": "towns and cities covered",
-    "cta": "Browse providers"
+    "cta": "Browse service providers"
   },
   "video": {
     "heading": "See how GruntWrk works",
@@ -130,7 +130,7 @@
     ]
   },
   "provider": {
-    "badge": "For providers",
+    "badge": "For service providers",
     "title": "Get found locally and manage work without the cost",
     "desc": "Create a public profile, share your availability, and receive direct requests. Customers pay you directly. No lead fees, no contact packs, no subscriptions.",
     "perks": [
@@ -170,7 +170,7 @@
       {
         "num": "2",
         "title": "Choose who to hire",
-        "body": "Receive quotes from matched providers or book directly with a provider of your choice."
+        "body": "Receive quotes from matched service providers or book directly with a service provider of your choice."
       },
       {
         "num": "3",
