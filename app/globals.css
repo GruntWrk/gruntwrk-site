@@ -1146,19 +1146,6 @@ h1, h2, h3,
 }
 
 /* ── Categories ── */
-.hp-customer-badge {
-  display: inline-flex;
-  align-self: start;
-  padding: 8px 18px;
-  border-radius: 8px;
-  background: #3ECF8E;
-  color: #fff;
-  font-size: 0.85rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-
 .hp-customer {
   border-radius: 20px;
   padding: 2px;
@@ -1620,7 +1607,7 @@ h1, h2, h3,
 /* ── Responsive ── */
 @media (max-width: 980px) {
   .appShellHeaderInner { width: min(100%, calc(100% - 32px)); }
-  .appShellBrandSub { display: none; }
+  .appShellBrandSub { font-size: 10px; }
   .hp-hero-shell { grid-template-columns: 1fr; }
   .hp-hero-preview { justify-content: flex-start; }
   .hp-hero-video { justify-content: center; }

@@ -922,7 +922,6 @@ export default function HomePage({ dict, locale, nav }: { dict: Dictionary; loca
           <section className="hp-customer" data-reveal>
             <div className="hp-customer-inner">
               <div className="hp-section-head">
-                <div className="hp-customer-badge">{dict.customer.badge}</div>
                 <h2 className="hp-h2">{dict.customer.heading}</h2>
                 <p className="hp-subtitle">{dict.customer.subtitle}</p>
               </div>
