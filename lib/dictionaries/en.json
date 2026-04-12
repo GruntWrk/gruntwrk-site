@@ -1,23 +1,23 @@
 {
   "meta": {
-    "title": "GruntWrk | Public Local Jobs and Providers. Browse, Compare & Hire",
-    "description": "Browse public local jobs and providers. Compare quotes for cleaning, repairs, plumbing, electrical, painting, moving and more. No lead fees, no subscriptions. Customers pay providers directly. Providers pay a 10% job fee only when work moves ahead.",
-    "keywords": "public local jobs, local providers, compare quotes, hire local help, cleaning services, home repairs, plumbing, electrical, painting, moving, assembly, handyman, local tradespeople, no lead fees, direct payment, provider directory",
-    "seoHeading": "Public local jobs and providers: cleaning, repairs, plumbing, electrical, moving and more. Browse first, sign up when you want to post or reply. Customers pay providers directly. Providers pay GruntWrk a 10% job fee only when work moves ahead."
+    "title": "GruntWrk | Local Service Provider Directory. Browse, Compare & Contact Directly",
+    "description": "Browse the local service provider directory. Compare ratings, reviews, and quotes for cleaning, repairs, plumbing, electrical, painting, moving and more. Contact providers directly. No lead fees, no subscriptions.",
+    "keywords": "service provider directory, local service providers, find providers, cleaning services, plumber, electrician, handyman, compare quotes, no lead fees, direct contact, provider directory portugal",
+    "seoHeading": "Local service provider directory: cleaning, repairs, plumbing, electrical, moving and more. Browse first, sign up when you want to post or reply. Customers pay providers directly. Providers pay GruntWrk a 10% job fee only when work moves ahead."
   },
   "nav": {
     "startOffering": "For Providers",
     "login": "Sign in",
-    "brandSub": "Helping you find Service Providers",
-    "jobs": "Jobs",
-    "providers": "Service Providers"
+    "brandSub": "Your local service provider directory",
+    "jobs": "Request a service",
+    "providers": "Browse Directory"
   },
   "hero": {
-    "title": "The public network to find Service Providers",
-    "subtitle": "Find service providers, contact them freely, and pay them directly. No middleman, no lead fees, no subscriptions.",
+    "title": "Find trusted local service providers in one place",
+    "subtitle": "Browse the directory, compare ratings and reviews, and contact providers directly. No lead fees, no middleman, no subscriptions.",
     "ctaProvider": "Start as a provider",
-    "ctaCustomer": "Post a job",
-    "ctaBrowseJobs": "Browse jobs",
+    "ctaCustomer": "Browse the Directory",
+    "ctaBrowseJobs": "Request a service",
     "ctaBrowseProviders": "Browse service providers"
   },
   "stats": [
@@ -61,7 +61,7 @@
   },
   "fees": {
     "kicker": "Cost difference",
-    "heading": "Most others charge at every step.",
+    "heading": "Why your quotes are lower on GruntWrk",
     "subtitle": "Customers use GruntWrk completely free. Providers pay a simple 10% job fee only when work moves ahead. No lead fees, no credit packs, no subscriptions. Providers keep more and customers pay less.",
     "pills": [
       "No pay-per-lead",
@@ -226,6 +226,6 @@
   },
   "footer": {
     "storeLabel": "Available soon on iOS and Android",
-    "copy": "Built to make local services affordable and clear for both customers and providers."
+    "copy": "The local service provider directory. Browse, compare, and contact directly."
   }
 }

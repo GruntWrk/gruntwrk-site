@@ -14,8 +14,8 @@ export function buildOrganizationSchema(locale: Locale) {
     logo: `${SITE_URL}/brand/gruntwrk-g.svg`,
     description:
       locale === "pt"
-        ? "Diretório público de trabalhos e prestadores locais, com foco inicial em Portugal."
-        : "Public directory of local jobs and providers, with an initial focus on Portugal.",
+        ? "Diretório local de prestadores de serviços. Consulte, compare e contacte diretamente em Portugal."
+        : "Local service provider directory. Browse, compare, and contact providers directly in Portugal.",
     areaServed: ["Portugal", "Lisbon", "Porto"],
   };
 }
@@ -28,6 +28,11 @@ export function buildWebsiteSchema(locale: Locale) {
     name: "GruntWrk",
     url: `${SITE_URL}/${locale}`,
     inLanguage: locale,
+    potentialAction: {
+      "@type": "SearchAction",
+      target: "https://app.gruntwrk.com/directory?q={search_term_string}&search=1",
+      "query-input": "required name=search_term_string",
+    },
   };
 }
 

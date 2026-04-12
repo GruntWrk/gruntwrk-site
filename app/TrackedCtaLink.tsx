@@ -28,6 +28,7 @@ type TrackedCtaLinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
 function inferEventName(href: string): GoogleCtaEventName | null {
   if (href.includes("/jobs/new")) return GOOGLE_CTA_EVENTS.customerRequest;
   if (href.includes("/login")) return GOOGLE_CTA_EVENTS.providerSignup;
+  if (href.includes("/directory") || href.includes("/contacts")) return GOOGLE_CTA_EVENTS.directoryBrowse;
   return null;
 }
 
@@ -95,7 +96,11 @@ export function TrackedCtaLink({
 
     const params = {
       cta_location: ctaLocation,
-      cta_type: eventName === GOOGLE_CTA_EVENTS.customerRequest ? "customer_request" : "provider_signup",
+      cta_type: eventName === GOOGLE_CTA_EVENTS.customerRequest
+        ? "customer_request"
+        : eventName === GOOGLE_CTA_EVENTS.directoryBrowse
+          ? "directory_browse"
+          : "provider_signup",
       destination_url: href,
       locale,
       page_kind: pageKind,

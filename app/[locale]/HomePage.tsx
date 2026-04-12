@@ -44,7 +44,7 @@ function appHref(path: string) {
 }
 
 function categoryHref(slug: string) {
-  return appHref(`/jobs/new?category=${encodeURIComponent(slug)}`);
+  return appHref(`/directory?category=${encodeURIComponent(slug)}`);
 }
 
 function clamp(n: number, min: number, max: number) {
@@ -464,7 +464,7 @@ function ProviderCounter({
               <span className="hp-pc-contactable-text">{copy.townsSuffix}</span>
             </div>
             <TrackedCtaLink
-              href={appHref("/contacts")}
+              href={appHref("/directory")}
               className="hp-pc-cta"
               ctaLocation="home_provider_counter_cta"
               locale={locale}
@@ -537,21 +537,21 @@ function AppShellHeader({ dict, locale }: { dict: Dictionary; locale: Locale }) 
         </a>
 
         <nav className="appShellHeaderNav" aria-label="Primary navigation">
-          <a href={appHref("/notice-board")} className="appShellHeaderNavBtn" aria-label={dict.nav.jobs}>
+          <TrackedCtaLink href={appHref("/directory")} className="appShellHeaderNavBtn" aria-label={dict.nav.providers} ctaLocation="home_header_browse_directory" locale={locale} pageKind="home">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="10" /><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+              <path d="M2 12h20" />
+            </svg>
+            <span className="appShellHeaderNavLabel">{dict.nav.providers}</span>
+          </TrackedCtaLink>
+          <TrackedCtaLink href={appHref("/jobs/new")} className="appShellHeaderNavBtn" aria-label={dict.nav.jobs} ctaLocation="home_header_request_service" locale={locale} pageKind="home">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               <rect x="3" y="3" width="7" height="7" rx="1" /><rect x="3" y="14" width="7" height="7" rx="1" />
               <line x1="14" y1="4" x2="21" y2="4" /><line x1="14" y1="9" x2="21" y2="9" />
               <line x1="14" y1="15" x2="21" y2="15" /><line x1="14" y1="20" x2="21" y2="20" />
             </svg>
             <span className="appShellHeaderNavLabel">{dict.nav.jobs}</span>
-          </a>
-          <a href={appHref("/contacts")} className="appShellHeaderNavBtn" aria-label={dict.nav.providers}>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-              <circle cx="12" cy="12" r="10" /><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
-              <path d="M2 12h20" />
-            </svg>
-            <span className="appShellHeaderNavLabel">{dict.nav.providers}</span>
-          </a>
+          </TrackedCtaLink>
           <a href={LOGIN_HREF} className="appShellHeaderBtn appShellHeaderBtnSecondary">
             {dict.nav.login}
           </a>
@@ -839,9 +839,22 @@ export default function HomePage({ dict, locale, nav }: { dict: Dictionary; loca
                 <p className="sr-only">{dict.meta.seoHeading}</p>
                 <div className="hp-hero-actions hp-hero-actions-row">
                   <TrackedCtaLink
-                    href={appHref("/notice-board")}
+                    href={appHref("/directory")}
                     className="hp-hero-cta hp-hero-cta-green"
-                    ctaLocation="home_hero_browse_jobs"
+                    ctaLocation="home_hero_browse_directory"
+                    locale={locale}
+                    pageKind="home"
+                  >
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      <circle cx="12" cy="12" r="10" /><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+                      <path d="M2 12h20" />
+                    </svg>
+                    {dict.hero.ctaCustomer}
+                  </TrackedCtaLink>
+                  <TrackedCtaLink
+                    href={appHref("/jobs/new")}
+                    className="hp-hero-cta hp-hero-cta-blue"
+                    ctaLocation="home_hero_request_service"
                     locale={locale}
                     pageKind="home"
                   >
@@ -850,20 +863,7 @@ export default function HomePage({ dict, locale, nav }: { dict: Dictionary; loca
                       <line x1="14" y1="4" x2="21" y2="4" /><line x1="14" y1="9" x2="21" y2="9" />
                       <line x1="14" y1="15" x2="21" y2="15" /><line x1="14" y1="20" x2="21" y2="20" />
                     </svg>
-                    {locale === "pt" ? "Quadro de trabalhos" : "Job Noticeboard"}
-                  </TrackedCtaLink>
-                  <TrackedCtaLink
-                    href={appHref("/contacts")}
-                    className="hp-hero-cta hp-hero-cta-blue"
-                    ctaLocation="home_hero_browse_providers"
-                    locale={locale}
-                    pageKind="home"
-                  >
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                      <circle cx="12" cy="12" r="10" /><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
-                      <path d="M2 12h20" />
-                    </svg>
-                    {locale === "pt" ? "Encontrar prestadores de serviços" : "Find Service Providers"}
+                    {dict.hero.ctaBrowseJobs}
                   </TrackedCtaLink>
                 </div>
               </div>
@@ -928,11 +928,14 @@ export default function HomePage({ dict, locale, nav }: { dict: Dictionary; loca
 
               <div className="hp-cat-grid">
                 {categories.map((cat, index) => (
-                  <a
+                  <TrackedCtaLink
                     key={cat.slug}
                     href={categoryHref(cat.slug)}
                     className={`hp-cat-card ${index < 4 ? "hp-cat-featured" : ""}`}
                     style={{ animationDelay: `${index * 50}ms` }}
+                    ctaLocation={`home_category_${cat.slug}`}
+                    locale={locale}
+                    pageKind="home"
                   >
                     <img
                       src={CATEGORY_IMAGES[cat.slug]}
@@ -948,7 +951,7 @@ export default function HomePage({ dict, locale, nav }: { dict: Dictionary; loca
                     <div className="hp-cat-arrow">
                       <ArrowIcon />
                     </div>
-                  </a>
+                  </TrackedCtaLink>
                 ))}
               </div>
             </div>

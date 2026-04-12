@@ -934,6 +934,14 @@ function buildCustomerRequestHref(category?: string) {
   return `${APP_BASE_URL}/jobs/new?${params.toString()}`;
 }
 
+function buildDirectoryBrowseHref(opts?: { category?: string; town?: string }) {
+  const params = new URLSearchParams();
+  if (opts?.category) params.set("category", opts.category);
+  if (opts?.town) params.set("town", opts.town);
+  const qs = params.toString();
+  return qs ? `${APP_BASE_URL}/directory?${qs}` : `${APP_BASE_URL}/directory`;
+}
+
 function buildProviderSignupHref(city?: string) {
   const params = new URLSearchParams({
     intent: "register",
@@ -1476,15 +1484,15 @@ function buildCityPage(locale: Locale, city: CityDefinition): Omit<ResolvedSeoPa
 
   return {
     title: isPt
-      ? `Servicos locais em ${city.name.pt} | GruntWrk`
-      : `Local services in ${city.name.en} | GruntWrk`,
+      ? `Prestadores de servicos em ${city.name.pt} | Consultar e Contactar | GruntWrk`
+      : `Service Providers in ${city.name.en} | Browse & Contact | GruntWrk`,
     description: city.intro[locale],
-    eyebrow: isPt ? "Servicos locais" : "Local services",
+    eyebrow: isPt ? "Diretório de prestadores" : "Provider directory",
     heroTitle: isPt
-      ? city.id === "lisbon" ? `Resolva em ${city.name.pt}. Pague menos.` : `Ajuda local no ${city.name.pt}. Precos honestos.`
-      : city.id === "lisbon" ? `Get it done in ${city.name.en}. Pay less.` : `Local help in ${city.name.en}. Honest prices.`,
+      ? `Encontre prestadores de servicos em ${city.name.pt}`
+      : `Find service providers in ${city.name.en}`,
     heroDescription: city.intro[locale],
-    primaryCta: { label: LABELS.request[locale], href: buildCustomerRequestHref() },
+    primaryCta: { label: isPt ? `Consultar prestadores em ${city.name.pt}` : `Browse providers in ${city.name.en}`, href: buildDirectoryBrowseHref({ town: city.name[locale] }) },
     secondaryCta: { label: LABELS.join[locale], href: providerSignupHref },
     sections: [],
     stats,
@@ -1517,17 +1525,17 @@ function buildServicePage(locale: Locale, service: ServiceDefinition): Omit<Reso
   const isPt = locale === "pt";
   return {
     title: isPt
-      ? `${service.name.pt} em Portugal | GruntWrk`
-      : `${service.name.en} in Portugal | GruntWrk`,
+      ? `${service.name.pt} em Portugal | Consultar Diretório | GruntWrk`
+      : `${service.name.en} Providers in Portugal | Browse Directory | GruntWrk`,
     description: service.summary[locale],
-    eyebrow: isPt ? "Serviço" : "Service",
+    eyebrow: isPt ? "Diretório de prestadores" : "Provider directory",
     heroTitle: isPt
       ? `${service.name.pt}`
       : `${service.name.en}`,
     heroDescription: isPt
-      ? `Compare orcamentos de ${service.name.pt.toLowerCase()} em Portugal. Sem taxas de leads, precos mais baixos para si.`
-      : `Compare quotes for ${service.name.en.toLowerCase()} in Portugal. No lead fees mean lower prices for you.`,
-    primaryCta: { label: LABELS.request[locale], href: buildCustomerRequestHref(service.appCategory) },
+      ? `Consulte prestadores de ${service.name.pt.toLowerCase()} em Portugal. Sem taxas de leads, precos mais baixos para si.`
+      : `Browse ${service.name.en.toLowerCase()} providers in Portugal. No lead fees mean lower prices for you.`,
+    primaryCta: { label: isPt ? `Consultar prestadores de ${service.name.pt.toLowerCase()}` : `Browse ${service.name.en.toLowerCase()} providers`, href: buildDirectoryBrowseHref({ category: service.appCategory }) },
     secondaryCta: { label: LABELS.join[locale], href: buildProviderSignupHref() },
     sections: [
       {

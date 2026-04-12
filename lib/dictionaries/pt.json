@@ -1,24 +1,24 @@
 {
   "meta": {
-    "title": "GruntWrk | Trabalhos e Prestadores Locais Públicos. Consulte, Compare e Contrate",
-    "description": "Consulte trabalhos e prestadores locais públicos. Compare orçamentos para limpeza, reparações, canalização, eletricidade, pintura, mudanças e mais. Sem taxas de leads, sem subscrições. Os clientes pagam diretamente aos prestadores. Os prestadores pagam uma taxa de trabalho de 10% apenas quando o trabalho avança.",
-    "keywords": "trabalhos locais públicos, prestadores locais, comparar orçamentos, contratar ajuda local, serviços de limpeza, reparações domésticas, canalização, eletricidade, pintura, mudanças, montagem, diretório de prestadores, sem taxas de leads, pagamento direto, alternativa Fixando, alternativa Zaask",
-    "seoHeading": "Trabalhos e prestadores locais públicos: limpeza, reparações, canalização, eletricidade, mudanças e mais. Consulte primeiro, registe-se quando quiser publicar ou responder. Os clientes pagam diretamente aos prestadores. Os prestadores pagam ao GruntWrk uma taxa de trabalho de 10% apenas quando o trabalho avança."
+    "title": "GruntWrk | Diretório de Prestadores de Serviços Locais. Consulte, Compare e Contacte",
+    "description": "Consulte o diretório local de prestadores de serviços. Compare avaliações, opiniões e orçamentos para limpeza, reparações, canalização, eletricidade, pintura, mudanças e mais. Contacte prestadores diretamente. Sem taxas de leads, sem subscrições.",
+    "keywords": "diretório de prestadores de serviços, prestadores locais, encontrar prestadores, serviços de limpeza, canalizador, eletricista, comparar orçamentos, sem taxas de leads, contacto direto, diretório de prestadores portugal",
+    "seoHeading": "Diretório local de prestadores de serviços: limpeza, reparações, canalização, eletricidade, mudanças e mais. Consulte primeiro, registe-se quando quiser publicar ou responder. Os clientes pagam diretamente aos prestadores. Os prestadores pagam ao GruntWrk uma taxa de trabalho de 10% apenas quando o trabalho avança."
   },
   "nav": {
     "startOffering": "Para Prestadores",
     "login": "Entrar",
-    "brandSub": "Ajudamos a encontrar Prestadores de Serviços",
-    "jobs": "Trabalhos",
-    "providers": "Prestadores de Serviços"
+    "brandSub": "O seu diretório local de prestadores de serviços",
+    "jobs": "Pedir um serviço",
+    "providers": "Consultar Diretório"
   },
   "hero": {
-    "title": "A rede pública para encontrar Prestadores de Serviços",
+    "title": "Encontre prestadores de serviços locais de confiança num só lugar",
     "ctaProvider": "Começar como prestador",
-    "ctaCustomer": "Publicar um trabalho",
-    "ctaBrowseJobs": "Consultar trabalhos",
+    "ctaCustomer": "Consultar o Diretório",
+    "ctaBrowseJobs": "Pedir um serviço",
     "ctaBrowseProviders": "Consultar prestadores de serviços",
-    "subtitle": "Encontre prestadores de serviços, contacte-os livremente e pague-lhes diretamente. Sem intermediários, sem taxas de leads, sem subscrições."
+    "subtitle": "Consulte o diretório, compare avaliações e opiniões, e contacte prestadores diretamente. Sem taxas de leads, sem intermediários, sem subscrições."
   },
   "stats": [
     { "value": "100+", "label": "Localizações" },
@@ -61,7 +61,7 @@
   },
   "fees": {
     "kicker": "Diferença de custos",
-    "heading": "A maioria cobra a cada passo.",
+    "heading": "Porque os seus orçamentos são mais baixos no GruntWrk",
     "subtitle": "Os clientes usam o GruntWrk de forma totalmente gratuita. Os prestadores pagam uma simples taxa de trabalho de 10% apenas quando o trabalho avança. Sem taxas de leads, sem pacotes de créditos, sem subscrições. Os prestadores ganham mais e os clientes pagam menos.",
     "pills": [
       "Sem pay-per-lead",
@@ -226,6 +226,6 @@
   },
   "footer": {
     "storeLabel": "Disponível em breve no iOS e Android",
-    "copy": "Criado para tornar os serviços locais acessíveis e claros para clientes e prestadores."
+    "copy": "O diretório local de prestadores de serviços. Consulte, compare e contacte diretamente."
   }
 }

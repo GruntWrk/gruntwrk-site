@@ -21,6 +21,7 @@ const rawTagIds = [
 const inferredAdsTagIds = [
   process.env.NEXT_PUBLIC_GOOGLE_ADS_CUSTOMER_REQUEST_SEND_TO,
   process.env.NEXT_PUBLIC_GOOGLE_ADS_PROVIDER_SIGNUP_SEND_TO,
+  process.env.NEXT_PUBLIC_GOOGLE_ADS_DIRECTORY_BROWSE_SEND_TO,
 ].flatMap(extractGoogleAdsTagIds);
 
 export const GOOGLE_TAG_IDS = Array.from(
@@ -31,6 +32,7 @@ export const PRIMARY_GOOGLE_TAG_ID = GOOGLE_TAG_IDS[0] ?? "";
 export const GOOGLE_CTA_EVENTS = {
   customerRequest: "customer_request_click",
   providerSignup: "provider_signup_click",
+  directoryBrowse: "directory_browse_click",
 } as const;
 
 export type GoogleCtaEventName =
@@ -39,6 +41,9 @@ export type GoogleCtaEventName =
 export function getGoogleAdsSendTo(eventName: GoogleCtaEventName) {
   if (eventName === GOOGLE_CTA_EVENTS.customerRequest) {
     return process.env.NEXT_PUBLIC_GOOGLE_ADS_CUSTOMER_REQUEST_SEND_TO?.trim() ?? "";
+  }
+  if (eventName === GOOGLE_CTA_EVENTS.directoryBrowse) {
+    return process.env.NEXT_PUBLIC_GOOGLE_ADS_DIRECTORY_BROWSE_SEND_TO?.trim() ?? "";
   }
 
   return process.env.NEXT_PUBLIC_GOOGLE_ADS_PROVIDER_SIGNUP_SEND_TO?.trim() ?? "";
