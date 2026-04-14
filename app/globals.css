@@ -657,22 +657,23 @@ h1, h2, h3,
 }
 
 .hp-hero-actions {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 10px;
-  align-items: center;
 }
 
 .hp-hero-actions-row {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 10px;
-  align-items: center;
 }
 
 .hp-hero-cta {
-  display: inline-flex;
+  display: flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
-  padding: 11px 20px;
+  padding: 13px 20px;
   border-radius: 10px;
   font-size: 0.88rem;
   font-weight: 700;
@@ -1680,7 +1681,7 @@ h1, h2, h3,
   .hp-hero-journey-step { padding: 6px 8px; gap: 6px; }
   .hp-hero-journey-num { width: 22px; height: 22px; flex: 0 0 22px; font-size: 0.65rem; }
   .hp-hero-journey-title { font-size: 0.72rem; }
-  .hp-hero-cta { padding: 10px 14px; font-size: 0.82rem; }
+  .hp-hero-cta { padding: 12px 14px; font-size: 0.82rem; }
   .hp-hero-preview { justify-content: flex-start; }
   .hp-hero-video { justify-content: center; }
   .hp-hero-video-player { max-width: 100%; }
