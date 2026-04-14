@@ -901,42 +901,6 @@ export default function HomePage({ dict, locale, nav }: { dict: Dictionary; loca
             </div>
           </section>
 
-          <ProviderCounter
-            dict={dict}
-            locale={locale}
-            providers={directoryCounts.providers}
-            towns={directoryCounts.towns}
-            hasError={directoryCounts.hasError}
-          />
-
-          <TrustStrip dict={dict} />
-
-          <StatsStrip dict={dict} liveLocations={directoryCounts.towns} />
-
-          {/* Payment model strip */}
-          <section className="hp-payment-model" data-reveal>
-            <div className="hp-payment-model-inner">
-              <div className="hp-payment-model-item">
-                <span className="hp-payment-model-icon">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2v20"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-                </span>
-                <span className="hp-payment-model-text">{locale === "pt" ? "Os clientes pagam diretamente aos prestadores" : "Customers pay providers directly"}</span>
-              </div>
-              <div className="hp-payment-model-item">
-                <span className="hp-payment-model-icon">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                </span>
-                <span className="hp-payment-model-text">{locale === "pt" ? "Sem caução, sem atrasos nos pagamentos" : "No escrow, no payout delays"}</span>
-              </div>
-              <div className="hp-payment-model-item">
-                <span className="hp-payment-model-icon">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 12l2 2 4-4"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg>
-                </span>
-                <span className="hp-payment-model-text">{locale === "pt" ? "Sem taxas de leads e sem subscrições" : "No lead fees and no subscriptions"}</span>
-              </div>
-            </div>
-          </section>
-
           <section className="hp-customer" data-reveal>
             <div className="hp-customer-inner">
               <div className="hp-section-head">
@@ -974,6 +938,49 @@ export default function HomePage({ dict, locale, nav }: { dict: Dictionary; loca
               </div>
             </div>
           </section>
+
+          <section className="hp-how" data-reveal>
+            <div className="hp-section-head">
+              <h2 className="hp-h2">{dict.howItWorks.heading}</h2>
+              <p className="hp-subtitle">{dict.howItWorks.subtitle}</p>
+            </div>
+
+            <div className="hp-how-grid">
+              {dict.howItWorks.steps.map((step, index) => (
+                <article key={step.num} className="hp-how-card" style={{ animationDelay: `${index * 80}ms` }}>
+                  <div className="hp-how-num">{step.num}</div>
+                  <div className="hp-how-copy">
+                    <h3 className="hp-how-title">{step.title}</h3>
+                    <p className="hp-how-body">{step.body}</p>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </section>
+
+          <section className="hp-cb" data-reveal>
+            <div className="hp-section-head">
+              <h2 className="hp-h2">{dict.benefits.heading}</h2>
+              <p className="hp-subtitle">{dict.benefits.subtitle}</p>
+            </div>
+
+            <div className="hp-cb-list">
+              {dict.benefits.items.map((benefit) => (
+                <article key={benefit.id} className="hp-cb-row">
+                  <h3 className="hp-cb-title">{benefit.title}</h3>
+                  <p className="hp-cb-desc">{benefit.desc}</p>
+                </article>
+              ))}
+            </div>
+          </section>
+
+          <ProviderCounter
+            dict={dict}
+            locale={locale}
+            providers={directoryCounts.providers}
+            towns={directoryCounts.towns}
+            hasError={directoryCounts.hasError}
+          />
 
           <section className="hp-provider" data-reveal>
             <div className="hp-provider-inner">
@@ -1059,41 +1066,6 @@ export default function HomePage({ dict, locale, nav }: { dict: Dictionary; loca
             </div>
 
             <p className="hp-fee-note">{dict.fees.note}</p>
-          </section>
-
-          <section className="hp-cb" data-reveal>
-            <div className="hp-section-head">
-              <h2 className="hp-h2">{dict.benefits.heading}</h2>
-              <p className="hp-subtitle">{dict.benefits.subtitle}</p>
-            </div>
-
-            <div className="hp-cb-list">
-              {dict.benefits.items.map((benefit) => (
-                <article key={benefit.id} className="hp-cb-row">
-                  <h3 className="hp-cb-title">{benefit.title}</h3>
-                  <p className="hp-cb-desc">{benefit.desc}</p>
-                </article>
-              ))}
-            </div>
-          </section>
-
-          <section className="hp-how" data-reveal>
-            <div className="hp-section-head">
-              <h2 className="hp-h2">{dict.howItWorks.heading}</h2>
-              <p className="hp-subtitle">{dict.howItWorks.subtitle}</p>
-            </div>
-
-            <div className="hp-how-grid">
-              {dict.howItWorks.steps.map((step, index) => (
-                <article key={step.num} className="hp-how-card" style={{ animationDelay: `${index * 80}ms` }}>
-                  <div className="hp-how-num">{step.num}</div>
-                  <div className="hp-how-copy">
-                    <h3 className="hp-how-title">{step.title}</h3>
-                    <p className="hp-how-body">{step.body}</p>
-                  </div>
-                </article>
-              ))}
-            </div>
           </section>
 
           <HomeTrustMarquee dict={dict} backgroundImage={MARQUEE_BG} />
