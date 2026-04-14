@@ -898,7 +898,6 @@ export default function HomePage({ dict, locale, nav }: { dict: Dictionary; loca
                   </TrackedCtaLink>
                 </div>
               </div>
-              <HeroPreviewCard dict={dict} />
             </div>
           </section>
 
