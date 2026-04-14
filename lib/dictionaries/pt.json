@@ -172,17 +172,17 @@
     "steps": [
       {
         "num": "1",
-        "title": "Explique o trabalho uma vez",
+        "title": "Descreva o trabalho",
         "body": "Especifique o que precisa, onde e, e o seu orcamento alvo num pedido guiado."
       },
       {
         "num": "2",
-        "title": "Escolha ate cinco prestadores de servicos",
+        "title": "Escolha prestadores",
         "body": "Escolha quem quer que orcamente depois de ver avaliacoes, reviews e detalhes dos prestadores de servicos no diretorio."
       },
       {
         "num": "3",
-        "title": "Compare orcamentos numa so bancada",
+        "title": "Compare orcamentos",
         "body": "Cada orcamento vai para o mesmo cartao de trabalho para comparar, pontuar e escolher o melhor num so lugar."
       }
     ]

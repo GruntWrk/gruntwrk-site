@@ -172,17 +172,17 @@
     "steps": [
       {
         "num": "1",
-        "title": "Explain the job once",
+        "title": "Describe the job",
         "body": "Specify what you need, where it is, and your target budget in one guided request."
       },
       {
         "num": "2",
-        "title": "Choose up to five service providers",
+        "title": "Pick service providers",
         "body": "Pick who you want to quote after seeing ratings, reviews, and service provider details in the directory."
       },
       {
         "num": "3",
-        "title": "Compare quotes in one Workbench",
+        "title": "Compare quotes",
         "body": "Every quote flows into one job card so you can compare, score, and appoint the best fit in one place."
       }
     ]
