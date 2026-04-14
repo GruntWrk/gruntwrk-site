@@ -1,24 +1,32 @@
 {
   "meta": {
-    "title": "GruntWrk | Local Service Provider Directory. Browse, Compare & Contact Directly",
-    "description": "Browse the local service provider directory. Compare ratings, reviews, and quotes for cleaning, repairs, plumbing, electrical, painting, moving and more. Contact providers directly. No lead fees, no subscriptions.",
-    "keywords": "service provider directory, local service providers, find providers, cleaning services, plumber, electrician, handyman, compare quotes, no lead fees, direct contact, provider directory portugal",
-    "seoHeading": "Local service provider directory: cleaning, repairs, plumbing, electrical, moving and more. Browse first, sign up when you want to post or reply. Customers pay providers directly. Providers pay GruntWrk a 10% job fee only when work moves ahead."
+    "title": "GruntWrk | Get Multiple Quotes in Three Easy Steps",
+    "description": "Specify what you need once and send it directly to up to five service providers to quote. Compare every response in one place.",
+    "keywords": "quote aggregator, compare local quotes, request once compare quotes, choose up to 5 service providers, local service quotes, cleaning quotes, plumber quotes, electrician quotes, provider directory portugal",
+    "seoHeading": "GruntWrk is the simple way to get local service quotes: specify the job once, choose up to five service providers from the directory, and compare every quote in one workbench."
   },
   "nav": {
     "startOffering": "For Providers",
     "login": "Sign in",
-    "brandSub": "Your local service provider directory",
+    "brandSub": "Request once. Compare quotes.",
     "jobs": "Notice",
     "providers": "Directory"
   },
   "hero": {
-    "title": "Find trusted local service providers in one place",
-    "subtitle": "Browse and contact Service Providers directly. No lead fees, no middleman, no subscriptions.",
+    "title": "Get multiple quotes in three easy steps",
+    "subtitle": "Specify what you need once and send it directly to up to five service providers to quote.",
     "ctaProvider": "Start as a provider",
-    "ctaCustomer": "Browse the Directory",
-    "ctaBrowseJobs": "Request a service",
-    "ctaBrowseProviders": "Browse service providers"
+    "ctaCustomer": "Browse the directory",
+    "ctaBrowseJobs": "Start your request",
+    "ctaBrowseProviders": "Browse local service providers"
+  },
+  "heroPreview": {
+    "stage": "Step 3 of 3",
+    "status": "Quotes are arriving",
+    "jobTitle": "Kitchen deep clean",
+    "jobMeta": "5 service providers selected",
+    "badgeOne": "One request",
+    "badgeTwo": "One Workbench"
   },
   "stats": [
     { "value": "100+", "label": "Locations" },
@@ -39,43 +47,43 @@
     "subtitle": "A quick look at how we connect customers with local service providers, without the hidden fees."
   },
   "benefits": {
-    "heading": "Why customers pay less on GruntWrk",
-    "subtitle": "Customers pay providers directly using the methods they already trust. No escrow, no payout delays, no platform markup.",
+    "heading": "Why the flow is faster for customers",
+    "subtitle": "Less admin, less chasing, and a simpler way to compare your options.",
     "items": [
       {
         "id": "cheaper",
-        "title": "Affordable prices for you",
-        "desc": "Service providers don't pay lead fees, credit packs, or subscriptions to be on GruntWrk. That means more affordable quotes for you."
+        "title": "No repeated outreach",
+        "desc": "You do not have to search for five service providers and send five separate quote requests. GruntWrk handles that in one flow."
       },
       {
         "id": "trust",
-        "title": "Hire with confidence",
-        "desc": "See every job a provider has completed, read what other customers said, and check their ratings before you hire."
+        "title": "Choose service providers with confidence",
+        "desc": "See ratings, reviews, and service provider details before you decide who should quote on your request."
       },
       {
         "id": "payment",
-        "title": "Direct payment, no delays",
-        "desc": "Pay your provider directly using cash, bank transfer, or MB Way. No escrow, no payout delays, no platform-held money."
+        "title": "One place to compare",
+        "desc": "Quotes land inside the same workbench card, then the selection stage helps you compare and appoint the right service provider."
       }
     ]
   },
   "fees": {
     "kicker": "Cost difference",
     "heading": "Why your quotes are lower on GruntWrk",
-    "subtitle": "Customers use GruntWrk completely free. Providers pay a simple 10% job fee only when work moves ahead. No lead fees, no credit packs, no subscriptions. Providers keep more and customers pay less.",
+    "subtitle": "Customers use GruntWrk completely free. Service providers pay a simple 10% job fee only when work moves ahead. No lead fees, no credit packs, no subscriptions. Service providers keep more and customers pay less.",
     "pills": [
       "No pay-per-lead",
       "No credit packs",
       "No subscriptions",
       "No visibility boosts"
     ],
-    "pillStrong": "10% provider job fee only",
+    "pillStrong": "10% service provider job fee only",
     "tableHeaders": ["Fee type", "Typical marketplaces", "GruntWrk"],
     "note": "Based on public pricing and help-center pages reviewed on March 16, 2026. Fees vary by service and market.",
     "rows": [
       {
         "fee": "Registration fee",
-        "marketSummary": "Some marketplaces charge a one-time provider onboarding fee before you can start taking work.",
+        "marketSummary": "Some marketplaces charge a one-time onboarding fee before you can start taking work.",
         "competitors": ["Taskrabbit"],
         "gruntwrk": "Free"
       },
@@ -117,7 +125,7 @@
       },
       {
         "fee": "Payout reserve or holdback",
-        "marketSummary": "A portion of provider funds can be retained on-platform before payout is released.",
+        "marketSummary": "A portion of funds can be retained on-platform before payout is released.",
         "competitors": ["Fixando"],
         "gruntwrk": "Free"
       },
@@ -125,26 +133,26 @@
         "fee": "Booking or payment fee",
         "marketSummary": "A single transaction fee when the booking and payment are completed through the platform.",
         "competitors": ["Fixando", "Taskrabbit", "Checkatrade"],
-        "gruntwrk": "10% (provider only)"
+        "gruntwrk": "10% (service provider only)"
       }
     ]
   },
   "provider": {
     "badge": "For service providers",
     "title": "Get found locally and manage work without the cost",
-    "desc": "Create a public profile, share your availability, and receive direct requests. Customers pay you directly. No lead fees, no contact packs, no subscriptions.",
+    "desc": "Create a public profile, share your availability, and receive customer-selected quote requests. Customers pay you directly. No lead fees, no subscriptions, no payout delays.",
     "perks": [
       "No gatekeeping",
       "Customers pay you directly, no payout delays",
-      "Public profile, availability, and direct requests",
+      "Public profile, availability, and customer-selected quote requests",
       "No lead fees and no subscriptions"
     ],
     "cta": "Start as a provider"
   },
   "customer": {
     "badge": "For customers",
-    "heading": "What do you need help with?",
-    "subtitle": "Choose a service and start the fastest path to getting it done."
+    "heading": "Choose who you want quotes from",
+    "subtitle": "Browse the directory across 10+ service categories, then decide which service providers should quote."
   },
   "categories": [
     { "slug": "cleaning", "title": "Cleaning", "desc": "Home & office deep cleans", "alt": "Affordable cleaning services: home and office deep cleans" },
@@ -160,49 +168,49 @@
   ],
   "howItWorks": {
     "heading": "How GruntWrk works",
-    "subtitle": "A simple flow from request to completion",
+    "subtitle": "From one request to multiple quotes in three steps",
     "steps": [
       {
         "num": "1",
-        "title": "Describe what you need",
-        "body": "Post your request, location, and budget."
+        "title": "Explain the job once",
+        "body": "Specify what you need, where it is, and your target budget in one guided request."
       },
       {
         "num": "2",
-        "title": "Choose who to hire",
-        "body": "Receive quotes from matched service providers or book directly with a service provider of your choice."
+        "title": "Choose up to five service providers",
+        "body": "Pick who you want to quote after seeing ratings, reviews, and service provider details in the directory."
       },
       {
         "num": "3",
-        "title": "Manage the job in one place",
-        "body": "Message, confirm, and pay your provider directly. Manage everything from your private workbench."
+        "title": "Compare quotes in one Workbench",
+        "body": "Every quote flows into one job card so you can compare, score, and appoint the best fit in one place."
       }
     ]
   },
   "workbench": {
-    "title": "Compare, book, message, pay, and rebook.",
+    "title": "Everything lands in one quote workbench.",
     "carouselLabel": "Customer benefits carousel",
     "allLabel": "All benefits together",
     "points": [
       {
         "id": "quotes",
-        "title": "Compare quotes clearly",
-        "desc": "Providers compete on quality and price, not on who paid more for visibility. See your options side by side and pick the right fit."
+        "title": "See every quote together",
+        "desc": "Each selected service provider replies into the same job card so you can compare price, timing, and fit without scattered emails."
       },
       {
         "id": "book",
-        "title": "Book directly when ready",
-        "desc": "Already know who you want? Send a request straight to that provider. Check their ratings and previous jobs first."
+        "title": "Choose with more confidence",
+        "desc": "Selection mode scores service providers against the request so you can shortlist intelligently instead of guessing."
       },
       {
         "id": "message",
-        "title": "Keep everything together",
-        "desc": "Messages, progress, payment, and reviews live inside the job workbench. One place for the full history."
+        "title": "Keep the whole request together",
+        "desc": "Your brief, photos, messages, and quote updates stay in one place from first request to final choice."
       },
       {
         "id": "pay",
-        "title": "Pay directly and rebook with confidence",
-        "desc": "Pay your provider directly once the job is done. No escrow, no payout delays."
+        "title": "Move forward with the winner",
+        "desc": "Once you choose a service provider, the job continues through the existing GruntWrk workflow without starting over."
       }
     ]
   },
@@ -212,20 +220,20 @@
     "items": [
       { "stars": 5, "text": "Very effective platform for connecting clients and service providers. Finding and booking a job is simple and fast.", "name": "Maria S.", "role": "Customer" },
       { "stars": 4, "text": "The notice board feature is well organised and makes it easy to find available services in your area.", "name": "David R.", "role": "Customer" },
-      { "stars": 5, "text": "I like how profiles show ratings, skills, and reviews. It helps users quickly evaluate providers.", "name": "Lucia T.", "role": "Customer" },
+      { "stars": 5, "text": "I like how profiles show ratings, skills, and reviews. It helps users quickly evaluate service providers.", "name": "Lucia T.", "role": "Customer" },
       { "stars": 5, "text": "No lead fees, no credit packs. I just sign up and start quoting. More of what I earn stays with me.", "name": "James P.", "role": "Provider" }
     ]
   },
   "apps": {
     "kicker": "Apps coming soon",
     "heading": "The GruntWrk workbench is coming to iOS and Android.",
-    "subtitle": "Browse providers, manage jobs, and keep payment and messages in one place from your phone.",
+    "subtitle": "Browse service providers, manage jobs, and keep payment and messages in one place from your phone.",
     "comingSoon": "Coming soon",
     "appStore": "App Store",
     "googlePlay": "Google Play"
   },
   "footer": {
     "storeLabel": "Available soon on iOS and Android",
-    "copy": "The local service provider directory. Browse, compare, and contact directly."
+    "copy": "The simple quote aggregator for local services. Specify once, choose up to five service providers, compare in one place."
   }
 }

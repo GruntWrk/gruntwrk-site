@@ -617,6 +617,57 @@ h1, h2, h3,
   max-width: 52ch;
 }
 
+.hp-hero-journey {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.hp-hero-journey-step {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.82);
+  border: 1px solid rgba(15,17,23,0.08);
+  box-shadow: 0 16px 28px rgba(15,17,23,0.06);
+}
+
+.hp-hero-journey-step:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -7px;
+  width: 14px;
+  height: 2px;
+  border-radius: 999px;
+  background: rgba(37,99,235,0.26);
+  transform: translateY(-50%);
+}
+
+.hp-hero-journey-num {
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  flex: 0 0 30px;
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: #fff;
+  background: linear-gradient(135deg, #0f172a, #2563eb);
+  box-shadow: 0 10px 18px rgba(37,99,235,0.24);
+}
+
+.hp-hero-journey-title {
+  font-size: 0.88rem;
+  line-height: 1.35;
+  font-weight: 700;
+  color: var(--text);
+}
+
 .hp-hero-actions {
   display: grid;
   grid-template-columns: 1fr;
@@ -693,7 +744,39 @@ h1, h2, h3,
   gap: 14px;
 }
 
+.hp-preview-progress {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.hp-preview-progress-bar {
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(15,17,23,0.08);
+}
+
+.hp-preview-progress-bar.is-done {
+  background: linear-gradient(90deg, #22c55e, #16a34a);
+}
+
+.hp-preview-progress-bar.is-live {
+  background: linear-gradient(90deg, rgba(34,197,94,0.4), #2563eb);
+}
+
 .hp-preview-header { display: flex; align-items: center; gap: 8px; }
+.hp-preview-stage {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(15,17,23,0.06);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--brand-dark);
+}
 .hp-preview-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(15,17,23,0.2); }
 .hp-preview-dot-green { background: #22c55e; box-shadow: 0 0 6px rgba(34,197,94,0.4); }
 .hp-preview-status { font-size: 12px; font-weight: 700; color: var(--brand-dark); letter-spacing: 0.02em; }
@@ -1608,6 +1691,8 @@ h1, h2, h3,
   .appShellHeaderInner { width: min(100%, calc(100% - 32px)); }
   .appShellBrandSub { font-size: 10px; }
   .hp-hero-shell { grid-template-columns: 1fr; }
+  .hp-hero-journey { grid-template-columns: 1fr; }
+  .hp-hero-journey-step:not(:last-child)::after { display: none; }
   .hp-hero-preview { justify-content: flex-start; }
   .hp-hero-video { justify-content: center; }
   .hp-hero-video-player { max-width: 100%; }

@@ -44,7 +44,7 @@ function appHref(path: string) {
 }
 
 function categoryHref(slug: string) {
-  return appHref(`/directory?category=${encodeURIComponent(slug)}`);
+  return appHref(`/jobs/new?category=${encodeURIComponent(slug)}`);
 }
 
 function clamp(n: number, min: number, max: number) {
@@ -218,16 +218,33 @@ function useReveal() {
 }
 
 function HeroPreviewCard({ dict }: { dict: Dictionary }) {
+  const preview = (dict as any).heroPreview as
+    | {
+        stage?: string;
+        status?: string;
+        jobTitle?: string;
+        jobMeta?: string;
+        badgeOne?: string;
+        badgeTwo?: string;
+      }
+    | undefined;
+
   return (
     <div className="hp-hero-preview">
       <div className="hp-hero-preview-card">
+        <div className="hp-preview-progress" aria-hidden="true">
+          <span className="hp-preview-progress-bar is-done" />
+          <span className="hp-preview-progress-bar is-done" />
+          <span className="hp-preview-progress-bar is-live" />
+        </div>
         <div className="hp-preview-header">
+          <span className="hp-preview-stage">{preview?.stage ?? "Step 3 of 3"}</span>
           <span className="hp-preview-dot hp-preview-dot-green" />
-          <span className="hp-preview-status">3 quotes received</span>
+          <span className="hp-preview-status">{preview?.status ?? "Quotes are arriving"}</span>
         </div>
         <div className="hp-preview-job">
-          <span className="hp-preview-job-title">Kitchen deep clean</span>
-          <span className="hp-preview-job-meta">Requested 2h ago</span>
+          <span className="hp-preview-job-title">{preview?.jobTitle ?? "Kitchen deep clean"}</span>
+          <span className="hp-preview-job-meta">{preview?.jobMeta ?? "5 companies selected"}</span>
         </div>
         <div className="hp-preview-quotes">
           <div className="hp-preview-quote hp-preview-quote-top">
@@ -236,7 +253,7 @@ function HeroPreviewCard({ dict }: { dict: Dictionary }) {
               <span className="hp-preview-name">Ana M.</span>
               <Stars count={5} />
             </div>
-            <span className="hp-preview-price">$45</span>
+            <span className="hp-preview-price">EUR 45</span>
           </div>
           <div className="hp-preview-quote">
             <div className="hp-preview-avatar">R</div>
@@ -244,7 +261,7 @@ function HeroPreviewCard({ dict }: { dict: Dictionary }) {
               <span className="hp-preview-name">Rui S.</span>
               <Stars count={5} />
             </div>
-            <span className="hp-preview-price">$52</span>
+            <span className="hp-preview-price">EUR 52</span>
           </div>
           <div className="hp-preview-quote">
             <div className="hp-preview-avatar">J</div>
@@ -252,14 +269,27 @@ function HeroPreviewCard({ dict }: { dict: Dictionary }) {
               <span className="hp-preview-name">James L.</span>
               <Stars count={4} />
             </div>
-            <span className="hp-preview-price">$48</span>
+            <span className="hp-preview-price">EUR 48</span>
           </div>
         </div>
         <div className="hp-preview-footer">
-          <span className="hp-preview-free">Direct payment</span>
-          <span className="hp-preview-free">No lead fees</span>
+          <span className="hp-preview-free">{preview?.badgeOne ?? "One request"}</span>
+          <span className="hp-preview-free">{preview?.badgeTwo ?? "One Workbench"}</span>
         </div>
       </div>
+    </div>
+  );
+}
+
+function HeroJourney({ dict }: { dict: Dictionary }) {
+  return (
+    <div className="hp-hero-journey" aria-label={dict.howItWorks.heading}>
+      {dict.howItWorks.steps.map((step) => (
+        <div key={`hero-step-${step.num}`} className="hp-hero-journey-step">
+          <span className="hp-hero-journey-num">{step.num}</span>
+          <span className="hp-hero-journey-title">{step.title}</span>
+        </div>
+      ))}
     </div>
   );
 }
@@ -837,23 +867,11 @@ export default function HomePage({ dict, locale, nav }: { dict: Dictionary; loca
                 <h1 className="hp-hero-title">{dict.hero.title}</h1>
                 <p className="hp-hero-sub">{(dict.hero as any).subtitle}</p>
                 <p className="sr-only">{dict.meta.seoHeading}</p>
+                <HeroJourney dict={dict} />
                 <div className="hp-hero-actions hp-hero-actions-row">
                   <TrackedCtaLink
-                    href={appHref("/directory")}
-                    className="hp-hero-cta hp-hero-cta-green"
-                    ctaLocation="home_hero_browse_directory"
-                    locale={locale}
-                    pageKind="home"
-                  >
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                      <circle cx="12" cy="12" r="10" /><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
-                      <path d="M2 12h20" />
-                    </svg>
-                    {dict.hero.ctaCustomer}
-                  </TrackedCtaLink>
-                  <TrackedCtaLink
                     href={appHref("/jobs/new")}
-                    className="hp-hero-cta hp-hero-cta-blue"
+                    className="hp-hero-cta hp-hero-cta-green"
                     ctaLocation="home_hero_request_service"
                     locale={locale}
                     pageKind="home"
@@ -865,21 +883,22 @@ export default function HomePage({ dict, locale, nav }: { dict: Dictionary; loca
                     </svg>
                     {dict.hero.ctaBrowseJobs}
                   </TrackedCtaLink>
+                  <TrackedCtaLink
+                    href={appHref("/directory")}
+                    className="hp-hero-cta hp-hero-cta-blue"
+                    ctaLocation="home_hero_browse_directory"
+                    locale={locale}
+                    pageKind="home"
+                  >
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      <circle cx="12" cy="12" r="10" /><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+                      <path d="M2 12h20" />
+                    </svg>
+                    {dict.hero.ctaCustomer}
+                  </TrackedCtaLink>
                 </div>
               </div>
-              <div className="hp-hero-video">
-                <video
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  controls
-                  preload="metadata"
-                  className="hp-hero-video-player"
-                >
-                  <source src="/gruntwrk-demo.mp4" type="video/mp4" />
-                </video>
-              </div>
+              <HeroPreviewCard dict={dict} />
             </div>
           </section>
 
