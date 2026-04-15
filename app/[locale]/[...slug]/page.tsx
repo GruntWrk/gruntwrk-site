@@ -387,15 +387,6 @@ export default function SeoPage({
           </div>
         </section>
 
-        {/* Stats strip */}
-        {page.stats?.length ? (
-          <section className="seoSection">
-            <div className="sectionInner">
-              <StatsStrip stats={page.stats} />
-            </div>
-          </section>
-        ) : null}
-
         {/* City page: benefit cards + how-it-works */}
         {isCityPage && page.benefitCards?.length ? (
           <section className="seoSection">
