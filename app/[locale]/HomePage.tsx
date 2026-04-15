@@ -350,35 +350,48 @@ function useDirectoryCounts() {
 }
 
 function StatsStrip({
-  dict,
   liveLocations,
+  liveProviders,
 }: {
-  dict: Dictionary;
   liveLocations: number | null;
+  liveProviders: number | null;
 }) {
-  const stats = (dict as any).stats;
   const animatedLocations = useCountUp(liveLocations ?? 0, 1200);
-  if (!stats) return null;
+  const animatedProviders = useCountUp(liveProviders ?? 0);
+  const isReady = liveLocations !== null && liveProviders !== null;
+
   return (
     <div className="hp-stats-strip" data-reveal>
-      {stats.map((stat: { value: string; label: string }, index: number) => {
-        // First tile = Locations. Swap the static "100+" for the live
-        // animated town count once the directory endpoint has responded.
-        const isLocationsTile = index === 0;
-        const hasLiveValue = isLocationsTile && liveLocations !== null;
-        return (
-          <div key={stat.label} className="hp-stat">
-            <span
-              className={`hp-stat-value${
-                hasLiveValue ? " hp-stat-value-live" : ""
-              }`}
-            >
-              {hasLiveValue ? formatCount(animatedLocations) : stat.value}
-            </span>
-            <span className="hp-stat-label">{stat.label}</span>
-          </div>
-        );
-      })}
+      <div className="hp-stats-strip-inner">
+        <div className="hp-stats-stat">
+          <span className="hp-stats-value">
+            {isReady ? formatCount(animatedLocations) : "\u2014"}
+          </span>
+          <span className="hp-stats-label">
+            Locations
+            {isReady && <span className="hp-stats-live-dot" aria-hidden="true" />}
+          </span>
+        </div>
+
+        <div className="hp-stats-divider" aria-hidden="true" />
+
+        <div className="hp-stats-stat">
+          <span className="hp-stats-value">
+            {isReady ? formatCount(animatedProviders) : "\u2014"}
+          </span>
+          <span className="hp-stats-label">
+            Service providers
+            {isReady && <span className="hp-stats-live-dot" aria-hidden="true" />}
+          </span>
+        </div>
+
+        <div className="hp-stats-divider" aria-hidden="true" />
+
+        <div className="hp-stats-stat">
+          <span className="hp-stats-value">12</span>
+          <span className="hp-stats-label">Categories</span>
+        </div>
+      </div>
     </div>
   );
 }
@@ -883,23 +896,15 @@ export default function HomePage({ dict, locale, nav }: { dict: Dictionary; loca
                     </svg>
                     {dict.hero.ctaBrowseJobs}
                   </TrackedCtaLink>
-                  <TrackedCtaLink
-                    href={appHref("/directory")}
-                    className="hp-hero-cta hp-hero-cta-blue"
-                    ctaLocation="home_hero_browse_directory"
-                    locale={locale}
-                    pageKind="home"
-                  >
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                      <circle cx="12" cy="12" r="10" /><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
-                      <path d="M2 12h20" />
-                    </svg>
-                    {dict.hero.ctaCustomer}
-                  </TrackedCtaLink>
                 </div>
               </div>
             </div>
           </section>
+
+          <StatsStrip
+            liveLocations={directoryCounts.towns}
+            liveProviders={directoryCounts.providers}
+          />
 
           <section className="hp-customer" data-reveal>
             <div className="hp-customer-inner">

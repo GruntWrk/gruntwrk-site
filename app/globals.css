@@ -1130,61 +1130,64 @@ h1, h2, h3,
   color: var(--text);
 }
 
-.hp-stats-strip {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1px;
-  background: var(--border);
-  border-radius: 16px;
-  overflow: hidden;
+.hp-stats-strip-inner {
+  display: flex;
+  border-radius: 8px;
   border: 1px solid var(--border);
+  background: var(--surface);
+  overflow: hidden;
 }
 
-.hp-stat {
-  display: grid;
-  gap: 2px;
-  padding: 20px 16px;
+.hp-stats-stat {
+  flex: 1 1 0%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 22px 12px;
   text-align: center;
-  background: rgba(255,255,255,0.82);
 }
 
-.hp-stat-value {
-  font-size: 1.6rem;
-  font-weight: 900;
-  letter-spacing: -0.03em;
+.hp-stats-value {
+  font-size: clamp(1.4rem, 3.5vw, 1.9rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
   color: var(--text);
   line-height: 1;
   font-variant-numeric: tabular-nums;
 }
 
-/* Live-bound stat value (e.g. the Locations tile once the directory count
-   endpoint has responded). Subtle green tint + a tiny pulsing dot before the
-   number so visitors can tell this one is real-time. */
-.hp-stat-value-live {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  justify-self: center;
-  color: var(--text, #0f1117);
+.hp-stats-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
-.hp-stat-value-live::before {
-  content: "";
-  width: 8px;
-  height: 8px;
+.hp-stats-live-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
   background: #22c55e;
   box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.5);
   animation: hpPcPulse 2s ease-in-out infinite;
-  flex-shrink: 0;
-  -webkit-text-fill-color: initial;
+  vertical-align: middle;
+  margin-left: 6px;
 }
 
-.hp-stat-label {
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: var(--muted);
+.hp-stats-divider {
+  width: 1px;
+  align-self: stretch;
+  background: var(--border);
+  flex-shrink: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hp-stats-live-dot { animation: none; }
 }
 
 /* ── Customer benefits ── */
@@ -1685,7 +1688,6 @@ h1, h2, h3,
   .hp-hero-preview { justify-content: flex-start; }
   .hp-hero-video { justify-content: center; }
   .hp-hero-video-player { max-width: 100%; }
-  .hp-stats-strip { grid-template-columns: repeat(2, 1fr); }
   .hp-cat-grid { grid-template-columns: repeat(3, 1fr); }
   .hp-workbench-marquee, .hp-workbench-marquee-frame { min-height: 500px; }
 }
@@ -1721,7 +1723,6 @@ h1, h2, h3,
   .hp-hero-sub { font-size: 0.9rem; }
   .hp-hero-actions { grid-template-columns: 1fr; }
   .hp-hero-preview-card { width: 100%; }
-  .hp-stats-strip { grid-template-columns: repeat(2, 1fr); border-radius: 14px; }
   .hp-payment-model-inner { flex-direction: column; align-items: flex-start; gap: 16px; padding: 20px; }
   .hp-how { padding: 28px 20px; }
   .hp-trust-strip { flex-direction: column; gap: 12px; }
