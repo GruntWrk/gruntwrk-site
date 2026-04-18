@@ -2,7 +2,7 @@
   "id": "/",
   "name": "GruntWrk",
   "short_name": "GruntWrk",
-  "description": "Get work done. Find work fast.",
+  "description": "Request once. Compare quotes from up to five local service providers in one place. Free for customers.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
