@@ -11,7 +11,7 @@ import {
 } from "../../../lib/seoPages";
 import { buildBreadcrumbSchema, buildFaqSchema, buildServiceSchema } from "../../../lib/schema";
 import { TrackedCtaLink } from "../../TrackedCtaLink";
-import { SiteFooter, SiteHeader } from "../SiteChrome";
+import { SiteBottomNav, SiteFooter, SiteHeader } from "../SiteChrome";
 import { SeoRevealProvider } from "./SeoReveal";
 
 function resolveLocale(input: string) {
@@ -509,6 +509,7 @@ export default function SeoPage({
       </main>
 
       <SiteFooter dict={dict} />
+      <SiteBottomNav dict={dict} locale={locale} pageKind="seo" />
     </div>
   );
 }

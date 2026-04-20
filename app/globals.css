@@ -459,6 +459,68 @@ h1, h2, h3,
 .appShellHeaderBtnSecondary { background: #3ECF8E; color: #fff; box-shadow: 0 10px 24px rgba(62,207,142,0.18); }
 .appShellHeaderBtnSecondary:hover { background: #34c080; }
 
+.siteMobileNav {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 120;
+  padding-bottom: env(safe-area-inset-bottom);
+  background: rgba(250,248,244,0.96);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-top: 1px solid rgba(15,17,23,0.08);
+}
+
+.siteMobileNavInner {
+  width: min(100%, calc(100% - 18px));
+  margin: 0 auto;
+  padding: 8px 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 6px;
+}
+
+.siteMobileNavLink {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  text-decoration: none;
+  color: var(--muted-2);
+  font-weight: 600;
+  padding: 8px 2px 6px;
+}
+
+.siteMobileNavLabel {
+  font-size: 9px;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  color: inherit;
+}
+
+.siteMobileNavLinkPrimary {
+  color: var(--brand);
+}
+
+.siteMobileNavPrimaryIcon {
+  width: 58px;
+  height: 58px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(180deg, rgba(62,207,142,1) 0%, rgba(46,176,118,1) 100%);
+  color: #07110c;
+  box-shadow: 0 14px 28px rgba(62,207,142,0.28), 0 4px 10px rgba(0,0,0,0.14);
+  border: 3px solid rgba(250,248,244,1);
+  transform: translateY(-14px);
+}
+
 .langToggleBar { display: flex; justify-content: flex-end; }
 .langToggle { display: flex; align-items: center; font-size: 13px; font-weight: 700; }
 .langActive { color: var(--brand); }
@@ -1694,6 +1756,7 @@ h1, h2, h3,
 
 @media (max-width: 760px) {
   .appShellHeaderInner { width: min(100%, calc(100% - 24px)); padding: 14px 0 12px; gap: 12px; }
+  .siteFrame { padding-bottom: calc(96px + env(safe-area-inset-bottom)); }
   .appShellBrand { width: auto; }
   .appShellHeaderActions, .appShellHeaderNav { gap: 8px; }
   .appShellHeaderBtn { min-height: 38px; padding: 10px 14px; font-size: 0.84rem; }
@@ -1709,6 +1772,10 @@ h1, h2, h3,
   .appsSectionHeader { width: min(100%, calc(100% - 36px)); align-items: flex-start; }
   .sectionInner { width: min(100%, calc(100% - 36px)); }
   .reviewsSection { padding-left: 18px; padding-right: 18px; }
+}
+
+@media (min-width: 761px) {
+  .siteMobileNav { display: none; }
 }
 
 @media (max-width: 640px) {

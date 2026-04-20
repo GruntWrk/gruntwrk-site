@@ -5,6 +5,7 @@ import { TrackedCtaLink } from "../TrackedCtaLink";
 import type { Dictionary, Locale } from "../../lib/i18n";
 import { LOCALES, SITE_URL } from "../../lib/i18n";
 import type { SeoNavItem } from "../../lib/seoPages";
+import { SiteBottomNav } from "./SiteChrome";
 
 const APP_BASE_URL = "https://app.gruntwrk.com";
 const HOME_HREF = APP_BASE_URL;
@@ -1145,6 +1146,8 @@ export default function HomePage({ dict, locale, nav }: { dict: Dictionary; loca
           </div>
         </div>
       </footer>
+
+      <SiteBottomNav dict={dict} locale={locale} pageKind="home" />
     </div>
   );
 }
