@@ -103,9 +103,12 @@ export function SiteHeader({ dict, locale }: { dict: Dictionary; locale: Locale 
           </TrackedCtaLink>
           <TrackedCtaLink href={`${APP_BASE_URL}/jobs/new`} className="appShellHeaderNavBtn" aria-label={dict.nav.jobs} ctaLocation="site_header_request_service" locale={locale} pageKind="seo">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-              <rect x="3" y="3" width="7" height="7" rx="1" /><rect x="3" y="14" width="7" height="7" rx="1" />
-              <line x1="14" y1="4" x2="21" y2="4" /><line x1="14" y1="9" x2="21" y2="9" />
-              <line x1="14" y1="15" x2="21" y2="15" /><line x1="14" y1="20" x2="21" y2="20" />
+              <rect width="8" height="4" x="8" y="2" rx="1" ry="1" />
+              <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+              <path d="M12 11h4" />
+              <path d="M12 16h4" />
+              <path d="M8 11h.01" />
+              <path d="M8 16h.01" />
             </svg>
             <span className="appShellHeaderNavLabel">{dict.nav.jobs}</span>
           </TrackedCtaLink>
