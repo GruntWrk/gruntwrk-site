@@ -2,7 +2,7 @@
 
 ## What is GruntWrk?
 
-GruntWrk is a public directory of local jobs and service providers that connects customers who need work done with providers who do the work. It covers home and commercial services like cleaning, repairs, plumbing, electrical, painting, moving, furniture assembly, outdoor maintenance, mounting/installation, and junk removal/disposal.
+GruntWrk is a directory of local service providers with a guided request flow that helps customers compare quotes and manage work in one place. It covers home and commercial services like cleaning, repairs, plumbing, electrical, painting, moving, furniture assembly, outdoor maintenance, mounting/installation, and junk removal/disposal.
 
 The platform is live at https://www.gruntwrk.com and currently in Early Access, with iOS and Android apps coming soon.
 
@@ -82,14 +82,14 @@ GruntWrk covers 10 service categories:
 GruntWrk is currently in Early Access with a 4.8 star rating. Here's what early users are saying:
 
 - "Very effective platform for connecting clients and service providers. Finding and booking a job is simple and fast." (5 stars)
-- "The notice board feature is well organised and makes it easy to find available services in your area." (4 stars)
+- "The request flow is well organised and makes it easy to compare local services in one place." (4 stars)
 - "I like how profiles show ratings, skills, and reviews. It helps users quickly evaluate providers." (5 stars)
 - "No lead fees, no credit packs. I just sign up and start quoting. More of what I earn stays with me." (5 stars)
 
 ## Brand Identity
 
-- **Tagline**: "Public local jobs and providers"
-- **Hero message**: "Browse first. Sign up when you want to post, reply, message, or manage a job."
+- **Tagline**: "Request once. Compare quotes."
+- **Hero message**: "Request once, compare quotes, and manage everything in one workbench."
 - **Brand colors**: Green (#22c55e), cream/warm off-white background, black text
 - **Design style**: Clean, modern, sans-serif typography, minimal shadows, warm and approachable
 - **Mission**: Built to make local services affordable and clear for both customers and providers.

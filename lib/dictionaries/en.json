@@ -9,7 +9,7 @@
     "startOffering": "For Providers",
     "login": "Sign in",
     "brandSub": "Request once. Compare quotes.",
-    "jobs": "Notice",
+    "jobs": "Request",
     "providers": "Directory"
   },
   "hero": {
@@ -219,7 +219,7 @@
     "ratingLabel": "Early Access",
     "items": [
       { "stars": 5, "text": "Very effective platform for connecting clients and service providers. Finding and booking a job is simple and fast.", "name": "Maria S.", "role": "Customer" },
-      { "stars": 4, "text": "The notice board feature is well organised and makes it easy to find available services in your area.", "name": "David R.", "role": "Customer" },
+      { "stars": 4, "text": "The request flow is well organised and makes it easy to compare local services in one place.", "name": "David R.", "role": "Customer" },
       { "stars": 5, "text": "I like how profiles show ratings, skills, and reviews. It helps users quickly evaluate service providers.", "name": "Lucia T.", "role": "Customer" },
       { "stars": 5, "text": "No lead fees, no credit packs. I just sign up and start quoting. More of what I earn stays with me.", "name": "James P.", "role": "Provider" }
     ]

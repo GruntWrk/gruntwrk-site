@@ -41,7 +41,7 @@ GruntWrk's messaging naturally lends itself to compelling video content. The pla
 12. **"Did you know?"** series - Quick facts about hidden fees in the industry
 13. **Customer testimonial clips** - Early access reviews animated or narrated
 14. **Before/After fee comparison** - Visual breakdown of what a provider pays elsewhere vs. GruntWrk
-15. **"Public local jobs and providers. Browse first."** - Brand message clips
+15. **"Request once. Compare quotes."** - Brand message clips
 
 ## Key Messages for Video Scripts
 
