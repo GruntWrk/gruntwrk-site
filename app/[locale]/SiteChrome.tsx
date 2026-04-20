@@ -17,10 +17,6 @@ function buildProviderSignupHref() {
 
 const PROVIDER_SIGNUP_HREF = buildProviderSignupHref();
 
-function homeHref(locale: Locale) {
-  return `/${locale}`;
-}
-
 function BrandMark({ className }: { className?: string }) {
   return (
     <svg className={className} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" aria-hidden="true">
@@ -122,66 +118,7 @@ export function SiteHeader({ dict, locale }: { dict: Dictionary; locale: Locale 
   );
 }
 
-export function SiteBottomNav({
-  dict,
-  locale,
-  pageKind = "seo",
-}: {
-  dict: Dictionary;
-  locale: Locale;
-  pageKind?: string;
-}) {
-  return (
-    <nav className="siteMobileNav" aria-label="Bottom navigation">
-      <div className="siteMobileNavInner">
-        <a href={homeHref(locale)} className="siteMobileNavLink" aria-label="Home">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-            <path d="M3 10.5 12 3l9 7.5" />
-            <path d="M5 9.5V21h14V9.5" />
-          </svg>
-          <span className="siteMobileNavLabel">{locale === "pt" ? "Inicio" : "Home"}</span>
-        </a>
-
-        <TrackedCtaLink
-          href={`${APP_BASE_URL}/jobs/new`}
-          className="siteMobileNavLink siteMobileNavLinkPrimary"
-          aria-label={dict.nav.jobs}
-          ctaLocation={pageKind === "home" ? "home_bottom_request_service" : "site_bottom_request_service"}
-          locale={locale}
-          pageKind={pageKind}
-        >
-          <span className="siteMobileNavPrimaryIcon" aria-hidden="true">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.1" strokeLinecap="round" strokeLinejoin="round">
-              <rect x="3" y="3" width="7" height="7" rx="1" />
-              <rect x="3" y="14" width="7" height="7" rx="1" />
-              <line x1="14" y1="4" x2="21" y2="4" />
-              <line x1="14" y1="9" x2="21" y2="9" />
-              <line x1="14" y1="15" x2="21" y2="15" />
-              <line x1="14" y1="20" x2="21" y2="20" />
-            </svg>
-          </span>
-          <span className="siteMobileNavLabel">{dict.nav.jobs}</span>
-        </TrackedCtaLink>
-
-        <TrackedCtaLink
-          href={`${APP_BASE_URL}/directory`}
-          className="siteMobileNavLink"
-          aria-label={dict.nav.providers}
-          ctaLocation={pageKind === "home" ? "home_bottom_browse_directory" : "site_bottom_browse_directory"}
-          locale={locale}
-          pageKind={pageKind}
-        >
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-            <circle cx="12" cy="12" r="10" />
-            <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
-            <path d="M2 12h20" />
-          </svg>
-          <span className="siteMobileNavLabel">{dict.nav.providers}</span>
-        </TrackedCtaLink>
-      </div>
-    </nav>
-  );
-}
+export { SiteBottomNav } from "./SiteBottomNav";
 
 export function SiteFooter({ dict }: { dict: Dictionary }) {
   return (
