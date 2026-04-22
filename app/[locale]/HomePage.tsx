@@ -817,6 +817,24 @@ const SOCIALS = [
       </svg>
     ),
   },
+  {
+    label: "TikTok",
+    href: "https://www.tiktok.com/@gruntwrk_official",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M16 2c.5 3.2 2.6 5.3 6 5.6V11c-1.9 0-3.6-.6-5-1.6V16c0 4-3.1 6-6.3 6c-3.6 0-6.7-3-6.7-6.7c0-3.8 3.1-6.8 6.9-6.8c.4 0 .8 0 1.1.1v3.8c-.3-.1-.6-.2-1-.2c-1.9 0-3.5 1.5-3.5 3.4c0 1.9 1.5 3.5 3.5 3.5c2.1 0 3.3-1.4 3.3-3.8V2h2.7Z" />
+      </svg>
+    ),
+  },
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/grunt_wrk",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2Zm0 1.8A3.95 3.95 0 0 0 3.8 7.75v8.5A3.95 3.95 0 0 0 7.75 20.2h8.5a3.95 3.95 0 0 0 3.95-3.95v-8.5a3.95 3.95 0 0 0-3.95-3.95h-8.5Zm8.95 1.4a1.15 1.15 0 1 1 0 2.3a1.15 1.15 0 0 1 0-2.3ZM12 7a5 5 0 1 1 0 10a5 5 0 0 1 0-10Zm0 1.8A3.2 3.2 0 1 0 12 15.2A3.2 3.2 0 0 0 12 8.8Z" />
+      </svg>
+    ),
+  },
 ];
 
 export default function HomePage({ dict, locale, nav }: { dict: Dictionary; locale: Locale; nav: { cities: SeoNavItem[]; services: SeoNavItem[] } }) {
