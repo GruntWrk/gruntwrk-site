@@ -285,14 +285,14 @@ function HeroPreviewCard({ dict }: { dict: Dictionary }) {
 
 function HeroJourney({ dict }: { dict: Dictionary }) {
   return (
-    <div className="hp-hero-journey" aria-label={dict.howItWorks.heading}>
+    <ol className="hp-hero-journey" aria-label={dict.howItWorks.heading}>
       {dict.howItWorks.steps.map((step) => (
-        <div key={`hero-step-${step.num}`} className="hp-hero-journey-step">
-          <span className="hp-hero-journey-num">{step.num}</span>
+        <li key={`hero-step-${step.num}`} className="hp-hero-journey-step">
+          <span className="hp-hero-journey-num">{`0${step.num}`}</span>
           <span className="hp-hero-journey-title">{step.title}</span>
-        </div>
+        </li>
       ))}
-    </div>
+    </ol>
   );
 }
 
@@ -460,8 +460,6 @@ function ProviderCounter({
     | {
         eyebrow: string;
         heading: string;
-        subheading: string;
-        live: string;
         townsSuffix: string;
         cta: string;
       }
@@ -479,14 +477,10 @@ function ProviderCounter({
   return (
     <section className="hp-provider-counter" data-reveal aria-live="polite">
       <div className="hp-pc-card">
-        <div className="hp-pc-grid-bg" aria-hidden="true" />
         <div className="hp-pc-inner">
           <div className="hp-pc-eyebrow">
             <span className="hp-pc-live-dot" aria-hidden="true" />
             <span className="hp-pc-eyebrow-text">{copy.eyebrow}</span>
-            <span className="hp-pc-live-pill" aria-hidden="true">
-              {copy.live}
-            </span>
           </div>
 
           <div className="hp-pc-number-row">
@@ -498,11 +492,8 @@ function ProviderCounter({
             <span className="hp-pc-number-label">{copy.heading}</span>
           </div>
 
-          <p className="hp-pc-subheading">{copy.subheading}</p>
-
           <div className="hp-pc-footer">
             <div className="hp-pc-contactable">
-              <span className="hp-pc-contactable-dot" aria-hidden="true" />
               <strong className="hp-pc-contactable-number">
                 {displayTowns}
               </strong>
@@ -912,12 +903,8 @@ export default function HomePage({ dict, locale, nav }: { dict: Dictionary; loca
                     locale={locale}
                     pageKind="home"
                   >
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                      <rect x="3" y="3" width="7" height="7" rx="1" /><rect x="3" y="14" width="7" height="7" rx="1" />
-                      <line x1="14" y1="4" x2="21" y2="4" /><line x1="14" y1="9" x2="21" y2="9" />
-                      <line x1="14" y1="15" x2="21" y2="15" /><line x1="14" y1="20" x2="21" y2="20" />
-                    </svg>
                     {dict.hero.ctaBrowseJobs}
+                    <ArrowIcon />
                   </TrackedCtaLink>
                 </div>
               </div>
@@ -1013,7 +1000,7 @@ export default function HomePage({ dict, locale, nav }: { dict: Dictionary; loca
           <section className="hp-provider" data-reveal>
             <div className="hp-provider-inner">
               <div className="hp-provider-left">
-                <div className="hp-provider-badge">{dict.provider.badge}</div>
+                <div className="hp-provider-eyebrow">{dict.provider.badge}</div>
                 <h2 className="hp-provider-title">{dict.provider.title}</h2>
                 <p className="hp-provider-desc">{dict.provider.desc}</p>
                 <ul className="hp-provider-perks">

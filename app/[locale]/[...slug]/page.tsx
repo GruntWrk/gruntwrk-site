@@ -245,7 +245,7 @@ function ProviderCtaSection({
     <section className="hp-provider" data-reveal>
       <div className="hp-provider-inner">
         <div className="hp-provider-left">
-          <span className="hp-provider-badge">{cta.badge}</span>
+          <span className="hp-provider-eyebrow">{cta.badge}</span>
           <h2 className="hp-provider-title">{cta.title}</h2>
           <p className="hp-provider-desc">{cta.desc}</p>
           <ul className="hp-provider-perks">
