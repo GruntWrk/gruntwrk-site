@@ -733,8 +733,8 @@ html[data-theme="dark"] .hp-hero-journey-bar {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  padding: 14px 24px;
+  gap: 10px;
+  padding: 16px 40px;
   border-radius: 8px;
   font-size: 1rem;
   font-weight: 600;
@@ -742,7 +742,7 @@ html[data-theme="dark"] .hp-hero-journey-bar {
   text-decoration: none;
   white-space: nowrap;
   border: none;
-  width: max-content;
+  min-width: 320px;
   transition: background 180ms ease;
 }
 .hp-hero-cta:hover {
@@ -1675,7 +1675,7 @@ html[data-theme="dark"] .hp-provider-eyebrow {
   .hp-hero-journey-bar { width: 40px; }
   .hp-hero-journey-num { font-size: 0.72rem; }
   .hp-hero-journey-title { font-size: 1.05rem; }
-  .hp-hero-cta { padding: 13px 22px; font-size: 0.98rem; }
+  .hp-hero-cta { padding: 15px 28px; font-size: 0.98rem; min-width: 0; width: 100%; }
   .hp-hero-preview { justify-content: flex-start; }
   .hp-hero-video { justify-content: center; }
   .hp-hero-video-player { max-width: 100%; }
