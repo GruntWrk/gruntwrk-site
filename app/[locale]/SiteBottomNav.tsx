@@ -5,6 +5,7 @@ import { TrackedCtaLink } from "../TrackedCtaLink";
 import type { Dictionary, Locale } from "../../lib/i18n";
 
 const APP_BASE_URL = "https://app.gruntwrk.com";
+const SEARCH_PROVIDERS_HREF = `${APP_BASE_URL}/directory?search=1`;
 const GREEN = "rgb(62, 207, 142)";
 
 function HouseIcon({ size, strokeWidth, color }: { size: number; strokeWidth: number; color: string }) {
@@ -29,12 +30,11 @@ function ClipboardListIcon({ size, strokeWidth, color }: { size: number; strokeW
   );
 }
 
-function GlobeIcon({ size, strokeWidth, color }: { size: number; strokeWidth: number; color: string }) {
+function SearchIcon({ size, strokeWidth, color }: { size: number; strokeWidth: number; color: string }) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <circle cx="12" cy="12" r="10" />
-      <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
-      <path d="M2 12h20" />
+      <circle cx="11" cy="11" r="7" />
+      <path d="m20 20-3.5-3.5" />
     </svg>
   );
 }
@@ -178,10 +178,10 @@ export function SiteBottomNav({
         </TrackedCtaLink>
 
         <TrackedCtaLink
-          href={`${APP_BASE_URL}/directory`}
+          href={SEARCH_PROVIDERS_HREF}
           aria-label={dict.nav.providers}
           title={dict.nav.providers}
-          ctaLocation={pageKind === "home" ? "home_bottom_browse_directory" : "site_bottom_browse_directory"}
+          ctaLocation={pageKind === "home" ? "home_bottom_search_providers" : "site_bottom_search_providers"}
           locale={locale}
           pageKind={pageKind}
           style={{
@@ -215,7 +215,7 @@ export function SiteBottomNav({
               flex: "0 0 auto",
             }}
           >
-            <GlobeIcon size={22} strokeWidth={1.8} color="var(--muted)" />
+            <SearchIcon size={22} strokeWidth={1.8} color="var(--muted)" />
           </span>
           <span
             style={{

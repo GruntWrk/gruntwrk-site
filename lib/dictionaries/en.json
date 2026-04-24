@@ -1,30 +1,30 @@
 {
   "meta": {
     "title": "GruntWrk | Get Multiple Quotes in Three Easy Steps",
-    "description": "Skip the hours of searching, calling, and chasing service providers. Specify what you need once, send it to up to five local providers, and compare every quote in one place. Free for customers.",
-    "keywords": "quote aggregator, compare local quotes, request once compare quotes, choose up to 5 service providers, local service quotes, cleaning quotes, plumber quotes, electrician quotes, provider directory portugal",
-    "seoHeading": "GruntWrk is the simple way to get local service quotes: specify the job once, choose up to five service providers from the directory, and compare every quote in one workbench."
+    "description": "Skip the hours of searching, calling, and chasing service providers. Tell GruntWrk what you need once, review providers we can contact for you, and compare every quote in one place. Free for customers.",
+    "keywords": "quote aggregator, compare local quotes, request once compare quotes, providers we can contact, local service quotes, cleaning quotes, plumber quotes, electrician quotes, portugal service quotes",
+    "seoHeading": "GruntWrk is the simple way to get local service quotes: describe the job once, choose up to five providers we can contact for you, and compare every quote in one workbench."
   },
   "nav": {
     "startOffering": "For Providers",
     "login": "Sign in",
     "brandSub": "Request once. Compare quotes.",
     "jobs": "Request",
-    "providers": "Directory"
+    "providers": "Find providers"
   },
   "hero": {
     "title": "Get multiple quotes in three easy steps",
-    "subtitle": "Specify what you need once and send it directly to up to five service providers to quote.",
+    "subtitle": "Specify what you need once and GruntWrk will find up to five providers we can contact for you.",
     "ctaProvider": "Start as a provider",
-    "ctaCustomer": "Browse the directory",
+    "ctaCustomer": "Search providers",
     "ctaBrowseJobs": "Get a free quote",
-    "ctaBrowseProviders": "Browse local service providers"
+    "ctaBrowseProviders": "Search providers we can contact"
   },
   "heroPreview": {
     "stage": "Step 3 of 3",
     "status": "Quotes are arriving",
     "jobTitle": "Kitchen deep clean",
-    "jobMeta": "5 service providers selected",
+    "jobMeta": "5 providers selected",
     "badgeOne": "One request",
     "badgeTwo": "One Workbench"
   },
@@ -35,12 +35,12 @@
     { "value": "$0", "label": "Customer fees" }
   ],
   "providerCounter": {
-    "eyebrow": "Live directory",
-    "heading": "Service Providers",
-    "subheading": "Service Provider directory updated in real time",
+    "eyebrow": "Provider network",
+    "heading": "Providers We Can Contact",
+    "subheading": "Contactable providers across Portugal",
     "live": "LIVE",
     "townsSuffix": "towns and cities covered",
-    "cta": "Browse service providers"
+    "cta": "Search providers"
   },
   "video": {
     "heading": "See how GruntWrk works",
@@ -58,7 +58,7 @@
       {
         "id": "trust",
         "title": "Choose service providers with confidence",
-        "desc": "See ratings, reviews, and service provider details before you decide who should quote on your request."
+        "desc": "See ratings, reviews, and why providers fit your request before you decide who should quote."
       },
       {
         "id": "payment",
@@ -152,7 +152,7 @@
   "customer": {
     "badge": "For customers",
     "heading": "Choose who you want quotes from",
-    "subtitle": "Browse the directory across 10+ service categories, then decide which service providers should quote."
+    "subtitle": "Tell us the service and location, then review the providers we can contact for you across 10+ service categories."
   },
   "categories": [
     { "slug": "cleaning", "title": "Cleaning", "desc": "Home & office deep cleans", "alt": "Affordable cleaning services: home and office deep cleans" },
@@ -177,8 +177,8 @@
       },
       {
         "num": "2",
-        "title": "Pick service providers",
-        "body": "Pick who you want to quote after seeing ratings, reviews, and service provider details in the directory."
+        "title": "Review recommendations",
+        "body": "See the providers we can contact for you, plus why they were recommended for your request."
       },
       {
         "num": "3",
@@ -219,7 +219,7 @@
     "ratingLabel": "Early Access",
     "items": [
       { "stars": 5, "text": "Very effective platform for connecting clients and service providers. Finding and booking a job is simple and fast.", "name": "Maria S.", "role": "Customer" },
-      { "stars": 4, "text": "The request flow is well organised and makes it easy to compare local services in one place.", "name": "David R.", "role": "Customer" },
+      { "stars": 4, "text": "The request flow is well organised and makes it easy to review the providers GruntWrk can contact for me.", "name": "David R.", "role": "Customer" },
       { "stars": 5, "text": "I like how profiles show ratings, skills, and reviews. It helps users quickly evaluate service providers.", "name": "Lucia T.", "role": "Customer" },
       { "stars": 5, "text": "No lead fees, no credit packs. I just sign up and start quoting. More of what I earn stays with me.", "name": "James P.", "role": "Provider" }
     ]
@@ -227,13 +227,13 @@
   "apps": {
     "kicker": "Apps coming soon",
     "heading": "The GruntWrk workbench is coming to iOS and Android.",
-    "subtitle": "Browse service providers, manage jobs, and keep payment and messages in one place from your phone.",
+    "subtitle": "Search providers we can contact for you, manage jobs, and keep payments and messages in one place from your phone.",
     "comingSoon": "Coming soon",
     "appStore": "App Store",
     "googlePlay": "Google Play"
   },
   "footer": {
     "storeLabel": "Available soon on iOS and Android",
-    "copy": "The simple quote aggregator for local services. Specify once, choose up to five service providers, compare in one place."
+    "copy": "The simple quote coordinator for local services. Specify once, choose up to five providers we can contact for you, and compare in one place."
   }
 }

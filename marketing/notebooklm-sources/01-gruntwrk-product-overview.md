@@ -2,7 +2,7 @@
 
 ## What is GruntWrk?
 
-GruntWrk is a directory of local service providers with a guided request flow that helps customers compare quotes and manage work in one place. It covers home and commercial services like cleaning, repairs, plumbing, electrical, painting, moving, furniture assembly, outdoor maintenance, mounting/installation, and junk removal/disposal.
+GruntWrk is a request-first quote coordination platform for local service providers. Customers describe the job once, review providers GruntWrk can contact for them, compare quotes in one place, and manage the work through a shared workbench. It covers home and commercial services like cleaning, repairs, plumbing, electrical, painting, moving, furniture assembly, outdoor maintenance, mounting/installation, and junk removal/disposal.
 
 The platform is live at https://www.gruntwrk.com and currently in Early Access, with iOS and Android apps coming soon.
 

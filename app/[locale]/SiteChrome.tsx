@@ -4,6 +4,7 @@ import { TrackedCtaLink } from "../TrackedCtaLink";
 
 const APP_BASE_URL = "https://app.gruntwrk.com";
 const LOGIN_HREF = `${APP_BASE_URL}/login`;
+const SEARCH_PROVIDERS_HREF = `${APP_BASE_URL}/directory?search=1`;
 
 function buildProviderSignupHref() {
   const params = new URLSearchParams({
@@ -112,10 +113,10 @@ export function SiteHeader({ dict, locale }: { dict: Dictionary; locale: Locale 
         </a>
 
         <nav className="appShellHeaderNav" aria-label="Primary navigation">
-          <TrackedCtaLink href={`${APP_BASE_URL}/directory`} className="appShellHeaderNavBtn" aria-label={dict.nav.providers} ctaLocation="site_header_browse_directory" locale={locale} pageKind="seo">
+          <TrackedCtaLink href={SEARCH_PROVIDERS_HREF} className="appShellHeaderNavBtn" aria-label={dict.nav.providers} ctaLocation="site_header_search_providers" locale={locale} pageKind="seo">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-              <circle cx="12" cy="12" r="10" /><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
-              <path d="M2 12h20" />
+              <circle cx="11" cy="11" r="7" />
+              <path d="m20 20-3.5-3.5" />
             </svg>
             <span className="appShellHeaderNavLabel">{dict.nav.providers}</span>
           </TrackedCtaLink>

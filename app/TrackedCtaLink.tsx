@@ -4,6 +4,8 @@ import type { AnchorHTMLAttributes, MouseEvent } from "react";
 import type { Locale } from "../lib/i18n";
 import {
   GOOGLE_CTA_EVENTS,
+  getLegacyGoogleCtaEventName,
+  getLegacyGoogleCtaParams,
   getGoogleAdsSendTo,
   type GoogleCtaEventName,
 } from "../lib/googleTag";
@@ -28,7 +30,7 @@ type TrackedCtaLinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
 function inferEventName(href: string): GoogleCtaEventName | null {
   if (href.includes("/jobs/new")) return GOOGLE_CTA_EVENTS.customerRequest;
   if (href.includes("/login")) return GOOGLE_CTA_EVENTS.providerSignup;
-  if (href.includes("/directory") || href.includes("/contacts")) return GOOGLE_CTA_EVENTS.directoryBrowse;
+  if (href.includes("/directory")) return GOOGLE_CTA_EVENTS.providerSearch;
   return null;
 }
 
@@ -62,6 +64,12 @@ function dispatchTrackedEvent(
   })();
 
   window.gtag("event", eventName, params);
+
+  const legacyEventName = getLegacyGoogleCtaEventName(eventName);
+  const legacyParams = getLegacyGoogleCtaParams(eventName, params);
+  if (legacyEventName && legacyParams) {
+    window.gtag("event", legacyEventName, legacyParams);
+  }
 
   const adsSendTo = getGoogleAdsSendTo(eventName);
   if (!adsSendTo) {
@@ -98,8 +106,8 @@ export function TrackedCtaLink({
       cta_location: ctaLocation,
       cta_type: eventName === GOOGLE_CTA_EVENTS.customerRequest
         ? "customer_request"
-        : eventName === GOOGLE_CTA_EVENTS.directoryBrowse
-          ? "directory_browse"
+        : eventName === GOOGLE_CTA_EVENTS.providerSearch
+          ? "provider_search"
           : "provider_signup",
       destination_url: href,
       locale,

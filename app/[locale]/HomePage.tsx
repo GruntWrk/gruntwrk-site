@@ -11,6 +11,7 @@ const APP_BASE_URL = "https://app.gruntwrk.com";
 const HOME_HREF = APP_BASE_URL;
 const LOGIN_HREF = appHref("/login");
 const REQUEST_SERVICE_HREF = appHref("/jobs/new");
+const SEARCH_PROVIDERS_HREF = appHref("/directory?search=1");
 const PROVIDER_HREF = loginHref("/provider/profile");
 const MARQUEE_BG = `${APP_BASE_URL}/Marquee%20Background.png`;
 
@@ -307,10 +308,10 @@ function formatCount(value: number) {
   return new Intl.NumberFormat("en-US").format(Math.max(0, Math.floor(value)));
 }
 
-// Shared fetch + auto-refresh for the live directory counts. Both the
+// Shared fetch + auto-refresh for the provider-network counts. Both the
 // ProviderCounter card and the StatsStrip Locations tile read from this
 // single hook so they stay in sync and we only make one request per cycle.
-function useDirectoryCounts() {
+function useProviderNetworkCounts() {
   const [state, setState] = useState<{
     providers: number | null;
     towns: number | null;
@@ -508,9 +509,9 @@ function ProviderCounter({
               <span className="hp-pc-contactable-text">{copy.townsSuffix}</span>
             </div>
             <TrackedCtaLink
-              href={appHref("/directory")}
+              href={SEARCH_PROVIDERS_HREF}
               className="hp-pc-cta"
-              ctaLocation="home_provider_counter_cta"
+              ctaLocation="home_provider_counter_search"
               locale={locale}
               pageKind="home"
             >
@@ -581,10 +582,10 @@ function AppShellHeader({ dict, locale }: { dict: Dictionary; locale: Locale }) 
         </a>
 
         <nav className="appShellHeaderNav" aria-label="Primary navigation">
-          <TrackedCtaLink href={appHref("/directory")} className="appShellHeaderNavBtn" aria-label={dict.nav.providers} ctaLocation="home_header_browse_directory" locale={locale} pageKind="home">
+          <TrackedCtaLink href={SEARCH_PROVIDERS_HREF} className="appShellHeaderNavBtn" aria-label={dict.nav.providers} ctaLocation="home_header_search_providers" locale={locale} pageKind="home">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-              <circle cx="12" cy="12" r="10" /><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
-              <path d="M2 12h20" />
+              <circle cx="11" cy="11" r="7" />
+              <path d="m20 20-3.5-3.5" />
             </svg>
             <span className="appShellHeaderNavLabel">{dict.nav.providers}</span>
           </TrackedCtaLink>
@@ -842,7 +843,7 @@ export default function HomePage({ dict, locale, nav }: { dict: Dictionary; loca
   const reviews = dict.reviews.items;
   const feeRows = dict.fees.rows;
 
-  const directoryCounts = useDirectoryCounts();
+  const providerNetworkCounts = useProviderNetworkCounts();
 
   useReveal();
 
@@ -924,8 +925,8 @@ export default function HomePage({ dict, locale, nav }: { dict: Dictionary; loca
           </section>
 
           <StatsStrip
-            liveLocations={directoryCounts.towns}
-            liveProviders={directoryCounts.providers}
+            liveLocations={providerNetworkCounts.towns}
+            liveProviders={providerNetworkCounts.providers}
           />
 
           <section className="hp-customer" data-reveal>
@@ -1004,9 +1005,9 @@ export default function HomePage({ dict, locale, nav }: { dict: Dictionary; loca
           <ProviderCounter
             dict={dict}
             locale={locale}
-            providers={directoryCounts.providers}
-            towns={directoryCounts.towns}
-            hasError={directoryCounts.hasError}
+            providers={providerNetworkCounts.providers}
+            towns={providerNetworkCounts.towns}
+            hasError={providerNetworkCounts.hasError}
           />
 
           <section className="hp-provider" data-reveal>

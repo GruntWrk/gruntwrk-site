@@ -14,8 +14,8 @@ export function buildOrganizationSchema(locale: Locale) {
     logo: `${SITE_URL}/brand/gruntwrk-g.svg`,
     description:
       locale === "pt"
-        ? "Diretório local de prestadores de serviços. Consulte, compare e contacte diretamente em Portugal."
-        : "Local service provider directory. Browse, compare, and contact providers directly in Portugal.",
+        ? "Peca orcamentos de servicos locais, reveja prestadores que podemos contactar por si e gira tudo numa so bancada em Portugal."
+        : "Request local service quotes, review providers we can contact for you, and manage everything in one workbench across Portugal.",
     areaServed: ["Portugal", "Lisbon", "Porto"],
   };
 }
@@ -30,7 +30,7 @@ export function buildWebsiteSchema(locale: Locale) {
     inLanguage: locale,
     potentialAction: {
       "@type": "SearchAction",
-      target: "https://app.gruntwrk.com/directory?q={search_term_string}&search=1",
+      target: "https://app.gruntwrk.com/directory?search=1&q={search_term_string}",
       "query-input": "required name=search_term_string",
     },
   };
@@ -79,14 +79,12 @@ export function buildAggregateRatingSchema(): object {
       ratingCount: "47",
       reviewCount: "47",
     },
-    priceRange: "€0 - €500",
+    priceRange: "EUR 0-500",
     address: {
       "@type": "PostalAddress",
       addressCountry: "PT",
     },
-    areaServed: [
-      { "@type": "Country", name: "Portugal" },
-    ],
+    areaServed: [{ "@type": "Country", name: "Portugal" }],
   };
 }
 
@@ -104,4 +102,3 @@ export function buildServiceSchema(page: ResolvedSeoPage) {
     url: `${SITE_URL}${page.path}`,
   };
 }
-

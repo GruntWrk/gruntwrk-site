@@ -934,12 +934,11 @@ function buildCustomerRequestHref(category?: string) {
   return `${APP_BASE_URL}/jobs/new?${params.toString()}`;
 }
 
-function buildDirectoryBrowseHref(opts?: { category?: string; town?: string }) {
-  const params = new URLSearchParams();
+function buildProviderSearchHref(opts?: { category?: string; town?: string }) {
+  const params = new URLSearchParams({ search: "1" });
   if (opts?.category) params.set("category", opts.category);
   if (opts?.town) params.set("town", opts.town);
-  const qs = params.toString();
-  return qs ? `${APP_BASE_URL}/directory?${qs}` : `${APP_BASE_URL}/directory`;
+  return `${APP_BASE_URL}/directory?${params.toString()}`;
 }
 
 function buildProviderSignupHref(city?: string) {
@@ -1288,11 +1287,11 @@ function buildCustomersPage(locale: Locale): Omit<ResolvedSeoPage, "id" | "kind"
       : "Request local services through GruntWrk.",
     eyebrow: isPt ? "Para clientes" : "For customers",
     heroTitle: isPt
-      ? "Encontre ajuda local sem a fricção habitual das plataformas"
-      : "Find local help without the usual platform friction",
+      ? "Peça ajuda local sem a fricção habitual das plataformas"
+      : "Request local help without the usual platform friction",
     heroDescription: isPt
-      ? "Compare perfis de prestadores, peça trabalho prático e volte a reservar quem faz um bom trabalho."
-      : "Compare provider profiles, request practical jobs, and rebook the people who do great work.",
+      ? "Descreva o que precisa, reveja os prestadores que podemos contactar por si e volte a reservar quem faz um bom trabalho."
+      : "Describe what you need, review the providers we can contact for you, and rebook the people who do great work.",
     primaryCta: { label: LABELS.request[locale], href: buildCustomerRequestHref() },
     secondaryCta: { label: LABELS.services[locale], href: localizedPath(locale, [LABELS.servicesSegment[locale]]) },
     sections: [
@@ -1300,13 +1299,13 @@ function buildCustomersPage(locale: Locale): Omit<ResolvedSeoPage, "id" | "kind"
         title: isPt ? "O que os clientes ganham" : "What customers get",
         items: isPt
           ? [
-              "Perfis públicos e sinais de confiança mais claros.",
-              "Um fluxo simples para pedir trabalho prático.",
+              "Prestadores recomendados com sinais de confiança mais claros.",
+              "Um fluxo simples e orientado ao pedido para trabalho prático.",
               "Uma forma fácil de voltar a contratar quem já funcionou bem.",
             ]
           : [
-              "Clearer public profiles and trust signals.",
-              "A simple workflow for practical local jobs.",
+              "Recommended providers with clearer trust signals.",
+              "A simple request-first workflow for practical local jobs.",
               "An easier way to rebook providers who already worked out well.",
             ],
       },
@@ -1372,12 +1371,12 @@ function buildServicesIndexPage(locale: Locale): Omit<ResolvedSeoPage, "id" | "k
         items: isPt
           ? [
               "Serviços do dia a dia que surgem em casas, arrendamentos e pequenos negócios.",
-              "Perfis de prestadores que pode comparar antes de pedir ajuda.",
+              "Prestadores recomendados que pode rever antes de pedir ajuda.",
               "Categorias adequadas tanto para trabalhos pontuais como para relações recorrentes.",
             ]
           : [
               "Everyday services that come up in homes, rentals, and small businesses.",
-              "Provider profiles you can compare before asking for help.",
+              "Recommended providers you can review before asking for help.",
               "Categories suited to one-off jobs and repeat working relationships.",
             ],
       },
@@ -1437,13 +1436,13 @@ function buildCityPage(locale: Locale, city: CityDefinition): Omit<ResolvedSeoPa
   const howSteps: SeoStep[] = isPt
     ? [
         { num: "1", title: "Descreva o que precisa", body: "Diga-nos o trabalho, a localizacao e quando quer que seja feito." },
-        { num: "2", title: "Compare orcamentos", body: "Prestadores locais enviam-lhe orcamentos. Sem leiloes, sem pressao." },
-        { num: "3", title: "Contrate e gira", body: "Escolha o prestador, comunique e pague quando o trabalho estiver concluido." },
+        { num: "2", title: "Reveja os prestadores recomendados", body: "Mostramos os prestadores que podemos contactar por si e porque encaixam no pedido." },
+        { num: "3", title: "Compare orcamentos e avance", body: "Escolha quem deve orcamentar, compare respostas na sua bancada e avance quando estiver pronto." },
       ]
     : [
         { num: "1", title: "Describe what you need", body: "Tell us the job, the location, and when you want it done." },
-        { num: "2", title: "Compare quotes", body: "Local providers send you quotes. No bidding wars, no pressure." },
-        { num: "3", title: "Hire and manage", body: "Pick your provider, message them, and pay when the job is done." },
+        { num: "2", title: "Review recommended providers", body: "We show the providers we can contact for you and why they fit the request." },
+        { num: "3", title: "Compare quotes and move forward", body: "Choose who should quote, compare replies in your workbench, and move ahead when you are ready." },
       ];
 
   const providerCta: SeoProviderCta = isPt
@@ -1484,16 +1483,18 @@ function buildCityPage(locale: Locale, city: CityDefinition): Omit<ResolvedSeoPa
 
   return {
     title: isPt
-      ? `Prestadores de servicos em ${city.name.pt} | Consultar e Contactar | GruntWrk`
-      : `Service Providers in ${city.name.en} | Browse & Contact | GruntWrk`,
+      ? `Orcamentos de servicos em ${city.name.pt} | GruntWrk`
+      : `Local Service Quotes in ${city.name.en} | GruntWrk`,
     description: city.intro[locale],
-    eyebrow: isPt ? "Diretório de prestadores" : "Provider directory",
+    eyebrow: isPt ? "Peça uma vez" : "Request once",
     heroTitle: isPt
-      ? `Encontre prestadores de servicos em ${city.name.pt}`
-      : `Find service providers in ${city.name.en}`,
-    heroDescription: city.intro[locale],
-    primaryCta: { label: isPt ? `Consultar prestadores em ${city.name.pt}` : `Browse providers in ${city.name.en}`, href: buildDirectoryBrowseHref({ town: city.name[locale] }) },
-    secondaryCta: { label: LABELS.join[locale], href: providerSignupHref },
+      ? `Diga-nos o que precisa em ${city.name.pt}`
+      : `Tell us what you need in ${city.name.en}`,
+    heroDescription: isPt
+      ? `Peça uma vez e reveja os prestadores que podemos contactar por si em ${city.name.pt}. Sem taxas de leads, sem pacotes de creditos e com uma so bancada para cada orcamento.`
+      : `Request once and review the providers we can contact for you in ${city.name.en}. No lead fees, no credit packs, and one workbench for every quote.`,
+    primaryCta: { label: isPt ? `Iniciar pedido em ${city.name.pt}` : `Start your request in ${city.name.en}`, href: buildCustomerRequestHref() },
+    secondaryCta: { label: isPt ? `Pesquisar prestadores em ${city.name.pt}` : `Search providers in ${city.name.en}`, href: buildProviderSearchHref({ town: city.name[locale] }) },
     sections: [],
     stats,
     benefitCards,
@@ -1503,12 +1504,12 @@ function buildCityPage(locale: Locale, city: CityDefinition): Omit<ResolvedSeoPa
     faqTitle: LABELS.faq[locale],
     faqs: isPt
       ? [
-          { question: `Como funciona o GruntWrk em ${city.name.pt}?`, answer: "Descreva o que precisa, receba orcamentos de prestadores locais e contrate diretamente. Sem taxas de leads, sem pacotes de creditos." },
+          { question: `Como funciona o GruntWrk em ${city.name.pt}?`, answer: "Descreva o que precisa, reveja os prestadores que podemos contactar por si e compare orcamentos na sua bancada. Sem taxas de leads, sem pacotes de creditos." },
           { question: "Quanto custa para clientes?", answer: "Nada. Os clientes nao pagam taxas. Os prestadores pagam a taxa de trabalho de 10% quando o trabalho e concluido e pago." },
           { question: "Posso voltar a reservar o mesmo prestador?", answer: "Sim. Quando encontrar alguem de confianca, pode voltar a reserva-lo diretamente pela bancada de trabalho." },
         ]
       : [
-          { question: `How does GruntWrk work in ${city.name.en}?`, answer: "Describe what you need, get quotes from local providers, and hire directly. No lead fees, no credit packs." },
+          { question: `How does GruntWrk work in ${city.name.en}?`, answer: "Describe what you need, review the providers we can contact for you, and compare quotes in your workbench. No lead fees and no credit packs." },
           { question: "How much does it cost for customers?", answer: "Nothing. Customers pay zero fees. Providers pay a 10% job fee when the job is completed and paid." },
           { question: "Can I rebook the same provider?", answer: "Yes. Once you find someone you trust, you can rebook them directly from your workbench." },
         ],
@@ -1525,18 +1526,18 @@ function buildServicePage(locale: Locale, service: ServiceDefinition): Omit<Reso
   const isPt = locale === "pt";
   return {
     title: isPt
-      ? `${service.name.pt} em Portugal | Consultar Diretório | GruntWrk`
-      : `${service.name.en} Providers in Portugal | Browse Directory | GruntWrk`,
+      ? `Orcamentos de ${service.name.pt} em Portugal | GruntWrk`
+      : `${service.name.en} Quotes in Portugal | GruntWrk`,
     description: service.summary[locale],
-    eyebrow: isPt ? "Diretório de prestadores" : "Provider directory",
+    eyebrow: isPt ? "Pedir orcamentos" : "Request quotes",
     heroTitle: isPt
       ? `${service.name.pt}`
       : `${service.name.en}`,
     heroDescription: isPt
-      ? `Consulte prestadores de ${service.name.pt.toLowerCase()} em Portugal. Sem taxas de leads, precos mais baixos para si.`
-      : `Browse ${service.name.en.toLowerCase()} providers in Portugal. No lead fees mean lower prices for you.`,
-    primaryCta: { label: isPt ? `Consultar prestadores de ${service.name.pt.toLowerCase()}` : `Browse ${service.name.en.toLowerCase()} providers`, href: buildDirectoryBrowseHref({ category: service.appCategory }) },
-    secondaryCta: { label: LABELS.join[locale], href: buildProviderSignupHref() },
+      ? `Descreva o que precisa e o GruntWrk mostrara prestadores de ${service.name.pt.toLowerCase()} que podemos contactar por si em Portugal.`
+      : `Describe what you need and GruntWrk will surface ${service.name.en.toLowerCase()} providers we can contact for you in Portugal.`,
+    primaryCta: { label: isPt ? `Iniciar pedido de ${service.name.pt.toLowerCase()}` : `Start a ${service.name.en.toLowerCase()} request`, href: buildCustomerRequestHref(service.appCategory) },
+    secondaryCta: { label: isPt ? `Pesquisar prestadores de ${service.name.pt.toLowerCase()}` : `Search ${service.name.en.toLowerCase()} providers`, href: buildProviderSearchHref({ category: service.appCategory }) },
     sections: [
       {
         title: isPt ? "Para clientes" : "For customers",

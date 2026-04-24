@@ -1,30 +1,30 @@
 {
   "meta": {
     "title": "GruntWrk | Obtenha varios orcamentos em tres passos simples",
-    "description": "Evite as horas a pesquisar, ligar e perseguir prestadores de servicos. Especifique o que precisa uma vez, envie a ate cinco prestadores locais e compare todos os orcamentos num so lugar. Gratuito para clientes.",
-    "keywords": "agregador de orcamentos, comparar orcamentos locais, pedir uma vez comparar orcamentos, escolher ate 5 prestadores de servicos, orcamentos de servicos locais, diretorio de prestadores portugal",
-    "seoHeading": "O GruntWrk e a forma simples de obter orcamentos locais: especifique o trabalho uma vez, escolha ate cinco prestadores de servicos do diretorio e compare todos os orcamentos numa so bancada."
+    "description": "Evite as horas a pesquisar, ligar e perseguir prestadores de servicos. Diga ao GruntWrk o que precisa uma vez, reveja os prestadores que podemos contactar por si e compare todos os orcamentos num so lugar. Gratuito para clientes.",
+    "keywords": "agregador de orcamentos, comparar orcamentos locais, pedir uma vez comparar orcamentos, prestadores que podemos contactar, orcamentos de servicos locais, orcamentos de servicos portugal",
+    "seoHeading": "O GruntWrk e a forma simples de obter orcamentos locais: descreva o trabalho uma vez, escolha ate cinco prestadores que podemos contactar por si e compare todos os orcamentos numa so bancada."
   },
   "nav": {
     "startOffering": "Para Prestadores",
     "login": "Entrar",
     "brandSub": "Peca uma vez. Compare orcamentos.",
     "jobs": "Pedido",
-    "providers": "Diretorio"
+    "providers": "Prestadores"
   },
   "hero": {
     "title": "Obtenha varios orcamentos em tres passos simples",
-    "subtitle": "Especifique o que precisa uma vez e envie diretamente a ate cinco prestadores de servicos para orcamentar.",
+    "subtitle": "Especifique o que precisa uma vez e o GruntWrk encontrara ate cinco prestadores que podemos contactar por si.",
     "ctaProvider": "Comecar como prestador",
-    "ctaCustomer": "Consultar o diretorio",
+    "ctaCustomer": "Pesquisar prestadores",
     "ctaBrowseJobs": "Obter um orcamento gratis",
-    "ctaBrowseProviders": "Consultar prestadores de servicos locais"
+    "ctaBrowseProviders": "Pesquisar prestadores que podemos contactar"
   },
   "heroPreview": {
     "stage": "Passo 3 de 3",
     "status": "Os orcamentos estao a chegar",
     "jobTitle": "Limpeza profunda da cozinha",
-    "jobMeta": "5 prestadores de servicos selecionados",
+    "jobMeta": "5 prestadores selecionados",
     "badgeOne": "Um pedido",
     "badgeTwo": "Uma bancada"
   },
@@ -35,12 +35,12 @@
     { "value": "EUR0", "label": "Taxas para clientes" }
   ],
   "providerCounter": {
-    "eyebrow": "Diretorio em direto",
-    "heading": "Prestadores de Servicos",
-    "subheading": "Diretorio de prestadores de servicos atualizado em tempo real",
+    "eyebrow": "Rede de prestadores",
+    "heading": "Prestadores que Podemos Contactar",
+    "subheading": "Prestadores contactaveis em Portugal",
     "live": "AO VIVO",
     "townsSuffix": "localidades cobertas",
-    "cta": "Ver prestadores de servicos"
+    "cta": "Pesquisar prestadores"
   },
   "video": {
     "heading": "Veja como funciona o GruntWrk",
@@ -58,7 +58,7 @@
       {
         "id": "trust",
         "title": "Escolha prestadores de servicos com confianca",
-        "desc": "Veja avaliacoes, reviews e detalhes dos prestadores de servicos antes de decidir quem deve orcamentar o seu pedido."
+        "desc": "Veja avaliacoes, reviews e porque os prestadores encaixam no seu pedido antes de decidir quem deve orcamentar."
       },
       {
         "id": "payment",
@@ -152,7 +152,7 @@
   "customer": {
     "badge": "Para clientes",
     "heading": "Escolha de quem quer orcamentos",
-    "subtitle": "Consulte o diretorio em 10+ categorias de servico e decida quais prestadores de servicos devem orcamentar."
+    "subtitle": "Diga-nos o servico e a localizacao, depois reveja os prestadores que podemos contactar por si em 10+ categorias de servico."
   },
   "categories": [
     { "slug": "cleaning", "title": "Limpeza", "desc": "Limpezas profundas de casa e escritorio", "alt": "Servicos de limpeza baratos: limpezas profundas de casa e escritorio" },
@@ -177,8 +177,8 @@
       },
       {
         "num": "2",
-        "title": "Escolha prestadores",
-        "body": "Escolha quem quer que orcamente depois de ver avaliacoes, reviews e detalhes dos prestadores de servicos no diretorio."
+        "title": "Reveja as recomendacoes",
+        "body": "Veja os prestadores que podemos contactar por si e porque foram recomendados para o seu pedido."
       },
       {
         "num": "3",
@@ -219,7 +219,7 @@
     "ratingLabel": "Acesso Antecipado",
     "items": [
       { "stars": 5, "text": "Plataforma muito eficaz para ligar clientes e prestadores de servicos. Encontrar e reservar um trabalho e simples e rapido.", "name": "Maria S.", "role": "Cliente" },
-      { "stars": 4, "text": "A funcionalidade de quadro de avisos esta bem organizada e facilita a procura de servicos disponiveis na sua zona.", "name": "David R.", "role": "Cliente" },
+      { "stars": 4, "text": "O fluxo do pedido esta bem organizado e facilita rever os prestadores que o GruntWrk pode contactar por mim.", "name": "David R.", "role": "Cliente" },
       { "stars": 5, "text": "Gosto de como os perfis mostram avaliacoes, competencias e reviews. Ajuda os utilizadores a avaliar rapidamente os prestadores de servicos.", "name": "Lucia T.", "role": "Cliente" },
       { "stars": 5, "text": "Sem taxas de leads, sem pacotes de creditos. Basta inscrever-me e comecar a orcamentar. Mais do que ganho fica comigo.", "name": "James P.", "role": "Prestador" }
     ]
@@ -227,13 +227,13 @@
   "apps": {
     "kicker": "Apps em breve",
     "heading": "A bancada de trabalho GruntWrk esta a chegar ao iOS e Android.",
-    "subtitle": "Consulte prestadores de servicos, gira trabalhos e mantenha pagamentos e mensagens num so lugar a partir do telemovel.",
+    "subtitle": "Pesquise prestadores que podemos contactar por si, gira trabalhos e mantenha pagamentos e mensagens num so lugar a partir do telemovel.",
     "comingSoon": "Em breve",
     "appStore": "App Store",
     "googlePlay": "Google Play"
   },
   "footer": {
     "storeLabel": "Disponivel em breve no iOS e Android",
-    "copy": "O agregador simples de orcamentos para servicos locais. Especifique uma vez, escolha ate cinco prestadores de servicos, compare num so lugar."
+    "copy": "O coordenador simples de orcamentos para servicos locais. Especifique uma vez, escolha ate cinco prestadores que podemos contactar por si e compare num so lugar."
   }
 }

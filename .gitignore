@@ -4,11 +4,14 @@ node_modules/
 # next.js
 .next/
 out/
+tsconfig.tsbuildinfo
+.next-dev.log
 
 # logs
 npm-debug.log*
 yarn-debug.log*
 pnpm-debug.log*
+.codex-site-*.log
 
 # env
 .env
@@ -22,3 +25,6 @@ Thumbs.db
 # vercel
 .vercel/
 PROJECT_DUMP_SITE_01.txt
+
+# local tool state
+.claude/
