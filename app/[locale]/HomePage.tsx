@@ -289,7 +289,7 @@ function HeroJourney({ dict }: { dict: Dictionary }) {
       {dict.howItWorks.steps.map((step) => (
         <li key={`hero-step-${step.num}`} className="hp-hero-journey-step">
           <span className="hp-hero-journey-num">{`0${step.num}`}</span>
-          <span className="hp-hero-journey-title">{step.title}</span>
+          <span className="hp-hero-journey-title">{step.title.split(" ")[0]}</span>
         </li>
       ))}
     </ol>
