@@ -13,8 +13,8 @@
     "providers": "Find providers"
   },
   "hero": {
-    "title": "Get multiple quotes in three easy steps",
-    "subtitle": "Specify what you need once and GruntWrk will find up to five providers we can contact for you.",
+    "title": "Request once and compare multiple quotes",
+    "subtitle": "Tell GruntWrk what you need once and send it directly to up to five service providers.",
     "ctaProvider": "Start as a provider",
     "ctaCustomer": "Search providers",
     "ctaBrowseJobs": "Get a free quote",

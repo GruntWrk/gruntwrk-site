@@ -13,8 +13,8 @@
     "providers": "Prestadores"
   },
   "hero": {
-    "title": "Obtenha varios orcamentos em tres passos simples",
-    "subtitle": "Especifique o que precisa uma vez e o GruntWrk encontrara ate cinco prestadores que podemos contactar por si.",
+    "title": "Peca uma vez e compare varios orcamentos",
+    "subtitle": "Diga ao GruntWrk o que precisa uma vez e enviamos diretamente a ate cinco prestadores de servicos.",
     "ctaProvider": "Comecar como prestador",
     "ctaCustomer": "Pesquisar prestadores",
     "ctaBrowseJobs": "Obter um orcamento gratis",
