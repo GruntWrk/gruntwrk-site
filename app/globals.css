@@ -643,7 +643,7 @@ h1, h2, h3,
 .hp-hero-journey {
   list-style: none;
   margin: 4px 0 0;
-  padding: 36px 0 0;
+  padding: 0;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 18px;
@@ -652,11 +652,12 @@ h1, h2, h3,
 .hp-hero-journey::after {
   content: "";
   position: absolute;
-  top: 16px;
+  top: 23px;
   left: 0;
   right: 0;
   height: 1px;
   background: rgba(15, 17, 23, 0.08);
+  z-index: 0;
 }
 html[data-theme="dark"] .hp-hero-journey::after {
   background: rgba(255, 255, 255, 0.08);
@@ -666,20 +667,9 @@ html[data-theme="dark"] .hp-hero-journey::after {
   display: grid;
   gap: 10px;
   align-content: start;
+  justify-items: start;
   position: relative;
-}
-.hp-hero-journey-step::before {
-  content: "";
-  position: absolute;
-  top: -36px;
-  left: 0;
-  width: 64px;
-  height: 3px;
-  background: #16a34a;
-  border-radius: 2px;
-}
-html[data-theme="dark"] .hp-hero-journey-step::before {
-  background: #3ECF8E;
+  z-index: 1;
 }
 
 .hp-hero-journey-num {
@@ -694,6 +684,17 @@ html[data-theme="dark"] .hp-hero-journey-num {
   color: #3ECF8E;
 }
 
+.hp-hero-journey-bar {
+  display: block;
+  width: 64px;
+  height: 3px;
+  background: #16a34a;
+  border-radius: 2px;
+}
+html[data-theme="dark"] .hp-hero-journey-bar {
+  background: #3ECF8E;
+}
+
 .hp-hero-journey-title {
   font-size: 1.5rem;
   font-weight: 700;
@@ -704,13 +705,11 @@ html[data-theme="dark"] .hp-hero-journey-num {
 @media (max-width: 560px) {
   .hp-hero-journey {
     gap: 12px;
-    padding-top: 30px;
   }
   .hp-hero-journey::after {
-    top: 13px;
+    top: 20px;
   }
-  .hp-hero-journey-step::before {
-    top: -30px;
+  .hp-hero-journey-bar {
     width: 46px;
   }
   .hp-hero-journey-title {
@@ -1670,10 +1669,10 @@ html[data-theme="dark"] .hp-provider-eyebrow {
   .appShellHeaderInner { width: min(100%, calc(100% - 32px)); }
   .appShellBrandSub { font-size: 10px; }
   .hp-hero-shell { grid-template-columns: 1fr; }
-  .hp-hero-journey { padding-top: 28px; gap: 10px; }
-  .hp-hero-journey::after { top: 12px; }
+  .hp-hero-journey { gap: 10px; }
+  .hp-hero-journey::after { top: 20px; }
   .hp-hero-journey-step { gap: 8px; }
-  .hp-hero-journey-step::before { top: -28px; width: 40px; }
+  .hp-hero-journey-bar { width: 40px; }
   .hp-hero-journey-num { font-size: 0.72rem; }
   .hp-hero-journey-title { font-size: 1.05rem; }
   .hp-hero-cta { padding: 13px 22px; font-size: 0.98rem; }

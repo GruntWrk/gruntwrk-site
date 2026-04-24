@@ -291,6 +291,7 @@ function HeroJourney({ dict }: { dict: Dictionary }) {
       {dict.howItWorks.steps.map((step, i) => (
         <li key={`hero-step-${step.num}`} className="hp-hero-journey-step">
           <span className="hp-hero-journey-num">{`0${step.num}`}</span>
+          <span className="hp-hero-journey-bar" aria-hidden="true" />
           <span className="hp-hero-journey-title">{HERO_STEP_LABELS[i] ?? step.title}</span>
         </li>
       ))}
