@@ -492,16 +492,16 @@ h1, h2, h3,
 .hp {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 24px 16px 80px;
+  padding: 24px 16px 64px;
   display: grid;
-  gap: 48px;
+  gap: 28px;
 }
 
 .hp-section-head {
   display: grid;
-  gap: 6px;
+  gap: 4px;
   text-align: center;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
 }
 
 .hp-h2 {
@@ -583,12 +583,9 @@ h1, h2, h3,
 
 /* ── Hero ── */
 .hp-hero {
-  border-radius: 20px;
-  padding: 48px 36px 44px;
-  background:
-    radial-gradient(ellipse 100% 100% at 85% 0%, rgba(62,207,142,0.12) 0%, transparent 50%),
-    radial-gradient(ellipse 80% 80% at 0% 100%, rgba(62,207,142,0.06) 0%, transparent 50%),
-    var(--surface);
+  border-radius: 12px;
+  padding: 36px 32px 32px;
+  background: var(--surface);
   border: 1px solid var(--border);
   position: relative;
   overflow: hidden;
@@ -603,20 +600,9 @@ h1, h2, h3,
   align-items: center;
 }
 
-/* Dot-grid texture on hero */
-.hp-hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(circle, rgba(62,207,142,0.08) 1px, transparent 1px);
-  background-size: 28px 28px;
-  opacity: 0.6;
-  pointer-events: none;
-}
-
 .hp-hero-content {
   display: grid;
-  gap: 24px;
+  gap: 20px;
   max-width: 720px;
   position: relative;
   z-index: 1;
@@ -1134,8 +1120,8 @@ html[data-theme="dark"] .hp-pc-cta:hover {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 6px;
-  padding: 22px 12px;
+  gap: 5px;
+  padding: 16px 12px;
   text-align: center;
 }
 
@@ -1209,17 +1195,15 @@ html[data-theme="dark"] .hp-pc-cta:hover {
 
 /* ── Categories ── */
 .hp-customer {
-  border-radius: 20px;
-  padding: 2px;
-  background: linear-gradient(135deg, rgba(34,197,94,0.3) 0%, rgba(34,197,94,0.05) 50%, rgba(34,197,94,0.2) 100%);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--surface);
 }
 
 .hp-customer-inner {
-  padding: 40px 36px;
-  border-radius: 18px;
-  background: var(--surface);
+  padding: 32px 32px;
   display: grid;
-  gap: 20px;
+  gap: 18px;
 }
 
 .hp-cat-grid {
@@ -1412,12 +1396,10 @@ html[data-theme="dark"] .hp-pc-cta:hover {
 /* ── How it works ── */
 .hp-how {
   display: grid;
-  gap: 24px;
-  padding: 36px 28px;
-  border-radius: 20px;
-  background:
-    radial-gradient(ellipse 80% 80% at 0% 0%, rgba(34,197,94,0.06), transparent 50%),
-    rgba(255,255,255,0.6);
+  gap: 18px;
+  padding: 32px 28px;
+  border-radius: 12px;
+  background: var(--surface);
   border: 1px solid var(--border);
 }
 
@@ -1713,8 +1695,8 @@ html[data-theme="dark"] .hp-provider-eyebrow {
   .appShellBrandName { font-size: 22px; }
   .appShellHeaderActions { gap: 6px; }
   .appShellHeaderBtn { min-height: 36px; padding: 9px 12px; font-size: 0.8rem; }
-  .hp { padding: 10px 14px 56px; gap: 32px; }
-  .hp-hero { padding: 32px 22px 28px; border-radius: 16px; }
+  .hp { padding: 10px 14px 56px; gap: 22px; }
+  .hp-hero { padding: 26px 20px 24px; border-radius: 12px; }
   .hp-hero-title { font-size: clamp(1.8rem, 8vw, 2.6rem); max-width: none; }
   .hp-hero-sub { font-size: 0.9rem; }
   .hp-hero-actions { grid-template-columns: 1fr; }
