@@ -900,7 +900,6 @@ export default function HomePage({ dict, locale, nav }: { dict: Dictionary; loca
             <div className="hp-hero-shell">
               <div className="hp-hero-content">
                 <h1 className="hp-hero-title">{dict.hero.title}</h1>
-                <p className="hp-hero-sub">{(dict.hero as any).subtitle}</p>
                 <p className="sr-only">{dict.meta.seoHeading}</p>
                 <HeroJourney dict={dict} />
                 <div className="hp-hero-actions hp-hero-actions-row">
