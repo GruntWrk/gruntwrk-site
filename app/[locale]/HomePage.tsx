@@ -45,6 +45,12 @@ function appHref(path: string) {
   return `${APP_BASE_URL}${path}`;
 }
 
+function appHrefWithLocale(path: string, locale: Locale) {
+  const url = new URL(`${APP_BASE_URL}${path}`);
+  url.searchParams.set("lang", locale);
+  return url.toString();
+}
+
 function categoryHref(slug: string) {
   return appHref(`/jobs/new?category=${encodeURIComponent(slug)}`);
 }
@@ -291,7 +297,6 @@ function HeroJourney({ dict }: { dict: Dictionary }) {
       {dict.howItWorks.steps.map((step, i) => (
         <li key={`hero-step-${step.num}`} className="hp-hero-journey-step">
           <span className="hp-hero-journey-num">{`0${step.num}`}</span>
-          <span className="hp-hero-journey-bar" aria-hidden="true" />
           <span className="hp-hero-journey-title">{HERO_STEP_LABELS[i] ?? step.title}</span>
         </li>
       ))}
@@ -567,7 +572,7 @@ function AppShellHeader({ dict, locale }: { dict: Dictionary; locale: Locale }) 
   return (
     <header className="appShellHeader">
       <div className="appShellHeaderInner">
-        <a href={HOME_HREF} className="appShellBrand" aria-label="Go to app homepage">
+        <a href={appHrefWithLocale("", locale)} className="appShellBrand" aria-label="Go to app homepage">
           <BrandMark className="navLogoIcon" />
           <div className="appShellBrandCopy">
             <span className="appShellBrandName">GruntWrk</span>
@@ -594,7 +599,7 @@ function AppShellHeader({ dict, locale }: { dict: Dictionary; locale: Locale }) 
             </svg>
             <span className="appShellHeaderNavLabel">{dict.nav.jobs}</span>
           </TrackedCtaLink>
-          <a href={LOGIN_HREF} className="appShellHeaderBtn appShellHeaderBtnSecondary">
+          <a href={appHrefWithLocale("/login", locale)} className="appShellHeaderBtn appShellHeaderBtnSecondary">
             {dict.nav.login}
           </a>
         </nav>
