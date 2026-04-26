@@ -1036,13 +1036,6 @@ export default function HomePage({ dict, locale, nav }: { dict: Dictionary; loca
               <p className="hp-subtitle hp-fees-subtitle">{dict.fees.subtitle}</p>
             </div>
 
-            <div className="hp-fees-pills" aria-label="Key fee differences">
-              {dict.fees.pills.map((pill) => (
-                <span key={pill} className="hp-fees-pill">{pill}</span>
-              ))}
-              <span className="hp-fees-pill hp-fees-pill-strong">{dict.fees.pillStrong}</span>
-            </div>
-
             <div className="hp-fee-table-wrap">
               <table className="hp-fee-table">
                 <thead>
