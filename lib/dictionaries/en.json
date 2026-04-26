@@ -131,7 +131,7 @@
       },
       {
         "fee": "Booking or payment fee",
-        "marketSummary": "A single transaction fee when the booking and payment are completed through the platform.",
+        "marketSummary": "Free for customers. Service providers pay the transaction fee when the job is done.",
         "competitors": ["Fixando", "Taskrabbit", "Checkatrade"],
         "gruntwrk": "10% (service provider only)"
       }

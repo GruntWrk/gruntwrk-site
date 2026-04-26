@@ -131,7 +131,7 @@
       },
       {
         "fee": "Taxa de reserva ou pagamento",
-        "marketSummary": "Uma taxa unica quando a reserva e o pagamento sao concluidos atraves da plataforma.",
+        "marketSummary": "Gratis para clientes. Os prestadores de servicos pagam a taxa de transacao quando o trabalho e concluido.",
         "competitors": ["Fixando", "Taskrabbit", "Checkatrade"],
         "gruntwrk": "10% (apenas prestador de servicos)"
       }
