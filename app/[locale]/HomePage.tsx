@@ -289,15 +289,19 @@ function HeroPreviewCard({ dict }: { dict: Dictionary }) {
   );
 }
 
-const HERO_STEP_LABELS = ["Describe", "Review", "Compare"];
+const HERO_STEPS: { num: string; label: string }[] = [
+  { num: "1", label: "Describe" },
+  { num: "2", label: "Review" },
+  { num: "3", label: "Compare" },
+];
 
 function HeroJourney({ dict }: { dict: Dictionary }) {
   return (
-    <ol className="hp-hero-journey" aria-label={dict.howItWorks.heading}>
-      {dict.howItWorks.steps.map((step, i) => (
+    <ol className="hp-hero-journey" aria-label={dict.howItWorks.ariaLabel}>
+      {HERO_STEPS.map((step) => (
         <li key={`hero-step-${step.num}`} className="hp-hero-journey-step">
           <span className="hp-hero-journey-num">{`0${step.num}`}</span>
-          <span className="hp-hero-journey-title">{HERO_STEP_LABELS[i] ?? step.title}</span>
+          <span className="hp-hero-journey-title">{step.label}</span>
         </li>
       ))}
     </ol>
@@ -962,22 +966,13 @@ export default function HomePage({ dict, locale, nav }: { dict: Dictionary; loca
           </section>
 
           <section className="hp-how" data-reveal>
-            <div className="hp-section-head">
-              <h2 className="hp-h2">{dict.howItWorks.heading}</h2>
-              <p className="hp-subtitle">{dict.howItWorks.subtitle}</p>
-            </div>
-
-            <div className="hp-how-grid">
-              {dict.howItWorks.steps.map((step, index) => (
-                <article key={step.num} className="hp-how-card" style={{ animationDelay: `${index * 80}ms` }}>
-                  <div className="hp-how-num">{step.num}</div>
-                  <div className="hp-how-copy">
-                    <h3 className="hp-how-title">{step.title}</h3>
-                    <p className="hp-how-body">{step.body}</p>
-                  </div>
-                </article>
-              ))}
-            </div>
+            <img
+              className="hp-how-image"
+              src={`/images/how-fees-work-${locale}.png`}
+              alt={dict.howItWorks.imageAlt}
+              loading="lazy"
+              decoding="async"
+            />
           </section>
 
           <section className="hp-cb" data-reveal>

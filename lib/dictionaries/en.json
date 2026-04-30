@@ -167,25 +167,8 @@
     { "slug": "removal-disposal", "title": "Removal", "desc": "Junk & waste disposal", "alt": "Cheap junk removal and waste disposal services" }
   ],
   "howItWorks": {
-    "heading": "How GruntWrk works",
-    "subtitle": "From one request to multiple quotes in three steps",
-    "steps": [
-      {
-        "num": "1",
-        "title": "Describe the job",
-        "body": "Specify what you need, where it is, and your target budget in one guided request."
-      },
-      {
-        "num": "2",
-        "title": "Review recommendations",
-        "body": "See the providers we can contact for you, plus why they were recommended for your request."
-      },
-      {
-        "num": "3",
-        "title": "Compare quotes",
-        "body": "Every quote flows into one job card so you can compare, score, and appoint the best fit in one place."
-      }
-    ]
+    "ariaLabel": "How GruntWrk works",
+    "imageAlt": "How GruntWrk fees work: post your job, receive quotes, choose a provider, pay the provider directly, and after the job is done the provider pays GruntWrk a 10% fee. Customers pay zero in platform fees."
   },
   "workbench": {
     "title": "Everything lands in one quote workbench.",

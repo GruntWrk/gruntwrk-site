@@ -167,25 +167,8 @@
     { "slug": "removal-disposal", "title": "Remocao", "desc": "Entulho e eliminacao de residuos", "alt": "Remocao de entulho e eliminacao de residuos barata" }
   ],
   "howItWorks": {
-    "heading": "Como funciona o GruntWrk",
-    "subtitle": "De um pedido a varios orcamentos em tres passos",
-    "steps": [
-      {
-        "num": "1",
-        "title": "Descreva o trabalho",
-        "body": "Especifique o que precisa, onde e, e o seu orcamento alvo num pedido guiado."
-      },
-      {
-        "num": "2",
-        "title": "Reveja as recomendacoes",
-        "body": "Veja os prestadores que podemos contactar por si e porque foram recomendados para o seu pedido."
-      },
-      {
-        "num": "3",
-        "title": "Compare orcamentos",
-        "body": "Cada orcamento vai para o mesmo cartao de trabalho para comparar, pontuar e escolher o melhor num so lugar."
-      }
-    ]
+    "ariaLabel": "Como funciona o GruntWrk",
+    "imageAlt": "Como funcionam as taxas da GruntWrk: publique o seu pedido, receba orcamentos, escolha um prestador, pague diretamente ao prestador e, depois do trabalho concluido, o prestador paga 10% a GruntWrk. Os clientes pagam 0 EUR em taxas de plataforma."
   },
   "workbench": {
     "title": "Tudo cai na mesma bancada de orcamentos.",
