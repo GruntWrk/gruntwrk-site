@@ -508,7 +508,7 @@ export default function SeoPage({
         ) : null}
       </main>
 
-      <SiteFooter dict={dict} />
+      <SiteFooter dict={dict} locale={locale} />
       <SiteBottomNav dict={dict} locale={locale} pageKind="seo" />
     </div>
   );

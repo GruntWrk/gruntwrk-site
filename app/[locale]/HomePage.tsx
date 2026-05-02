@@ -815,6 +815,8 @@ const SOCIALS = [
   {
     label: "LinkedIn",
     href: "https://www.linkedin.com/company/gruntwrk",
+    external: true,
+    contact: false,
     icon: (
       <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
         <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
@@ -824,6 +826,8 @@ const SOCIALS = [
   {
     label: "TikTok",
     href: "https://www.tiktok.com/@gruntwrk_official",
+    external: true,
+    contact: false,
     icon: (
       <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
         <path d="M16 2c.5 3.2 2.6 5.3 6 5.6V11c-1.9 0-3.6-.6-5-1.6V16c0 4-3.1 6-6.3 6c-3.6 0-6.7-3-6.7-6.7c0-3.8 3.1-6.8 6.9-6.8c.4 0 .8 0 1.1.1v3.8c-.3-.1-.6-.2-1-.2c-1.9 0-3.5 1.5-3.5 3.4c0 1.9 1.5 3.5 3.5 3.5c2.1 0 3.3-1.4 3.3-3.8V2h2.7Z" />
@@ -833,9 +837,22 @@ const SOCIALS = [
   {
     label: "Instagram",
     href: "https://www.instagram.com/grunt_wrk",
+    external: true,
+    contact: false,
     icon: (
       <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
         <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2Zm0 1.8A3.95 3.95 0 0 0 3.8 7.75v8.5A3.95 3.95 0 0 0 7.75 20.2h8.5a3.95 3.95 0 0 0 3.95-3.95v-8.5a3.95 3.95 0 0 0-3.95-3.95h-8.5Zm8.95 1.4a1.15 1.15 0 1 1 0 2.3a1.15 1.15 0 0 1 0-2.3ZM12 7a5 5 0 1 1 0 10a5 5 0 0 1 0-10Zm0 1.8A3.2 3.2 0 1 0 12 15.2A3.2 3.2 0 0 0 12 8.8Z" />
+      </svg>
+    ),
+  },
+  {
+    label: "Email GruntWrk",
+    href: "contact",
+    external: false,
+    contact: true,
+    icon: (
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4.2-8 5.2-8-5.2V6l8 5.2L20 6v2.2Z" />
       </svg>
     ),
   },
@@ -1132,18 +1149,21 @@ export default function HomePage({ dict, locale, nav }: { dict: Dictionary; loca
 
           <div className="footerBottom">
             <div className="footerSocials">
-              {SOCIALS.map((social) => (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  className="footerSocialLink"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={social.label}
-                >
-                  {social.icon}
-                </a>
-              ))}
+              {SOCIALS.map((social) => {
+                const href = social.contact ? `/${locale}/contact` : social.href;
+                return (
+                  <a
+                    key={social.label}
+                    href={href}
+                    className="footerSocialLink"
+                    target={social.external ? "_blank" : undefined}
+                    rel={social.external ? "noopener noreferrer" : undefined}
+                    aria-label={social.label}
+                  >
+                    {social.icon}
+                  </a>
+                );
+              })}
             </div>
 
             <p className="footerCopy">{dict.footer.copy}</p>
