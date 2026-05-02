@@ -3,8 +3,13 @@ import type { Locale } from "../../lib/i18n";
 import { TrackedCtaLink } from "../TrackedCtaLink";
 
 const APP_BASE_URL = "https://app.gruntwrk.com";
-const LOGIN_HREF = `${APP_BASE_URL}/login`;
 const SEARCH_PROVIDERS_HREF = `${APP_BASE_URL}/directory?search=1`;
+
+function appHrefWithLocale(path: string, locale: Locale) {
+  const url = new URL(`${APP_BASE_URL}${path}`);
+  url.searchParams.set("lang", locale);
+  return url.toString();
+}
 
 function buildProviderSignupHref() {
   const params = new URLSearchParams({
@@ -121,7 +126,7 @@ export function SiteHeader({ dict, locale }: { dict: Dictionary; locale: Locale 
   return (
     <header className="appShellHeader">
       <div className="appShellHeaderInner">
-        <a href={APP_BASE_URL} className="appShellBrand" aria-label="Go to app homepage">
+        <a href={appHrefWithLocale("", locale)} className="appShellBrand" aria-label="Go to app homepage">
           <BrandMark className="navLogoIcon" />
           <div className="appShellBrandCopy">
             <span className="appShellBrandName">GruntWrk</span>
@@ -148,7 +153,7 @@ export function SiteHeader({ dict, locale }: { dict: Dictionary; locale: Locale 
             </svg>
             <span className="appShellHeaderNavLabel">{dict.nav.jobs}</span>
           </TrackedCtaLink>
-          <a href={LOGIN_HREF} className="appShellHeaderBtn appShellHeaderBtnSecondary">
+          <a href={appHrefWithLocale("/login", locale)} className="appShellHeaderBtn appShellHeaderBtnSecondary">
             {dict.nav.login}
           </a>
         </nav>
