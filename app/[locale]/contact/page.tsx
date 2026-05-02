@@ -7,18 +7,35 @@ const SUPPORT_EMAIL = "service@gruntwrk.com";
 const COPY = {
   en: {
     back: "Back to homepage",
-    emailLabel: "Support email",
     title: "Contact GruntWrk",
   },
   pt: {
     back: "Voltar ao inicio",
-    emailLabel: "Email de suporte",
     title: "Contactar a GruntWrk",
   },
 } as const;
 
 function resolveLocale(input: string) {
   return (LOCALES.includes(input as Locale) ? input : "en") as Locale;
+}
+
+function MailIcon() {
+  return (
+    <svg
+      aria-hidden="true"
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <rect width="20" height="16" x="2" y="4" rx="2" />
+      <path d="m22 7-8.97 5.7a2 2 0 0 1-2.06 0L2 7" />
+    </svg>
+  );
 }
 
 export function generateStaticParams() {
@@ -66,8 +83,10 @@ export default function ContactPage({ params }: { params: { locale: string } }) 
           <h1 className="contactTitle">{copy.title}</h1>
 
           <div className="contactEmailBox">
-            <span>{copy.emailLabel}</span>
-            <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>
+            <a className="contactEmailLink" href={`mailto:${SUPPORT_EMAIL}`}>
+              <MailIcon />
+              {SUPPORT_EMAIL}
+            </a>
           </div>
 
           <a className="contactBackLink" href={`/${locale}`}>

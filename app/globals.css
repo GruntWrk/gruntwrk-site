@@ -354,20 +354,24 @@ h1, h2, h3,
   background: rgba(15,17,23,0.04);
 }
 
-.contactEmailBox span {
-  color: var(--muted-2);
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
 .contactEmailBox a {
   width: fit-content;
   color: var(--text);
   font-size: 1.1rem;
   font-weight: 900;
   text-decoration: none;
+}
+
+.contactEmailLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.contactEmailLink svg {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 auto;
 }
 
 .contactBackLink {
