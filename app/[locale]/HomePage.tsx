@@ -5,6 +5,7 @@ import { TrackedCtaLink } from "../TrackedCtaLink";
 import type { Dictionary, Locale } from "../../lib/i18n";
 import { LOCALES, SITE_URL } from "../../lib/i18n";
 import type { SeoNavItem } from "../../lib/seoPages";
+import AboutHeaderButton from "./AboutHeaderButton";
 import { SiteBottomNav } from "./SiteChrome";
 
 const APP_BASE_URL = "https://app.gruntwrk.com";
@@ -603,6 +604,7 @@ function AppShellHeader({ dict, locale }: { dict: Dictionary; locale: Locale }) 
             </svg>
             <span className="appShellHeaderNavLabel">{dict.nav.jobs}</span>
           </TrackedCtaLink>
+          <AboutHeaderButton locale={locale} />
           <a href={appHrefWithLocale("/login", locale)} className="appShellHeaderBtn appShellHeaderBtnSecondary">
             {dict.nav.login}
           </a>

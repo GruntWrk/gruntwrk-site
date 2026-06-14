@@ -1,5 +1,6 @@
 import type { Dictionary } from "../../lib/i18n";
 import type { Locale } from "../../lib/i18n";
+import AboutHeaderButton from "./AboutHeaderButton";
 import { TrackedCtaLink } from "../TrackedCtaLink";
 
 const APP_BASE_URL = "https://app.gruntwrk.com";
@@ -153,6 +154,7 @@ export function SiteHeader({ dict, locale }: { dict: Dictionary; locale: Locale 
             </svg>
             <span className="appShellHeaderNavLabel">{dict.nav.jobs}</span>
           </TrackedCtaLink>
+          <AboutHeaderButton locale={locale} />
           <a href={appHrefWithLocale("/login", locale)} className="appShellHeaderBtn appShellHeaderBtnSecondary">
             {dict.nav.login}
           </a>
