@@ -63,6 +63,7 @@ Use `/handoff` at the start of a session and `/handoff-save` at the end.
 - Track concrete next actions in Section 11
 
 ## 9. Recent Git History
+- `codex/site-image-compression` (9 September 2026): reuse the app's optimized category images and compress the site's fee diagrams and marquee background.
 - e4744d3 App: add GA4 tracking for full funnel visibility and sign_up conversion event
 - 13ac562 Site: add provider landing pages and fix profile copy
 - 5a41e8e Site: infer Google Ads tag destination from send_to
@@ -75,6 +76,9 @@ Use `/handoff` at the start of a session and `/handoff-save` at the end.
 - 8b51a22 Site: remove "customers pay less" perk and payment steps reference
 
 ## 10. What Was Done in the Last Session
+- 9 September 2026: changed only homepage image URLs and added three WebP assets. Category cards reuse the deployed app's `*-800.webp` files. Fee diagrams remain 1672 x 941; the background remains 1536 x 1024. Layout, CSS, cropping and displayed dimensions are unchanged. Combined homepage image assets fall from 26.7 MB to 0.83 MB (EN) / 0.84 MB (PT). Build, image decoding, shared-asset HTTP checks and source comparison passed. Original PNGs remain available. Existing local tracking/middleware edits are excluded from this branch.
+
+Previous session context:
 - Date: 2026-04-02
 - Summary: GA4 conversion tracking diagnosis and full-funnel fix. Discovered app had zero GA4 integration. Added GA4 to the app so actual sign-up conversions are tracked end-to-end.
 
@@ -106,6 +110,8 @@ Use `/handoff` at the start of a session and `/handoff-save` at the end.
 - Cross-domain linker configured both in gtag config and in GA4 Admin settings
 
 ## 11. Pending / Next Work
+
+- Image compression: implementation validated on `codex/site-image-compression`; GitHub review and production release are pending.
 
 **GA4 / Conversion tracking (action when first sign_up fires):**
 - [ ] Mark sign_up as a Key Event in GA4 (Admin > Events > star it when it appears in Recent Events)

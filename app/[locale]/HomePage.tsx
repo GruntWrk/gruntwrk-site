@@ -14,19 +14,19 @@ const LOGIN_HREF = appHref("/login");
 const REQUEST_SERVICE_HREF = appHref("/jobs/new");
 const SEARCH_PROVIDERS_HREF = appHref("/directory?search=1");
 const PROVIDER_HREF = loginHref("/provider/profile");
-const MARQUEE_BG = `${APP_BASE_URL}/Marquee%20Background.png`;
+const MARQUEE_BG = "/images/marquee-background.webp";
 
 const CATEGORY_IMAGES: Record<string, string> = {
-  cleaning: `${APP_BASE_URL}/images/categories/cleaning.png`,
-  "furniture-assembly": `${APP_BASE_URL}/images/categories/furniture-assembly.png`,
-  "mounting-installation": `${APP_BASE_URL}/images/categories/mounting-installation.png`,
-  "moving-lifting": `${APP_BASE_URL}/images/categories/moving-lifting.png`,
-  "home-repairs": `${APP_BASE_URL}/images/categories/home-repairs.png`,
-  outdoor: `${APP_BASE_URL}/images/categories/outdoor.png`,
-  electrical: `${APP_BASE_URL}/images/categories/electrical.png`,
-  plumbing: `${APP_BASE_URL}/images/categories/plumbing.png`,
-  "painting-decor": `${APP_BASE_URL}/images/categories/painting-decor.png`,
-  "removal-disposal": `${APP_BASE_URL}/images/categories/removal-disposal.png`,
+  cleaning: `${APP_BASE_URL}/images/categories/cleaning-800.webp`,
+  "furniture-assembly": `${APP_BASE_URL}/images/categories/furniture-assembly-800.webp`,
+  "mounting-installation": `${APP_BASE_URL}/images/categories/mounting-installation-800.webp`,
+  "moving-lifting": `${APP_BASE_URL}/images/categories/moving-lifting-800.webp`,
+  "home-repairs": `${APP_BASE_URL}/images/categories/home-repairs-800.webp`,
+  outdoor: `${APP_BASE_URL}/images/categories/outdoor-800.webp`,
+  electrical: `${APP_BASE_URL}/images/categories/electrical-800.webp`,
+  plumbing: `${APP_BASE_URL}/images/categories/plumbing-800.webp`,
+  "painting-decor": `${APP_BASE_URL}/images/categories/painting-decor-800.webp`,
+  "removal-disposal": `${APP_BASE_URL}/images/categories/removal-disposal-800.webp`,
 };
 
 const AUTO_ADVANCE_MS = 3000;
@@ -987,7 +987,7 @@ export default function HomePage({ dict, locale, nav }: { dict: Dictionary; loca
           <section className="hp-how" data-reveal>
             <img
               className="hp-how-image"
-              src={`/images/how-fees-work-${locale}.png`}
+              src={`/images/how-fees-work-${locale}.webp`}
               alt={dict.howItWorks.imageAlt}
               loading="lazy"
               decoding="async"
