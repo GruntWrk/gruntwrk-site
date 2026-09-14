@@ -61,3 +61,12 @@ for (const locale of ['en', 'pt', 'de']) {
   assert.equal(explicit.searchParams.get('countryCode'), 'PT');
 }
 console.log('PASS service country persists independently of all three interface languages');
+
+for (const country of ["FR", "AU", "US", "GB", "ZZ"]) {
+  const stale = new URL(destinationModule.appDestination("https://app.gruntwrk.com/jobs/new", "de", `gw_service_country=${country}`));
+  assert.equal(stale.searchParams.has("countryCode"), false);
+  const explicit = new URL(destinationModule.appDestination(`https://app.gruntwrk.com/jobs/new?countryCode=${country}`, "en", "gw_service_country=DE"));
+  assert.equal(explicit.searchParams.get("countryCode"), "DE");
+  assert.equal(explicit.searchParams.get("lang"), "en");
+}
+console.log("PASS unsupported service countries are not forwarded from cookies or links");

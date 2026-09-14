@@ -7,7 +7,13 @@ export function appDestination(href: string, locale: Locale, cookie = "") {
     if (destination.hostname !== "app.gruntwrk.com") return href;
     destination.searchParams.set("lang", locale);
     const country = cookie.split(";").map(part => part.trim()).find(part => part.startsWith("gw_service_country="))?.split("=")[1];
-    if (/^[A-Z]{2}$/.test(country || "") && !destination.searchParams.has("countryCode")) destination.searchParams.set("countryCode", country!);
+    const supportedCountries = ["PT", "DE"];
+    const explicitCountry = (destination.searchParams.get("countryCode") || "").toUpperCase();
+    if (supportedCountries.includes(explicitCountry)) destination.searchParams.set("countryCode", explicitCountry);
+    else {
+      destination.searchParams.delete("countryCode");
+      if (supportedCountries.includes(country || "")) destination.searchParams.set("countryCode", country!);
+    }
     return destination.toString();
   } catch { return href; }
 }
