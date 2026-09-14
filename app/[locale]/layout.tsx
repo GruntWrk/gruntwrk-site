@@ -73,6 +73,7 @@ export default function LocaleLayout({
   return (
     <html lang={locale} data-theme="light" className={outfit.variable}>
       <head>
+        <link rel="preconnect" href="https://app.gruntwrk.com" />
         <meta name="application-name" content="GruntWrk" />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-capable" content="yes" />

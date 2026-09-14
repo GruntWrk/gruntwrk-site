@@ -1,6 +1,6 @@
 "use client";
 
-import type { AnchorHTMLAttributes, MouseEvent } from "react";
+import { useEffect, useState, type AnchorHTMLAttributes, type MouseEvent } from "react";
 import type { Locale } from "../lib/i18n";
 import {
   GOOGLE_CTA_EVENTS,
@@ -17,8 +17,11 @@ declare global {
   }
 }
 
-const NAVIGATION_FALLBACK_MS = 250;
-const ADS_CALLBACK_TIMEOUT_MS = 2000;
+const OPENING_LABELS: Record<Locale, string> = {
+  en: "Opening the app…",
+  pt: "A abrir a aplicação…",
+  de: "Die App wird geöffnet…",
+};
 
 type TrackedCtaLinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
   ctaLocation: string;
@@ -34,7 +37,7 @@ function inferEventName(href: string): GoogleCtaEventName | null {
   return null;
 }
 
-function shouldDelayNavigation(
+function isSameTabNavigation(
   event: MouseEvent<HTMLAnchorElement>,
   target?: string
 ) {
@@ -46,22 +49,11 @@ function shouldDelayNavigation(
 
 function dispatchTrackedEvent(
   eventName: GoogleCtaEventName,
-  params: Record<string, string>,
-  onComplete?: () => void
+  params: Record<string, string>
 ) {
   if (typeof window === "undefined" || typeof window.gtag !== "function") {
-    onComplete?.();
     return;
   }
-
-  const finish = (() => {
-    let done = false;
-    return () => {
-      if (done) return;
-      done = true;
-      onComplete?.();
-    };
-  })();
 
   window.gtag("event", eventName, params);
 
@@ -72,19 +64,12 @@ function dispatchTrackedEvent(
   }
 
   const adsSendTo = getGoogleAdsSendTo(eventName);
-  if (!adsSendTo) {
-    if (onComplete) window.setTimeout(finish, NAVIGATION_FALLBACK_MS);
-    return;
-  }
+  if (!adsSendTo) return;
 
   window.gtag("event", "conversion", {
     send_to: adsSendTo,
     ...params,
-    event_callback: finish,
-    event_timeout: ADS_CALLBACK_TIMEOUT_MS,
   });
-
-  if (onComplete) window.setTimeout(finish, ADS_CALLBACK_TIMEOUT_MS);
 }
 
 export function TrackedCtaLink({
@@ -96,6 +81,18 @@ export function TrackedCtaLink({
   target,
   ...props
 }: TrackedCtaLinkProps) {
+  const [opening, setOpening] = useState(false);
+  useEffect(() => {
+    if (!opening) return;
+    const reset = () => setOpening(false);
+    // Restore the link after Back (including bfcache) or a cancelled navigation.
+    window.addEventListener("pageshow", reset);
+    const timer = window.setTimeout(reset, 10000);
+    return () => {
+      window.removeEventListener("pageshow", reset);
+      window.clearTimeout(timer);
+    };
+  }, [opening]);
   // Preserve the selected language for ordinary, modified and keyboard clicks.
   try {
     const destination = new URL(href);
@@ -110,7 +107,8 @@ export function TrackedCtaLink({
 
   function handleClick(event: MouseEvent<HTMLAnchorElement>) {
     onClick?.(event);
-    if (!eventName) return;
+    if (event.defaultPrevented || !eventName) return;
+    if (isSameTabNavigation(event, target) && props.download == null) setOpening(true);
 
     const params = {
       cta_location: ctaLocation,
@@ -125,16 +123,23 @@ export function TrackedCtaLink({
       page_path: window.location.pathname,
     };
 
-    if (!shouldDelayNavigation(event, target)) {
+    try {
+      // Tracking must never hold up the browser's normal link navigation.
       dispatchTrackedEvent(eventName, params);
-      return;
+    } catch {
+      // A blocked or failed analytics script must not break the link.
     }
-
-    event.preventDefault();
-    dispatchTrackedEvent(eventName, params, () => {
-      window.location.assign(href);
-    });
   }
 
-  return <a {...props} href={href} onClick={handleClick} target={target} />;
+  return (
+    <>
+      <a {...props} href={href} onClick={handleClick} target={target} aria-busy={opening || undefined} />
+      {opening && (
+        <div className="app-opening-status" role="status" aria-live="polite">
+          <span className="app-opening-spinner" aria-hidden="true" />
+          {OPENING_LABELS[locale]}
+        </div>
+      )}
+    </>
+  );
 }

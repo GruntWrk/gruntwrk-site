@@ -5,7 +5,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "test:localization": "node scripts/test-localization.cjs"
+    "test:localization": "node scripts/test-localization.cjs",
+    "test:cta-navigation": "node scripts/test-cta-navigation.cjs"
   },
   "dependencies": {
     "next": "14.2.35",
