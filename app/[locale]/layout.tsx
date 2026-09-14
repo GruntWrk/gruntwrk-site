@@ -48,7 +48,7 @@ export async function generateMetadata({
       description: dict.meta.description,
       url: `${SITE_URL}/${locale}`,
       siteName: "GruntWrk",
-      locale: locale === "pt" ? "pt_PT" : "en_US",
+      locale: locale === "de" ? "de_DE" : (locale === "pt" ? "pt_PT" : "en_US"),
       type: "website",
     },
     twitter: {

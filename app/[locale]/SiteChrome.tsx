@@ -1,4 +1,5 @@
 import type { Dictionary } from "../../lib/i18n";
+import { siteLabels } from "../../lib/siteLabels";
 import type { Locale } from "../../lib/i18n";
 import AboutHeaderButton from "./AboutHeaderButton";
 import { TrackedCtaLink } from "../TrackedCtaLink";
@@ -16,7 +17,6 @@ function buildProviderSignupHref() {
   const params = new URLSearchParams({
     intent: "register",
     section: "provider",
-    country: "PT",
     next: "/provider/profile",
   });
   return `${APP_BASE_URL}/login?${params.toString()}`;
@@ -127,7 +127,7 @@ export function SiteHeader({ dict, locale }: { dict: Dictionary; locale: Locale 
   return (
     <header className="appShellHeader">
       <div className="appShellHeaderInner">
-        <a href={appHrefWithLocale("", locale)} className="appShellBrand" aria-label="Go to app homepage">
+        <a href={appHrefWithLocale("", locale)} className="appShellBrand" aria-label={siteLabels(locale).appHome}>
           <BrandMark className="navLogoIcon" />
           <div className="appShellBrandCopy">
             <span className="appShellBrandName">GruntWrk</span>
@@ -135,7 +135,7 @@ export function SiteHeader({ dict, locale }: { dict: Dictionary; locale: Locale 
           </div>
         </a>
 
-        <nav className="appShellHeaderNav" aria-label="Primary navigation">
+        <nav className="appShellHeaderNav" aria-label={siteLabels(locale).primaryNav}>
           <TrackedCtaLink href={SEARCH_PROVIDERS_HREF} className="appShellHeaderNavBtn" aria-label={dict.nav.providers} ctaLocation="site_header_search_providers" locale={locale} pageKind="seo">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               <circle cx="11" cy="11" r="7" />
@@ -193,7 +193,7 @@ export function SiteFooter({ dict, locale }: { dict: Dictionary; locale: Locale 
                   className="footerSocialLink"
                   target={social.external ? "_blank" : undefined}
                   rel={social.external ? "noopener noreferrer" : undefined}
-                  aria-label={social.label}
+                  aria-label={social.label === "Email GruntWrk" ? siteLabels(locale).contact : social.label}
                 >
                   {social.icon}
                 </a>

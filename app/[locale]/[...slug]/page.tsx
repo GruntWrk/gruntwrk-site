@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { siteLabels } from "../../../lib/siteLabels";
 import { notFound } from "next/navigation";
 import { getDictionary, LOCALES, SITE_URL, type Locale } from "../../../lib/i18n";
 import {
@@ -46,7 +47,7 @@ export function generateMetadata({
       description: page.description,
       url: `${SITE_URL}${page.path}`,
       siteName: "GruntWrk",
-      locale: locale === "pt" ? "pt_PT" : "en_US",
+      locale: locale === "de" ? "de_DE" : (locale === "pt" ? "pt_PT" : "en_US"),
       type: "website",
     },
     twitter: {
@@ -92,40 +93,20 @@ function StarIcon({ filled }: { filled: boolean }) {
 function SeoSubNav({
   locale,
   page,
-  cities,
   services,
 }: {
   locale: Locale;
   page: ResolvedSeoPage;
-  cities: SeoNavItem[];
   services: SeoNavItem[];
 }) {
-  const isCityActive = cities.some((c) => c.active);
   const isServiceActive = services.some((s) => s.active);
-  const citiesLabel = locale === "pt" ? "Cidades" : "Cities";
-  const servicesLabel = locale === "pt" ? "Servicos" : "Services";
+  const servicesLabel = locale === "de" ? "Dienstleistungen" : (locale === "pt" ? "Servicos" : "Services");
 
   return (
-    <nav className="seoSubNav" aria-label="SEO navigation">
+    <nav className="seoSubNav" aria-label={siteLabels(locale).siteNav}>
       <div className="seoSubNavInner">
         <div className="seoSubNavLinks">
-          <details className="seoSubNavGroup">
-            <summary className={`seoSubNavTrigger ${isCityActive ? "active" : ""}`}>
-              {citiesLabel}
-              <ChevronDown />
-            </summary>
-            <div className="seoSubNavDropdown">
-              {cities.map((item) => (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  className={`seoSubNavDropdownLink ${item.active ? "active" : ""}`}
-                >
-                  {item.label}
-                </a>
-              ))}
-            </div>
-          </details>
+
           <details className="seoSubNavGroup">
             <summary className={`seoSubNavTrigger ${isServiceActive ? "active" : ""}`}>
               {servicesLabel}
@@ -190,7 +171,7 @@ function BenefitCards({
   cards: NonNullable<ResolvedSeoPage["benefitCards"]>;
   locale: Locale;
 }) {
-  const heading = locale === "pt" ? "Porque as pessoas mudam para o GruntWrk" : "Why people switch to GruntWrk";
+  const heading = locale === "de" ? "Warum Nutzer zu GruntWrk wechseln" : (locale === "pt" ? "Porque as pessoas mudam para o GruntWrk" : "Why people switch to GruntWrk");
   return (
     <section className="hp-cb" data-reveal>
       <h2 className="seoCardsTitle">{heading}</h2>
@@ -213,7 +194,7 @@ function HowItWorks({
   steps: NonNullable<ResolvedSeoPage["howSteps"]>;
   locale: Locale;
 }) {
-  const heading = locale === "pt" ? "Como funciona" : "How it works";
+  const heading = locale === "de" ? "So funktioniert es" : (locale === "pt" ? "Como funciona" : "How it works");
   return (
     <section className="hp-how" data-reveal>
       <h2 className="seoCardsTitle">{heading}</h2>
@@ -282,7 +263,7 @@ function ReviewsSection({
   reviews: NonNullable<ResolvedSeoPage["reviews"]>;
   locale: Locale;
 }) {
-  const heading = locale === "pt" ? "O que dizem os utilizadores" : "What users say";
+  const heading = locale === "de" ? "Das sagen unsere Nutzer" : (locale === "pt" ? "O que dizem os utilizadores" : "What users say");
   return (
     <section data-reveal>
       <h2 className="seoCardsTitle" style={{ marginBottom: 18 }}>
@@ -331,19 +312,18 @@ export default function SeoPage({
   const faqSchema = page.faqs?.length ? buildFaqSchema(page.faqs) : null;
   const nav = getSeoNavItems(locale, page.path);
 
-  const isCityPage = page.kind === "city";
 
   return (
     <div className="siteFrame seoPageFrame">
       <SiteHeader dict={dict} locale={locale} />
       <SeoRevealProvider />
-      <SeoSubNav locale={locale} page={page} cities={nav.cities} services={nav.services} />
+      <SeoSubNav locale={locale} page={page} services={nav.services} />
 
       <main className="seoPageMain">
         {/* Hero */}
         <section className="seoHero">
           <div className="sectionInner">
-            <nav className="seoBreadcrumbs" aria-label="Breadcrumb">
+            <nav className="seoBreadcrumbs" aria-label={siteLabels(locale).breadcrumb}>
               {page.breadcrumbs.map((item, index) => (
                 <span key={item.href} className="seoBreadcrumbItem">
                   {index > 0 && <span className="seoBreadcrumbSep">/</span>}
@@ -388,7 +368,7 @@ export default function SeoPage({
         </section>
 
         {/* City page: benefit cards + how-it-works */}
-        {isCityPage && page.benefitCards?.length ? (
+        {page.benefitCards?.length ? (
           <section className="seoSection">
             <div className="sectionInner">
               <BenefitCards cards={page.benefitCards} locale={locale} />
@@ -396,7 +376,7 @@ export default function SeoPage({
           </section>
         ) : null}
 
-        {isCityPage && page.howSteps?.length ? (
+        {page.howSteps?.length ? (
           <section className="seoSection">
             <div className="sectionInner">
               <HowItWorks steps={page.howSteps} locale={locale} />
@@ -404,8 +384,8 @@ export default function SeoPage({
           </section>
         ) : null}
 
-        {/* Non-city pages: traditional sections */}
-        {!isCityPage && page.sections.length > 0 ? (
+        {/* Page content sections */}
+        {page.sections.length > 0 ? (
           <section className="seoSections">
             <div className="sectionInner seoSectionGrid">
               {page.sections.map((section) => (

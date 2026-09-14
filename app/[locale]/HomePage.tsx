@@ -1,11 +1,13 @@
 "use client";
 
 import { type CSSProperties, type KeyboardEvent, useCallback, useEffect, useRef, useState } from "react";
+import { siteLabels } from "../../lib/siteLabels";
 import { TrackedCtaLink } from "../TrackedCtaLink";
 import type { Dictionary, Locale } from "../../lib/i18n";
 import { LOCALES, SITE_URL } from "../../lib/i18n";
 import type { SeoNavItem } from "../../lib/seoPages";
 import AboutHeaderButton from "./AboutHeaderButton";
+import GermanFeesExplainer from "./GermanFeesExplainer";
 import { SiteBottomNav } from "./SiteChrome";
 
 const APP_BASE_URL = "https://app.gruntwrk.com";
@@ -36,6 +38,7 @@ const USER_IDLE_MS = 8000;
 const LOCALES_TOGGLE: { code: Locale; label: string }[] = [
   { code: "en", label: "EN" },
   { code: "pt", label: "PT" },
+  { code: "de", label: "DE" },
 ];
 
 function loginHref(next: string) {
@@ -128,9 +131,9 @@ function StarIcon({ filled }: { filled: boolean }) {
   );
 }
 
-function Stars({ count }: { count: number }) {
+function Stars({ count, locale }: { count: number; locale: Locale }) {
   return (
-    <div className="stars" aria-label={`${count} out of 5 stars`}>
+    <div className="stars" aria-label={`${count} ${siteLabels(locale).stars}`}>
       {[1, 2, 3, 4, 5].map((n) => (
         <StarIcon key={n} filled={n <= count} />
       ))}
@@ -194,9 +197,9 @@ function WorkbenchIcon({ id }: { id: string }) {
   );
 }
 
-function BlurredCompetitors({ names }: { names: string[] }) {
+function BlurredCompetitors({ names, locale }: { names: string[]; locale: Locale }) {
   return (
-    <div className="hp-fee-market-list" aria-label="Example competitor marketplaces">
+    <div className="hp-fee-market-list" aria-label={siteLabels(locale).competitors}>
       {names.map((name) => (
         <span key={name} className="hp-fee-market-badge hp-fee-market-badge-blur">
           {name}
@@ -226,7 +229,7 @@ function useReveal() {
   }, []);
 }
 
-function HeroPreviewCard({ dict }: { dict: Dictionary }) {
+function HeroPreviewCard({ dict, locale }: { dict: Dictionary; locale: Locale }) {
   const preview = (dict as any).heroPreview as
     | {
         stage?: string;
@@ -260,7 +263,7 @@ function HeroPreviewCard({ dict }: { dict: Dictionary }) {
             <div className="hp-preview-avatar">A</div>
             <div className="hp-preview-quote-info">
               <span className="hp-preview-name">Ana M.</span>
-              <Stars count={5} />
+              <Stars locale={locale} count={5} />
             </div>
             <span className="hp-preview-price">EUR 45</span>
           </div>
@@ -268,7 +271,7 @@ function HeroPreviewCard({ dict }: { dict: Dictionary }) {
             <div className="hp-preview-avatar">R</div>
             <div className="hp-preview-quote-info">
               <span className="hp-preview-name">Rui S.</span>
-              <Stars count={5} />
+              <Stars locale={locale} count={5} />
             </div>
             <span className="hp-preview-price">EUR 52</span>
           </div>
@@ -276,7 +279,7 @@ function HeroPreviewCard({ dict }: { dict: Dictionary }) {
             <div className="hp-preview-avatar">J</div>
             <div className="hp-preview-quote-info">
               <span className="hp-preview-name">James L.</span>
-              <Stars count={4} />
+              <Stars locale={locale} count={4} />
             </div>
             <span className="hp-preview-price">EUR 48</span>
           </div>
@@ -296,13 +299,13 @@ const HERO_STEPS: { num: string; label: string }[] = [
   { num: "3", label: "Compare" },
 ];
 
-function HeroJourney({ dict }: { dict: Dictionary }) {
+function HeroJourney({ dict, locale }: { dict: Dictionary; locale: Locale }) {
   return (
     <ol className="hp-hero-journey" aria-label={dict.howItWorks.ariaLabel}>
       {HERO_STEPS.map((step) => (
         <li key={`hero-step-${step.num}`} className="hp-hero-journey-step">
           <span className="hp-hero-journey-num">{`0${step.num}`}</span>
-          <span className="hp-hero-journey-title">{step.label}</span>
+          <span className="hp-hero-journey-title">{siteLabels(locale).steps[Number(step.num) - 1]}</span>
         </li>
       ))}
     </ol>
@@ -317,8 +320,8 @@ const PROVIDER_COUNT_API_BASE =
 const PROVIDER_COUNT_ENDPOINT = `${PROVIDER_COUNT_API_BASE}/api/directory/count`;
 const PROVIDER_COUNT_REFRESH_MS = 60_000;
 
-function formatCount(value: number) {
-  return new Intl.NumberFormat("en-US").format(Math.max(0, Math.floor(value)));
+function formatCount(value: number, locale: Locale) {
+  return new Intl.NumberFormat({ en: "en-GB", pt: "pt-PT", de: "de-DE" }[locale]).format(Math.max(0, Math.floor(value)));
 }
 
 // Shared fetch + auto-refresh for the provider-network counts. Both the
@@ -365,9 +368,11 @@ function useProviderNetworkCounts() {
 }
 
 function StatsStrip({
+  locale,
   liveLocations,
   liveProviders,
 }: {
+  locale: Locale;
   liveLocations: number | null;
   liveProviders: number | null;
 }) {
@@ -380,10 +385,10 @@ function StatsStrip({
       <div className="hp-stats-strip-inner">
         <div className="hp-stats-stat">
           <span className="hp-stats-value">
-            {isReady ? formatCount(animatedLocations) : "\u2014"}
+            {isReady ? formatCount(animatedLocations, locale) : "\u2014"}
           </span>
           <span className="hp-stats-label">
-            Locations
+            {siteLabels(locale).locations}
             {isReady && <span className="hp-stats-live-dot" aria-hidden="true" />}
           </span>
         </div>
@@ -392,10 +397,10 @@ function StatsStrip({
 
         <div className="hp-stats-stat">
           <span className="hp-stats-value">
-            {isReady ? formatCount(animatedProviders) : "\u2014"}
+            {isReady ? formatCount(animatedProviders, locale) : "\u2014"}
           </span>
           <span className="hp-stats-label">
-            Service providers
+            {siteLabels(locale).providers}
             {isReady && <span className="hp-stats-live-dot" aria-hidden="true" />}
           </span>
         </div>
@@ -404,7 +409,7 @@ function StatsStrip({
 
         <div className="hp-stats-stat">
           <span className="hp-stats-value">12</span>
-          <span className="hp-stats-label">Categories</span>
+          <span className="hp-stats-label">{siteLabels(locale).categories}</span>
         </div>
       </div>
     </div>
@@ -484,8 +489,8 @@ function ProviderCounter({
   if (!copy) return null;
 
   const isReady = providers !== null && !hasError;
-  const displayProviders = isReady ? formatCount(animatedProviders) : "—";
-  const displayTowns = isReady ? formatCount(animatedTowns) : "—";
+  const displayProviders = isReady ? formatCount(animatedProviders, locale) : "—";
+  const displayTowns = isReady ? formatCount(animatedTowns, locale) : "—";
 
   return (
     <section className="hp-provider-counter" data-reveal aria-live="polite">
@@ -529,24 +534,24 @@ function ProviderCounter({
   );
 }
 
-function TrustStrip({ dict }: { dict: Dictionary }) {
+function TrustStrip({ dict, locale }: { dict: Dictionary; locale: Locale }) {
   const firstReview = dict.reviews.items[0] as any;
   const lastReview = dict.reviews.items[dict.reviews.items.length - 1] as any;
   return (
     <div className="hp-trust-strip">
       <div className="hp-trust-rating">
         <span className="hp-trust-score">4.8</span>
-        <Stars count={5} />
+        <Stars locale={locale} count={5} />
         <span className="hp-trust-label">{dict.reviews.ratingLabel}</span>
       </div>
       <div className="hp-trust-divider" />
       <div className="hp-trust-quotes">
         <div className="hp-trust-quote">
-          <Stars count={firstReview.stars} />
+          <Stars locale={locale} count={firstReview.stars} />
           <span className="hp-trust-quote-text">{firstReview.text}</span>
         </div>
         <div className="hp-trust-quote">
-          <Stars count={lastReview.stars} />
+          <Stars locale={locale} count={lastReview.stars} />
           <span className="hp-trust-quote-text">{lastReview.text}</span>
         </div>
       </div>
@@ -577,7 +582,7 @@ function AppShellHeader({ dict, locale }: { dict: Dictionary; locale: Locale }) 
   return (
     <header className="appShellHeader">
       <div className="appShellHeaderInner">
-        <a href={appHrefWithLocale("", locale)} className="appShellBrand" aria-label="Go to app homepage">
+        <a href={appHrefWithLocale("", locale)} className="appShellBrand" aria-label={siteLabels(locale).appHome}>
           <BrandMark className="navLogoIcon" />
           <div className="appShellBrandCopy">
             <span className="appShellBrandName">GruntWrk</span>
@@ -585,7 +590,7 @@ function AppShellHeader({ dict, locale }: { dict: Dictionary; locale: Locale }) 
           </div>
         </a>
 
-        <nav className="appShellHeaderNav" aria-label="Primary navigation">
+        <nav className="appShellHeaderNav" aria-label={siteLabels(locale).primaryNav}>
           <TrackedCtaLink href={SEARCH_PROVIDERS_HREF} className="appShellHeaderNavBtn" aria-label={dict.nav.providers} ctaLocation="home_header_search_providers" locale={locale} pageKind="home">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               <circle cx="11" cy="11" r="7" />
@@ -635,7 +640,7 @@ function StoreBadges({ dict }: { dict: Dictionary }) {
   );
 }
 
-function HomeTrustMarquee({ dict, backgroundImage }: { dict: Dictionary; backgroundImage: string }) {
+function HomeTrustMarquee({ dict, backgroundImage, locale }: { dict: Dictionary; backgroundImage: string; locale: Locale }) {
   const points = dict.workbench.points;
   const viewportRef = useRef<HTMLDivElement | null>(null);
   const slideRefs = useRef<Array<HTMLDivElement | null>>([]);
@@ -790,13 +795,13 @@ function HomeTrustMarquee({ dict, backgroundImage }: { dict: Dictionary; backgro
           </div>
 
           <div className="hp-workbench-controls">
-            <div className="hp-workbench-dots" role="tablist" aria-label="Select carousel slide">
+            <div className="hp-workbench-dots" role="tablist" aria-label={siteLabels(locale).carousel}>
               {Array.from({ length: slideCount }).map((_, index) => (
                 <button
                   key={`dot-${index}`}
                   type="button"
                   className={`hp-workbench-dot ${index === activeIndex ? "is-active" : ""}`}
-                  aria-label={index === slideCount - 1 ? dict.workbench.allLabel : `Show point ${index + 1}`}
+                  aria-label={index === slideCount - 1 ? dict.workbench.allLabel : `${siteLabels(locale).showPoint} ${index + 1}`}
                   aria-selected={index === activeIndex}
                   role="tab"
                   onClick={() => {
@@ -860,7 +865,7 @@ const SOCIALS = [
   },
 ];
 
-export default function HomePage({ dict, locale, nav }: { dict: Dictionary; locale: Locale; nav: { cities: SeoNavItem[]; services: SeoNavItem[] } }) {
+export default function HomePage({ dict, locale, nav }: { dict: Dictionary; locale: Locale; nav: { services: SeoNavItem[] } }) {
   const categories = dict.categories;
   const reviews = dict.reviews.items;
   const feeRows = dict.fees.rows;
@@ -869,27 +874,16 @@ export default function HomePage({ dict, locale, nav }: { dict: Dictionary; loca
 
   useReveal();
 
-  const citiesLabel = locale === "pt" ? "Cidades" : "Cities";
-  const servicesLabel = locale === "pt" ? "Servicos" : "Services";
+  const servicesLabel = locale === "de" ? "Dienstleistungen" : (locale === "pt" ? "Servicos" : "Services");
 
   return (
     <div className="siteFrame">
       <AppShellHeader dict={dict} locale={locale} />
 
-      <nav className="seoSubNav" aria-label="Site navigation">
+      <nav className="seoSubNav" aria-label={siteLabels(locale).siteNav}>
         <div className="seoSubNavInner">
           <div className="seoSubNavLinks">
-            <details className="seoSubNavGroup">
-              <summary className="seoSubNavTrigger">
-                {citiesLabel}
-                <svg className="seoSubNavChevron" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 4.5L6 7.5L9 4.5" /></svg>
-              </summary>
-              <div className="seoSubNavDropdown">
-                {nav.cities.map((item) => (
-                  <a key={item.href} href={item.href} className="seoSubNavDropdownLink">{item.label}</a>
-                ))}
-              </div>
-            </details>
+
             <details className="seoSubNavGroup">
               <summary className="seoSubNavTrigger">
                 {servicesLabel}
@@ -924,7 +918,7 @@ export default function HomePage({ dict, locale, nav }: { dict: Dictionary; loca
               <div className="hp-hero-content">
                 <h1 className="hp-hero-title">{dict.hero.title}</h1>
                 <p className="sr-only">{dict.meta.seoHeading}</p>
-                <HeroJourney dict={dict} />
+                <HeroJourney dict={dict} locale={locale} />
                 <div className="hp-hero-actions hp-hero-actions-row">
                   <TrackedCtaLink
                     href={appHref("/jobs/new")}
@@ -942,6 +936,7 @@ export default function HomePage({ dict, locale, nav }: { dict: Dictionary; loca
           </section>
 
           <StatsStrip
+            locale={locale}
             liveLocations={providerNetworkCounts.towns}
             liveProviders={providerNetworkCounts.providers}
           />
@@ -985,13 +980,13 @@ export default function HomePage({ dict, locale, nav }: { dict: Dictionary; loca
           </section>
 
           <section className="hp-how" data-reveal>
-            <img
+            {locale === "de" ? <GermanFeesExplainer /> : <img
               className="hp-how-image"
               src={`/images/how-fees-work-${locale}.webp`}
               alt={dict.howItWorks.imageAlt}
               loading="lazy"
               decoding="async"
-            />
+            />}
           </section>
 
           <section className="hp-cb" data-reveal>
@@ -1066,7 +1061,7 @@ export default function HomePage({ dict, locale, nav }: { dict: Dictionary; loca
                         <span className="hp-fee-label">{row.fee}</span>
                       </td>
                       <td>
-                        <BlurredCompetitors names={row.competitors} />
+                        <BlurredCompetitors locale={locale} names={row.competitors} />
                         <p className="hp-fee-market-copy">{row.marketSummary}</p>
                       </td>
                       <td>
@@ -1097,7 +1092,7 @@ export default function HomePage({ dict, locale, nav }: { dict: Dictionary; loca
             <p className="hp-fee-note">{dict.fees.note}</p>
           </section>
 
-          <HomeTrustMarquee dict={dict} backgroundImage={MARQUEE_BG} />
+          <HomeTrustMarquee dict={dict} backgroundImage={MARQUEE_BG} locale={locale} />
         </div>
 
         <section className="reviewsSection">
@@ -1121,7 +1116,7 @@ export default function HomePage({ dict, locale, nav }: { dict: Dictionary; loca
                       {r.name && <div className="reviewAvatar">{r.name.charAt(0)}</div>}
                       <div className="reviewCardMeta">
                         {r.name && <span className="reviewName">{r.name}</span>}
-                        <Stars count={review.stars} />
+                        <Stars locale={locale} count={review.stars} />
                       </div>
                       {r.role && <span className="reviewRole">{r.role}</span>}
                     </div>
@@ -1160,7 +1155,7 @@ export default function HomePage({ dict, locale, nav }: { dict: Dictionary; loca
                     className="footerSocialLink"
                     target={social.external ? "_blank" : undefined}
                     rel={social.external ? "noopener noreferrer" : undefined}
-                    aria-label={social.label}
+                    aria-label={social.label === "Email GruntWrk" ? siteLabels(locale).contact : social.label}
                   >
                     {social.icon}
                   </a>

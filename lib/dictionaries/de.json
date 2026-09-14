@@ -1,0 +1,336 @@
+{
+  "meta": {
+    "title": "GruntWrk | In drei einfachen Schritten mehrere Angebote erhalten",
+    "description": "Sparen Sie sich langes Suchen, Telefonieren und Nachfragen. Beschreiben Sie Ihren Auftrag einmal, wählen Sie Dienstleister aus und vergleichen Sie alle Angebote an einem Ort. Für Kunden kostenlos.",
+    "keywords": "Angebote vergleichen, lokale Dienstleister, Kostenvoranschläge, Dienstleistung anfragen, Reinigungsangebote, Sanitärangebote, Elektrikerangebote",
+    "seoHeading": "Mit GruntWrk erhalten Sie einfach Angebote für lokale Dienstleistungen: Beschreiben Sie Ihren Auftrag einmal, wählen Sie bis zu fünf Dienstleister aus, die wir für Sie kontaktieren, und vergleichen Sie alle Angebote in einem Arbeitsbereich."
+  },
+  "nav": {
+    "startOffering": "Für Dienstleister",
+    "login": "Anmelden",
+    "brandSub": "Einmal anfragen. Angebote vergleichen.",
+    "jobs": "Anfrage",
+    "providers": "Dienstleister finden"
+  },
+  "hero": {
+    "title": "Einmal anfragen und mehrere Angebote vergleichen",
+    "subtitle": "Beschreiben Sie einmal, was Sie benötigen, und senden Sie Ihre Anfrage direkt an bis zu fünf Dienstleister.",
+    "ctaProvider": "Als Dienstleister starten",
+    "ctaCustomer": "Dienstleister suchen",
+    "ctaBrowseJobs": "Kostenloses Angebot anfordern",
+    "ctaBrowseProviders": "Dienstleister für Ihre Anfrage suchen"
+  },
+  "heroPreview": {
+    "stage": "Schritt 3 von 3",
+    "status": "Die Angebote treffen ein",
+    "jobTitle": "Gründliche Küchenreinigung",
+    "jobMeta": "5 Dienstleister ausgewählt",
+    "badgeOne": "Eine Anfrage",
+    "badgeTwo": "Ein Arbeitsbereich"
+  },
+  "stats": [
+    {
+      "value": "100+",
+      "label": "Standorte"
+    },
+    {
+      "value": "10+",
+      "label": "Dienstleistungskategorien"
+    },
+    {
+      "value": "4.8",
+      "label": "Durchschnittliche Bewertung"
+    },
+    {
+      "value": "$0",
+      "label": "Kundengebühren"
+    }
+  ],
+  "providerCounter": {
+    "eyebrow": "Dienstleisternetzwerk",
+    "heading": "Dienstleister für Ihre Anfrage",
+    "subheading": "Entdecken Sie unser Dienstleisternetzwerk",
+    "live": "LIVE",
+    "townsSuffix": "abgedeckte Städte und Orte",
+    "cta": "Dienstleister suchen"
+  },
+  "video": {
+    "heading": "So funktioniert GruntWrk",
+    "subtitle": "Ein kurzer Einblick: So verbinden wir Kunden mit lokalen Dienstleistern, ohne versteckte Gebühren."
+  },
+  "benefits": {
+    "heading": "So sparen Kunden Zeit",
+    "subtitle": "Weniger Aufwand, weniger Nachfragen und ein einfacher Angebotsvergleich.",
+    "items": [
+      {
+        "id": "cheaper",
+        "title": "Eine Anfrage genügt",
+        "desc": "Sie müssen nicht mehrere Dienstleister suchen und einzeln um Angebote bitten. GruntWrk übernimmt das für Sie."
+      },
+      {
+        "id": "trust",
+        "title": "Dienstleister mit gutem Gefühl auswählen",
+        "desc": "Sehen Sie Bewertungen und Rezensionen und erfahren Sie, warum ein Dienstleister zu Ihrer Anfrage passt, bevor Sie Angebote anfordern."
+      },
+      {
+        "id": "payment",
+        "title": "Alles an einem Ort vergleichen",
+        "desc": "Alle Angebote und Ihre Auftragshistorie übersichtlich an einem Ort."
+      }
+    ]
+  },
+  "fees": {
+    "kicker": "Der Kostenunterschied",
+    "heading": "Warum Angebote auf GruntWrk günstiger sind",
+    "subtitle": "Für Kunden ist GruntWrk komplett kostenlos. Dienstleister zahlen erst nach Abschluss des Auftrags eine Gebühr von 10 %.",
+    "pills": [
+      "Keine Gebühren pro Kontakt",
+      "Keine Guthabenpakete",
+      "Keine Abos",
+      "Keine bezahlten Platzierungen"
+    ],
+    "pillStrong": "Nur 10 % Auftragsgebühr für Dienstleister",
+    "tableHeaders": [
+      "Gebührenart",
+      "Typische Marktplätze",
+      "GruntWrk"
+    ],
+    "note": "Grundlage sind öffentlich zugängliche Preis- und Hilfeseiten, geprüft am 16. März 2026. Gebühren unterscheiden sich je nach Dienstleistung und Markt.",
+    "rows": [
+      {
+        "fee": "Registrierungsgebühr",
+        "marketSummary": "Manche Marktplätze erheben eine einmalige Einrichtungsgebühr, bevor Dienstleister Aufträge annehmen können.",
+        "competitors": [
+          "Taskrabbit"
+        ],
+        "gruntwrk": "Kostenlos"
+      },
+      {
+        "fee": "Kontaktgebühr",
+        "marketSummary": "Dienstleister zahlen, um Kundendaten freizuschalten oder sich auf einen Auftrag zu bewerben.",
+        "competitors": [
+          "Fixando",
+          "Zaask",
+          "Bark"
+        ],
+        "gruntwrk": "Kostenlos"
+      },
+      {
+        "fee": "Guthabenpakete",
+        "marketSummary": "Vor der Angebotsabgabe müssen Guthaben oder Kontaktpakete gekauft werden.",
+        "competitors": [
+          "Fixando",
+          "Zaask",
+          "Bark"
+        ],
+        "gruntwrk": "Kostenlos"
+      },
+      {
+        "fee": "Bezahlte Platzierungen",
+        "marketSummary": "Zusätzliche Gebühren sorgen für eine höhere Position in der Suche oder mehr Sichtbarkeit des Profils.",
+        "competitors": [
+          "Fixando",
+          "Checkatrade"
+        ],
+        "gruntwrk": "Kostenlos"
+      },
+      {
+        "fee": "Abo oder Mitgliedschaft",
+        "marketSummary": "Monatliche Gebühren fallen an, damit das Profil gelistet bleibt und sich der Dienstleister um Aufträge bewerben kann.",
+        "competitors": [
+          "Bark",
+          "Checkatrade"
+        ],
+        "gruntwrk": "Kostenlos"
+      },
+      {
+        "fee": "Auswahl- oder Annahmegebühr",
+        "marketSummary": "Gebühren werden fällig, sobald ein Kunde den Dienstleister in die engere Auswahl nimmt oder konkretes Interesse zeigt.",
+        "competitors": [
+          "MyBuilder"
+        ],
+        "gruntwrk": "Kostenlos"
+      },
+      {
+        "fee": "Zusätzliche Zahlungsgebühr",
+        "marketSummary": "Weitere Kosten für die Zahlungsabwicklung kommen zu den übrigen Marktplatzgebühren hinzu.",
+        "competitors": [
+          "Fixando",
+          "Taskrabbit",
+          "Checkatrade"
+        ],
+        "gruntwrk": "Kostenlos"
+      },
+      {
+        "fee": "Auszahlungsreserve oder Einbehalt",
+        "marketSummary": "Ein Teil des Geldes kann vor der Auszahlung auf der Plattform einbehalten werden.",
+        "competitors": [
+          "Fixando"
+        ],
+        "gruntwrk": "Kostenlos"
+      },
+      {
+        "fee": "Buchungs- oder Zahlungsgebühr",
+        "marketSummary": "Für Kunden kostenlos. Dienstleister zahlen die Transaktionsgebühr nach Abschluss des Auftrags.",
+        "competitors": [
+          "Fixando",
+          "Taskrabbit",
+          "Checkatrade"
+        ],
+        "gruntwrk": "10 % (nur für Dienstleister)"
+      }
+    ]
+  },
+  "provider": {
+    "badge": "Für Dienstleister",
+    "title": "Vor Ort gefunden werden und Aufträge ohne laufende Kosten verwalten",
+    "desc": "Erstellen Sie ein kostenloses öffentliches Profil, teilen Sie Ihre Verfügbarkeit und erhalten Sie Angebotsanfragen von Kunden, die Sie ausgewählt haben. Kunden bezahlen Sie direkt. Keine Registrierungskosten, keine Kontaktgebühren, keine Abos und keine verzögerten Auszahlungen.",
+    "perks": [
+      "Keine Zugangshürden",
+      "Kunden bezahlen Sie direkt, ohne Auszahlungsverzögerung",
+      "Öffentliches Profil, Verfügbarkeit und gezielte Kundenanfragen",
+      "Keine Kontaktgebühren und keine Abos"
+    ],
+    "cta": "Als Dienstleister starten"
+  },
+  "customer": {
+    "badge": "Für Kunden",
+    "heading": "Wählen Sie aus, von wem Sie Angebote erhalten möchten",
+    "subtitle": "Geben Sie Dienstleistung und Ort an. Wählen Sie dann aus über zehn Dienstleistungskategorien die Anbieter aus, die wir für Sie kontaktieren."
+  },
+  "categories": [
+    {
+      "slug": "cleaning",
+      "title": "Reinigung",
+      "desc": "Gründliche Reinigung von Zuhause und Büro",
+      "alt": "Günstige Reinigungsdienste für Zuhause und Büro"
+    },
+    {
+      "slug": "furniture-assembly",
+      "title": "Möbelmontage",
+      "desc": "Bausätze und Möbel",
+      "alt": "Günstige Montage von Möbeln und Bausätzen"
+    },
+    {
+      "slug": "home-repairs",
+      "title": "Reparaturen",
+      "desc": "Reparaturen, Tischlerarbeiten und mehr",
+      "alt": "Günstige Reparaturen, Tischler- und Handwerkerleistungen"
+    },
+    {
+      "slug": "moving-lifting",
+      "title": "Umzug",
+      "desc": "Packen, Tragen und Transport",
+      "alt": "Günstige Umzugshilfe beim Packen, Tragen und Transport"
+    },
+    {
+      "slug": "electrical",
+      "title": "Elektroarbeiten",
+      "desc": "Lampen, Schalter und Leitungen",
+      "alt": "Günstige Elektroarbeiten an Lampen, Schaltern und Leitungen"
+    },
+    {
+      "slug": "plumbing",
+      "title": "Sanitärarbeiten",
+      "desc": "Armaturen, Abflüsse und Toiletten",
+      "alt": "Günstige Sanitärarbeiten an Armaturen, Abflüssen und Toiletten"
+    },
+    {
+      "slug": "painting-decor",
+      "title": "Malerarbeiten",
+      "desc": "Innen und außen",
+      "alt": "Günstige Malerarbeiten im Innen- und Außenbereich"
+    },
+    {
+      "slug": "outdoor",
+      "title": "Außenbereich",
+      "desc": "Garten und Instandhaltung",
+      "alt": "Günstige Gartenpflege und Instandhaltung im Außenbereich"
+    },
+    {
+      "slug": "mounting-installation",
+      "title": "Befestigung",
+      "desc": "Fernseher, Regale und Jalousien",
+      "alt": "Günstige Montage von Fernsehern, Regalen und Jalousien"
+    },
+    {
+      "slug": "removal-disposal",
+      "title": "Entsorgung",
+      "desc": "Sperrmüll und Abfälle",
+      "alt": "Günstige Sperrmüllabholung und Abfallentsorgung"
+    }
+  ],
+  "howItWorks": {
+    "ariaLabel": "So funktioniert GruntWrk",
+    "imageAlt": "So funktionieren die Gebühren: Anfrage stellen, Angebote erhalten, Dienstleister auswählen und direkt bezahlen. Nach Abschluss zahlt der Dienstleister 10 % an GruntWrk. Kunden zahlen keine Plattformgebühren."
+  },
+  "workbench": {
+    "title": "Alle Angebote in einem Arbeitsbereich.",
+    "carouselLabel": "Vorteile für Kunden",
+    "allLabel": "Alle Vorteile im Überblick",
+    "points": [
+      {
+        "id": "quotes",
+        "title": "Alle Angebote zusammen sehen",
+        "desc": "Jeder ausgewählte Dienstleister antwortet in derselben Auftragsübersicht. So vergleichen Sie Preis, Termin und Eignung, ohne einzelne E-Mails zusammensuchen zu müssen."
+      },
+      {
+        "id": "book",
+        "title": "Mit mehr Sicherheit auswählen",
+        "desc": "Die Auswahlansicht bewertet, wie gut Dienstleister zu Ihrer Anfrage passen. So treffen Sie eine fundierte Vorauswahl."
+      },
+      {
+        "id": "message",
+        "title": "Die gesamte Anfrage an einem Ort",
+        "desc": "Ihre Beschreibung, Fotos, Nachrichten und Angebotsänderungen bleiben von der ersten Anfrage bis zur endgültigen Auswahl zusammen."
+      },
+      {
+        "id": "pay",
+        "title": "Mit dem ausgewählten Dienstleister weitermachen",
+        "desc": "Nach der Auswahl führen Sie den Auftrag direkt im bestehenden GruntWrk-Ablauf fort, ohne von vorne beginnen zu müssen."
+      }
+    ]
+  },
+  "reviews": {
+    "heading": "Das sagen unsere Nutzer.",
+    "ratingLabel": "Frühzugang",
+    "items": [
+      {
+        "stars": 5,
+        "text": "Eine sehr effektive Plattform, um Kunden und Dienstleister zusammenzubringen. Aufträge finden und buchen ist einfach und schnell.",
+        "name": "Maria S.",
+        "role": "Kundin"
+      },
+      {
+        "stars": 4,
+        "text": "Der Anfrageablauf ist gut organisiert. Ich kann mir die Dienstleister, die GruntWrk für mich kontaktieren kann, leicht ansehen.",
+        "name": "David R.",
+        "role": "Kunde"
+      },
+      {
+        "stars": 5,
+        "text": "Mir gefällt, dass Profile Bewertungen, Fähigkeiten und Rezensionen zeigen. So lassen sich Dienstleister schnell einschätzen.",
+        "name": "Lucia T.",
+        "role": "Kundin"
+      },
+      {
+        "stars": 5,
+        "text": "Keine Kontaktgebühren, keine Guthabenpakete. Ich melde mich einfach an und kann Angebote abgeben. So bleibt mir mehr von meinem Verdienst.",
+        "name": "James P.",
+        "role": "Dienstleister"
+      }
+    ]
+  },
+  "apps": {
+    "kicker": "Apps bald verfügbar",
+    "heading": "Der GruntWrk-Arbeitsbereich kommt auf iOS und Android.",
+    "subtitle": "Suchen Sie Dienstleister für Ihre Anfrage, verwalten Sie Aufträge und behalten Sie Zahlungen und Nachrichten an einem Ort im Blick, direkt auf Ihrem Smartphone.",
+    "comingSoon": "Bald verfügbar",
+    "appStore": "App Store",
+    "googlePlay": "Google Play"
+  },
+  "footer": {
+    "storeLabel": "Bald für iOS und Android verfügbar",
+    "copy": "Angebote für lokale Dienstleistungen einfach koordinieren. Beschreiben Sie Ihren Auftrag einmal, wählen Sie bis zu fünf Dienstleister aus, die wir für Sie kontaktieren, und vergleichen Sie alles an einem Ort."
+  }
+}

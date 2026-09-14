@@ -719,6 +719,18 @@ h1, h2, h3,
   white-space: nowrap;
 }
 
+/* Localized labels can be substantially longer than English labels. */
+.hp-btn-primary,
+.hp-btn-secondary,
+.hp-hero-cta {
+  max-width: 100%;
+  min-width: 0;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  justify-content: center;
+  text-align: center;
+}
+
 .hp-btn-secondary {
   background: #3ECF8E;
   color: #fff;
@@ -2009,6 +2021,8 @@ html[data-theme="dark"] .hp-provider-eyebrow {
 }
 
 .seoHeroTitle {
+  overflow-wrap: anywhere;
+  hyphens: auto;
   margin-top: 16px;
   font-size: clamp(2.2rem, 5vw, 4rem);
   line-height: 0.95;

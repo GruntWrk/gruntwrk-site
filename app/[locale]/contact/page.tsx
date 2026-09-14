@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { getDictionary, LOCALES, SITE_URL, type Locale } from "../../../lib/i18n";
 import { SiteBottomNav, SiteFooter, SiteHeader } from "../SiteChrome";
 
+const DESCRIPTION = { en: "Contact GruntWrk support by email.", pt: "Contacte o apoio GruntWrk por email.", de: "Kontaktieren Sie den GruntWrk-Support per E-Mail." };
+
 const SUPPORT_EMAIL = "service@gruntwrk.com";
 
 const COPY = {
@@ -13,6 +15,10 @@ const COPY = {
     back: "Voltar ao inicio",
     title: "Contactar a GruntWrk",
   },
+    de: {
+    back: "Zur\u00FCck zur Startseite",
+    title: "Kontakt zu GruntWrk",
+},
 } as const;
 
 function resolveLocale(input: string) {
@@ -49,21 +55,22 @@ export function generateMetadata({ params }: { params: { locale: string } }): Me
 
   return {
     title: copy.title,
-    description: "Contact GruntWrk support by email.",
+    description: DESCRIPTION[locale],
     alternates: {
       canonical: url,
       languages: {
         en: `${SITE_URL}/en/contact`,
         pt: `${SITE_URL}/pt/contact`,
         "x-default": `${SITE_URL}/en/contact`,
+    de: `${SITE_URL}/de/contact`,
       },
     },
     openGraph: {
       title: copy.title,
-      description: "Contact GruntWrk support by email.",
+      description: DESCRIPTION[locale],
       url,
       siteName: "GruntWrk",
-      locale: locale === "pt" ? "pt_PT" : "en_US",
+      locale: locale === "de" ? "de_DE" : (locale === "pt" ? "pt_PT" : "en_US"),
       type: "website",
     },
   };
@@ -78,6 +85,14 @@ export default function ContactPage({ params }: { params: { locale: string } }) 
     <div className="siteFrame">
       <SiteHeader dict={dict} locale={locale} />
 
+      <nav className="seoSubNav" aria-label={locale === "de" ? "Sprache" : locale === "pt" ? "Idioma" : "Language"}>
+        <div className="seoSubNavInner" style={{ justifyContent: "flex-end" }}><div className="langToggle">
+          {LOCALES.map((loc, index) => <span key={loc}>
+            {index > 0 && <span className="langSep">{" | "}</span>}
+            <a href={`/${loc}/contact`} className={loc === locale ? "langActive" : "langLink"} aria-current={loc === locale ? "page" : undefined}>{loc.toUpperCase()}</a>
+          </span>)}
+        </div></div>
+      </nav>
       <main className="contactPage">
         <section className="contactPanel">
           <h1 className="contactTitle">{copy.title}</h1>

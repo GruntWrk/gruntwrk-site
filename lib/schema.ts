@@ -13,10 +13,10 @@ export function buildOrganizationSchema(locale: Locale) {
     url: SITE_URL,
     logo: `${SITE_URL}/brand/gruntwrk-g.svg`,
     description:
-      locale === "pt"
-        ? "Peca orcamentos de servicos locais, reveja prestadores que podemos contactar por si e gira tudo numa so bancada em Portugal."
-        : "Request local service quotes, review providers we can contact for you, and manage everything in one workbench across Portugal.",
-    areaServed: ["Portugal", "Lisbon", "Porto"],
+      locale === "de" ? "Fordern Sie Angebote f\u00FCr lokale Dienstleistungen an, w\u00E4hlen Sie Dienstleister aus, die wir f\u00FCr Sie kontaktieren, und verwalten Sie alles in einem Arbeitsbereich." : (locale === "pt"
+        ? "Peça orçamentos de serviços locais, reveja prestadores que podemos contactar por si e gira tudo num só painel."
+        : "Request local service quotes, review providers we can contact for you, and manage everything in one workbench."),
+    areaServed: ["Europe", "United Kingdom", "United States", "Australia"],
   };
 }
 
@@ -84,7 +84,7 @@ export function buildAggregateRatingSchema(): object {
       "@type": "PostalAddress",
       addressCountry: "PT",
     },
-    areaServed: [{ "@type": "Country", name: "Portugal" }],
+    areaServed: ["Europe", "United Kingdom", "United States", "Australia"],
   };
 }
 

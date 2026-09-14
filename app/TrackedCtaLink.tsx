@@ -96,6 +96,16 @@ export function TrackedCtaLink({
   target,
   ...props
 }: TrackedCtaLinkProps) {
+  // Preserve the selected language for ordinary, modified and keyboard clicks.
+  try {
+    const destination = new URL(href);
+    if (destination.hostname === "app.gruntwrk.com") {
+      destination.searchParams.set("lang", locale);
+      href = destination.toString();
+    }
+  } catch {
+    // Relative site links keep their route unchanged.
+  }
   const eventName = inferEventName(href);
 
   function handleClick(event: MouseEvent<HTMLAnchorElement>) {

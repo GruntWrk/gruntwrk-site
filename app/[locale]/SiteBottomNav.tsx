@@ -1,6 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
+import { siteLabels } from "../../lib/siteLabels";
 import { TrackedCtaLink } from "../TrackedCtaLink";
 import type { Dictionary, Locale } from "../../lib/i18n";
 
@@ -50,11 +51,11 @@ export function SiteBottomNav({
 }) {
   const pathname = usePathname() || "/";
   const homePath = `/${locale}`;
-  const homeLabel = locale === "pt" ? "Inicio" : "Home";
+  const homeLabel = locale === "de" ? "Startseite" : (locale === "pt" ? "Inicio" : "Home");
   const homeActive = pathname === homePath || pathname === `${homePath}/`;
 
   return (
-    <nav className="siteMobileNav" aria-label="Bottom navigation" style={{ position: "fixed", left: 0, right: 0, bottom: 0, zIndex: 60 }}>
+    <nav className="siteMobileNav" aria-label={siteLabels(locale).bottomNav} style={{ position: "fixed", left: 0, right: 0, bottom: 0, zIndex: 60 }}>
       <div className="siteMobileNavInner">
         <a
           href={homePath}

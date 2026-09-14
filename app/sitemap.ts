@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { getSeoPages } from "../lib/seoPages";
 
 const SITE_URL = "https://www.gruntwrk.com";
-const LOCALES = ["en", "pt"];
+const LOCALES = ["en", "pt", "de"];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const homeEntries = LOCALES.map((locale) => ({
@@ -22,11 +22,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: new Date(),
     changeFrequency: "weekly" as const,
     priority:
-      page.kind === "service"
-        ? 0.88
-        : page.kind === "city"
-          ? 0.8
-          : 0.72,
+      page.kind === "service" ? 0.88 : 0.72,
     alternates: {
       languages: {
         ...page.alternates,
@@ -35,5 +31,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   }));
 
-  return [...homeEntries, ...seoEntries];
+  const contactEntries = LOCALES.map((locale) => ({
+    url: `${SITE_URL}/${locale}/contact`,
+    alternates: { languages: Object.fromEntries(LOCALES.map((loc) => [loc, `${SITE_URL}/${loc}/contact`])) },
+  }));
+  return [...homeEntries, ...seoEntries, ...contactEntries];
 }

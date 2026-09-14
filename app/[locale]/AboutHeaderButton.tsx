@@ -39,6 +39,22 @@ const COPY = {
     contact: "Contacto",
     socials: "Redes sociais",
   },
+    de: {
+    label: "\u00DCber uns",
+    title: "\u00DCber GruntWrk",
+    close: "Schlie\u00DFen",
+    description: "GruntWrk erspart Ihnen die l\u00E4stige Arbeit, Angebote f\u00FCr lokale Dienstleistungen einzuholen. Beschreiben Sie Ihren Auftrag einmal, senden Sie ihn an bis zu f\u00FCnf lokale Dienstleister und vergleichen Sie jedes Angebot an einem Ort. Kostenlos f\u00FCr Kunden, ohne Aufschl\u00E4ge auf die Anbieterpreise und ohne Zwischenh\u00E4ndler.",
+    legalTitle: "Rechtliches",
+    legalPrefix: "Mit der Nutzung von GruntWrk akzeptieren Sie die folgenden Bedingungen und Hinweise:",
+    legalAnd: "und",
+    legalSuffix: ".",
+    terms: "Allgemeine Gesch\u00E4ftsbedingungen",
+    privacy: "Datenschutzerkl\u00E4rung",
+    cookies: "Cookie-Richtlinie",
+    trust: "Vertrauen und Sicherheit",
+    contact: "Kontakt",
+    socials: "Soziale Medien",
+},
 } as const;
 
 const APP_BASE_URL = "https://app.gruntwrk.com";
@@ -98,10 +114,10 @@ export default function AboutHeaderButton({ locale }: { locale: Locale }) {
                 <div className="aboutModalSection">
                   <h3>{copy.legalTitle}</h3>
                   <p>
-                    {copy.legalPrefix} <a href={`${APP_BASE_URL}/terms`}>{copy.terms}</a>,{" "}
-                    <a href={`${APP_BASE_URL}/privacy`}>{copy.privacy}</a>,{" "}
-                    <a href={`${APP_BASE_URL}/cookies`}>{copy.cookies}</a>, {copy.legalAnd}{" "}
-                    <a href={`${APP_BASE_URL}/trust`}>{copy.trust}</a> {copy.legalSuffix}
+                    {copy.legalPrefix} <a href={`${APP_BASE_URL}/terms?lang=${locale}`}>{copy.terms}</a>,{" "}
+                    <a href={`${APP_BASE_URL}/privacy?lang=${locale}`}>{copy.privacy}</a>,{" "}
+                    <a href={`${APP_BASE_URL}/cookies?lang=${locale}`}>{copy.cookies}</a>, {copy.legalAnd}{" "}
+                    <a href={`${APP_BASE_URL}/trust?lang=${locale}`}>{copy.trust}</a> {copy.legalSuffix}
                   </p>
                 </div>
 
