@@ -7,7 +7,6 @@ import type { Dictionary, Locale } from "../../lib/i18n";
 import { LOCALES, SITE_URL } from "../../lib/i18n";
 import type { SeoNavItem } from "../../lib/seoPages";
 import AboutHeaderButton from "./AboutHeaderButton";
-import GermanFeesExplainer from "./GermanFeesExplainer";
 import { SiteBottomNav } from "./SiteChrome";
 
 const APP_BASE_URL = "https://app.gruntwrk.com";
@@ -980,13 +979,15 @@ export default function HomePage({ dict, locale, nav }: { dict: Dictionary; loca
           </section>
 
           <section className="hp-how" data-reveal>
-            {locale === "de" ? <GermanFeesExplainer /> : <img
+            <img
               className="hp-how-image"
               src={`/images/how-fees-work-${locale}.webp`}
+              width={locale === "de" ? 1672 : 1600}
+              height={locale === "de" ? 941 : 900}
               alt={dict.howItWorks.imageAlt}
               loading="lazy"
               decoding="async"
-            />}
+            />
           </section>
 
           <section className="hp-cb" data-reveal>
