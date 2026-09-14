@@ -2,6 +2,7 @@
 
 import { useEffect, useState, type AnchorHTMLAttributes, type MouseEvent } from "react";
 import type { Locale } from "../lib/i18n";
+import { appDestination } from "../lib/appDestination";
 import {
   GOOGLE_CTA_EVENTS,
   getLegacyGoogleCtaEventName,
@@ -82,6 +83,8 @@ export function TrackedCtaLink({
   ...props
 }: TrackedCtaLinkProps) {
   const [opening, setOpening] = useState(false);
+  const [serviceCookie, setServiceCookie] = useState("");
+  useEffect(() => { setServiceCookie(document.cookie); }, []);
   useEffect(() => {
     if (!opening) return;
     const reset = () => setOpening(false);
@@ -94,15 +97,7 @@ export function TrackedCtaLink({
     };
   }, [opening]);
   // Preserve the selected language for ordinary, modified and keyboard clicks.
-  try {
-    const destination = new URL(href);
-    if (destination.hostname === "app.gruntwrk.com") {
-      destination.searchParams.set("lang", locale);
-      href = destination.toString();
-    }
-  } catch {
-    // Relative site links keep their route unchanged.
-  }
+  href = appDestination(href, locale, serviceCookie);
   const eventName = inferEventName(href);
 
   function handleClick(event: MouseEvent<HTMLAnchorElement>) {

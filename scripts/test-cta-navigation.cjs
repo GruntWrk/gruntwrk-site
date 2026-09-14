@@ -9,7 +9,12 @@ const source = ts.transpileModule(fs.readFileSync('app/TrackedCtaLink.tsx', 'utf
 function render(props, tracker = () => {}) {
   const states = [], events = [], exports = {};
   vm.runInNewContext(source, { exports, URL, window: { location: { pathname: '/' + props.locale }, gtag: (...args) => { events.push(args); tracker(...args); } }, require(name) {
-    if (name === 'react') return { useState: () => [false, value => states.push(value)], useEffect: () => {} };
+    if (name === 'react') return { useState: initial => [initial, value => states.push(value)], useEffect: () => {} };
+    if (name === '../lib/appDestination') {
+      const moduleExports = {};
+      vm.runInNewContext(ts.transpileModule(fs.readFileSync('lib/appDestination.ts','utf8'), { compilerOptions: { module: ts.ModuleKind.CommonJS } }).outputText, { exports: moduleExports, URL });
+      return moduleExports;
+    }
     if (name === '../lib/googleTag') return {
       GOOGLE_CTA_EVENTS: { customerRequest: 'customer_request_click', providerSignup: 'provider_signup_click', providerSearch: 'provider_search_click' },
       getLegacyGoogleCtaEventName: () => '', getLegacyGoogleCtaParams: () => null, getGoogleAdsSendTo: () => 'AW-test/conversion',
@@ -46,3 +51,13 @@ for (const locale of ['en', 'pt', 'de']) {
   assert.deepEqual(cancelled.states, []); assert.deepEqual(cancelled.events, []);
   console.log('PASS ' + locale + ': normal/keyboard navigation never waits for tracking; modified, download and cancelled clicks preserved');
 }
+
+const destinationModule = {};
+vm.runInNewContext(ts.transpileModule(fs.readFileSync('lib/appDestination.ts', 'utf8'), { compilerOptions: { module: ts.ModuleKind.CommonJS } }).outputText, { exports: destinationModule, URL });
+for (const locale of ['en', 'pt', 'de']) {
+  const url = new URL(destinationModule.appDestination('https://app.gruntwrk.com/jobs/new?category=cleaning', locale, 'gw_service_country=DE'));
+  assert.equal(url.searchParams.get('countryCode'), 'DE'); assert.equal(url.searchParams.get('lang'), locale);
+  const explicit = new URL(destinationModule.appDestination('https://app.gruntwrk.com/jobs/new?countryCode=PT', locale, 'gw_service_country=DE'));
+  assert.equal(explicit.searchParams.get('countryCode'), 'PT');
+}
+console.log('PASS service country persists independently of all three interface languages');
