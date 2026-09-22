@@ -979,18 +979,6 @@ export default function HomePage({ dict, locale, nav }: { dict: Dictionary; loca
             </div>
           </section>
 
-          <section className="hp-how" data-reveal>
-            <img
-              className="hp-how-image"
-              src={`/images/how-fees-work-${locale}.webp`}
-              width={locale === "de" ? 1672 : 1600}
-              height={locale === "de" ? 941 : 900}
-              alt={dict.howItWorks.imageAlt}
-              loading="lazy"
-              decoding="async"
-            />
-          </section>
-
           <section className="hp-cb" data-reveal>
             <div className="hp-section-head">
               <h2 className="hp-h2">{dict.benefits.heading}</h2>
