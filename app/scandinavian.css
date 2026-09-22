@@ -59,6 +59,7 @@ input:not([type=checkbox]):not([type=radio]):not([type=range]),select,textarea,.
 .hp-section-head{text-align:left;gap:14px;margin-bottom:28px}
 .hp-h2{font-size:clamp(28px,3vw,40px);font-weight:500}
 .hp-subtitle{max-width:64ch;color:var(--muted);line-height:1.8}
+.hp-customer .hp-subtitle{max-width:none;white-space:normal}
 .hp-customer-inner,.hp-cb,.hp-how,.hp-provider-inner,.hp-fees{background:var(--surface);border-color:var(--border);box-shadow:none;border-radius:2px}
 .hp-cat-card{border-radius:0;box-shadow:none;background:var(--surface);border-color:var(--border)}
 .hp-cat-photo{filter:saturate(.72)}
