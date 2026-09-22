@@ -125,12 +125,27 @@ html[data-theme="dark"] .header{background:#17231df5;border-color:var(--border)}
 html[data-theme] .input,html[data-theme] .select,html[data-theme] .textarea{background:var(--surface);color:var(--text);border-color:var(--border-2)}
 .mobile-request-button{border-radius:0!important;background:#385344!important;box-shadow:none!important;border-color:var(--bg)!important}
 .mobile-request-button svg{color:white;stroke:white}
+/* Keep branding and every action on one line, including narrow locales. */
 @media(max-width:600px){
-  :root{--nav-h:124px}
-  .appShellHeaderInner{display:grid;grid-template-columns:1fr;height:var(--nav-h);gap:8px;padding-block:12px}
-  .appShellHeaderActions{width:100%;justify-content:space-between}
-  .appShellHeaderNav{flex:1;justify-content:space-around}
-  .appShellBrand{flex-shrink:0}
-  .appShellHeaderNavLabel{font-size:10px}
+  :root{--nav-h:68px}
+  .appShellHeaderInner{display:flex;flex-wrap:nowrap;align-items:center;height:var(--nav-h);gap:8px;padding-block:10px;width:calc(100% - 24px)}
+  .appShellHeaderNav,.appShellHeaderActions{flex:0 0 auto;width:auto;gap:4px;justify-content:flex-end}
+  .appShellBrand{flex:0 0 auto;gap:6px}
+  .appShellBrand .navLogoIcon{width:34px;height:34px}
+  .appShellBrandName{font-size:22px;white-space:nowrap}
+  .appShellHeaderNavBtn{min-width:36px;min-height:40px}
+  .appShellHeaderNavLabel{font-size:9px}
+  .appShellHeaderBtn{min-height:40px;padding:9px 10px;font-size:13px}
   .hp .hp-cat-desc{font-size:12px}
+}
+@media(max-width:440px){
+  .appShellHeaderInner{width:calc(100% - 16px);gap:6px}
+  .appShellBrand{gap:4px}
+  .appShellBrand .navLogoIcon{width:28px;height:28px}
+  .appShellBrandName{font-size:18px}
+  .appShellHeaderNavBtn{min-width:32px;padding:6px 4px}
+  /* Accessible names stay on the icon buttons. */
+  .appShellHeaderNavLabel{display:none}
+  .appShellHeaderNav,.appShellHeaderActions{gap:3px}
+  .appShellHeaderBtn{font-size:12px;padding-inline:8px}
 }
