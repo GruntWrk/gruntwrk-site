@@ -915,7 +915,8 @@ export default function HomePage({ dict, locale, nav }: { dict: Dictionary; loca
           <section className="hp-hero">
             <div className="hp-hero-shell">
               <div className="hp-hero-content">
-                <h1 className="hp-hero-title">{dict.hero.title}</h1>
+                <h1 className="hp-hero-title">{dict.hero.title.split("\n")[0]}<br /><em>{dict.hero.title.split("\n")[1]}</em></h1>
+                <p className="hp-hero-description">{dict.hero.subtitle}</p>
                 <p className="sr-only">{dict.meta.seoHeading}</p>
                 <HeroJourney dict={dict} locale={locale} />
                 <div className="hp-hero-actions hp-hero-actions-row">
@@ -1013,85 +1014,6 @@ export default function HomePage({ dict, locale, nav }: { dict: Dictionary; loca
             towns={providerNetworkCounts.towns}
             hasError={providerNetworkCounts.hasError}
           />
-
-          <section className="hp-provider" data-reveal>
-            <div className="hp-provider-inner">
-              <div className="hp-provider-left">
-                <div className="hp-provider-eyebrow">{dict.provider.badge}</div>
-                <h2 className="hp-provider-title">{dict.provider.title}</h2>
-                <p className="hp-provider-desc">{dict.provider.desc}</p>
-                <ul className="hp-provider-perks">
-                  {dict.provider.perks.map((perk) => (
-                    <li key={perk}><CheckIcon /> {perk}</li>
-                  ))}
-                </ul>
-                <TrackedCtaLink
-                  className="hp-btn-primary"
-                  href={PROVIDER_HREF}
-                  ctaLocation="home_provider_section"
-                  locale={locale}
-                  pageKind="home"
-                >
-                  {dict.provider.cta}
-                  <ArrowIcon />
-                </TrackedCtaLink>
-              </div>
-            </div>
-          </section>
-
-          <section className="hp-fees" aria-labelledby="hp-fees-title" data-reveal>
-            <div className="hp-fees-head">
-              <div className="hp-fees-kicker">{dict.fees.kicker}</div>
-              <h2 id="hp-fees-title" className="hp-h2">{dict.fees.heading}</h2>
-              <p className="hp-subtitle hp-fees-subtitle">{dict.fees.subtitle}</p>
-            </div>
-
-            <div className="hp-fee-table-wrap">
-              <table className="hp-fee-table">
-                <thead>
-                  <tr>
-                    {dict.fees.tableHeaders.map((header) => (
-                      <th key={header} scope="col">{header}</th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {feeRows.map((row) => (
-                    <tr key={row.fee}>
-                      <td>
-                        <span className="hp-fee-label">{row.fee}</span>
-                      </td>
-                      <td>
-                        <BlurredCompetitors locale={locale} names={row.competitors} />
-                        <p className="hp-fee-market-copy">{row.marketSummary}</p>
-                      </td>
-                      <td>
-                        <span className={`hp-fee-grunt ${row.gruntwrk.startsWith("10%") ? "is-fee" : "is-free"}`}>
-                          {row.gruntwrk}
-                        </span>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-
-            <div className="hp-fee-cards">
-              {feeRows.map((row) => (
-                <article key={`m-${row.fee}`} className="hp-fee-card">
-                  <div className="hp-fee-card-head">
-                    <span className="hp-fee-label">{row.fee}</span>
-                    <span className={`hp-fee-grunt ${row.gruntwrk.startsWith("10%") ? "is-fee" : "is-free"}`}>
-                      {row.gruntwrk}
-                    </span>
-                  </div>
-                  <p className="hp-fee-market-copy">{row.marketSummary}</p>
-                </article>
-              ))}
-            </div>
-
-            <p className="hp-fee-note">{dict.fees.note}</p>
-          </section>
 
           <HomeTrustMarquee dict={dict} backgroundImage={MARQUEE_BG} locale={locale} />
         </div>

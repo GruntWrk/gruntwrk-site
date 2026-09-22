@@ -1,0 +1,136 @@
+/* Approved Scandinavian design. Presentation only; shared by every route and locale. */
+@font-face{font-family:GW Jakarta;src:url('/design/jakarta.woff2') format('woff2');font-weight:100 900;font-style:normal;font-display:swap}
+@font-face{font-family:GW Outfit;src:url('/design/outfit.woff2') format('woff2');font-weight:100 900;font-style:normal;font-display:swap}
+:root,html[data-theme="light"]{
+  --bg:#fafaf5;--bg-alt:#fffffb;--surface:#fffffb;--surface-2:#eef0e7;
+  --text:#293d33;--muted:#667161;--muted-2:#697565;
+  --brand:#385344;--brand-hover:#2b4335;--brand-dark:#2b4335;--brand-text:#fff;
+  --green:#385344;--green-2:#e5ebdf;--blue:#385344;--blue-hover:#2b4335;--blue-dark:#2b4335;--blue-2:#e5ebdf;
+  --border:#dde1d6;--border-2:#bdc7b6;--radius:2px;
+  --shadow:0 4px 20px #293d3308;--shadow-lg:0 16px 48px #293d3318;
+  --font-sans:'GW Jakarta','Segoe UI',sans-serif;--font-display:var(--font-sans);
+}
+html[data-theme="dark"]{
+  --bg:#17231d;--surface:#202e25;--surface-2:#2b3b30;--text:#f0f2e9;
+  --muted:#bec8b5;--muted-2:#a9b49f;--border:#405143;--border-2:#61745e;
+  --brand:#b0c6a4;--brand-hover:#c6d7bc;--brand-dark:#c6d7bc;--green:#b0c6a4;
+  --blue:#b0c6a4;--blue-hover:#c6d7bc;--blue-2:#334638;--green-2:#334638;
+}
+body{background:var(--bg);font-family:var(--font-sans);color:var(--text)}
+h1,h2,.hp-h2,.sectionHeading,.seoHeroTitle,.seoCardsTitle,.contactTitle{
+  font-family:var(--font-sans);font-weight:500;letter-spacing:-.045em;line-height:1.18;color:var(--text);
+}
+.appShellBrandName,.footerBrandName,.brandName,.gw-header-title{
+  font-family:'GW Outfit',sans-serif!important;font-weight:800!important;letter-spacing:-.03em;color:var(--text)!important;
+}
+/* Keep the original green logo mark and circular avatars, maps and status indicators. */
+.appShellHeader,html[data-theme="light"] .header{background:#fafaf5f5;border-bottom:1px solid var(--border);box-shadow:none}
+.seoSubNav,.seoSubNavDropdown,.aboutModal,.contactPanel{background:var(--surface);border-color:var(--border);box-shadow:var(--shadow);border-radius:2px}
+.appShellHeaderNavBtn,.appShellHeaderNavLabel,.appShellBrandSub{color:var(--muted)}
+.hp-btn-primary,.hp-btn-secondary,.hp-hero-cta,.appShellHeaderBtn,.btn,.btnGhost,.btn-sm,.aboutPill,.seoLinkCard,.contactEmailBox{border-radius:0}
+.hp-btn-primary,.hp-hero-cta-green,.appShellHeaderBtnSecondary,
+html[data-theme="light"] .btn-primary,html[data-theme="light"] .btn-blue{
+  background:#385344;color:#fff;border-color:#385344;box-shadow:none;
+}
+.hp-btn-primary:hover,.hp-hero-cta-green:hover,.appShellHeaderBtnSecondary:hover,
+html[data-theme="light"] .btn-primary:hover,html[data-theme="light"] .btn-blue:hover{background:#2b4335;color:#fff;box-shadow:none}
+.hp-btn-secondary{background:var(--surface);color:var(--text);border:1px solid var(--border-2);box-shadow:none}
+html .seoHeroPanel .hp-btn-primary,html .hp-provider .hp-btn-primary{background:#385344;color:#fff;box-shadow:none;border-radius:0}
+html .seoHeroPanel .hp-btn-primary:hover,html .hp-provider .hp-btn-primary:hover{background:#2b4335;color:#fff}
+html .seoHeroActions .hp-btn-secondary:only-child{background:#385344;color:#fff;box-shadow:none;border-radius:0}
+html .seoHeroActions .hp-btn-secondary:only-child:hover{background:#2b4335;color:#fff}
+html[data-theme="dark"] .btn-primary,html[data-theme="dark"] .btn-blue{background:#b0c6a4;color:#17231d}
+input:not([type=checkbox]):not([type=radio]):not([type=range]),select,textarea,.input,.select,.textarea{border-radius:2px}
+.card,.card-flat,.modalCard,.seoCard,.seoFaqItem,.reviewCard,.hp-provider-inner,.hp-fees,.hp-pc-inner{border-radius:2px;box-shadow:none}
+.hp{max-width:1320px;gap:48px;padding-top:0}
+.hp .hp-hero{padding:0;border:0;border-radius:0;background:#eef0e7;overflow:hidden}
+.hp .hp-hero-shell{min-height:570px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0;align-items:stretch}
+.hp .hp-hero-shell::after{content:'';background:url('/design/hero.webp') center/cover;min-width:0}
+.hp .hp-hero-content{padding:64px 40px;gap:24px;align-self:center;max-width:none}
+.hp .hp-hero-title{font-family:var(--font-sans);font-size:clamp(38px,4.4vw,66px);font-weight:500;letter-spacing:-.055em;line-height:1.13;color:#293d33;text-align:left;overflow-wrap:normal}
+.hp-hero-title em{font-style:normal;color:#7d876d}
+.hp-hero-description{font-size:14px;line-height:1.8;color:#667161;max-width:38ch}
+.hp .hp-hero-journey{gap:14px;margin:0;max-width:100%}
+.hp .hp-hero-journey::after{background:#ccd3c1}
+.hp .hp-hero-journey-num{font-size:13px;color:#667161}
+.hp .hp-hero-journey-title{font-size:14px;line-height:1.5;font-weight:500;color:#293d33}
+.hp .hp-hero-cta{min-width:0;white-space:normal;line-height:1.5;border-radius:0}
+.hp-hero-cta>svg,.hp-btn-primary>.btnIcon{display:none}
+.hp-section-head{text-align:left;gap:14px;margin-bottom:28px}
+.hp-h2{font-size:clamp(28px,3vw,40px);font-weight:500}
+.hp-subtitle{max-width:64ch;color:var(--muted);line-height:1.8}
+.hp-customer-inner,.hp-cb,.hp-how,.hp-provider-inner,.hp-fees{background:var(--surface);border-color:var(--border);box-shadow:none;border-radius:2px}
+.hp-cat-card{border-radius:0;box-shadow:none;background:var(--surface);border-color:var(--border)}
+.hp-cat-photo{filter:saturate(.72)}
+.hp-provider-inner::before{background:none}
+.hp-provider-perks li svg{color:var(--brand)}
+.hp-stats-strip,.hp-payment-model-inner{background:var(--surface-2);border-radius:0;border-color:var(--border);box-shadow:none}
+.hp-stat-value,.hp-how-num,.hp-fees-kicker{color:var(--brand)}
+.hp-cb-title,.hp-provider-title,.seoCardTitle,.seoLinkCardTitle{color:var(--text);font-weight:500;letter-spacing:-.025em}
+.seoHeroPanel{background:var(--surface-2);border:1px solid var(--border);border-radius:0;box-shadow:none}
+.seoHeroTitle{font-size:clamp(34px,4.5vw,62px)}
+.seoCard,.seoLinkCard,.seoFaqItem{background:var(--surface);border-color:var(--border);border-radius:2px;box-shadow:none}
+.seoHeroDescription,.seoCardCopy,.seoLinkCardCopy,.seoFaqAnswer,.hp-cb-desc{color:var(--muted);line-height:1.8}
+.siteFooter{background:#e5e9dd;color:#293d33;border-top:1px solid #c3cdbc}
+.siteFooter a,.siteFooter p,.siteFooter .footerBrandName,.siteFooter .storeBadgeIcon,.siteFooter .storeBadgeSmall,.siteFooter .storeBadgeLarge{color:#293d33}
+.siteFooter .storeBadge{border-color:#bdc7b6;background:transparent}
+.providerAbout{border-block:1px solid var(--border);margin-block:16px;padding-block:16px;min-width:0;max-width:100%}
+.providerAbout .hp-btn-primary{white-space:normal;min-width:0;justify-content:center;text-align:center}
+.providerAbout .hp-provider-left{min-width:0;grid-template-columns:minmax(0,1fr)}
+.providerAbout>summary{cursor:pointer;font-weight:600;color:var(--text);padding:8px 0}
+.providerInformation{display:grid;gap:24px;padding-top:20px}
+.providerAbout .hp-provider-inner{padding:20px}
+.providerAbout .hp-provider-title{font-size:24px}
+.providerAbout .hp-fees{padding:16px;margin:0}
+.providerAbout .hp-fee-table-wrap{overflow-x:auto}
+.providerAbout .hp-provider-perks{grid-template-columns:1fr}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--brand);outline-offset:4px}
+@media(max-width:760px){
+  .hp{gap:32px;padding-inline:16px}
+  .hp .hp-hero-shell{grid-template-columns:1fr;min-height:0}
+  .hp .hp-hero-shell::after{height:300px;background-position:center}
+  .hp .hp-hero-content{padding:38px 24px}
+  .hp .hp-hero-title{font-size:clamp(35px,8vw,60px)}
+  .hp .hp-hero-journey-title{font-size:12px}
+  .hp .hp-hero-cta{width:100%}
+  .seoHeroPanel,.seoCard,.seoLinkCard,.seoFaqItem{border-radius:2px}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+/* Secondary surfaces and controls use the same palette. */
+.aboutModal,.aboutModalHeader h2,.aboutModalSection h3{color:var(--text)}
+.aboutModalSection p{color:var(--muted);font-size:16px;line-height:1.75}
+.aboutModalSection a{color:var(--brand)}
+.aboutModalSection .hp-btn-primary{color:white}
+.aboutModalClose{border-radius:0;background:var(--surface-2);color:var(--text);font-size:16px}
+.aboutPill{font-size:15px;color:var(--text)!important;background:var(--surface-2)}
+.hp-provider-inner{border:1px solid var(--border)}
+.hp-provider-eyebrow,.hp-fees-kicker{color:var(--brand);background:var(--surface-2)}
+.hp-fee-grunt.is-fee{color:var(--brand);background:var(--surface-2)}
+.hp-cb-row{border-left:1px solid var(--border-2)}
+.hp-customer{background:transparent;border:0;border-radius:0}
+.hp-customer-inner{padding:28px 0;background:transparent}
+.hp .hp-cat-card{aspect-ratio:auto;display:block;color:var(--text);overflow:hidden}
+.hp .hp-cat-photo{position:relative;inset:auto;display:block;aspect-ratio:3/4;object-fit:cover;height:auto}
+.hp .hp-cat-label{position:relative;padding:16px 0;background:var(--bg)}
+.hp .hp-cat-name{color:var(--text);font-weight:500;text-shadow:none}
+.hp .hp-cat-desc{color:var(--muted);text-shadow:none}
+.hp .hp-cat-overlay,.hp .hp-cat-arrow{display:none}
+.hp .hp-cat-card:hover .hp-cat-photo{transform:none;filter:saturate(.95)}
+.gw-search-panel .input,.gw-search-panel .select,.gw-search-panel input[type="date"]{border-radius:2px!important}
+.gw-search-panel .btn,.adm-action-bar .btn,.adm-action-bar .btnGhost{border-radius:0}
+html[data-theme="light"] .gw-search-panel .btn-primary{background:#385344;color:white}
+.siteMobileNav,.mobileNav{background:var(--bg);border-color:var(--border)}
+html[data-theme] .card,html[data-theme] .card-flat{background:var(--surface);border-color:var(--border)}
+html[data-theme="dark"] .header{background:#17231df5;border-color:var(--border)}
+html[data-theme] .input,html[data-theme] .select,html[data-theme] .textarea{background:var(--surface);color:var(--text);border-color:var(--border-2)}
+.mobile-request-button{border-radius:0!important;background:#385344!important;box-shadow:none!important;border-color:var(--bg)!important}
+.mobile-request-button svg{color:white;stroke:white}
+@media(max-width:600px){
+  :root{--nav-h:124px}
+  .appShellHeaderInner{display:grid;grid-template-columns:1fr;height:var(--nav-h);gap:8px;padding-block:12px}
+  .appShellHeaderActions{width:100%;justify-content:space-between}
+  .appShellHeaderNav{flex:1;justify-content:space-around}
+  .appShellBrand{flex-shrink:0}
+  .appShellHeaderNavLabel{font-size:10px}
+  .hp .hp-cat-desc{font-size:12px}
+}

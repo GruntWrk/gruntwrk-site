@@ -7,7 +7,7 @@ import type { Dictionary, Locale } from "../../lib/i18n";
 
 const APP_BASE_URL = "https://app.gruntwrk.com";
 const SEARCH_PROVIDERS_HREF = `${APP_BASE_URL}/directory?search=1`;
-const GREEN = "rgb(62, 207, 142)";
+const GREEN = "var(--brand)";
 
 function HouseIcon({ size, strokeWidth, color }: { size: number; strokeWidth: number; color: string }) {
   return (
@@ -148,6 +148,7 @@ export function SiteBottomNav({
           }}
         >
           <span
+            className="mobile-request-button"
             style={{
               width: 60,
               height: 60,

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import ProviderInformation from "./ProviderInformation";
 import { createPortal } from "react-dom";
 import type { Locale } from "../../lib/i18n";
 
@@ -112,6 +113,10 @@ export default function AboutHeaderButton({ locale }: { locale: Locale }) {
                 </div>
 
                 <div className="aboutModalSection">
+                  <details className="providerAbout">
+                    <summary>{locale === "de" ? "Für Dienstleister" : locale === "pt" ? "Para prestadores" : "For service providers"}</summary>
+                    <ProviderInformation locale={locale} />
+                  </details>
                   <h3>{copy.legalTitle}</h3>
                   <p>
                     {copy.legalPrefix} <a href={`${APP_BASE_URL}/terms?lang=${locale}`}>{copy.terms}</a>,{" "}
