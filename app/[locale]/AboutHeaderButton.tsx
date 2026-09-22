@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import ProviderInformation from "./ProviderInformation";
 import { createPortal } from "react-dom";
 import type { Locale } from "../../lib/i18n";
 
@@ -20,7 +21,6 @@ const COPY = {
     cookies: "Cookie Policy",
     trust: "Trust and Safety",
     contact: "Contact",
-    socials: "Socials",
   },
   pt: {
     label: "Sobre",
@@ -37,7 +37,6 @@ const COPY = {
     cookies: "Politica de Cookies",
     trust: "Confianca e Seguranca",
     contact: "Contacto",
-    socials: "Redes sociais",
   },
     de: {
     label: "\u00DCber uns",
@@ -53,7 +52,6 @@ const COPY = {
     cookies: "Cookie-Richtlinie",
     trust: "Vertrauen und Sicherheit",
     contact: "Kontakt",
-    socials: "Soziale Medien",
 },
 } as const;
 
@@ -112,6 +110,10 @@ export default function AboutHeaderButton({ locale }: { locale: Locale }) {
                 </div>
 
                 <div className="aboutModalSection">
+                  <details className="providerAbout">
+                    <summary>{locale === "de" ? "Für Dienstleister" : locale === "pt" ? "Para prestadores" : "For service providers"}</summary>
+                    <ProviderInformation locale={locale} />
+                  </details>
                   <h3>{copy.legalTitle}</h3>
                   <p>
                     {copy.legalPrefix} <a href={`${APP_BASE_URL}/terms?lang=${locale}`}>{copy.terms}</a>,{" "}
@@ -129,23 +131,6 @@ export default function AboutHeaderButton({ locale }: { locale: Locale }) {
                   </a>
                 </div>
 
-                <div className="aboutModalSection">
-                  <h3>{copy.socials}</h3>
-                  <div className="aboutSocials">
-                    <a className="aboutPill" href="https://www.linkedin.com/company/gruntwrk" target="_blank" rel="noreferrer">
-                      <IconLinkedIn />
-                      LinkedIn
-                    </a>
-                    <a className="aboutPill" href="https://www.tiktok.com/@gruntwrk_official" target="_blank" rel="noreferrer">
-                      <IconTikTok />
-                      TikTok
-                    </a>
-                    <a className="aboutPill" href="https://www.instagram.com/grunt_wrk" target="_blank" rel="noreferrer">
-                      <IconInstagram />
-                      Instagram
-                    </a>
-                  </div>
-                </div>
               </div>
             </div>,
             document.body
@@ -159,30 +144,6 @@ function IconEmail() {
   return (
     <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
       <path fill="currentColor" d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4.2-8 5.2-8-5.2V6l8 5.2L20 6v2.2Z" />
-    </svg>
-  );
-}
-
-function IconLinkedIn() {
-  return (
-    <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
-      <path fill="currentColor" d="M4 3a2 2 0 1 1 0 4a2 2 0 0 1 0-4Zm-1 6h2v12H3V9Zm6 0h2v2c.5-1.1 2-2.3 4.2-2.3c3 0 4.8 1.9 4.8 5.7V21h-2v-6.1c0-2.1-.7-3.4-2.7-3.4c-1.6 0-2.8 1.1-3.1 2.5c-.1.3-.1.8-.1 1.2V21H9V9Z" />
-    </svg>
-  );
-}
-
-function IconTikTok() {
-  return (
-    <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
-      <path fill="currentColor" d="M16 2c.5 3.2 2.6 5.3 6 5.6V11c-1.9 0-3.6-.6-5-1.6V16c0 4-3.1 6-6.3 6c-3.6 0-6.7-3-6.7-6.7c0-3.8 3.1-6.8 6.9-6.8c.4 0 .8 0 1.1.1v3.8c-.3-.1-.6-.2-1-.2c-1.9 0-3.5 1.5-3.5 3.4c0 1.9 1.5 3.5 3.5 3.5c2.1 0 3.3-1.4 3.3-3.8V2h2.7Z" />
-    </svg>
-  );
-}
-
-function IconInstagram() {
-  return (
-    <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
-      <path fill="currentColor" d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2Zm0 1.8A3.95 3.95 0 0 0 3.8 7.75v8.5A3.95 3.95 0 0 0 7.75 20.2h8.5a3.95 3.95 0 0 0 3.95-3.95v-8.5a3.95 3.95 0 0 0-3.95-3.95h-8.5Zm8.95 1.4a1.15 1.15 0 1 1 0 2.3a1.15 1.15 0 0 1 0-2.3ZM12 7a5 5 0 1 1 0 10a5 5 0 0 1 0-10Zm0 1.8A3.2 3.2 0 1 0 12 15.2A3.2 3.2 0 0 0 12 8.8Z" />
     </svg>
   );
 }
